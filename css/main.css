@@ -1197,7 +1197,7 @@ pre code {
   color: var(--brand-hover-color);
 }
 .site-title {
-  font-family: Monda, 'Monda', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: ヒラギノ明朝 Pro, Monda, 'Monda', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 1.4em;
   font-weight: normal;
   margin: 0;
@@ -1333,7 +1333,8 @@ pre code {
 }
 .site-description {
   color: #999;
-  font-size: 1em;
+  font-size: 0.875em;
+  font-family: ヒラギノ明朝 Pro, Monda, 'Monda', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   margin-top: 5px;
 }
 .links-of-author a {
@@ -2674,6 +2675,12 @@ hr {
 .site-subtitle {
   display: none;
 }
+.site-description {
+  margin: 0 auto;
+  writing-mode: vertical-rl;
+  text-align: left;
+  padding: 30px 30px 30px 0px;
+}
 .site-nav {
   flex-grow: 1;
 }
@@ -2711,6 +2718,7 @@ hr {
   text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
 }
 .menu-item a {
+  font-family: 'ヒラギノ明朝 Pro';
   font-size: 0.8em;
 }
 .posts-expand.index .post-header {
@@ -2847,7 +2855,7 @@ hr {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #fad03b;
+  background: #ec0bff;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);

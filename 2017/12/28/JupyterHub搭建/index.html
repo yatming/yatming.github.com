@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -14,22 +14,22 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic%7CPT+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic%7Cヒラギノ明朝+Pro:300,300italic,400,400italic,700,700italic%7CPT+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yatming.net","root":"/","images":"/images","scheme":"Mist","version":"8.2.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"changyan","storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"yatming.net","root":"/","images":"/images","scheme":"Mist","version":"8.2.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"changyan","storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索…","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 <meta name="description" content="Jupyter是什么Jupyter是一款基于python的web notebook服务，目前有大多python数据挖掘与机器学习爱好者使用这款服务，其特性其实与Ipytohn Notebook差不多，准确说Ipython Notebook是一款提供增强型交互的功能的shell，而Jupyter除了Ipython的功能，还加入了普通编辑器的通用功能，是一款带代码交互的动态文档web编辑器。 Jupy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JupyterHub搭建">
 <meta property="og:url" content="http://yatming.net/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/index.html">
-<meta property="og:site_name" content="Anti-Pretentious">
+<meta property="og:site_name" content="群青い図書室">
 <meta property="og:description" content="Jupyter是什么Jupyter是一款基于python的web notebook服务，目前有大多python数据挖掘与机器学习爱好者使用这款服务，其特性其实与Ipytohn Notebook差不多，准确说Ipython Notebook是一款提供增强型交互的功能的shell，而Jupyter除了Ipython的功能，还加入了普通编辑器的通用功能，是一款带代码交互的动态文档web编辑器。 Jupy">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="http://yatming.net/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/hub-login.png">
 <meta property="og:image" content="http://yatming.net/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/hub-admin.png">
 <meta property="og:image" content="http://yatming.net/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/hub-home.png">
@@ -52,10 +52,10 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'en'
+    lang   : 'ja'
   };
 </script>
-<title>JupyterHub搭建 | Anti-Pretentious</title>
+<title>JupyterHub搭建 | 群青い図書室</title>
   
 
 
@@ -105,7 +105,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    <div class="toggle" aria-label="ナビゲーションバーの切り替え" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -116,7 +116,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Anti-Pretentious</h1>
+      <h1 class="site-title">群青い図書室</h1>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">Idea is cheap, the devil is in the details.</p>
@@ -133,14 +133,14 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
-        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
-        <li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>404</a></li>
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>ホーム</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>プロフィール</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>タグ</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリ</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ</a></li>
+        <li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>検索
         </a>
       </li>
   </ul>
@@ -155,7 +155,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off" maxlength="80"
-           placeholder="Searching..." spellcheck="false"
+           placeholder="検索…" spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close" role="button">
@@ -185,10 +185,10 @@
     <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          見出し
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          概要
         </li>
       </ul>
 
@@ -204,7 +204,7 @@
     <img class="site-author-image" itemprop="image" alt="Yatming"
       src="/avatar.jpg">
   <p class="site-author-name" itemprop="name">Yatming</p>
-  <div class="site-description" itemprop="description">Idea is cheap, the devil is in the details.</div>
+  <div class="site-description" itemprop="description">&ensp;「鳴神の 少し響みて<br> さし曇り 雨も降らぬか<br> &emsp;&emsp;君を留めむ」<br> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——『万葉集』</div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
@@ -212,20 +212,20 @@
           <a href="/archives/">
         
           <span class="site-state-item-count">3</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-name">ポスト</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
         <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">categories</span></a>
+        <span class="site-state-item-name">カテゴリ</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">5</span>
-        <span class="site-state-item-name">tags</span></a>
+        <span class="site-state-item-name">タグ</span></a>
       </div>
   </nav>
 </div>
@@ -286,17 +286,17 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
     <link itemprop="mainEntityOfPage" href="http://yatming.net/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/avatar.jpg">
       <meta itemprop="name" content="Yatming">
-      <meta itemprop="description" content="Idea is cheap, the devil is in the details.">
+      <meta itemprop="description" content="&ensp;「鳴神の 少し響みて<br> さし曇り 雨も降らぬか<br> &emsp;&emsp;君を留めむ」<br> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——『万葉集』">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Anti-Pretentious">
+      <meta itemprop="name" content="群青い図書室">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -309,22 +309,22 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">投稿日</span>
 
-      <time title="Created: 2017-12-28 14:25:38" itemprop="dateCreated datePublished" datetime="2017-12-28T14:25:38+08:00">2017-12-28</time>
+      <time title="作成日：2017-12-28 14:25:38" itemprop="dateCreated datePublished" datetime="2017-12-28T14:25:38+08:00">2017-12-28</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-24 15:06:19" itemprop="dateModified" datetime="2021-03-24T15:06:19+08:00">2021-03-24</time>
+        <span class="post-meta-item-text">編集日</span>
+        <time title="修正日：2021-03-24 15:06:19" itemprop="dateModified" datetime="2021-03-24T15:06:19+08:00">2021-03-24</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">In</span>
+      <span class="post-meta-item-text">カテゴリ</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/Toolkit/" itemprop="url" rel="index"><span itemprop="name">Toolkit</span></a>
         </span>
@@ -425,14 +425,14 @@
 <div class="post-copyright">
 <ul>
   <li class="post-copyright-author">
-      <strong>Post author:  </strong>Yatming
+      <strong>著者： </strong>Yatming
   </li>
   <li class="post-copyright-link">
-      <strong>Post link: </strong>
+      <strong>記事へのリンク：</strong>
       <a href="http://yatming.net/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/" title="JupyterHub搭建">http://yatming.net/2017/12/28/JupyterHub搭建/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+    <strong>著作権表示： </strong>このブログ内のすべての記事は、特別な記載がない限り <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> の下のライセンスで保護されています。
   </li>
 </ul>
 </div>
