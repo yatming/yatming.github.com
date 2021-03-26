@@ -36,7 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const animateAction = isRight ? 'fadeInRight' : 'fadeInLeft';
       document.querySelectorAll('.sidebar .animated').forEach((element, index) => {
         element.style.animationDelay = (100 * index) + 'ms';
-        if (index == 1) {
+        const elementname = element.classList[0];
+        if (elementname == 'site-description') {
             var action = element.classList[element.classList.length - 1];
         }else{
             var action = animateAction;
