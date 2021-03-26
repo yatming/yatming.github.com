@@ -36,10 +36,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const animateAction = isRight ? 'fadeInRight' : 'fadeInLeft';
       document.querySelectorAll('.sidebar .animated').forEach((element, index) => {
         element.style.animationDelay = (100 * index) + 'ms';
-        element.classList.remove(animateAction);
+        if (index == 1) {
+            var action = element.classList[element.classList.length - 1];
+        }else{
+            var action = animateAction;
+        }
+        element.classList.remove(action);
         setTimeout(() => {
-          // Trigger a DOM reflow
-          element.classList.add(animateAction);
+            // Trigger a DOM reflow
+            element.classList.add(action);
         });
       });
     },

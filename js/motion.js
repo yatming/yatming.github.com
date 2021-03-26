@@ -104,16 +104,27 @@ NexT.motion.middleWares = {
   },
 
   sidebar: function() {
+    const sequence = [];
     const sidebar = document.querySelector('.sidebar');
     const sidebarTransition = CONFIG.motion.transition.sidebar;
+
     // Only for Pisces | Gemini.
     if (sidebarTransition && (CONFIG.scheme === 'Pisces' || CONFIG.scheme === 'Gemini')) {
-      return [{
+      sequence.push({
         targets : sidebar,
         complete: () => sidebar.classList.add('animated', sidebarTransition)
-      }];
+      });
     }
-    return [];
+
+    if (CONFIG.scheme === 'Mist') {
+        const site_description = document.querySelector('.site-description');
+        const sitedescriptionTranstion = CONFIG.motion.transition.site_description;
+        sequence.push({
+            targets: site_description,
+            complete: () => site_description.classList.add('animated', sitedescriptionTranstion)
+        });
+    }
+    return sequence;
   },
 
   footer: function() {
