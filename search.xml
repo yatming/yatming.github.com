@@ -197,7 +197,7 @@
 <p>最近几天，重装了hexo和next后，升级到了最新版本，同时把展现细节做了更多的改造，说实在的，上次blog的搭建，也是弄了很久的源码，发现每次修改，虽然相隔时间很长（笑），但总比之前更加深入源码，这次增加修改了更多的布局，类型以及动态脚本。趁着这几天刚操作过还记得，快点写下来。</p>
 <span id="more"></span>
 
-<h3 id="弃用Coding"><a href="#弃用Coding" class="headerlink" title="弃用Coding"></a>弃用Coding</h3><p>原先是很看好Coding的，早期代码管理做的不错，并且也是较早推出Web IDE的平台，印象中应该早于VSCode。后来有一天发现双因素不好用了，才知道Coding被鹅厂收购了。其实算是好事，毕竟不用太担心哪天这个startup挂了，但也多了一层麻烦。原来的Pages不能用，需要迁移到新的ci/cd。而且vps的所在地也发生了相应的变化，访问速度有所变慢。<br>Coding原来的ssl证书还挺简单的，但鹅厂云就复杂一些，而且由于域名还是在阿里云上，所以现在等于是两大云厂各需要维护一些东西，又徒增了麻烦。</p>
+<h3 id="弃用Coding"><a href="#弃用Coding" class="headerlink" title="弃用Coding"></a>弃用Coding</h3><p>原先是很看好Coding，早期代码管理做的不错，并且也是较早推出Web IDE的平台，印象中应该早于VSCode。后来有一天发现双因素不好用了，才知道Coding被鹅厂收购了。其实算是好事，毕竟不用太担心哪天这个startup挂了，但也多了一层麻烦。原来的Pages不能用，需要迁移到新的ci/cd。而且vps的所在地也发生了相应的变化，访问速度有所变慢。<br>Coding原来的ssl证书还挺简单的，但鹅厂云就复杂一些，而且由于域名还是在阿里云上，所以现在等于是两大云厂各需要维护一些东西，又徒增了麻烦。</p>
 <p>随着某天晚上，我再也无法访问自己的站点后，还是决定准备弃用。由于备案问题，pages只能选择部署在HK的节点。原则上部署完成后可以直接在aliyun上的dns上设置cname到HK的源站，但是新版的问题是没有这层guide的，会直接引导用户在pages的custom domain把cname设置为他们的CDN，而这个CDN一来非免费，二来同样由于备案问题，也只能选择境外服务域，三来和CDN绑定ssl证书申请也相对麻烦。那效果呢，一言难尽，使用CDN目的号称是加速，但实际上速度感受是并不如旧版的，甚至完全比不上后面采用的最终方案。<br>那天晚上的惨状是，国内无一地区可以访问到站点，除了TW和境外（测试网站工具：<a href="https://www.17ce.com/">17ce</a>），并且所有dns解析地区均不一致，非常奔溃（早上访问正常，晚上问题很大）。<br>本来想再迂回一下，把cname指向到hk源站，但并不成功，而且最主要的还有ssl证书问题，关闭cdn意味着证书也不可用，旧版的统一证书也无法使用了。<br>所以第二天，最简单的还是迁移到GH的Pages服务，操作简单，而且还支持ssl。国内gitee的话也是一个alternative。</p>
 <h3 id="Nodejs"><a href="#Nodejs" class="headerlink" title="Nodejs"></a>Nodejs</h3><p>把Nodejs升级到了14，然后npm再进行升级，npm原来一直用的global，为了维护方便，还是迁回了local方式，package.json很香。</p>
 <h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><p>hexo安装绕了几个弯子，对hexo和hexo cli有点confuse，一直以为cli就是hexo本身，之前发现cli一直升级不到5以上，比较奔溃。因为安装theme的方式，5和5之前的版本是不同的。好在后面终于顺利搞定。</p>
@@ -213,7 +213,7 @@
 <li>比较复杂地修改了motion.js，单独修改了sidebar中site-description的动态展示效果</li>
 </ul>
 <h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p>改名字的时候，知道需要更改，但不知道改什么。随后一瞬想到了阿部芙蓉美（歌手错，但名字有点随意了）的「群青」和手嶌葵的专辑「青い図書室」，它们都是过去一段时间内包括现在也非常喜欢的歌曲集，索性就组合在一起，听「<a href="https://nipponcolors.com/#gunjyo">群青</a>」才知道，这是一种颜色，顺便一提，十一区对颜色的称呼很文艺，例如紺，绯，鳶，楝，瓶覗，柳染，洒落柿，诸如此类。有兴趣的建议移步<a href="https://nipponcolors.com/">日本の伝統色</a>，页面有支持MUNSELL的JS开关，开启后高能。<br>此外Sidebar这里的概要也恰逢时宜地选择了「言の葉の庭」中非常受欢迎的雷神短歌上半句。</p>
-<center><font face="ヒラギノ明朝 Pro" >「鳴る神の 少し響みて さし曇り 雨も降らぬか 君を留めむ」</font></center><br>
+<center><font face="ヒラギノ明朝 Pro" >「鳴る神の 少し響みて  さし曇り 雨も降らぬか 君を留めむ」</font></center><br>
 
 <p>君を留めむ，那是否真的可以留下观者你呢。</p>
 ]]></content>
