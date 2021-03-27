@@ -203,7 +203,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">ポスト</span>
         </a>
       </div>
@@ -216,7 +216,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">タグ</span></a>
       </div>
   </nav>
@@ -262,6 +262,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -290,10 +291,10 @@
       
       <div class="post-body"><div class="tag-cloud">
   <div class="tag-cloud-title">
-    全 6 タグ
+    全 5 タグ
   </div>
   <div class="tag-cloud-tags">
-    <a href="/tags/ML/" style="font-size: 12px;" class="tag-cloud-0">ML</a> <a href="/tags/NP-hard/" style="font-size: 12px;" class="tag-cloud-0">NP-hard</a> <a href="/tags/Optimization/" style="font-size: 12px;" class="tag-cloud-0">Optimization</a> <a href="/tags/Python/" style="font-size: 12px;" class="tag-cloud-0">Python</a> <a href="/tags/VPN/" style="font-size: 12px;" class="tag-cloud-0">VPN</a> <a href="/tags/hexo/" style="font-size: 12px;" class="tag-cloud-0">hexo</a>
+    <a href="/tags/ML/" style="font-size: 12px;" class="tag-cloud-0">ML</a> <a href="/tags/NP-hard/" style="font-size: 12px;" class="tag-cloud-0">NP-hard</a> <a href="/tags/Optimization/" style="font-size: 12px;" class="tag-cloud-0">Optimization</a> <a href="/tags/Python/" style="font-size: 12px;" class="tag-cloud-0">Python</a> <a href="/tags/VPN/" style="font-size: 12px;" class="tag-cloud-0">VPN</a>
   </div>
 </div>
 
@@ -405,6 +406,16 @@ document.addEventListener('pjax:success', () => {
 
   
 
+  <script src="https://cdn.jsdelivr.net/npm/quicklink@2.1.0/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink.listen({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://yatming.net/tags/',]
+      });
+      });
+  </script>
 
     </div>
 </body>

@@ -312,7 +312,7 @@ mjx-container[display="true"] + br {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">ポスト</span>
         </a>
       </div>
@@ -325,7 +325,7 @@ mjx-container[display="true"] + br {
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">タグ</span></a>
       </div>
   </nav>
@@ -371,6 +371,7 @@ mjx-container[display="true"] + br {
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -378,85 +379,6 @@ mjx-container[display="true"] + br {
 
 
     <div class="main-inner index posts-expand">
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yatming.net/2021/03/26/hexo-next%E5%AE%A2%E5%88%B6%E5%8C%96/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/avatar.jpg">
-      <meta itemprop="name" content="Yatming">
-      <meta itemprop="description" content="「鳴る神の&emsp;少し響みて<br> さし曇り&emsp;雨も降らぬか<br> &emsp;&emsp;君を留めむ」<br> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——『万葉集』">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="群青い図書室">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/26/hexo-next%E5%AE%A2%E5%88%B6%E5%8C%96/" class="post-title-link" itemprop="url">hexo next客制化</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">投稿日</span>
-
-      <time title="作成日：2021-03-26 20:38:49" itemprop="dateCreated datePublished" datetime="2021-03-26T20:38:49+08:00">2021-03-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">カテゴリ</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Toolkit/" itemprop="url" rel="index"><span itemprop="name">Toolkit</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>17年一篇，18年两篇，然后现在是第四篇文章，更新速度堪比富坚义博。</p>
-<p>快3年了，要不是这个域名，或许就退了，每年虽然缴的费用不多，但一直给供应商白嫖，也挺浪费的。正好最近空暇，打理打理这些苟且的栖身之地。</p>
-<p>最近两年发生了很多事情，生活有了很大的改变。别的不说，hexo和next其实也更新了不少，原来的mbp也老旧了，闲置在家里。目前操作的mbp是两年派发的，因为自己懒，一直没有把hexo的编辑目录迁移过来，每次想到要装一堆插件，心生退意。</p>
-<p>最近几天，重装了hexo和next后，升级到了最新版本，同时把展现细节做了更多的改造，说实在的，上次blog的搭建，也是弄了很久的源码，发现每次修改，虽然相隔时间很长（笑），但总比之前更加深入源码，这次增加修改了更多的布局，类型以及动态脚本。趁着这几天刚操作过还记得，落下一些细节。</p>
-<h3 id="Coding"><a href="#Coding" class="headerlink" title="Coding"></a>Coding</h3><p>coding被鹅厂收购了。算是好事，但也多了一层麻烦。原来的Pages不能用了，需要迁移到新的ci/cd。而且vps的所在地也发生了相应的变化，似乎访问速度变慢了。<br>coding原来的ssl证书还挺简单的，但鹅厂云就复杂一些，而且由于域名还是在阿里云上，所以现在等于是两大云厂各需要维护一些东西，又徒增了麻烦。<br>说了这么多，其实迁移细节有点记不清了。总之阿里云的云解析需要改CNAME，ssl证书需要走一套流程。</p>
-<h3 id="Nodejs"><a href="#Nodejs" class="headerlink" title="Nodejs"></a>Nodejs</h3><p>Nodejs升级到了14，然后npm再进行升级，npm原来一直用的global，为了维护方便，还是迁回了local方式，package.json还是比较香的。</p>
-<h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><p>hexo安装绕了几个弯子，对hexo和hexo cli有点confuse，一直以为cli就是hexo本身，之前发现cli一直升级不到5以上，是比较奔溃的。因为安装theme的方式，5和5之前的版本是不同的。好在终于顺利搞定了。</p>
-<h3 id="Next"><a href="#Next" class="headerlink" title="Next"></a>Next</h3>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
 
     
 
@@ -874,6 +796,16 @@ document.addEventListener('pjax:success', () => {
 </script>
 
 
+  <script src="https://cdn.jsdelivr.net/npm/quicklink@2.1.0/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink.listen({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://yatming.net/',]
+      });
+      });
+  </script>
 
     </div>
 </body>
