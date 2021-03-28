@@ -1307,7 +1307,7 @@ pre code {
   color: var(--brand-hover-color);
 }
 .site-title {
-  font-family: 'ヒラギノ明朝 Pro', '游明朝体', Monda, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Shuei Mincho L, Monda, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 1.4em;
   font-weight: normal;
   margin: 0;
@@ -1444,7 +1444,7 @@ pre code {
 .site-description {
   color: #999;
   font-size: 0.875em;
-  font-family: 'ヒラギノ明朝 Pro', '游明朝体', Monda, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Shuei Mincho L, Monda, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   margin-top: 5px;
 }
 .links-of-author a {
@@ -2818,12 +2818,12 @@ hr {
   }
 }
 .site-meta .site-title {
-  font-weight: bolder;
+  font-weight: lighter;
 }
 .logo-line {
   background: var(--brand-color);
   display: block;
-  height: 2px;
+  height: 1px;
   margin: 0 auto;
   width: 75%;
 }
@@ -2887,7 +2887,7 @@ hr {
   text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
 }
 .menu-item a {
-  font-family: 'ヒラギノ明朝 Pro', '游明朝体';
+  font-family: 'Shuei Mincho L';
   font-size: 0.8em;
 }
 .posts-expand.index .post-header {
@@ -3049,4 +3049,9 @@ hr {
 }
 .sub-menu .menu-item {
   display: inline-block;
+}
+@font-face {
+  font-family: 'Shuei Mincho L';
+  src: url("/fonts/A-OTF-ShueiMinPr6N-L-2.otf") format('opentype');
+  font-weight: 300;
 }
