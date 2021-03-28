@@ -2844,7 +2844,8 @@ hr {
   display: none;
 }
 .site-description {
-  margin: 0 auto;
+  margin: 0 78px;
+  height: 260px;
   writing-mode: vertical-rl;
   text-align: left;
   padding: 30px 30px 30px 0px;
