@@ -198,7 +198,7 @@
 <span id="more"></span>
 
 <h3 id="弃用Coding"><a href="#弃用Coding" class="headerlink" title="弃用Coding"></a>弃用Coding</h3><p>原先是很看好Coding，早期代码管理做的不错，并且也是较早推出Web IDE的平台，印象中应该早于VSCode。后来有一天发现双因素不好用了，才知道Coding被鹅厂收购了。其实算是好事，毕竟不用太担心哪天这个startup挂了，但也多了一层麻烦。原来的Pages不能用，需要迁移到新的ci/cd。而且vps的所在地也发生了相应的变化，访问速度有所变慢。<br>Coding原来的ssl证书还挺简单的，但鹅厂云就复杂一些，而且由于域名还是在福报云上，所以现在等于是两大云厂各需要维护一些东西，又徒增了麻烦。</p>
-<p>随着某天晚上，我再也无法访问自己的站点后，还是决定准备弃用。由于备案问题，pages只能选择部署在HK的节点。原则上部署完成后可以直接在福报云上的dns上设置cname到HK的源站，但是新版的问题是没有这层guide的，会直接引导用户在pages的custom domain把cname设置为他们的CDN，而这个CDN一来非免费，二来同样由于备案问题，也只能选择境外服务域，三来和CDN绑定ssl证书申请也相对麻烦。那效果呢，一言难尽，使用CDN目的号称是加速，但实际上速度感受是并不如旧版的，甚至完全比不上后面采用的最终方案。<br>那天晚上的惨状是，国内无一地区可以访问到站点，除了TW和境外（测试网站工具：<a href="https://www.17ce.com/">17ce</a>），并且所有dns解析地区均不一致，非常奔溃（早上访问正常，晚上问题很大）。<br>本来想再迂回一下，把cname指向到hk源站，但并不成功，而且最主要的还有ssl证书问题，关闭cdn意味着证书也不可用，旧版的统一证书也无法使用了。<br>所以第二天，最简单的还是迁移到GH的Pages服务，操作简单，而且还支持ssl。国内gitee的话也是一个选择。</p>
+<p>随着某天晚上，我再也无法访问自己的站点后，还是决定准备弃用。由于备案问题，pages只能选择部署在HK的节点。原则上部署完成后可以直接在福报云上的dns上设置cname到HK的源站，但是新版的问题是没有这层guide的，会直接引导用户在pages的custom domain把cname设置为他们的CDN，而这个CDN一来非免费，二来同样由于备案问题，也只能选择境外服务域，三来和CDN绑定ssl证书申请也相对麻烦。那效果呢，一言难尽，使用CDN目的号称是加速，但实际上速度感受是并不如旧版的，甚至完全比不上后面采用的最终方案。<br>那天晚上的惨状是，国内无一地区可以访问到站点，除了TW和境外（测试网站工具：<a href="https://www.17ce.com/">17ce</a>），并且所有dns解析地区均不一致，非常奔溃（早上访问正常，晚上问题很大）。<br>本来想再迂回一下，把cname指向到hk源站，但并不成功，而且最主要的还有ssl证书问题，关闭cdn意味着证书也不可用，旧版的统一证书也无法使用了。<br>所以第二天，最简单的还是迁移到GH的Pages服务，操作简单，而且还支持ssl（值得提一句需要站点加入cname文件，否则网上配置在每次部署之后会被重置）。国内gitee的话也是一个选择。</p>
 <h3 id="Nodejs"><a href="#Nodejs" class="headerlink" title="Nodejs"></a>Nodejs</h3><p>把Nodejs升级到了14，然后npm再进行升级，npm原来一直用的global，为了维护方便，还是迁回了local方式，package.json很香。</p>
 <h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><p>hexo安装绕了几个弯子，对hexo和hexo cli有点confuse，一直以为cli就是hexo本身，之前发现cli一直升级不到5以上，比较奔溃。因为安装theme的方式，5和5之前的版本是不同的。好在后面终于顺利搞定。</p>
 <h3 id="Next"><a href="#Next" class="headerlink" title="Next"></a>Next</h3><p>Next变化不大，但这次重构还是做了较大的改变，比之前更深入了。变化主要基本分两类，能基于Mist的基本在Mist的样式文件中进行修改，否则只能修改通用的comn文件。其中有些为了保持通用性，增加了通用的config，但实际上可能是不会再使用的，强迫症。这次也改动了div的动态js。</p>
@@ -216,6 +216,51 @@
 <center><font face="Shuei Mincho L" >「鳴る神の 少し響みて  さし曇り 雨も降らぬか 君を留めむ」</font></center><br>
 
 <p>君を留めむ，那是否真的可以留下观者你呢。</p>
+]]></content>
+      <categories>
+        <category>Toolkit</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>字体踩坑</title>
+    <url>/2021/03/30/%E5%AD%97%E4%BD%93%E8%B8%A9%E5%9D%91/</url>
+    <content><![CDATA[<p>觉得还是有必要单独为此记录一遍，这是在近日几天被这个问题折腾之后的决定。<br>先从这里开始说吧。</p>
+<h3 id="ヒラギノ明朝-Pro"><a href="#ヒラギノ明朝-Pro" class="headerlink" title="ヒラギノ明朝 Pro"></a>ヒラギノ明朝 Pro</h3><p>是的，本来觉得字体的选择是一个非常简单的问题，也是重构站点之初，最先着手的问题之一，由于所需的字体内容不多，网上搜罗一番后，尝试了几个选项，也没有仔细看，就选择了其中一款还能接受的字体。现在想来这个最初的方案，都不能算上方案，实际就是一个选择，可能也是由于没有前端的经验，缺少这方面的sense的最大问题。在选择字体之后，demo之后，部署之后，一切看似非常ok的情况下，登陆了Win试着看下效果，才发现自己忘记了兼容性的问题。完全没有渲染。在Edge下，Sidebar的字体还因为还原了最初的方案被分段了。<br>兼容性的问题不光出现在字体方面，在css多个选项上也出现了与Chrome下的不同效果。好在css的问题相对还比较好解决，但如果要实现跨平台跨浏览器的字体统一还是需要走自定义的方式来做。因为hexo的字体配置，对于external虽然也可以通过字体服务器来做，但在目前默认的google库中并没有找到合适的选择。</p>
+<span id="more"></span>
+
+<h3 id="秀英明朝-OTF"><a href="#秀英明朝-OTF" class="headerlink" title="秀英明朝 OTF"></a>秀英明朝 OTF</h3><p>既然自定义，那么选择就广很多，在各大网站继续搜罗一番后，找到一个更好的字体。不过只有OTF格式。<br>接下来就是通过hexo来实现自定义字体的加载，这里就简答叙述下方法。</p>
+<ul>
+<li>首先是在主题目录的source文件夹下创建一个fonts的目录，把下载的字体放入即可</li>
+<li>然后需要添加一个自定义的styl文件，网上的教程，大多指向的是主题目录下source/css/_custom/custom.styl这个地址，但从Next某个7版本后，_custom就去掉了，在GH的issue中再看看有没有替代方案 ，果真有，这回文件在站点目录下的source/_data/styles.styl</li>
+<li>继续在文件中定义font-face，这步比较简单，定义下名字，不同的字体格式，format不同的配置，最后修改url指向第一步的安装路径即可</li>
+<li>配置文件指定时，external置为false</li>
+</ul>
+<p>本地测试比较顺利，但部署之后，发现ios端渲染有延迟，pc端基本无法渲染，能想到是字体大小的问题，确实整个字体文件达到29M。。。只能继续另辟蹊径。</p>
+<h3 id="font-spider"><a href="#font-spider" class="headerlink" title="font-spider"></a>font-spider</h3><p>字体压缩可以是想到最直接的解决方案。目前普遍的字体压缩方案就是<a href="https://github.com/aui/font-spider/">font-spider</a>，通过网页实际使用的文字进行按需压缩，对于非body类的网页通用字体，是比较好的解决方案。<br>有几点需要注意：</p>
+<ul>
+<li>字体支持类型不包括otf，最好采用静态网站格式</li>
+<li>需要用css进行目标字体定义（本身使用的就是font-face，不需要额外操作）</li>
+<li>可能需要涉及对html的更改，例如css目录，font目录等</li>
+<li>竖排文字对于标点符号会有特殊情况，需要手动载入，例如「」与﹁﹂</li>
+</ul>
+<p>由于之前的采用的字体只有otf，所以需要再搜寻合适的，好在看到有做过同款字体更新版本，来自wx：lxgwshare。</p>
+<table><tr><td bgcolor="#555" style="border-style:none;"><font color="#CCCCCC" face="Shuei Mincho L" >
+伊吕波歌</br>
+平仮名：</br>
+いろはにほへと・ちりぬるを・わかよたれそ・つねならむ・うゐのおくやま・けふこえて・あさきゆめみし・ゑひもせす</br>
+片仮名：</br>
+イロハニホエト・チリヌルヲ・ワカヨタレソ・ツネナラム・ウヰノオクヤマ・ケフコエテ・アサキユメミシ・ヱヒモセス</br>
+</br>
+简体：</br>
+轻轻的我走了，正如我轻轻的来；</br>
+我轻轻的招手，作别西天的云彩。</br>
+那河畔的金柳，是夕阳中的新娘；</br>
+波光里的艳影，在我的心头荡漾。</br></font></td></tr></table>
+
+<p>效果符合预期，就它了。</p>
 ]]></content>
       <categories>
         <category>Toolkit</category>
