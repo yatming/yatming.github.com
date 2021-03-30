@@ -2,9 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yatming.net/2021/03/30/%E5%AD%97%E4%BD%93%E8%B8%A9%E5%9D%91/</loc>
+    
+    <lastmod>2021-03-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yatming.net/about/index.html</loc>
+    
+    <lastmod>2021-03-30</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yatming.net/2018/01/03/Machine-Scheduling-Machine-Learning-in-Engineering/</loc>
     
-    <lastmod>2021-03-25</lastmod>
+    <lastmod>2021-03-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yatming.net/2018/08/02/VPN-VPS-VPaas/</loc>
+    
+    <lastmod>2021-03-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yatming.net/2021/03/27/hexo-next%E5%AE%A2%E5%88%B6%E5%8C%96/</loc>
+    
+    <lastmod>2021-03-30</lastmod>
     
   </url>
   
@@ -37,20 +65,6 @@
   </url>
   
   <url>
-    <loc>http://yatming.net/about/index.html</loc>
-    
-    <lastmod>2021-03-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yatming.net/2018/08/02/VPN-VPS-VPaas/</loc>
-    
-    <lastmod>2021-03-24</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yatming.net/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/</loc>
     
     <lastmod>2021-03-24</lastmod>
@@ -60,7 +74,7 @@
 
   <url>
     <loc>http://yatming.net/</loc>
-    <lastmod>2021-03-26</lastmod>
+    <lastmod>2021-03-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -68,35 +82,42 @@
   
   <url>
     <loc>http://yatming.net/tags/Python/</loc>
-    <lastmod>2021-03-26</lastmod>
+    <lastmod>2021-03-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yatming.net/tags/NP-hard/</loc>
-    <lastmod>2021-03-26</lastmod>
+    <lastmod>2021-03-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yatming.net/tags/Optimization/</loc>
-    <lastmod>2021-03-26</lastmod>
+    <lastmod>2021-03-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yatming.net/tags/ML/</loc>
-    <lastmod>2021-03-26</lastmod>
+    <lastmod>2021-03-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yatming.net/tags/VPN/</loc>
-    <lastmod>2021-03-26</lastmod>
+    <lastmod>2021-03-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yatming.net/tags/hexo/</loc>
+    <lastmod>2021-03-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -105,14 +126,14 @@
   
   <url>
     <loc>http://yatming.net/categories/Toolkit/</loc>
-    <lastmod>2021-03-26</lastmod>
+    <lastmod>2021-03-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yatming.net/categories/Algorithm/</loc>
-    <lastmod>2021-03-26</lastmod>
+    <lastmod>2021-03-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

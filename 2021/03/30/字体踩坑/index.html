@@ -23,18 +23,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yatming.net","root":"/","images":"/images","scheme":"Mist","version":"8.2.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"changyan","storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp","site_description":"zoomIn"}},"prism":false,"i18n":{"placeholder":"検索…","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="﹁鳴る神の&amp;emsp;少し響みて さし曇り&amp;emsp;雨も降らぬか &amp;emsp;&amp;emsp;君を留めむ﹂ &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;——﹃万葉集﹄">
-<meta property="og:type" content="website">
-<meta property="og:title" content="群青い図書室">
-<meta property="og:url" content="http://yatming.net/tags/NP-hard/index.html">
+<meta name="description" content="觉得还是有必要单独为此记录一遍，这是在近日几天被这个问题折腾之后的决定。先从这里开始说吧。 ヒラギノ明朝 Pro是的，本来觉得字体的选择是一个非常简单的问题，也是重构站点之初，最先着手的问题之一，由于所需的字体内容不多，网上搜罗一番后，尝试了几个选项，也没有仔细看，就选择了其中一款还能接受的字体。现在想来这个最初的方案，都不能算上方案，实际就是一个选择，可能也是由于没有前端的经验，缺少这方面的se">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字体踩坑">
+<meta property="og:url" content="http://yatming.net/2021/03/30/%E5%AD%97%E4%BD%93%E8%B8%A9%E5%9D%91/index.html">
 <meta property="og:site_name" content="群青い図書室">
-<meta property="og:description" content="﹁鳴る神の&amp;emsp;少し響みて さし曇り&amp;emsp;雨も降らぬか &amp;emsp;&amp;emsp;君を留めむ﹂ &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;——﹃万葉集﹄">
+<meta property="og:description" content="觉得还是有必要单独为此记录一遍，这是在近日几天被这个问题折腾之后的决定。先从这里开始说吧。 ヒラギノ明朝 Pro是的，本来觉得字体的选择是一个非常简单的问题，也是重构站点之初，最先着手的问题之一，由于所需的字体内容不多，网上搜罗一番后，尝试了几个选项，也没有仔细看，就选择了其中一款还能接受的字体。现在想来这个最初的方案，都不能算上方案，实际就是一个选择，可能也是由于没有前端的经验，缺少这方面的se">
 <meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2021-03-30T05:24:22.000Z">
+<meta property="article:modified_time" content="2021-03-30T05:35:52.318Z">
 <meta property="article:author" content="Yatming">
+<meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://yatming.net/tags/NP-hard/">
+<link rel="canonical" href="http://yatming.net/2021/03/30/%E5%AD%97%E4%BD%93%E8%B8%A9%E5%9D%91/">
 
 
 <script data-pjax class="page-configurations">
@@ -42,11 +45,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'ja'
   };
 </script>
-<title>タグ: NP-hard | 群青い図書室</title>
+<title>字体踩坑 | 群青い図書室</title>
   
 
 
@@ -172,7 +175,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           見出し
@@ -185,6 +188,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%83%92%E3%83%A9%E3%82%AE%E3%83%8E%E6%98%8E%E6%9C%9D-Pro"><span class="nav-number">1.</span> <span class="nav-text">ヒラギノ明朝 Pro</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%80%E8%8B%B1%E6%98%8E%E6%9C%9D-OTF"><span class="nav-number">2.</span> <span class="nav-text">秀英明朝 OTF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#font-spider"><span class="nav-number">3.</span> <span class="nav-text">font-spider</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -266,50 +270,146 @@
 </noscript>
 
 
-    <div class="main-inner tag posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h2 class="collection-header">NP-hard
-          <small>タグ</small>
-        </h2>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="http://yatming.net/2021/03/30/%E5%AD%97%E4%BD%93%E8%B8%A9%E5%9D%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/avatar.jpg">
+      <meta itemprop="name" content="Yatming">
+      <meta itemprop="description" content="﹁鳴る神の&emsp;少し響みて<br> さし曇り&emsp;雨も降らぬか<br> &emsp;&emsp;君を留めむ﹂<br> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——﹃万葉集﹄">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="群青い図書室">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          字体踩坑
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2018</span>
+
+      <time title="作成日：2021-03-30 13:24:22 / 修正日：13:35:52" itemprop="dateCreated datePublished" datetime="2021-03-30T13:24:22+08:00">2021-03-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">カテゴリ</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Toolkit/" itemprop="url" rel="index"><span itemprop="name">Toolkit</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>觉得还是有必要单独为此记录一遍，这是在近日几天被这个问题折腾之后的决定。<br>先从这里开始说吧。</p>
+<h3 id="ヒラギノ明朝-Pro"><a href="#ヒラギノ明朝-Pro" class="headerlink" title="ヒラギノ明朝 Pro"></a>ヒラギノ明朝 Pro</h3><p>是的，本来觉得字体的选择是一个非常简单的问题，也是重构站点之初，最先着手的问题之一，由于所需的字体内容不多，网上搜罗一番后，尝试了几个选项，也没有仔细看，就选择了其中一款还能接受的字体。现在想来这个最初的方案，都不能算上方案，实际就是一个选择，可能也是由于没有前端的经验，缺少这方面的sense的最大问题。在选择字体之后，demo之后，部署之后，一切看似非常ok的情况下，登陆了Win试着看下效果，才发现自己忘记了兼容性的问题。完全没有渲染。在Edge下，Sidebar的字体还因为还原了最初的方案被分段了。<br>兼容性的问题不光出现在字体方面，在css多个选项上也出现了与Chrome下的不同效果。好在css的问题相对还比较好解决，但如果要实现跨平台跨浏览器的字体统一还是需要走自定义的方式来做。因为hexo的字体配置，对于external虽然也可以通过字体服务器来做，但在目前默认的google库中并没有找到合适的选择。</p>
+<span id="more"></span>
+
+<h3 id="秀英明朝-OTF"><a href="#秀英明朝-OTF" class="headerlink" title="秀英明朝 OTF"></a>秀英明朝 OTF</h3><p>既然自定义，那么选择就广很多，在各大网站继续搜罗一番后，找到一个更好的字体。不过只有OTF格式。<br>接下来就是通过hexo来实现自定义字体的加载，这里就简答叙述下方法。</p>
+<ul>
+<li>首先是在主题目录的source文件夹下创建一个fonts的目录，把下载的字体放入即可</li>
+<li>然后需要添加一个自定义的styl文件，网上的教程，大多指向的是主题目录下source/css/_custom/custom.styl这个地址，但从Next某个7版本后，_custom就去掉了，在GH的issue中再看看有没有替代方案 ，果真有，这回文件在站点目录下的source/_data/styles.styl</li>
+<li>继续在文件中定义font-face，这步比较简单，定义下名字，不同的字体格式，format不同的配置，最后修改url指向第一步的安装路径即可</li>
+<li>配置文件指定时，external置为false</li>
+</ul>
+<p>本地测试比较顺利，但部署之后，发现ios端渲染有延迟，pc端基本无法渲染，能想到是字体大小的问题，确实整个字体文件达到29M。。。只能继续另辟蹊径。</p>
+<h3 id="font-spider"><a href="#font-spider" class="headerlink" title="font-spider"></a>font-spider</h3><p>字体压缩可以是想到最直接的解决方案。目前普遍的字体压缩方案就是<a target="_blank" rel="noopener" href="https://github.com/aui/font-spider/">font-spider</a>，通过网页实际使用的文字进行按需压缩，对于非body类的网页通用字体，是比较好的解决方案。<br>有几点需要注意：</p>
+<ul>
+<li>字体支持类型不包括otf，最好采用静态网站格式</li>
+<li>需要用css进行目标字体定义（本身使用的就是font-face，不需要额外操作）</li>
+<li>可能需要涉及对html的更改，例如css目录，font目录等</li>
+<li>竖排文字对于标点符号会有特殊情况，需要手动载入，例如「」与﹁﹂</li>
+</ul>
+<p>由于之前的采用的字体只有otf，所以需要再搜寻合适的，好在看到有做过同款字体更新版本，来自wx：lxgwshare。</p>
+<table><tr><td bgcolor="#555" style="border-style:none;"><font color="#CCCCCC" face="Shuei Mincho L" >
+伊吕波歌</br>
+平仮名：</br>
+いろはにほへと・ちりぬるを・わかよたれそ・つねならむ・うゐのおくやま・けふこえて・あさきゆめみし・ゑひもせす</br>
+片仮名：</br>
+イロハニホエト・チリヌルヲ・ワカヨタレソ・ツネナラム・ウヰノオクヤマ・ケフコエテ・アサキユメミシ・ヱヒモセス</br>
+</br>
+简体：</br>
+轻轻的我走了，正如我轻轻的来；</br>
+我轻轻的招手，作别西天的云彩。</br>
+那河畔的金柳，是夕阳中的新娘；</br>
+波光里的艳影，在我的心头荡漾。</br></font></td></tr></table>
+
+<p>效果符合预期，就它了。</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2018-01-03T15:41:41+08:00"
-              content="2018-01-03">
-          01-03
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2018/01/03/Machine-Scheduling-Machine-Learning-in-Engineering/" itemprop="url">
-            <span itemprop="name">Machine Scheduling, Machine Learning in Engineering</span>
-          </a>
-      </div>
+    <footer class="post-footer">
+          
 
-      
-    </header>
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>著者： </strong>Yatming
+  </li>
+  <li class="post-copyright-link">
+      <strong>記事へのリンク：</strong>
+      <a href="http://yatming.net/2021/03/30/%E5%AD%97%E4%BD%93%E8%B8%A9%E5%9D%91/" title="字体踩坑">http://yatming.net/2021/03/30/字体踩坑/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>著作権表示： </strong>このブログ内のすべての記事は、特別な記載がない限り <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> の下のライセンスで保護されています。
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/hexo/" rel="tag"># hexo</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/03/27/hexo-next%E5%AE%A2%E5%88%B6%E5%8C%96/" rel="prev" title="hexo next客制化">
+                  <i class="fa fa-chevron-left"></i> hexo next客制化
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
+</div>
 
-    </div>
-  </div>
-  
-  
-  
+
+
+
+
 
 
 <script>
@@ -416,7 +516,7 @@ document.addEventListener('pjax:success', () => {
       quicklink.listen({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'http://yatming.net/tags/NP-hard/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://yatming.net/2021/03/30/%E5%AD%97%E4%BD%93%E8%B8%A9%E5%9D%91/',]
       });
       });
   </script>

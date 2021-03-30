@@ -149,9 +149,9 @@
 <h3 id="Machine-Learning"><a href="#Machine-Learning" class="headerlink" title="Machine Learning"></a>Machine Learning</h3><p>至此还没有提到和机器学习相关的任何东西，不过在这个case，机器学习的应用相对简单很多。前文提到Group中的明细数据量和Group的耗时成正比，因此我们可以利用Group中的明细数据对Group被计算的耗时进行预估，这是一个比较典型的Linear Regression，甚至可以是univariate的。当我们模型完成后，只要在LPT进行分配的时候，对数据量进行模型打分得到最终的耗时，再进行分配即可，由于模型参数是一个可忽略不计大小的配置，其对效率也基本不会有任何影响。</p>
 <p>再进一步，我们甚至可以利用online-learning的方法不断去optimize这个univariate的regression，所以最终会是一个结合MS和ML的工程优化实例。</p>
 <h3 id="Summay"><a href="#Summay" class="headerlink" title="Summay"></a>Summay</h3><ul>
-<li>Operation Research &amp; Cybernetic是在Machine Learning以及Data Mining之前，Mathematics domain在工业界主要的应用方向。与ML的连续性问题不同，大多case是离散问题，特点不一定需要很多Data，依靠算法和技巧解决一些实际的工业流程优化问题。所以一般的工具，matlab就够。不过对理论基础要求很高，和高校举办的数学模型内容比较相似。而且近两年，随着交通、物流、外卖类服务的互联网智能化越来越深入，各大厂也开始大肆招募OR方向优化的能人，从长远的发展来看，其应用具备非常独立的场景，前景看好。</li>
+<li>Operation Research &amp; Cybernetic是在Machine Learning以及Data Mining之前，数学领域在工业界主要的应用方向。与ML的连续性问题不同，大多case是离散问题，特点不一定需要很多数据，依靠算法和技巧解决一些实际的工业流程优化问题。所以一般的工具，matlab就够。不过对理论基础要求很高，和高校举办的数学模型内容比较相似。而且近两年，随着交通、物流、外卖类服务的互联网智能化越来越深入，各大厂也开始大肆招募OR方向优化的能人，从长远的发展来看，其应用具备非常独立的场景，前景看好。</li>
 <li>随着ML的大热，OR领域也迎来不少新的突破，有些新的方法加入了ML的元素。然而另一方面，趋势引领潮流，一般的研发工作可能无法直接和分析、模型接触，甚至连算法也被越来越多的开源项目给封装，套路变多了，新鲜的挑战似乎变少了。但谁又不曾折腾过呢，ML、DM的数学思维方式背后，又或许会打开通外另外世界的窗口。实话说，可以去尝试，可以去思考，应用一些新潮流的元素，创造一些新的解决方案，也不失为一种创新的契机。</li>
-<li>喊一声口号，共勉一句话：Unless you try to do something beyond what you have alredy mastered, you will never grow.</li>
+<li>最后共勉一句话吧：Unless you try to do something beyond what you have alredy mastered, you will never grow.</li>
 </ul>
 ]]></content>
       <categories>
@@ -169,7 +169,7 @@
     <content><![CDATA[<p>要不是收到关于&lt;<a href="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/" title="JupyterHub搭建">JupyterHub搭建</a>&gt;的咨询邮件，估计要在这个Blog再写写画画会是一个未来很久远的事情。</p>
 <p>几个月下来，做了不少东西，也进行了很多的尝试，每个点应该都可以post一下，不过发现年纪大了，归纳总结的能力也退化了不少，要好好地写一篇路人能看懂的文也没有以前那么潇洒，虽然自己还是会常常想起几年前花了一个多月每天工作就是PPT，只为写一个让分析师理解的计算模型出来，但未来，不太可能会发生这样的事情了吧。</p>
 <p>言归，正传。今天介绍一下当下一个还算比较稳定的VPN的神器，V2Ray。写这种文章实际上有点亏，一来没什么含金量，二来很有可能在不久未来完全被淘汰的东西。科科。</p>
-<h3 id="VPS：Google-Cloud-Platform-GCP"><a href="#VPS：Google-Cloud-Platform-GCP" class="headerlink" title="VPS：Google Cloud Platform (GCP)"></a>VPS：Google Cloud Platform (GCP)</h3><p>我个人早前VPN技术还是比较low的，从以前的goagent到后来的ss的鹦鹉学舌，实际上都是自己对网络还是一知半解，不够精通。在此说一下，基于ss的搭建没有这么难，甚至可以说简单到爆，大多数人其实是被云主机这类实体给唬住罢了。只需要找一个VPS供应商，例如Vultr，申请一个VS，然后用python安装下ss，配一下config，service start。除去注册以及等待的时间，5分钟的事情。</p>
+<h3 id="VPS-Google-Cloud-Platform-GCP"><a href="#VPS-Google-Cloud-Platform-GCP" class="headerlink" title="VPS: Google Cloud Platform(GCP)"></a>VPS: Google Cloud Platform(GCP)</h3><p>我个人早前VPN技术还是比较low的，从以前的goagent到后来的ss的鹦鹉学舌，实际上都是自己对网络还是一知半解，不够精通。在此说一下，基于ss的搭建没有这么难，甚至可以说简单到爆，大多数人其实是被云主机这类实体给唬住罢了。只需要找一个VPS供应商，例如Vultr，申请一个VS，然后用python安装下ss，配一下config，service start。除去注册以及等待的时间，5分钟的事情。</p>
 <p>作为VPS，GCP的好处在于，似乎速度还算比较稳定，在日服猖狂的当下，可以支持另外建设湾湾的机房，且目前注册有300刀的白嫖。实际上GCP上租一个乞丐版的VPS，一个月大概3刀左右，网络传输另算，如果不是大流量的客户端请求，也不会有大多的费用，所以300刀基本上也可以维持一个比较长的时间，相对还是比较划算的。</p>
 <img src="/2018/08/02/VPN-VPS-VPaas/gcp.png" class="">
 
@@ -186,6 +186,87 @@
       </categories>
       <tags>
         <tag>VPN</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo next客制化</title>
+    <url>/2021/03/27/hexo-next%E5%AE%A2%E5%88%B6%E5%8C%96/</url>
+    <content><![CDATA[<p>17年一篇，18年两篇，然后现在是第四篇文章，更新速度堪比富坚义博。</p>
+<p>快3年了，要不是这个域名，兴许就退了，每年虽然缴的费用不多，但一直给供应商白嫖，也挺浪费。正好最近空暇，打理打理这些苟且的栖身之地。</p>
+<p>这几年发生了一些变化。别的不说，hexo和next理所当然的更新了几个大版本。原先用来编辑的mbp也老旧了，闲置在家里。现在操作的mbp还是两年派发的，主要还是嫌麻烦的原因，一直没有把hexo的编辑目录迁移过来，每次想到要装一堆插件，心生退意。</p>
+<p>最近几天，重装了hexo和next后，升级到了最新版本，同时把展现细节做了更多的改造，说实在的，上次blog的搭建，也是弄了很久的源码，发现每次修改，虽然相隔时间很长（笑），但总比之前更加深入源码，这次增加修改了更多的布局，类型以及动态脚本。趁着这几天刚操作过还记得，快点写下来。</p>
+<span id="more"></span>
+
+<h3 id="弃用Coding"><a href="#弃用Coding" class="headerlink" title="弃用Coding"></a>弃用Coding</h3><p>原先是很看好Coding，早期代码管理做的不错，并且也是较早推出Web IDE的平台，印象中应该早于VSCode。后来有一天发现双因素不好用了，才知道Coding被鹅厂收购了。其实算是好事，毕竟不用太担心哪天这个startup挂了，但也多了一层麻烦。原来的Pages不能用，需要迁移到新的ci/cd。而且vps的所在地也发生了相应的变化，访问速度有所变慢。<br>Coding原来的ssl证书还挺简单的，但鹅厂云就复杂一些，而且由于域名还是在福报云上，所以现在等于是两大云厂各需要维护一些东西，又徒增了麻烦。</p>
+<p>随着某天晚上，我再也无法访问自己的站点后，还是决定准备弃用。由于备案问题，pages只能选择部署在HK的节点。原则上部署完成后可以直接在福报云上的dns上设置cname到HK的源站，但是新版的问题是没有这层guide的，会直接引导用户在pages的custom domain把cname设置为他们的CDN，而这个CDN一来非免费，二来同样由于备案问题，也只能选择境外服务域，三来和CDN绑定ssl证书申请也相对麻烦。那效果呢，一言难尽，使用CDN目的号称是加速，但实际上速度感受是并不如旧版的，甚至完全比不上后面采用的最终方案。<br>那天晚上的惨状是，国内无一地区可以访问到站点，除了TW和境外（测试网站工具：<a href="https://www.17ce.com/">17ce</a>），并且所有dns解析地区均不一致，非常奔溃（早上访问正常，晚上问题很大）。<br>本来想再迂回一下，把cname指向到hk源站，但并不成功，而且最主要的还有ssl证书问题，关闭cdn意味着证书也不可用，旧版的统一证书也无法使用了。<br>所以第二天，最简单的还是迁移到GH的Pages服务，操作简单，而且还支持ssl（值得提一句需要站点加入cname文件，否则网上配置在每次部署之后会被重置）。国内gitee的话也是一个选择。</p>
+<h3 id="Nodejs"><a href="#Nodejs" class="headerlink" title="Nodejs"></a>Nodejs</h3><p>把Nodejs升级到了14，然后npm再进行升级，npm原来一直用的global，为了维护方便，还是迁回了local方式，package.json很香。</p>
+<h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><p>hexo安装绕了几个弯子，对hexo和hexo cli有点confuse，一直以为cli就是hexo本身，之前发现cli一直升级不到5以上，比较奔溃。因为安装theme的方式，5和5之前的版本是不同的。好在后面终于顺利搞定。</p>
+<h3 id="Next"><a href="#Next" class="headerlink" title="Next"></a>Next</h3><p>Next变化不大，但这次重构还是做了较大的改变，比之前更深入了。变化主要基本分两类，能基于Mist的基本在Mist的样式文件中进行修改，否则只能修改通用的comn文件。其中有些为了保持通用性，增加了通用的config，但实际上可能是不会再使用的，强迫症。这次也改动了div的动态js。</p>
+<p>能想起来的记录如下：</p>
+<ul>
+<li>字体大小修改不建议修改config中的font global，灵活度很小，如果要单独改动post body的size，config不起作用，需要去样式文件修改，title字体size可以直接配置</li>
+<li>由于修改了主题语言，font family基本都可以在config文件更改，menu字体需要去样式修改，比较耐看的字体是：<font face="Shuei Mincho L" >株式会社モリサワ-秀英明朝</font></li>
+<li>heder.styl中对目录栏宽度进行了修改，修改了header-inner和menu的padding，使其分为两行</li>
+<li>整体页面内容宽度也在样式文件中进行了修改，并且可以根据窗口大小，动态切换设置，对移动端比较友好</li>
+<li>config中增加了darkmode, mathjax，pjax，mediumnzoom, quicklink等设置</li>
+<li>增加了avatar，footer文字，facicon，social等信息</li>
+<li>比较复杂地修改了motion.js，单独修改了sidebar中site-description的动态展示效果</li>
+</ul>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p>改名字的时候，知道需要更改，但不知道改什么。随后一瞬想到了阿部芙蓉美（歌不错，但名字…）的「群青」和手嶌葵的专辑「青い図書室」，它们都是过去一段时间内包括现在也非常喜欢的歌曲集，索性就组合在一起，听「<a href="https://nipponcolors.com/#gunjyo">群青</a>」才知道，这是一种颜色，顺便一提，十一区对颜色的称呼很文艺，例如紺，绯，鳶，楝，瓶覗，柳染，洒落柿，诸如此类。有兴趣的建议移步<a href="https://nipponcolors.com/">日本の伝統色</a>，页面有支持MUNSELL的JS开关，开启后高能。<br>此外Sidebar这里的概要也恰逢时宜地选择了「言の葉の庭」中非常受欢迎的雷神短歌上半句。</p>
+<center><font face="Shuei Mincho L" >「鳴る神の 少し響みて  さし曇り 雨も降らぬか 君を留めむ」</font></center><br>
+
+<p>君を留めむ，那是否真的可以留下观者你呢。</p>
+]]></content>
+      <categories>
+        <category>Toolkit</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>字体踩坑</title>
+    <url>/2021/03/30/%E5%AD%97%E4%BD%93%E8%B8%A9%E5%9D%91/</url>
+    <content><![CDATA[<p>觉得还是有必要单独为此记录一遍，这是在近日几天被这个问题折腾之后的决定。<br>先从这里开始说吧。</p>
+<h3 id="ヒラギノ明朝-Pro"><a href="#ヒラギノ明朝-Pro" class="headerlink" title="ヒラギノ明朝 Pro"></a>ヒラギノ明朝 Pro</h3><p>是的，本来觉得字体的选择是一个非常简单的问题，也是重构站点之初，最先着手的问题之一，由于所需的字体内容不多，网上搜罗一番后，尝试了几个选项，也没有仔细看，就选择了其中一款还能接受的字体。现在想来这个最初的方案，都不能算上方案，实际就是一个选择，可能也是由于没有前端的经验，缺少这方面的sense的最大问题。在选择字体之后，demo之后，部署之后，一切看似非常ok的情况下，登陆了Win试着看下效果，才发现自己忘记了兼容性的问题。完全没有渲染。在Edge下，Sidebar的字体还因为还原了最初的方案被分段了。<br>兼容性的问题不光出现在字体方面，在css多个选项上也出现了与Chrome下的不同效果。好在css的问题相对还比较好解决，但如果要实现跨平台跨浏览器的字体统一还是需要走自定义的方式来做。因为hexo的字体配置，对于external虽然也可以通过字体服务器来做，但在目前默认的google库中并没有找到合适的选择。</p>
+<span id="more"></span>
+
+<h3 id="秀英明朝-OTF"><a href="#秀英明朝-OTF" class="headerlink" title="秀英明朝 OTF"></a>秀英明朝 OTF</h3><p>既然自定义，那么选择就广很多，在各大网站继续搜罗一番后，找到一个更好的字体。不过只有OTF格式。<br>接下来就是通过hexo来实现自定义字体的加载，这里就简答叙述下方法。</p>
+<ul>
+<li>首先是在主题目录的source文件夹下创建一个fonts的目录，把下载的字体放入即可</li>
+<li>然后需要添加一个自定义的styl文件，网上的教程，大多指向的是主题目录下source/css/_custom/custom.styl这个地址，但从Next某个7版本后，_custom就去掉了，在GH的issue中再看看有没有替代方案 ，果真有，这回文件在站点目录下的source/_data/styles.styl</li>
+<li>继续在文件中定义font-face，这步比较简单，定义下名字，不同的字体格式，format不同的配置，最后修改url指向第一步的安装路径即可</li>
+<li>配置文件指定时，external置为false</li>
+</ul>
+<p>本地测试比较顺利，但部署之后，发现ios端渲染有延迟，pc端基本无法渲染，能想到是字体大小的问题，确实整个字体文件达到29M。。。只能继续另辟蹊径。</p>
+<h3 id="font-spider"><a href="#font-spider" class="headerlink" title="font-spider"></a>font-spider</h3><p>字体压缩可以是想到最直接的解决方案。目前普遍的字体压缩方案就是<a href="https://github.com/aui/font-spider/">font-spider</a>，通过网页实际使用的文字进行按需压缩，对于非body类的网页通用字体，是比较好的解决方案。<br>有几点需要注意：</p>
+<ul>
+<li>字体支持类型不包括otf，最好采用静态网站格式</li>
+<li>需要用css进行目标字体定义（本身使用的就是font-face，不需要额外操作）</li>
+<li>可能需要涉及对html的更改，例如css目录，font目录等</li>
+<li>竖排文字对于标点符号会有特殊情况，需要手动载入，例如「」与﹁﹂</li>
+</ul>
+<p>由于之前的采用的字体只有otf，所以需要再搜寻合适的，好在看到有做过同款字体更新版本，来自wx：lxgwshare。</p>
+<table><tr><td bgcolor="#555" style="border-style:none;"><font color="#CCCCCC" face="Shuei Mincho L" >
+伊吕波歌</br>
+平仮名：</br>
+いろはにほへと・ちりぬるを・わかよたれそ・つねならむ・うゐのおくやま・けふこえて・あさきゆめみし・ゑひもせす</br>
+片仮名：</br>
+イロハニホエト・チリヌルヲ・ワカヨタレソ・ツネナラム・ウヰノオクヤマ・ケフコエテ・アサキユメミシ・ヱヒモセス</br>
+</br>
+简体：</br>
+轻轻的我走了，正如我轻轻的来；</br>
+我轻轻的招手，作别西天的云彩。</br>
+那河畔的金柳，是夕阳中的新娘；</br>
+波光里的艳影，在我的心头荡漾。</br></font></td></tr></table>
+
+<p>效果符合预期，就它了。</p>
+]]></content>
+      <categories>
+        <category>Toolkit</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
 </search>
