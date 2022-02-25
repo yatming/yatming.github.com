@@ -23,16 +23,16 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yatming.net","root":"/","images":"/images","scheme":"Mist","version":"8.2.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"changyan","storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp","site_description":"zoomIn"}},"prism":false,"i18n":{"placeholder":"検索…","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="要不是收到关于&lt;JupyterHub搭建&gt;的咨询邮件，估计要在这个Blog再写写画画会是一个未来很久远的事情。 几个月下来，做了不少东西，也进行了很多的尝试，每个点应该都可以post一下，不过发现年纪大了，归纳总结的能力也退化了不少，要好好地写一篇路人能看懂的文也没有以前那么潇洒，虽然自己还是会常常想起几年前花了一个多月每天工作就是PPT，只为写一个让分析师理解的计算模型出来，但未来，">
+<meta name="description" content="要不是收到关于&lt;JupyterHub搭建&gt;的咨询邮件，估计要在这个Blog再写写画画会是一个未来很久远的事情。 几个月下来，做了不少东西，也进行了很多的尝试，每个点应该都可以post一下，不过发现年纪大了，归纳总结的能力也退化了不少，要好好地写一篇路人也能看懂的文似乎也没有以前那么潇洒，虽然自己还是会常常想起几年前一个多月天天就是PPT的工作，只为写一个让分析师理解的计算模型出来，但未">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VPN &#x3D; VPS + VPaas">
 <meta property="og:url" content="http://yatming.net/2018/08/02/VPN-VPS-VPaas/index.html">
 <meta property="og:site_name" content="群青い図書室">
-<meta property="og:description" content="要不是收到关于&lt;JupyterHub搭建&gt;的咨询邮件，估计要在这个Blog再写写画画会是一个未来很久远的事情。 几个月下来，做了不少东西，也进行了很多的尝试，每个点应该都可以post一下，不过发现年纪大了，归纳总结的能力也退化了不少，要好好地写一篇路人能看懂的文也没有以前那么潇洒，虽然自己还是会常常想起几年前花了一个多月每天工作就是PPT，只为写一个让分析师理解的计算模型出来，但未来，">
+<meta property="og:description" content="要不是收到关于&lt;JupyterHub搭建&gt;的咨询邮件，估计要在这个Blog再写写画画会是一个未来很久远的事情。 几个月下来，做了不少东西，也进行了很多的尝试，每个点应该都可以post一下，不过发现年纪大了，归纳总结的能力也退化了不少，要好好地写一篇路人也能看懂的文似乎也没有以前那么潇洒，虽然自己还是会常常想起几年前一个多月天天就是PPT的工作，只为写一个让分析师理解的计算模型出来，但未">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="http://yatming.net/2018/08/02/VPN-VPS-VPaas/gcp.png">
 <meta property="article:published_time" content="2018-08-02T08:49:55.000Z">
-<meta property="article:modified_time" content="2021-03-30T02:43:02.768Z">
+<meta property="article:modified_time" content="2022-02-25T02:28:45.556Z">
 <meta property="article:author" content="Yatming">
 <meta property="article:tag" content="VPN">
 <meta name="twitter:card" content="summary">
@@ -314,7 +314,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">編集日</span>
-        <time title="修正日：2021-03-30 10:43:02" itemprop="dateModified" datetime="2021-03-30T10:43:02+08:00">2021-03-30</time>
+        <time title="修正日：2022-02-25 10:28:45" itemprop="dateModified" datetime="2022-02-25T10:28:45+08:00">2022-02-25</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -337,9 +337,9 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>要不是收到关于&lt;<a href="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/" title="JupyterHub搭建">JupyterHub搭建</a>&gt;的咨询邮件，估计要在这个Blog再写写画画会是一个未来很久远的事情。</p>
-<p>几个月下来，做了不少东西，也进行了很多的尝试，每个点应该都可以post一下，不过发现年纪大了，归纳总结的能力也退化了不少，要好好地写一篇路人能看懂的文也没有以前那么潇洒，虽然自己还是会常常想起几年前花了一个多月每天工作就是PPT，只为写一个让分析师理解的计算模型出来，但未来，不太可能会发生这样的事情了吧。</p>
-<p>言归，正传。今天介绍一下当下一个还算比较稳定的VPN的神器，V2Ray。写这种文章实际上有点亏，一来没什么含金量，二来很有可能在不久未来完全被淘汰的东西。科科。</p>
-<h3 id="VPS-Google-Cloud-Platform-GCP"><a href="#VPS-Google-Cloud-Platform-GCP" class="headerlink" title="VPS: Google Cloud Platform(GCP)"></a>VPS: Google Cloud Platform(GCP)</h3><p>我个人早前VPN技术还是比较low的，从以前的goagent到后来的ss的鹦鹉学舌，实际上都是自己对网络还是一知半解，不够精通。在此说一下，基于ss的搭建没有这么难，甚至可以说简单到爆，大多数人其实是被云主机这类实体给唬住罢了。只需要找一个VPS供应商，例如Vultr，申请一个VS，然后用python安装下ss，配一下config，service start。除去注册以及等待的时间，5分钟的事情。</p>
+<p>几个月下来，做了不少东西，也进行了很多的尝试，每个点应该都可以post一下，不过发现年纪大了，归纳总结的能力也退化了不少，要好好地写一篇路人也能看懂的文似乎也没有以前那么潇洒，虽然自己还是会常常想起几年前一个多月天天就是PPT的工作，只为写一个让分析师理解的计算模型出来，但未来，不太可能会发生同样的事情了吧。</p>
+<p>言归，正传。今天介绍一下当下一个还算比较稳定的VPN的神器，V2Ray。写这种文章实际上有点亏，一来没什么含金量，二来很有可能在不久的未来完全被淘汰的东西。科科。</p>
+<h3 id="VPS-Google-Cloud-Platform-GCP"><a href="#VPS-Google-Cloud-Platform-GCP" class="headerlink" title="VPS: Google Cloud Platform(GCP)"></a>VPS: Google Cloud Platform(GCP)</h3><p>我个人早前VPN技术还是比较low的，从以前的goagent到后来的ss的鹦鹉学舌，实际上自己对网络都还是一知半解，不够精通。在此说一下，基于ss的搭建没有这么难，甚至可以说非常简单，大多数人其实是被云主机这类事给唬住罢了。其实只需要找一个VPS供应商，例如Vultr，申请一个VS，然后用python安装下ss，配一下config，service start。除去注册以及等待的时间，也就是5分钟的事情。</p>
 <p>作为VPS，GCP的好处在于，似乎速度还算比较稳定，在日服猖狂的当下，可以支持另外建设湾湾的机房，且目前注册有300刀的白嫖。实际上GCP上租一个乞丐版的VPS，一个月大概3刀左右，网络传输另算，如果不是大流量的客户端请求，也不会有大多的费用，所以300刀基本上也可以维持一个比较长的时间，相对还是比较划算的。</p>
 <img src="/2018/08/02/VPN-VPS-VPaas/gcp.png" class="">
 
@@ -433,7 +433,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fas fa-robot"></i>
   </span>
