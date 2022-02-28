@@ -2749,6 +2749,9 @@ mjx-container[jax="CHTML"][display="true"],
 .has-jax {
   overflow: auto hidden;
 }
+mjx-container[jax="SVG"][display="true"] {
+  min-width: 0px !important;
+}
 mjx-container[display="true"] + br {
   display: none;
 }
