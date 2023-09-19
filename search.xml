@@ -268,4 +268,23 @@
         <tag>hexo</tag>
       </tags>
   </entry>
+  <entry>
+    <title>USBDriver Reload</title>
+    <url>/2023/09/19/USBDriver/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="Oh, these decrypted content cannot be verified, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="aaa4f91028b10978092729341d5bde7acaef0e7fab9164849f693203d8157e36">10d79030e8222445804370796b90fca1662db977fbc011472d8cbe51030ee77b3a54e2b2fada1983c7a0dcb0f949a423f22dfc1e74b0d1530f81377701a765059c771f94949961c230d801d6baa33ee3f9974eef6072a7ef037ad3a31c1b07da21567d22b2f5e1da74076779511669aa295290a10b34d5eee3b9dab36be4c4a9694685530e3dfd909340db7bfe156646eface5d9d3939f7e45974c2edc5532184635acb1248da2f36667f6365f165d06bd04f1e2b52b5c5c48ec23eee36dae38a57eb2d8c856e4936d75be34ae3907d39c16c1ef20eaf13464c5f5fa477e4475b5ac27472f45b26d8c3319bd6467960ede32e0cf10cc4929dcd904d3ce508ce868d6abd8aca4358c2028f4aaf0427d0a441e31e99affc949398d73d0bc8d96922e8ebdb2389b4de919a1269e22459cc3841d0c777c0f31034d33e6eb8ff88b2c0bd9f0c3244d55cc49ece115e58f14309cf03d8e7a979e0a30c77906089454ab8aedb7cda88d9cd79e121816e70d661b462cc30d745c35a05295666b57305c191f311ad901ecaf7efb73ce9170a8cdeae5b0aa6afeba49463d5320b78e55c6d12f54bcbaed79c2222d3b8c75897c1812109b3ef763db50ff38f0d8ede3910091132261ab477983efc7a846a52980ae6a5f8637e82e64d45752aaba7e6863c438f67f8c98e88fceaaa4c158f7f9751ed5d1e8fae7ef13b2a999e58770f33063c9adbb7d4f0de2228ac2cd80e34e1bbbcae2abb293dbadd9bdfb30b9b7f71565736e6ba591b1cafa97fbc72f87ab3fb95da9c405450dc93a2a9c257a60889c84aa2c7280172b1c9ab8be3b74855beac7cdc609da54cd5a400c026981b0584890ff72d9ed206cec5fcce3b49b3dc03137fc874f7abe86fab700ee89541bc9d0a6cb66adc874e5fe89074adbb6fc77dd7098dca46859e60b1ec35b3d29a97448d982ae5bbb2988f78da6558a21d146ce2998d60884828b44e2239849179db36ca0f9745ed8ff3cea03e6279cc016af520e7320fe439a763b28b1522e8ce637bcdc42b72af1f232d867154e55768b5d5df2443f7c6b3bc26b52234b00fded6ba44cfdf977e5721d45d6909f1145dfa0e709909da77cd548b54e1841ae1dec68694fcffb8b28ebc2b14a14eb5a70f17be08a47b7b47e752306af6033616e25a8b02a45b098e47cb374e19413274c6a71983d2a14d7da44dba3ae56afbf650860f3d6229840e51a351fe1dba73d77e013c8fe4a3dacee4c564301afb29c92a0871f256c303f09ca2e78aef7845b25afccb284fd00d9c21b109bd09694f24c6e32167ac932d0da677892784b893db1da2fb390e130b5212f3a84ea777839dcd6d3e3566e227d8e5065d457ab3fd793fc8394772e95351aa780d9caf2c3e76d6ef49b409d6851ad7770ba0a5125daeaaa516d40632f8b9ca82f6a0030b3d09edd8cb8d491c9bf25cbf9a512c37f5f3c6847bbf9f2f3e508743fff5427295b0499650102b9bc43df752e4a36d79b139dbb30e9963ce4634c35ae370f93af996caca6ae6eeb7c0ddce829d5c33d5bc44ed66cf09d5e81c371ffeb3c7899f6e524e90d57f0b51f3efa2ee0b05b9167d0275815d912de</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-up">
+      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-up">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <tags>
+        <tag>encrypted</tag>
+      </tags>
+  </entry>
 </search>
