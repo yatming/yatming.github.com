@@ -491,7 +491,7 @@ mjx-container[display="true"] + br {
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">編集日</span>
-        <time title="修正日：2023-06-13 15:38:56" itemprop="dateModified" datetime="2023-06-13T15:38:56+08:00">2023-06-13</time>
+        <time title="修正日：2023-09-21 10:43:28" itemprop="dateModified" datetime="2023-09-21T10:43:28+08:00">2023-09-21</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -514,7 +514,9 @@ mjx-container[display="true"] + br {
     
     <div class="post-body" itemprop="articleBody">
           <p>觉得还是有必要单独为此记录一篇，这是在近日几天被这个问题折腾之后的决定。<br>先从这里开始说吧。</p>
-<h3 id="ヒラギノ明朝-Pro"><a href="#ヒラギノ明朝-Pro" class="headerlink" title="ヒラギノ明朝 Pro"></a>ヒラギノ明朝 Pro</h3><p>是的，本来觉得字体的选择是一个非常简单的问题，也是重构站点之初最先着手的问题之一，由于所需的字体内容不多，网上搜罗一番后，尝试了几个选项，没怎么仔细看就选择了其中一款还能接受的字体。现在想来这个最初的方案，都不能算上方案，实际就是一个选择，而且可能也是由于没有前端的经验，缺少这方面的sense，出现了后续的诸多的问题。在选择字体之后，demo之后，部署之后，一切看似非常ok的情况下，登陆了Win试着看下效果，才发现自己忘记了兼容性的问题。完全没有渲染。在Edge下，Sidebar的字体还因为还原了最初的方案被分段了。<br>兼容性的问题不仅仅出现在字体方面，在css多个选项上也出现了与Chrome下的不同效果。好在css的问题相对还比较好解决，但如果要实现跨平台跨浏览器的字体统一还是需要走自定义的方式来做。因为hexo的字体配置，对于external虽然也可以通过字体服务器来做，但在目前默认的google库中并没有找到合适的选择。</p>
+<h3 id="ヒラギノ明朝-Pro"><a href="#ヒラギノ明朝-Pro" class="headerlink" title="ヒラギノ明朝 Pro"></a>ヒラギノ明朝 Pro</h3><p>是的，本来觉得字体的选择是一个非常简单的问题，也是重构站点之初最先着手的问题之一，由于所需的字体内容不多，网上搜罗一番后尝试了几个选项，就选择了其中一款还算顺眼的字体。现在想来这个最初的方案确实草率了，其实这都不能算上方案，只是一个选择，再加上缺少frontend的sense，后续出现了诸多的问题。</p>
+<p>在选择字体之后，然后顺利demo，丝滑部署，一切看似非常ok的情况下，登陆了Win试着看下效果，才发现自己忘记了兼容性的问题😱，指定的字体完完全全没有被渲染。尤其在Edge下，Sidebar的字体还因为还原了最初的方案被分段了，orz。</p>
+<p>兼容性的问题不仅仅出现在字体方面，在css多个选项上也出现了与Chrome下的不同效果。好在css的问题相对还比较好解决，但如果要实现跨平台跨浏览器的字体统一还是需要走自定义的方式来做，毕竟hexo的external字体配置虽然可以通过三方字体服务器来做，但在目前默认的google库中并没有合适的选择。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/03/30/%E5%AD%97%E4%BD%93%E8%B8%A9%E5%9D%91/#more" rel="contents">

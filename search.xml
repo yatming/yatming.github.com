@@ -163,31 +163,6 @@
       </tags>
   </entry>
   <entry>
-    <title>VPN = VPS + VPaas</title>
-    <url>/2018/08/02/VPN-VPS-VPaas/</url>
-    <content><![CDATA[<p>要不是收到关于&lt;<a href="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/" title="JupyterHub搭建">JupyterHub搭建</a>&gt;的咨询邮件，估计要在这个Blog再写写画画会是一个未来很久远的事情。</p>
-<p>几个月下来，做了不少东西，也进行了很多的尝试，每个点应该都可以post一下，不过发现年纪大了，归纳总结的能力也退化了不少，要好好地写一篇路人也能看懂的文似乎也没有以前那么潇洒，虽然自己还是会常常想起几年前一个多月天天就是PPT的工作，只为写一个让分析师理解的计算模型出来，但未来，不太可能会发生同样的事情了吧。</p>
-<p>言归，正传。今天介绍一下当下一个还算比较稳定的VPN的神器，V2Ray。写这种文章实际上有点亏，一来没什么含金量，二来很有可能在不久的未来完全被淘汰的东西。科科。</p>
-<h3 id="VPS-Google-Cloud-Platform-GCP"><a href="#VPS-Google-Cloud-Platform-GCP" class="headerlink" title="VPS: Google Cloud Platform(GCP)"></a>VPS: Google Cloud Platform(GCP)</h3><p>我个人早前VPN技术还是比较low的，从以前的goagent到后来的ss的鹦鹉学舌，实际上自己对网络都还是一知半解，不够精通。在此说一下，基于ss的搭建没有这么难，甚至可以说非常简单，大多数人其实是被云主机这类事给唬住罢了。其实只需要找一个VPS供应商，例如Vultr，申请一个VS，然后用python安装下ss，配一下config，service start。除去注册以及等待的时间，也就是5分钟的事情。</p>
-<p>作为VPS，GCP的好处在于，似乎速度还算比较稳定，在日服猖狂的当下，可以支持另外建设湾湾的机房，且目前注册有300刀的白嫖。实际上GCP上租一个乞丐版的VPS，一个月大概3刀左右，网络传输另算，如果不是大流量的客户端请求，也不会有大多的费用，所以300刀基本上也可以维持一个比较长的时间，相对还是比较划算的。</p>
-<img src="/2018/08/02/VPN-VPS-VPaas/gcp.png" class="">
-
-<center>GCP VPS Configuration</center>
-
-<span id="more"></span>
-
-<h3 id="VPaas：V2ray"><a href="#VPaas：V2ray" class="headerlink" title="VPaas：V2ray"></a>VPaas：V2ray</h3><p><a href="https://www.v2ray.com/">神器</a>。为什么说是Paas，就是一个底层构建，门槛会高一些，但还算能接受。</p>
-<h3 id="IOS-Client-NA"><a href="#IOS-Client-NA" class="headerlink" title="IOS Client: NA"></a>IOS Client: NA</h3><p>目前貌似只能在美区才能购买Kitsunebi Lite和Shadowroket，比较遗憾。所以说这个还是需要一点运气，在Local买了一个SR，12软妹币，结果上当了，不支持Vmess协议，就此作罢。</p>
-<p>最后不得不说效果，湾湾VPS延迟非常低，60ms左右，再加上Vmess目前还不太容易会被detect的Protocol，体验还是非常不错的。建议ss用户可以尽快入手了。</p>
-]]></content>
-      <categories>
-        <category>Toolkit</category>
-      </categories>
-      <tags>
-        <tag>VPN</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo next客制化</title>
     <url>/2021/03/27/hexo-next%E5%AE%A2%E5%88%B6%E5%8C%96/</url>
     <content><![CDATA[<p>17年一篇，18年两篇，然后现在是第四篇文章，更新速度堪比富坚义博。</p>
@@ -224,20 +199,47 @@
       </tags>
   </entry>
   <entry>
+    <title>VPN = VPS + VPaas</title>
+    <url>/2018/08/02/VPN-VPS-VPaas/</url>
+    <content><![CDATA[<p>要不是收到关于&lt;<a href="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/" title="JupyterHub搭建">JupyterHub搭建</a>&gt;的咨询邮件，估计要在这个Blog再写写画画会是一个未来很久远的事情。</p>
+<p>几个月下来，做了不少东西，也进行了很多的尝试，每个点应该都可以post一下，不过发现年纪大了，归纳总结的能力也退化了不少，要好好地写一篇路人也能看懂的文似乎也没有以前那么潇洒，虽然自己还是会常常想起几年前一个多月天天就是PPT的工作，只为写一个让分析师理解的计算模型出来，但未来，不太可能会发生同样的事情了吧。</p>
+<p>言归，正传。今天介绍一下当下一个还算比较稳定的VPN的神器，V2Ray。写这种文章实际上有点亏，一来没什么含金量，二来很有可能在不久的未来完全被淘汰的东西。科科。</p>
+<h3 id="VPS-Google-Cloud-Platform-GCP"><a href="#VPS-Google-Cloud-Platform-GCP" class="headerlink" title="VPS: Google Cloud Platform(GCP)"></a>VPS: Google Cloud Platform(GCP)</h3><p>我个人早前VPN技术还是比较low的，从以前的goagent到后来的ss的鹦鹉学舌，实际上自己对网络都还是一知半解，不够精通。在此说一下，基于ss的搭建没有这么难，甚至可以说非常简单，大多数人其实是被云主机这类事给唬住罢了。其实只需要找一个VPS供应商，例如Vultr，申请一个VS，然后用python安装下ss，配一下config，service start。除去注册以及等待的时间，也就是5分钟的事情。</p>
+<p>作为VPS，GCP的好处在于，似乎速度还算比较稳定，在日服猖狂的当下，可以支持另外建设湾湾的机房，且目前注册有300刀的白嫖。实际上GCP上租一个乞丐版的VPS，一个月大概3刀左右，网络传输另算，如果不是大流量的客户端请求，也不会有大多的费用，所以300刀基本上也可以维持一个比较长的时间，相对还是比较划算的。</p>
+<img src="/2018/08/02/VPN-VPS-VPaas/gcp.png" class="">
+
+<center>GCP VPS Configuration</center>
+
+<span id="more"></span>
+
+<h3 id="VPaas：V2ray"><a href="#VPaas：V2ray" class="headerlink" title="VPaas：V2ray"></a>VPaas：V2ray</h3><p><a href="https://www.v2ray.com/">神器</a>。为什么说是Paas，就是一个底层构建，门槛会高一些，但还算能接受。</p>
+<h3 id="IOS-Client-NA"><a href="#IOS-Client-NA" class="headerlink" title="IOS Client: NA"></a>IOS Client: NA</h3><p>目前貌似只能在美区才能购买Kitsunebi Lite和Shadowroket，比较遗憾。所以说这个还是需要一点运气，在Local买了一个SR，12软妹币，结果上当了，不支持Vmess协议，就此作罢。</p>
+<p>最后不得不说效果，湾湾VPS延迟非常低，60ms左右，再加上Vmess目前还不太容易会被detect的Protocol，体验还是非常不错的。建议ss用户可以尽快入手了。</p>
+]]></content>
+      <categories>
+        <category>Toolkit</category>
+      </categories>
+      <tags>
+        <tag>VPN</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>字体踩坑</title>
     <url>/2021/03/30/%E5%AD%97%E4%BD%93%E8%B8%A9%E5%9D%91/</url>
     <content><![CDATA[<p>觉得还是有必要单独为此记录一篇，这是在近日几天被这个问题折腾之后的决定。<br>先从这里开始说吧。</p>
-<h3 id="ヒラギノ明朝-Pro"><a href="#ヒラギノ明朝-Pro" class="headerlink" title="ヒラギノ明朝 Pro"></a>ヒラギノ明朝 Pro</h3><p>是的，本来觉得字体的选择是一个非常简单的问题，也是重构站点之初最先着手的问题之一，由于所需的字体内容不多，网上搜罗一番后，尝试了几个选项，没怎么仔细看就选择了其中一款还能接受的字体。现在想来这个最初的方案，都不能算上方案，实际就是一个选择，而且可能也是由于没有前端的经验，缺少这方面的sense，出现了后续的诸多的问题。在选择字体之后，demo之后，部署之后，一切看似非常ok的情况下，登陆了Win试着看下效果，才发现自己忘记了兼容性的问题。完全没有渲染。在Edge下，Sidebar的字体还因为还原了最初的方案被分段了。<br>兼容性的问题不仅仅出现在字体方面，在css多个选项上也出现了与Chrome下的不同效果。好在css的问题相对还比较好解决，但如果要实现跨平台跨浏览器的字体统一还是需要走自定义的方式来做。因为hexo的字体配置，对于external虽然也可以通过字体服务器来做，但在目前默认的google库中并没有找到合适的选择。</p>
+<h3 id="ヒラギノ明朝-Pro"><a href="#ヒラギノ明朝-Pro" class="headerlink" title="ヒラギノ明朝 Pro"></a>ヒラギノ明朝 Pro</h3><p>是的，本来觉得字体的选择是一个非常简单的问题，也是重构站点之初最先着手的问题之一，由于所需的字体内容不多，网上搜罗一番后尝试了几个选项，就选择了其中一款还算顺眼的字体。现在想来这个最初的方案确实草率了，其实这都不能算上方案，只是一个选择，再加上缺少frontend的sense，后续出现了诸多的问题。</p>
+<p>在选择字体之后，然后顺利demo，丝滑部署，一切看似非常ok的情况下，登陆了Win试着看下效果，才发现自己忘记了兼容性的问题😱，指定的字体完完全全没有被渲染。尤其在Edge下，Sidebar的字体还因为还原了最初的方案被分段了，orz。</p>
+<p>兼容性的问题不仅仅出现在字体方面，在css多个选项上也出现了与Chrome下的不同效果。好在css的问题相对还比较好解决，但如果要实现跨平台跨浏览器的字体统一还是需要走自定义的方式来做，毕竟hexo的external字体配置虽然可以通过三方字体服务器来做，但在目前默认的google库中并没有合适的选择。</p>
 <span id="more"></span>
 
-<h3 id="秀英明朝-OTF"><a href="#秀英明朝-OTF" class="headerlink" title="秀英明朝 OTF"></a>秀英明朝 OTF</h3><p>既然自定义，那么选择就广很多，在各大网站继续搜罗一番后，找到一个更好的字体。不过只有OTF格式。<br>接下来就是通过hexo来实现自定义字体的加载，这里就简答叙述下方法。</p>
+<h3 id="秀英明朝-OTF"><a href="#秀英明朝-OTF" class="headerlink" title="秀英明朝 OTF"></a>秀英明朝 OTF</h3><p>既然可以自定义，当然也可以有别选择，在各大网站辛苦搜索一番后，终于找到一个更合适的字体。可惜只有OTF格式，不过也可以试一下。<br>接下来就是通过hexo来实现自定义字体的加载，这里就简述下方法。</p>
 <ul>
 <li>首先是在主题目录的source文件夹下创建一个fonts的目录，把下载的字体放入即可</li>
-<li>然后需要添加一个自定义的styl文件，网上的教程，大多指向的是主题目录下source/css/_custom/custom.styl这个地址，但从Next某个7版本后，_custom就去掉了，在GH的issue中再看看有没有替代方案 ，果真有，这回文件在站点目录下的source/_data/styles.styl</li>
+<li>然后需要添加一个自定义的styl文件，按照网上的教程，大多指向的是主题目录下source/css/_custom/custom.styl这个地址，但从Next某个7版本后，_custom目录被移除，在GH的issue中再看看有没有替代方案 ，还果真有，文件地址可以转移到站点目录下的source/_data/styles.styl</li>
 <li>继续在文件中定义font-face，这步比较简单，定义下名字，不同的字体格式，format不同的配置，最后修改url指向第一步的安装路径即可</li>
-<li>配置文件指定时，external置为false</li>
+<li>配置文件指定时，external需要设置为false</li>
 </ul>
-<p>本地测试比较顺利，但部署之后，发现ios端渲染有延迟，pc端基本无法渲染，能想到是字体大小的问题，确实整个字体文件达到29M。。。只能继续另辟蹊径。</p>
+<p>本地测试比较顺利，但部署之后，发现ios端渲染有延迟，pc端基本无法渲染，猜测是字体大小的问题，一看，发现整个字体文件竟然达到29M！🙄，只能继续求索。</p>
 <h3 id="font-spider"><a href="#font-spider" class="headerlink" title="font-spider"></a>font-spider</h3><p>字体压缩可以是想到最直接的解决方案。目前普遍的字体压缩方案就是<a href="https://github.com/aui/font-spider/">font-spider</a>，通过网页实际使用的文字进行按需压缩，对于非body类的网页通用字体，是比较好的解决方案。<br>有几点需要注意：</p>
 <ul>
 <li>字体支持类型不包括otf，最好采用静态网站格式</li>
@@ -245,7 +247,7 @@
 <li>可能需要涉及对html的更改，例如css目录，font目录等</li>
 <li>竖排文字对于标点符号会有特殊情况，需要手动载入，例如「」与﹁﹂</li>
 </ul>
-<p>由于之前的采用的字体只有otf，所以需要再搜寻合适的，好在看到有做过同款字体更新版本，来自wx：lxgwshare。</p>
+<p>由于之前的采用的字体只有otf，所以再是一番搜寻，幸运地找到了同款字体的更新版本，来自wx：lxgwshare。</p>
 <table><tr><td bgcolor="#555" style="border-style:none;"><font color="#CCCCCC" face="Shuei Mincho L" >
 伊吕波歌</br>
 平仮名：</br>
@@ -259,7 +261,8 @@
 那河畔的金柳，是夕阳中的新娘；</br>
 波光里的艳影，在我的心头荡漾。</br></font></td></tr></table>
 
-<p>个人觉得还不错，效果符合预期，那就它吧。</p>
+<p>看上去还不错，效果符合预期，直接安排！</p>
+<p>压缩过程比较简单，顺利搞定。不得不感慨一下，小小的字体，过程竟也波澜不惊，还是多多记录下来，不给未来的自己留坑～</p>
 ]]></content>
       <categories>
         <category>Toolkit</category>
