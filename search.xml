@@ -188,54 +188,6 @@
       </tags>
   </entry>
   <entry>
-    <title>字体踩坑</title>
-    <url>/2021/03/30/%E5%AD%97%E4%BD%93%E8%B8%A9%E5%9D%91/</url>
-    <content><![CDATA[<p>觉得还是有必要单独为此记录一篇，这是在近日几天被这个问题折腾之后的决定。<br>先从这里开始说吧。</p>
-<h3 id="ヒラギノ明朝-Pro"><a href="#ヒラギノ明朝-Pro" class="headerlink" title="ヒラギノ明朝 Pro"></a>ヒラギノ明朝 Pro</h3><p>是的，本来觉得字体的选择是一个非常简单的问题，也是重构站点之初最先着手的问题之一，由于所需的字体内容不多，网上搜罗一番后尝试了几个选项，就选择了其中一款还算顺眼的字体。现在想来这个最初的方案确实草率了，其实这都不能算上方案，只是一个选择，再加上缺少frontend的sense，后续出现了诸多的问题。</p>
-<p>在选择字体之后，然后顺利demo，丝滑部署，一切看似非常ok的情况下，登陆了Win试着看下效果，才发现自己忘记了兼容性的问题😱，指定的字体完完全全没有被渲染。尤其在Edge下，Sidebar的字体还因为还原了最初的方案被分段了，orz。</p>
-<p>兼容性的问题不仅仅出现在字体方面，在css多个选项上也出现了与Chrome下的不同效果。好在css的问题相对还比较好解决，但如果要实现跨平台跨浏览器的字体统一还是需要走自定义的方式来做，毕竟hexo的external字体配置虽然可以通过三方字体服务器来做，但在目前默认的google库中并没有合适的选择。</p>
-<span id="more"></span>
-
-<h3 id="秀英明朝-OTF"><a href="#秀英明朝-OTF" class="headerlink" title="秀英明朝 OTF"></a>秀英明朝 OTF</h3><p>既然可以自定义，自由度就大了很多，在各大网站辛苦搜索一番后，终于找到一个更合适的字体。可惜只有OTF格式，不过也可以试一下。<br>接下来就是通过hexo来实现自定义字体的加载，这里就简述下方法。</p>
-<ul>
-<li>首先是在主题目录的source文件夹下创建一个fonts的目录，把下载的字体放入即可</li>
-<li>然后需要添加一个自定义的styl文件，按照网上的教程，大多指向的是主题目录下source/css/_custom/custom.styl这个地址，但从Next某个7版本后，_custom目录发现被移除，现在文件的正确地址应该在站点目录下的source/_data/styles.styl</li>
-<li>继续在文件中定义font-face，这步比较简单，定义下名字，不同的字体格式，format不同的配置，最后修改url指向第一步的安装路径即可</li>
-<li>配置文件指定时，external需要设置为false</li>
-</ul>
-<p>本地测试比较顺利，但部署之后，发现ios端渲染有延迟，pc端基本无法渲染，猜测是字体大小的问题，一看发现整个字体文件竟然达到29M！🙄，只能继续求索。</p>
-<h3 id="font-spider"><a href="#font-spider" class="headerlink" title="font-spider"></a>font-spider</h3><p>字体压缩可以是想到最直接的解决方案。目前普遍的字体压缩方案就是<a href="https://github.com/aui/font-spider/">font-spider</a>，通过网页实际使用的文字进行按需压缩，对于非body类的网页通用字体，是比较好的解决方案。<br>但有几点需要注意：</p>
-<ul>
-<li>字体支持类型不包括otf，最好采用静态网站格式</li>
-<li>需要用css进行目标字体定义（本身使用的就是font-face，不需要额外操作）</li>
-<li>可能需要涉及对html的更改，例如css目录，font目录等</li>
-<li>竖排文字对于标点符号会有特殊情况，需要手动载入，例如「」与﹁﹂</li>
-</ul>
-<p>由于之前的采用的字体只有otf，所以再是一番搜寻，幸运地找到了同款字体的更新版本，来自wx：lxgwshare。</p>
-<table><tr><td bgcolor="#555" style="border-style:none;"><font color="#CCCCCC" face="Shuei Mincho L" >
-伊吕波歌</br>
-平仮名：</br>
-いろはにほへと・ちりぬるを・わかよたれそ・つねならむ・うゐのおくやま・けふこえて・あさきゆめみし・ゑひもせす</br>
-片仮名：</br>
-イロハニホエト・チリヌルヲ・ワカヨタレソ・ツネナラム・ウヰノオクヤマ・ケフコエテ・アサキユメミシ・ヱヒモセス</br>
-</br>
-简体：</br>
-轻轻的我走了，正如我轻轻的来；</br>
-我轻轻的招手，作别西天的云彩。</br>
-那河畔的金柳，是夕阳中的新娘；</br>
-波光里的艳影，在我的心头荡漾。</br></font></td></tr></table>
-
-<p>看上去还不错，效果符合预期，直接安排！</p>
-<p>压缩过程比较简单，顺利搞定。不得不感慨一下，小小的字体，过程竟也波澜不惊，还是多多记录下来，不给未来的自己留坑～</p>
-]]></content>
-      <categories>
-        <category>Toolkit</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo next客制化</title>
     <url>/2021/03/27/hexo-next%E5%AE%A2%E5%88%B6%E5%8C%96/</url>
     <content><![CDATA[<p>17年一篇，18年两篇，然后现在是第四篇文章，更新速度堪比富坚义博。</p>
@@ -272,6 +224,54 @@
       </tags>
   </entry>
   <entry>
+    <title>字体踩坑</title>
+    <url>/2021/03/30/%E5%AD%97%E4%BD%93%E8%B8%A9%E5%9D%91/</url>
+    <content><![CDATA[<p>觉得还是有必要单独为此记录一篇，这是在近日几天被这个问题折腾之后的决定。<br>先从这里开始说吧。</p>
+<h3 id="ヒラギノ明朝-Pro"><a href="#ヒラギノ明朝-Pro" class="headerlink" title="ヒラギノ明朝 Pro"></a>ヒラギノ明朝 Pro</h3><p>是的，本来觉得字体的选择是一个非常简单的问题，也是重构站点之初最先着手的问题之一，由于所需的字体内容不多，网上搜罗一番后尝试了几个选项，就选择了其中一款还算顺眼的字体。现在想来这个最初的方案确实草率了，其实这都不能算上方案，只是一个选择，再加上缺少frontend的sense，后续出现了诸多的问题。</p>
+<p>在选择字体之后，然后顺利demo，丝滑部署，一切看似非常ok的情况下，登陆了Win试着看下效果，才发现自己忘记了兼容性的问题😱，指定的字体完完全全没有被渲染。尤其在Edge下，Sidebar的字体还因为还原了最初的方案被分段了，orz。</p>
+<p>兼容性的问题不仅仅出现在字体方面，在css多个选项上也出现了与Chrome下的不同效果。好在css的问题相对还比较好解决，但如果要实现跨平台跨浏览器的字体统一还是需要走自定义的方式来做，毕竟hexo的external字体配置虽然可以通过三方字体服务器来做，但在目前默认的google库中并没有合适的选择。</p>
+<span id="more"></span>
+
+<h3 id="秀英明朝-OTF"><a href="#秀英明朝-OTF" class="headerlink" title="秀英明朝 OTF"></a>秀英明朝 OTF</h3><p>既然可以自定义，当然也可以有别选择，在各大网站辛苦搜索一番后，终于找到一个更合适的字体。可惜只有OTF格式，不过也可以试一下。<br>接下来就是通过hexo来实现自定义字体的加载，这里就简述下方法。</p>
+<ul>
+<li>首先是在主题目录的source文件夹下创建一个fonts的目录，把下载的字体放入即可</li>
+<li>然后需要添加一个自定义的styl文件，按照网上的教程，大多指向的是主题目录下source/css/_custom/custom.styl这个地址，但从Next某个7版本后，_custom目录被移除，在GH的issue中再看看有没有替代方案 ，还果真有，文件地址可以转移到站点目录下的source/_data/styles.styl</li>
+<li>继续在文件中定义font-face，这步比较简单，定义下名字，不同的字体格式，format不同的配置，最后修改url指向第一步的安装路径即可</li>
+<li>配置文件指定时，external需要设置为false</li>
+</ul>
+<p>本地测试比较顺利，但部署之后，发现ios端渲染有延迟，pc端基本无法渲染，猜测是字体大小的问题，一看，发现整个字体文件竟然达到29M！🙄，只能继续求索。</p>
+<h3 id="font-spider"><a href="#font-spider" class="headerlink" title="font-spider"></a>font-spider</h3><p>字体压缩可以是想到最直接的解决方案。目前普遍的字体压缩方案就是<a href="https://github.com/aui/font-spider/">font-spider</a>，通过网页实际使用的文字进行按需压缩，对于非body类的网页通用字体，是比较好的解决方案。<br>有几点需要注意：</p>
+<ul>
+<li>字体支持类型不包括otf，最好采用静态网站格式</li>
+<li>需要用css进行目标字体定义（本身使用的就是font-face，不需要额外操作）</li>
+<li>可能需要涉及对html的更改，例如css目录，font目录等</li>
+<li>竖排文字对于标点符号会有特殊情况，需要手动载入，例如「」与﹁﹂</li>
+</ul>
+<p>由于之前的采用的字体只有otf，所以再是一番搜寻，幸运地找到了同款字体的更新版本，来自wx：lxgwshare。</p>
+<table><tr><td bgcolor="#555" style="border-style:none;"><font color="#CCCCCC" face="Shuei Mincho L" >
+伊吕波歌</br>
+平仮名：</br>
+いろはにほへと・ちりぬるを・わかよたれそ・つねならむ・うゐのおくやま・けふこえて・あさきゆめみし・ゑひもせす</br>
+片仮名：</br>
+イロハニホエト・チリヌルヲ・ワカヨタレソ・ツネナラム・ウヰノオクヤマ・ケフコエテ・アサキユメミシ・ヱヒモセス</br>
+</br>
+简体：</br>
+轻轻的我走了，正如我轻轻的来；</br>
+我轻轻的招手，作别西天的云彩。</br>
+那河畔的金柳，是夕阳中的新娘；</br>
+波光里的艳影，在我的心头荡漾。</br></font></td></tr></table>
+
+<p>看上去还不错，效果符合预期，直接安排！</p>
+<p>压缩过程比较简单，顺利搞定。不得不感慨一下，小小的字体，过程竟也波澜不惊，还是多多记录下来，不给未来的自己留坑～</p>
+]]></content>
+      <categories>
+        <category>Toolkit</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>USBDriver Reload</title>
     <url>/2023/09/19/USBDriver/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="Oh, these decrypted content cannot be verified, but you can still have a look.">
@@ -288,6 +288,25 @@
 <script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
       <tags>
         <tag>encrypted</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>九州の行</title>
+    <url>/2023/10/17/%E4%B9%9D%E5%B7%9E%E3%81%AE%E8%A1%8C/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="Oh, these decrypted content cannot be verified, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="9174812a04221bc9f926d962b4e9bca0eecbfbcc186f0ceb0f21901e3c5d8d2a">10d79030e8222445804370796b90fca1be70606b674dc58cb7536aaf8be8c46e20b6d9ec5e2997d86fcceec4d1565e92ba86f2d76c0c2baef79b36edb6e7767957440d33b12fdbb43415e893a7631a20a9665388108c8642371d4f52c0e4d01c4ac19a3c08809f359dacc4e68af8b521b873bd5eb47454f29580e0a66678d4100da575bf1594beff42fedaf3d7872fb6a8f922c6e361eef5fa9dc336d91a3e52bfb3f3dca3524ac3345ecc9192fc9c8b060f91f34e9c28900ba32bd7cb0a794612c234e84d71c047145aa688e2755a16e0c43a09e995dd51a2c0c20e563abd3485a97150745c593f529b5a5bed209331f57719ffe98c7e5d960de71178cd201c0dbb69522b39e6e7ef048f40fb2612d32a6eef8bdc44608f8613bda7b5247d318eab2385d9893e93ecb5e651f59a092b4ee806012cfdc1de0b1c8866eb0d4d58ce7f8b39f7caabaff8cf2b4e4ca2ddf6fe42238893122816c020d8534dc12856ccf0938c946a9a996dde731528e95f7054c9e151dc0553472dc22cb61aee573471eb91c519814892a17a2f929e0d7b2bbcab511de7bac3c57de08e623ce363a9993a6af25b77da79bb4c196d60fa64d75bb68b2a3b8b4cd8d1504c30926132fd29e5c01926362568e2971a0bd7531f5bddc0aeb9c5747abb43e81d1623ce4b32ecefc48d1315a8547ff63ff0f71b9259bf56d4a9b7f4c5e9eddb7995d4513b2ea8c6195f092bde8fa0ff921e29984919131484a509070179839bd76a7b53516a0685a55fc9961dbb2a9372e1a8fba884719b559b4214990309d7247992d23d04d1b6869d58ea92ec6d22211374fe75ee257a47434854fd4c92701151409ccba37ec4f38c51ccaaf1adb42de6923730faf4d1ec00a42d2c95fe0c32b66f9a9df4f9db5e5800268c4daac8f20befe01549563a6e0948173cf769e0427708934500e85231b1f4e7296faf43e71731facda8b32f88f6d9ce1421a3cb89197fafcb41fbf0e604bc7f61a193651c3a30c29ac98f05b859d734c2b090becd6f83a11924ae39410c47ed6b975f186e256845da2fcbd356f35f41e01359d410a5a54cbdc5dffb50900822c3efa6613a909365ad8fedcec02bf6ae6ef92916bf1345a6f20e13500ffbb11e8a46f7abe90a7e2105363ec5bfbab28a8303999cd044bf4136c05d2efda7cdb1d4885126243cadb32aa4517c2485a47156a830f9ddb17de48f439949be1372b1bfb0339770dde099a07eb0ae99783a8a40703a8dbab1ddaa55b0828b7a41ed9c5a09a2636d584982aac1f3cafbd64f215d70504db397ece62a369dc663acf93c0a0accb2b6f078c2be30deb7b80b8f35e9d0cab47ca723c0783e1a7b67d63a6574469f4078b31a47c2c7291cc46918a6826f8dfff34e8f6f5f93d9e889710a055b51ae8aa3ea96c4eed04ef1b594ca89c18e3c84bd927ac368f2a5b3677b47b7951ab89d01ec113372716581d1c3e53aa8a9f4c74444c08d9d79f993b3d4af851bd93a1c712b4c9210a092abbbb5070df01625fd7d039c9a7dffbeeb1d65e34caff5050031bbda172e66428491437df696fe4651d169a85b72dac26681bda18d78895b9f66d5eb4526241956ffef001ea15f7183e2bce7304a847164ccef6877953d0a4e6d21a258708eb1e31fd3a8f9e0aec052de9e13224cae2da97a4b8ff3ed5a1c626bfd4e9d5cea617fdc22efa0f69c9a24de947714e660a701563692f31fe4c209133ca6ddc45868c48591dc9a0eec70699f6a825c4a98ff400e3297b29683161ce8ce3d69a98ecc7b62a074ed429b75827ea35d7a108d89acfb9f6b760e4b18a8a2c6745e2757e358c6e3a8a95c3651151448904ae5fff4acca4b831212b64e8b366cf86ffd0f33a7bc5e75f7004fd91bc8c387fed5ba</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-up">
+      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-up">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <tags>
+        <tag>Trip</tag>
       </tags>
   </entry>
 </search>

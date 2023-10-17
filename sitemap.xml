@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yatming.net/2023/10/17/%E4%B9%9D%E5%B7%9E%E3%81%AE%E8%A1%8C/</loc>
+    
+    <lastmod>2023-10-17</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yatming.net/about/index.html</loc>
     
-    <lastmod>2023-09-22</lastmod>
+    <lastmod>2023-10-17</lastmod>
     
   </url>
   
   <url>
     <loc>http://yatming.net/2021/03/30/%E5%AD%97%E4%BD%93%E8%B8%A9%E5%9D%91/</loc>
     
-    <lastmod>2023-09-22</lastmod>
+    <lastmod>2023-10-17</lastmod>
     
   </url>
   
@@ -65,14 +72,14 @@
   </url>
   
   <url>
-    <loc>http://yatming.net/tags/index.html</loc>
+    <loc>http://yatming.net/categories/index.html</loc>
     
     <lastmod>2021-03-24</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yatming.net/categories/index.html</loc>
+    <loc>http://yatming.net/tags/index.html</loc>
     
     <lastmod>2021-03-24</lastmod>
     
@@ -81,7 +88,7 @@
 
   <url>
     <loc>http://yatming.net/</loc>
-    <lastmod>2023-09-22</lastmod>
+    <lastmod>2023-10-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -89,49 +96,56 @@
   
   <url>
     <loc>http://yatming.net/tags/Python/</loc>
-    <lastmod>2023-09-22</lastmod>
+    <lastmod>2023-10-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yatming.net/tags/NP-hard/</loc>
-    <lastmod>2023-09-22</lastmod>
+    <lastmod>2023-10-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yatming.net/tags/Optimization/</loc>
-    <lastmod>2023-09-22</lastmod>
+    <lastmod>2023-10-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yatming.net/tags/ML/</loc>
-    <lastmod>2023-09-22</lastmod>
+    <lastmod>2023-10-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yatming.net/tags/VPN/</loc>
-    <lastmod>2023-09-22</lastmod>
+    <lastmod>2023-10-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yatming.net/tags/hexo/</loc>
-    <lastmod>2023-09-22</lastmod>
+    <lastmod>2023-10-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yatming.net/tags/encrypted/</loc>
-    <lastmod>2023-09-22</lastmod>
+    <lastmod>2023-10-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yatming.net/tags/Trip/</loc>
+    <lastmod>2023-10-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -140,14 +154,14 @@
   
   <url>
     <loc>http://yatming.net/categories/Toolkit/</loc>
-    <lastmod>2023-09-22</lastmod>
+    <lastmod>2023-10-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yatming.net/categories/Algorithm/</loc>
-    <lastmod>2023-09-22</lastmod>
+    <lastmod>2023-10-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
