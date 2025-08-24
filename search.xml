@@ -293,35 +293,16 @@
   <entry>
     <title>九州の行</title>
     <url>/2023/10/17/%E4%B9%9D%E5%B7%9E%E3%81%AE%E8%A1%8C/</url>
-    <content><![CDATA[<!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-DLJRfmpRclDMuVgx"></div><script> var DLJRfmpRclDMuVgx_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); DLJRfmpRclDMuVgx_options.container = document.getElementById("mmedia-DLJRfmpRclDMuVgx"); const dp_DLJRfmpRclDMuVgx = new DPlayer(DLJRfmpRclDMuVgx_options); </script> -->
+    <content><![CDATA[<!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-wBHxyayjInlQCOUT"></div><script> var wBHxyayjInlQCOUT_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); wBHxyayjInlQCOUT_options.container = document.getElementById("mmedia-wBHxyayjInlQCOUT"); const dp_wBHxyayjInlQCOUT = new DPlayer(wBHxyayjInlQCOUT_options); </script> -->
 
-<video id="mmedia-BywiVLVHhXtVObWB" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
+<video id="mmedia-TMIPPEtEYEsCUQUL" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
 
-<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-EVNxPnDcgeyoIFRJ" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-EVNxPnDcgeyoIFRJ").style.height=document.getElementById("mmedia-EVNxPnDcgeyoIFRJ").scrollWidth*0.76+"px";
+<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-hbKWfgYCFFTVtwwx" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-hbKWfgYCFFTVtwwx").style.height=document.getElementById("mmedia-hbKWfgYCFFTVtwwx").scrollWidth*0.76+"px";
     window.onresize = function(){
-      document.getElementById("mmedia-EVNxPnDcgeyoIFRJ").style.height=document.getElementById("mmedia-EVNxPnDcgeyoIFRJ").scrollWidth*0.76+"px";
+      document.getElementById("mmedia-hbKWfgYCFFTVtwwx").style.height=document.getElementById("mmedia-hbKWfgYCFFTVtwwx").scrollWidth*0.76+"px";
     }; </script> -->]]></content>
       <tags>
         <tag>Trip</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hugo Resume</title>
-    <url>/2025/08/24/Hugo-Resume/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="Oh, these decrypted content cannot be verified, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="ec83c4bdd4104a64d5cee2a78f9f5d7a4a39c942102ede8429ec8e8c1aa45e02">d4167e426e9bdb6c350cad9a7fbf2642b67c958d9926dc7003673ed1288d72b58d8e202795f26f8f2d85cef125a19aa79235ed2335d99981eb0a4364074a3eb48209e536485824e1602fdf7775c34c21e59fd33d90252d676a845450447f9edb1d2bc27db93b70db09b7a7cf11e6a758b4b3d2d9cc526374d440abb34d772598</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-up">
-      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-up">Hey, password is required here.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <tags>
-        <tag>encrypted</tag>
       </tags>
   </entry>
 </search>
