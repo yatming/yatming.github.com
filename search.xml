@@ -163,31 +163,6 @@
       </tags>
   </entry>
   <entry>
-    <title>VPN = VPS + VPaas</title>
-    <url>/2018/08/02/VPN-VPS-VPaas/</url>
-    <content><![CDATA[<p>要不是收到关于&lt;<a href="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/" title="JupyterHub搭建">JupyterHub搭建</a>&gt;的咨询邮件，估计要在这个Blog再写写画画会是一个未来很久远的事情。</p>
-<p>几个月下来，做了不少东西，也进行了很多的尝试，每个点应该都可以post一下，不过发现年纪大了，归纳总结的能力也退化了不少，要好好地写一篇路人也能看懂的文似乎也没有以前那么潇洒，虽然自己还是会常常想起几年前一个多月天天就是PPT的工作，只为写一个让分析师理解的计算模型出来，但未来，不太可能会发生同样的事情了吧。</p>
-<p>言归，正传。今天介绍一下当下一个还算比较稳定的VPN的神器，V2Ray。写这种文章实际上有点亏，一来没什么含金量，二来很有可能在不久的未来完全被淘汰的东西。科科。</p>
-<h3 id="VPS-Google-Cloud-Platform-GCP"><a href="#VPS-Google-Cloud-Platform-GCP" class="headerlink" title="VPS: Google Cloud Platform(GCP)"></a>VPS: Google Cloud Platform(GCP)</h3><p>我个人早前VPN技术还是比较low的，从以前的goagent到后来的ss的鹦鹉学舌，实际上自己对网络都还是一知半解，不够精通。在此说一下，基于ss的搭建没有这么难，甚至可以说非常简单，大多数人其实是被云主机这类事给唬住罢了。其实只需要找一个VPS供应商，例如Vultr，申请一个VS，然后用python安装下ss，配一下config，service start。除去注册以及等待的时间，也就是5分钟的事情。</p>
-<p>作为VPS，GCP的好处在于，似乎速度还算比较稳定，在日服猖狂的当下，可以支持另外建设湾湾的机房，且目前注册有300刀的白嫖。实际上GCP上租一个乞丐版的VPS，一个月大概3刀左右，网络传输另算，如果不是大流量的客户端请求，也不会有大多的费用，所以300刀基本上也可以维持一个比较长的时间，相对还是比较划算的。</p>
-<img src="/2018/08/02/VPN-VPS-VPaas/gcp.png" class="">
-
-<center>GCP VPS Configuration</center>
-
-<span id="more"></span>
-
-<h3 id="VPaas：V2ray"><a href="#VPaas：V2ray" class="headerlink" title="VPaas：V2ray"></a>VPaas：V2ray</h3><p><a href="https://www.v2ray.com/">神器</a>。为什么说是Paas，就是一个底层构建，门槛会高一些，但还算能接受。</p>
-<h3 id="IOS-Client-NA"><a href="#IOS-Client-NA" class="headerlink" title="IOS Client: NA"></a>IOS Client: NA</h3><p>目前貌似只能在美区才能购买Kitsunebi Lite和Shadowroket，比较遗憾。所以说这个还是需要一点运气，在Local买了一个SR，12软妹币，结果上当了，不支持Vmess协议，就此作罢。</p>
-<p>最后不得不说效果，湾湾VPS延迟非常低，60ms左右，再加上Vmess目前还不太容易会被detect的Protocol，体验还是非常不错的。建议ss用户可以尽快入手了。</p>
-]]></content>
-      <categories>
-        <category>Toolkit</category>
-      </categories>
-      <tags>
-        <tag>VPN</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo next客制化</title>
     <url>/2021/03/27/hexo-next%E5%AE%A2%E5%88%B6%E5%8C%96/</url>
     <content><![CDATA[<p>17年一篇，18年两篇，然后现在是第四篇文章，更新速度堪比富坚义博。</p>
@@ -224,6 +199,50 @@
       </tags>
   </entry>
   <entry>
+    <title>VPN = VPS + VPaas</title>
+    <url>/2018/08/02/VPN-VPS-VPaas/</url>
+    <content><![CDATA[<p>要不是收到关于&lt;<a href="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/" title="JupyterHub搭建">JupyterHub搭建</a>&gt;的咨询邮件，估计要在这个Blog再写写画画会是一个未来很久远的事情。</p>
+<p>几个月下来，做了不少东西，也进行了很多的尝试，每个点应该都可以post一下，不过发现年纪大了，归纳总结的能力也退化了不少，要好好地写一篇路人也能看懂的文似乎也没有以前那么潇洒，虽然自己还是会常常想起几年前一个多月天天就是PPT的工作，只为写一个让分析师理解的计算模型出来，但未来，不太可能会发生同样的事情了吧。</p>
+<p>言归，正传。今天介绍一下当下一个还算比较稳定的VPN的神器，V2Ray。写这种文章实际上有点亏，一来没什么含金量，二来很有可能在不久的未来完全被淘汰的东西。科科。</p>
+<h3 id="VPS-Google-Cloud-Platform-GCP"><a href="#VPS-Google-Cloud-Platform-GCP" class="headerlink" title="VPS: Google Cloud Platform(GCP)"></a>VPS: Google Cloud Platform(GCP)</h3><p>我个人早前VPN技术还是比较low的，从以前的goagent到后来的ss的鹦鹉学舌，实际上自己对网络都还是一知半解，不够精通。在此说一下，基于ss的搭建没有这么难，甚至可以说非常简单，大多数人其实是被云主机这类事给唬住罢了。其实只需要找一个VPS供应商，例如Vultr，申请一个VS，然后用python安装下ss，配一下config，service start。除去注册以及等待的时间，也就是5分钟的事情。</p>
+<p>作为VPS，GCP的好处在于，似乎速度还算比较稳定，在日服猖狂的当下，可以支持另外建设湾湾的机房，且目前注册有300刀的白嫖。实际上GCP上租一个乞丐版的VPS，一个月大概3刀左右，网络传输另算，如果不是大流量的客户端请求，也不会有大多的费用，所以300刀基本上也可以维持一个比较长的时间，相对还是比较划算的。</p>
+<img src="/2018/08/02/VPN-VPS-VPaas/gcp.png" class="">
+
+<center>GCP VPS Configuration</center>
+
+<span id="more"></span>
+
+<h3 id="VPaas：V2ray"><a href="#VPaas：V2ray" class="headerlink" title="VPaas：V2ray"></a>VPaas：V2ray</h3><p><a href="https://www.v2ray.com/">神器</a>。为什么说是Paas，就是一个底层构建，门槛会高一些，但还算能接受。</p>
+<h3 id="IOS-Client-NA"><a href="#IOS-Client-NA" class="headerlink" title="IOS Client: NA"></a>IOS Client: NA</h3><p>目前貌似只能在美区才能购买Kitsunebi Lite和Shadowroket，比较遗憾。所以说这个还是需要一点运气，在Local买了一个SR，12软妹币，结果上当了，不支持Vmess协议，就此作罢。</p>
+<p>最后不得不说效果，湾湾VPS延迟非常低，60ms左右，再加上Vmess目前还不太容易会被detect的Protocol，体验还是非常不错的。建议ss用户可以尽快入手了。</p>
+]]></content>
+      <categories>
+        <category>Toolkit</category>
+      </categories>
+      <tags>
+        <tag>VPN</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>USBDriver Reload</title>
+    <url>/2023/09/19/USBDriver/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="Oh, these decrypted content cannot be verified, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="aaa4f91028b10978092729341d5bde7acaef0e7fab9164849f693203d8157e36">10d79030e8222445804370796b90fca1662db977fbc011472d8cbe51030ee77b3a54e2b2fada1983c7a0dcb0f949a423f22dfc1e74b0d1530f81377701a765059c771f94949961c230d801d6baa33ee3f9974eef6072a7ef037ad3a31c1b07da21567d22b2f5e1da74076779511669aa295290a10b34d5eee3b9dab36be4c4a9694685530e3dfd909340db7bfe156646eface5d9d3939f7e45974c2edc5532184635acb1248da2f36667f6365f165d06bd04f1e2b52b5c5c48ec23eee36dae38a57eb2d8c856e4936d75be34ae3907d39c16c1ef20eaf13464c5f5fa477e4475b5ac27472f45b26d8c3319bd6467960ede32e0cf10cc4929dcd904d3ce508ce868d6abd8aca4358c2028f4aaf0427d0a441e31e99affc949398d73d0bc8d96922e8ebdb2389b4de919a1269e22459cc3841d0c777c0f31034d33e6eb8ff88b2c0bd9f0c3244d55cc49ece115e58f14309cf03d8e7a979e0a30c77906089454ab8aedb7cda88d9cd79e121816e70d661b462cc30d745c35a05295666b57305c191f311ad901ecaf7efb73ce9170a8cdeae5b0aa6afeba49463d5320b78e55c6d12f54bcbaed79c2222d3b8c75897c1812109b3ef763db50ff38f0d8ede3910091132261ab477983efc7a846a52980ae6a5f8637e82e64d45752aaba7e6863c438f67f8c98e88fceaaa4c158f7f9751ed5d1e8fae7ef13b2a999e58770f33063c9adbb7d4f0de2228ac2cd80e34e1bbbcae2abb293dbadd9bdfb30b9b7f71565736e6ba591b1cafa97fbc72f87ab3fb95da9c405450dc93a2a9c257a60889c84aa2c7280172b1c9ab8be3b74855beac7cdc609da54cd5a400c026981b0584890ff72d9ed206cec5fcce3b49b3dc03137fc874f7abe86fab700ee89541bc9d0a6cb66adc874e5fe89074adbb6fc77dd7098dca46859e60b1ec35b3d29a97448d982ae5bbb2988f78da6558a21d146ce2998d60884828b44e2239849179db36ca0f9745ed8ff3cea03e6279cc016af520e7320fe439a763b28b1522e8ce637bcdc42b72af1f232d867154e55768b5d5df2443f7c6b3bc26b52234b00fded6ba44cfdf977e5721d45d6909f1145dfa0e709909da77cd548b54e1841ae1dec68694fcffb8b28ebc2b14a14eb5a70f17be08a47b7b47e752306af6033616e25a8b02a45b098e47cb374e19413274c6a71983d2a14d7da44dba3ae56afbf650860f3d6229840e51a351fe1dba73d77e013c8fe4a3dacee4c564301afb29c92a0871f256c303f09ca2e78aef7845b25afccb284fd00d9c21b109bd09694f24c6e32167ac932d0da677892784b893db1da2fb390e130b5212f3a84ea777839dcd6d3e3566e227d8e5065d457ab3fd793fc8394772e95351aa780d9caf2c3e76d6ef49b409d6851ad7770ba0a5125daeaaa516d40632f8b9ca82f6a0030b3d09edd8cb8d491c9bf25cbf9a512c37f5f3c6847bbf9f2f3e508743fff5427295b0499650102b9bc43df752e4a36d79b139dbb30e9963ce4634c35ae370f93af996caca6ae6eeb7c0ddce829d5c33d5bc44ed66cf09d5e81c371ffeb3c7899f6e524e90d57f0b51f3efa2ee0b05b9167d0275815d912de</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-up">
+      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-up">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <tags>
+        <tag>encrypted</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>字体踩坑</title>
     <url>/2021/03/30/%E5%AD%97%E4%BD%93%E8%B8%A9%E5%9D%91/</url>
     <content><![CDATA[<p>觉得还是有必要单独为此记录一篇，这是在近日几天被这个问题折腾之后的决定。<br>先从这里开始说吧。</p>
@@ -232,15 +251,15 @@
 <p>兼容性的问题不仅仅出现在字体方面，在css多个选项上也出现了与Chrome下的不同效果。好在css的问题相对还比较好解决，但如果要实现跨平台跨浏览器的字体统一还是需要走自定义的方式来做，毕竟hexo的external字体配置虽然可以通过三方字体服务器来做，但在目前默认的google库中并没有合适的选择。</p>
 <span id="more"></span>
 
-<h3 id="秀英明朝-OTF"><a href="#秀英明朝-OTF" class="headerlink" title="秀英明朝 OTF"></a>秀英明朝 OTF</h3><p>既然可以自定义，当然也可以有别选择，在各大网站辛苦搜索一番后，终于找到一个更合适的字体。可惜只有OTF格式，不过也可以试一下。<br>接下来就是通过hexo来实现自定义字体的加载，这里就简述下方法。</p>
+<h3 id="秀英明朝-OTF"><a href="#秀英明朝-OTF" class="headerlink" title="秀英明朝 OTF"></a>秀英明朝 OTF</h3><p>既然可以自定义，自由度就大了很多，在各大网站辛苦搜索一番后，终于找到一个更合适的字体。可惜只有OTF格式，不过也可以试一下。<br>接下来就是通过hexo来实现自定义字体的加载，这里就简述下方法。</p>
 <ul>
 <li>首先是在主题目录的source文件夹下创建一个fonts的目录，把下载的字体放入即可</li>
-<li>然后需要添加一个自定义的styl文件，按照网上的教程，大多指向的是主题目录下source/css/_custom/custom.styl这个地址，但从Next某个7版本后，_custom目录被移除，在GH的issue中再看看有没有替代方案 ，还果真有，文件地址可以转移到站点目录下的source/_data/styles.styl</li>
+<li>然后需要添加一个自定义的styl文件，按照网上的教程，大多指向的是主题目录下source/css/_custom/custom.styl这个地址，但从Next某个7版本后，_custom目录发现被移除，现在文件的正确地址应该在站点目录下的source/_data/styles.styl</li>
 <li>继续在文件中定义font-face，这步比较简单，定义下名字，不同的字体格式，format不同的配置，最后修改url指向第一步的安装路径即可</li>
 <li>配置文件指定时，external需要设置为false</li>
 </ul>
-<p>本地测试比较顺利，但部署之后，发现ios端渲染有延迟，pc端基本无法渲染，猜测是字体大小的问题，一看，发现整个字体文件竟然达到29M！🙄，只能继续求索。</p>
-<h3 id="font-spider"><a href="#font-spider" class="headerlink" title="font-spider"></a>font-spider</h3><p>字体压缩可以是想到最直接的解决方案。目前普遍的字体压缩方案就是<a href="https://github.com/aui/font-spider/">font-spider</a>，通过网页实际使用的文字进行按需压缩，对于非body类的网页通用字体，是比较好的解决方案。<br>有几点需要注意：</p>
+<p>本地测试比较顺利，但部署之后，发现ios端渲染有延迟，pc端基本无法渲染，猜测是字体大小的问题，一看发现整个字体文件竟然达到29M！🙄，只能继续求索。</p>
+<h3 id="font-spider"><a href="#font-spider" class="headerlink" title="font-spider"></a>font-spider</h3><p>字体压缩可以是想到最直接的解决方案。目前普遍的字体压缩方案就是<a href="https://github.com/aui/font-spider/">font-spider</a>，通过网页实际使用的文字进行按需压缩，对于非body类的网页通用字体，是比较好的解决方案。<br>但有几点需要注意：</p>
 <ul>
 <li>字体支持类型不包括otf，最好采用静态网站格式</li>
 <li>需要用css进行目标字体定义（本身使用的就是font-face，不需要额外操作）</li>
@@ -272,39 +291,16 @@
       </tags>
   </entry>
   <entry>
-    <title>USBDriver Reload</title>
-    <url>/2023/09/19/USBDriver/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="Oh, these decrypted content cannot be verified, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="aaa4f91028b10978092729341d5bde7acaef0e7fab9164849f693203d8157e36">10d79030e8222445804370796b90fca1662db977fbc011472d8cbe51030ee77b3a54e2b2fada1983c7a0dcb0f949a423f22dfc1e74b0d1530f81377701a765059c771f94949961c230d801d6baa33ee3f9974eef6072a7ef037ad3a31c1b07da21567d22b2f5e1da74076779511669aa295290a10b34d5eee3b9dab36be4c4a9694685530e3dfd909340db7bfe156646eface5d9d3939f7e45974c2edc5532184635acb1248da2f36667f6365f165d06bd04f1e2b52b5c5c48ec23eee36dae38a57eb2d8c856e4936d75be34ae3907d39c16c1ef20eaf13464c5f5fa477e4475b5ac27472f45b26d8c3319bd6467960ede32e0cf10cc4929dcd904d3ce508ce868d6abd8aca4358c2028f4aaf0427d0a441e31e99affc949398d73d0bc8d96922e8ebdb2389b4de919a1269e22459cc3841d0c777c0f31034d33e6eb8ff88b2c0bd9f0c3244d55cc49ece115e58f14309cf03d8e7a979e0a30c77906089454ab8aedb7cda88d9cd79e121816e70d661b462cc30d745c35a05295666b57305c191f311ad901ecaf7efb73ce9170a8cdeae5b0aa6afeba49463d5320b78e55c6d12f54bcbaed79c2222d3b8c75897c1812109b3ef763db50ff38f0d8ede3910091132261ab477983efc7a846a52980ae6a5f8637e82e64d45752aaba7e6863c438f67f8c98e88fceaaa4c158f7f9751ed5d1e8fae7ef13b2a999e58770f33063c9adbb7d4f0de2228ac2cd80e34e1bbbcae2abb293dbadd9bdfb30b9b7f71565736e6ba591b1cafa97fbc72f87ab3fb95da9c405450dc93a2a9c257a60889c84aa2c7280172b1c9ab8be3b74855beac7cdc609da54cd5a400c026981b0584890ff72d9ed206cec5fcce3b49b3dc03137fc874f7abe86fab700ee89541bc9d0a6cb66adc874e5fe89074adbb6fc77dd7098dca46859e60b1ec35b3d29a97448d982ae5bbb2988f78da6558a21d146ce2998d60884828b44e2239849179db36ca0f9745ed8ff3cea03e6279cc016af520e7320fe439a763b28b1522e8ce637bcdc42b72af1f232d867154e55768b5d5df2443f7c6b3bc26b52234b00fded6ba44cfdf977e5721d45d6909f1145dfa0e709909da77cd548b54e1841ae1dec68694fcffb8b28ebc2b14a14eb5a70f17be08a47b7b47e752306af6033616e25a8b02a45b098e47cb374e19413274c6a71983d2a14d7da44dba3ae56afbf650860f3d6229840e51a351fe1dba73d77e013c8fe4a3dacee4c564301afb29c92a0871f256c303f09ca2e78aef7845b25afccb284fd00d9c21b109bd09694f24c6e32167ac932d0da677892784b893db1da2fb390e130b5212f3a84ea777839dcd6d3e3566e227d8e5065d457ab3fd793fc8394772e95351aa780d9caf2c3e76d6ef49b409d6851ad7770ba0a5125daeaaa516d40632f8b9ca82f6a0030b3d09edd8cb8d491c9bf25cbf9a512c37f5f3c6847bbf9f2f3e508743fff5427295b0499650102b9bc43df752e4a36d79b139dbb30e9963ce4634c35ae370f93af996caca6ae6eeb7c0ddce829d5c33d5bc44ed66cf09d5e81c371ffeb3c7899f6e524e90d57f0b51f3efa2ee0b05b9167d0275815d912de</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-up">
-      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-up">Hey, password is required here.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <tags>
-        <tag>encrypted</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>九州の行</title>
     <url>/2023/10/17/%E4%B9%9D%E5%B7%9E%E3%81%AE%E8%A1%8C/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="Oh, these decrypted content cannot be verified, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="9174812a04221bc9f926d962b4e9bca0eecbfbcc186f0ceb0f21901e3c5d8d2a">10d79030e8222445804370796b90fca1be70606b674dc58cb7536aaf8be8c46e20b6d9ec5e2997d86fcceec4d1565e92ba86f2d76c0c2baef79b36edb6e7767957440d33b12fdbb43415e893a7631a20a9665388108c8642371d4f52c0e4d01c4ac19a3c08809f359dacc4e68af8b521b873bd5eb47454f29580e0a66678d4100da575bf1594beff42fedaf3d7872fb6a8f922c6e361eef5fa9dc336d91a3e52bfb3f3dca3524ac3345ecc9192fc9c8b060f91f34e9c28900ba32bd7cb0a794612c234e84d71c047145aa688e2755a16e0c43a09e995dd51a2c0c20e563abd3485a97150745c593f529b5a5bed209331f57719ffe98c7e5d960de71178cd201c0dbb69522b39e6e7ef048f40fb2612d32a6eef8bdc44608f8613bda7b5247d318eab2385d9893e93ecb5e651f59a092b4ee806012cfdc1de0b1c8866eb0d4d58ce7f8b39f7caabaff8cf2b4e4ca2ddf6fe42238893122816c020d8534dc12856ccf0938c946a9a996dde731528e95f7054c9e151dc0553472dc22cb61aee573471eb91c519814892a17a2f929e0d7b2bbcab511de7bac3c57de08e623ce363a9993a6af25b77da79bb4c196d60fa64d75bb68b2a3b8b4cd8d1504c30926132fd29e5c01926362568e2971a0bd7531f5bddc0aeb9c5747abb43e81d1623ce4b32ecefc48d1315a8547ff63ff0f71b9259bf56d4a9b7f4c5e9eddb7995d4513b2ea8c6195f092bde8fa0ff921e29984919131484a509070179839bd76a7b53516a0685a55fc9961dbb2a9372e1a8fba884719b559b4214990309d7247992d23d04d1b6869d58ea92ec6d22211374fe75ee257a47434854fd4c92701151409ccba37ec4f38c51ccaaf1adb42de6923730faf4d1ec00a42d2c95fe0c32b66f9a9df4f9db5e5800268c4daac8f20befe01549563a6e0948173cf769e0427708934500e85231b1f4e7296faf43e71731facda8b32f88f6d9ce1421a3cb89197fafcb41fbf0e604bc7f61a193651c3a30c29ac98f05b859d734c2b090becd6f83a11924ae39410c47ed6b975f186e256845da2fcbd356f35f41e01359d410a5a54cbdc5dffb50900822c3efa6613a909365ad8fedcec02bf6ae6ef92916bf1345a6f20e13500ffbb11e8a46f7abe90a7e2105363ec5bfbab28a8303999cd044bf4136c05d2efda7cdb1d4885126243cadb32aa4517c2485a47156a830f9ddb17de48f439949be1372b1bfb0339770dde099a07eb0ae99783a8a40703a8dbab1ddaa55b0828b7a41ed9c5a09a2636d584982aac1f3cafbd64f215d70504db397ece62a369dc663acf93c0a0accb2b6f078c2be30deb7b80b8f35e9d0cab47ca723c0783e1a7b67d63a6574469f4078b31a47c2c7291cc46918a6826f8dfff34e8f6f5f93d9e889710a055b51ae8aa3ea96c4eed04ef1b594ca89c18e3c84bd927ac368f2a5b3677b47b7951ab89d01ec113372716581d1c3e53aa8a9f4c74444c08d9d79f993b3d4af851bd93a1c712b4c9210a092abbbb5070df01625fd7d039c9a7dffbeeb1d65e34caff5050031bbda172e66428491437df696fe4651d169a85b72dac26681bda18d78895b9f66d5eb4526241956ffef001ea15f7183e2bce7304a847164ccef6877953d0a4e6d21a258708eb1e31fd3a8f9e0aec052de9e13224cae2da97a4b8ff3ed5a1c626bfd4e9d5cea617fdc22efa0f69c9a24de947714e660a701563692f31fe4c209133ca6ddc45868c48591dc9a0eec70699f6a825c4a98ff400e3297b29683161ce8ce3d69a98ecc7b62a074ed429b75827ea35d7a108d89acfb9f6b760e4b18a8a2c6745e2757e358c6e3a8a95c3651151448904ae5fff4acca4b831212b64e8b366cf86ffd0f33a7bc5e75f7004fd91bc8c387fed5ba</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-up">
-      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-up">Hey, password is required here.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    <content><![CDATA[<!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-sdBAwwphjMngCFiC"></div><script> var sdBAwwphjMngCFiC_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); sdBAwwphjMngCFiC_options.container = document.getElementById("mmedia-sdBAwwphjMngCFiC"); const dp_sdBAwwphjMngCFiC = new DPlayer(sdBAwwphjMngCFiC_options); </script> -->
+
+<video id="mmedia-sxGKpiNtrBrXoIaB" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
+
+<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-AMpcRGXtuVQxSJPx" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-AMpcRGXtuVQxSJPx").style.height=document.getElementById("mmedia-AMpcRGXtuVQxSJPx").scrollWidth*0.76+"px";
+    window.onresize = function(){
+      document.getElementById("mmedia-AMpcRGXtuVQxSJPx").style.height=document.getElementById("mmedia-AMpcRGXtuVQxSJPx").scrollWidth*0.76+"px";
+    }; </script> -->]]></content>
       <tags>
         <tag>Trip</tag>
       </tags>
