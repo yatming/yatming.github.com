@@ -203,7 +203,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">ポスト</span>
         </a>
       </div>
@@ -294,7 +294,7 @@
     全 8 タグ
   </div>
   <div class="tag-cloud-tags">
-    <a href="/tags/ML/" style="font-size: 12px;" class="tag-cloud-0">ML</a> <a href="/tags/NP-hard/" style="font-size: 12px;" class="tag-cloud-0">NP-hard</a> <a href="/tags/Optimization/" style="font-size: 12px;" class="tag-cloud-0">Optimization</a> <a href="/tags/Python/" style="font-size: 12px;" class="tag-cloud-0">Python</a> <a href="/tags/Trip/" style="font-size: 12px;" class="tag-cloud-0">Trip</a> <a href="/tags/VPN/" style="font-size: 12px;" class="tag-cloud-0">VPN</a> <a href="/tags/encrypted/" style="font-size: 12px;" class="tag-cloud-0">encrypted</a> <a href="/tags/hexo/" style="font-size: 12px;" class="tag-cloud-10">hexo</a>
+    <a href="/tags/ML/" style="font-size: 12px;" class="tag-cloud-0">ML</a> <a href="/tags/NP-hard/" style="font-size: 12px;" class="tag-cloud-0">NP-hard</a> <a href="/tags/Optimization/" style="font-size: 12px;" class="tag-cloud-0">Optimization</a> <a href="/tags/Python/" style="font-size: 12px;" class="tag-cloud-0">Python</a> <a href="/tags/Trip/" style="font-size: 12px;" class="tag-cloud-0">Trip</a> <a href="/tags/VPN/" style="font-size: 12px;" class="tag-cloud-0">VPN</a> <a href="/tags/encrypted/" style="font-size: 12px;" class="tag-cloud-10">encrypted</a> <a href="/tags/hexo/" style="font-size: 12px;" class="tag-cloud-10">hexo</a>
   </div>
 </div>
 
@@ -396,6 +396,25 @@ document.addEventListener('pjax:success', () => {
 
 
 
+<script data-pjax>
+if (document.querySelectorAll('.pdf-container').length) {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/pdfobject@2.2.4/pdfobject.min.js', () => {
+    document.querySelectorAll('.pdf-container').forEach(element => {
+      PDFObject.embed(element.dataset.target, element, {
+        pdfOpenParams: {
+          navpanes : 0,
+          toolbar  : 0,
+          statusbar: 0,
+          pagemode : 'thumbs',
+          view     : 'FitH'
+        },
+        PDFJS_URL: '/lib/pdf/web/viewer.html',
+        height   : element.dataset.height
+      });
+    });
+  }, window.PDFObject);
+}
+</script>
 
 
 
