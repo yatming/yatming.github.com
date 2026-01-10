@@ -1492,12 +1492,13 @@ pre code {
   font-size: 0.8125em;
 }
 .links-of-blogroll-title {
-  font-size: 0.875em;
+  font-size: 1em;
   font-weight: 600;
   margin-top: 0;
 }
 .links-of-blogroll-list {
   list-style: none;
+  font-size: 0.875em;
   margin: 0;
   padding: 0;
 }
