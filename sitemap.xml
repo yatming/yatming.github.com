@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yatming.net/2026/01/11/%E7%A5%9E%E7%AC%94/</loc>
+    
+    <lastmod>2026-01-12</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yatming.net/2025/12/31/Blog%E4%B9%8B%E6%AE%87/</loc>
     
     <lastmod>2026-01-02</lastmod>
@@ -95,7 +102,7 @@
 
   <url>
     <loc>http://yatming.net/</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -103,63 +110,63 @@
   
   <url>
     <loc>http://yatming.net/tags/Python/</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yatming.net/tags/NP-hard/</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yatming.net/tags/Optimization/</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yatming.net/tags/ML/</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yatming.net/tags/VPN/</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yatming.net/tags/hexo/</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yatming.net/tags/encrypted/</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yatming.net/tags/Trip/</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yatming.net/tags/Impression/</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -168,14 +175,14 @@
   
   <url>
     <loc>http://yatming.net/categories/Toolkit/</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yatming.net/categories/Algorithm/</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
