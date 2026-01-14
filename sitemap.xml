@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yatming.net/about/index.html</loc>
+    
+    <lastmod>2026-01-14</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yatming.net/2018/01/03/Machine-Scheduling-Machine-Learning-in-Engineering/</loc>
     
     <lastmod>2026-01-14</lastmod>
@@ -31,13 +38,6 @@
   
   <url>
     <loc>http://yatming.net/2021/03/30/%E5%AD%97%E4%BD%93%E8%B8%A9%E5%9D%91/</loc>
-    
-    <lastmod>2025-08-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yatming.net/about/index.html</loc>
     
     <lastmod>2025-08-24</lastmod>
     
@@ -109,6 +109,13 @@
 
   
   <url>
+    <loc>http://yatming.net/tags/Python/</loc>
+    <lastmod>2026-01-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yatming.net/tags/NP-hard/</loc>
     <lastmod>2026-01-14</lastmod>
     <changefreq>daily</changefreq>
@@ -144,13 +151,6 @@
   </url>
   
   <url>
-    <loc>http://yatming.net/tags/Python/</loc>
-    <lastmod>2026-01-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://yatming.net/tags/encrypted/</loc>
     <lastmod>2026-01-14</lastmod>
     <changefreq>daily</changefreq>
@@ -174,14 +174,14 @@
 
   
   <url>
-    <loc>http://yatming.net/categories/Algorithm/</loc>
+    <loc>http://yatming.net/categories/Toolkit/</loc>
     <lastmod>2026-01-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yatming.net/categories/Toolkit/</loc>
+    <loc>http://yatming.net/categories/Algorithm/</loc>
     <lastmod>2026-01-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
