@@ -163,6 +163,31 @@
       </tags>
   </entry>
   <entry>
+    <title>VPN = VPS + VPaas</title>
+    <url>/2018/08/02/VPN-VPS-VPaas/</url>
+    <content><![CDATA[<p>要不是收到关于&lt;<a href="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/" title="JupyterHub搭建">JupyterHub搭建</a>&gt;的咨询邮件，估计要在这个Blog再写写画画会是一个未来很久远的事情。</p>
+<p>几个月下来，做了不少东西，也进行了很多的尝试，每个点应该都可以post一下，不过发现年纪大了，归纳总结的能力也退化了不少，要好好地写一篇路人也能看懂的文似乎也没有以前那么潇洒，虽然自己还是会常常想起几年前一个多月天天就是PPT的工作，只为写一个让分析师理解的计算模型出来，但未来，不太可能会发生同样的事情了吧。</p>
+<p>言归，正传。今天介绍一下当下一个还算比较稳定的VPN的神器，V2Ray。写这种文章实际上有点亏，一来没什么含金量，二来很有可能成为在不久的未来完全被淘汰的东西。科科。</p>
+<h3 id="VPS-Google-Cloud-Platform-GCP"><a href="#VPS-Google-Cloud-Platform-GCP" class="headerlink" title="VPS: Google Cloud Platform(GCP)"></a>VPS: Google Cloud Platform(GCP)</h3><p>我个人早前VPN技术还是比较low的，从以前的goagent到后来的ss的鹦鹉学舌，实际上自己对网络都还是一知半解，不够精通。在此说一下，基于ss的搭建没有这么难，甚至可以说非常简单，大多数人其实是被云主机这类事给唬住罢了。其实只需要找一个VPS供应商，例如Vultr，申请一个VS，然后用python安装下ss，配一下config，service start。除去注册以及等待的时间，也就是5分钟的事情。</p>
+<p>作为VPS，GCP的好处在于，似乎速度还算比较稳定，在日服猖狂的当下，可以支持另外建设湾湾的机房，且目前注册有300刀的白嫖。实际上GCP上租一个乞丐版的VPS，一个月大概3刀左右，网络传输另算，如果不是大流量的客户端请求，也不会有大多的费用，所以300刀基本上也可以维持一个比较长的时间，相对还是比较划算的。</p>
+<img src="/2018/08/02/VPN-VPS-VPaas/gcp.png" class="">
+
+<center>GCP VPS Configuration</center>
+
+<span id="more"></span>
+
+<h3 id="VPaas：V2ray"><a href="#VPaas：V2ray" class="headerlink" title="VPaas：V2ray"></a>VPaas：V2ray</h3><p><a href="https://www.v2ray.com/">神器</a>。为什么说是Paas，就是一个底层构建，门槛会高一些，但还算能接受。</p>
+<h3 id="IOS-Client-NA"><a href="#IOS-Client-NA" class="headerlink" title="IOS Client: NA"></a>IOS Client: NA</h3><p>目前貌似只能在美区才能购买Kitsunebi Lite和Shadowroket，比较遗憾。所以说这个还是需要一点运气，在Local买了一个SR，12软妹币，结果上当了，不支持Vmess协议，就此作罢。</p>
+<p>最后不得不说效果，湾湾VPS延迟非常低，60ms左右，再加上Vmess目前还不太容易会被detect的Protocol，体验还是非常不错的。建议ss用户可以尽快入手了。</p>
+]]></content>
+      <categories>
+        <category>Toolkit</category>
+      </categories>
+      <tags>
+        <tag>VPN</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo next客制化</title>
     <url>/2021/03/27/hexo-next%E5%AE%A2%E5%88%B6%E5%8C%96/</url>
     <content><![CDATA[<p>17年一篇，18年两篇，然后现在是第四篇文章，更新速度堪比富坚义博。</p>
@@ -196,31 +221,6 @@
       </categories>
       <tags>
         <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>VPN = VPS + VPaas</title>
-    <url>/2018/08/02/VPN-VPS-VPaas/</url>
-    <content><![CDATA[<p>要不是收到关于&lt;<a href="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/" title="JupyterHub搭建">JupyterHub搭建</a>&gt;的咨询邮件，估计要在这个Blog再写写画画会是一个未来很久远的事情。</p>
-<p>几个月下来，做了不少东西，也进行了很多的尝试，每个点应该都可以post一下，不过发现年纪大了，归纳总结的能力也退化了不少，要好好地写一篇路人也能看懂的文似乎也没有以前那么潇洒，虽然自己还是会常常想起几年前一个多月天天就是PPT的工作，只为写一个让分析师理解的计算模型出来，但未来，不太可能会发生同样的事情了吧。</p>
-<p>言归，正传。今天介绍一下当下一个还算比较稳定的VPN的神器，V2Ray。写这种文章实际上有点亏，一来没什么含金量，二来很有可能成为在不久的未来完全被淘汰的东西。科科。</p>
-<h3 id="VPS-Google-Cloud-Platform-GCP"><a href="#VPS-Google-Cloud-Platform-GCP" class="headerlink" title="VPS: Google Cloud Platform(GCP)"></a>VPS: Google Cloud Platform(GCP)</h3><p>我个人早前VPN技术还是比较low的，从以前的goagent到后来的ss的鹦鹉学舌，实际上自己对网络都还是一知半解，不够精通。在此说一下，基于ss的搭建没有这么难，甚至可以说非常简单，大多数人其实是被云主机这类事给唬住罢了。其实只需要找一个VPS供应商，例如Vultr，申请一个VS，然后用python安装下ss，配一下config，service start。除去注册以及等待的时间，也就是5分钟的事情。</p>
-<p>作为VPS，GCP的好处在于，似乎速度还算比较稳定，在日服猖狂的当下，可以支持另外建设湾湾的机房，且目前注册有300刀的白嫖。实际上GCP上租一个乞丐版的VPS，一个月大概3刀左右，网络传输另算，如果不是大流量的客户端请求，也不会有大多的费用，所以300刀基本上也可以维持一个比较长的时间，相对还是比较划算的。</p>
-<img src="/2018/08/02/VPN-VPS-VPaas/gcp.png" class="">
-
-<center>GCP VPS Configuration</center>
-
-<span id="more"></span>
-
-<h3 id="VPaas：V2ray"><a href="#VPaas：V2ray" class="headerlink" title="VPaas：V2ray"></a>VPaas：V2ray</h3><p><a href="https://www.v2ray.com/">神器</a>。为什么说是Paas，就是一个底层构建，门槛会高一些，但还算能接受。</p>
-<h3 id="IOS-Client-NA"><a href="#IOS-Client-NA" class="headerlink" title="IOS Client: NA"></a>IOS Client: NA</h3><p>目前貌似只能在美区才能购买Kitsunebi Lite和Shadowroket，比较遗憾。所以说这个还是需要一点运气，在Local买了一个SR，12软妹币，结果上当了，不支持Vmess协议，就此作罢。</p>
-<p>最后不得不说效果，湾湾VPS延迟非常低，60ms左右，再加上Vmess目前还不太容易会被detect的Protocol，体验还是非常不错的。建议ss用户可以尽快入手了。</p>
-]]></content>
-      <categories>
-        <category>Toolkit</category>
-      </categories>
-      <tags>
-        <tag>VPN</tag>
       </tags>
   </entry>
   <entry>
@@ -293,30 +293,17 @@
   <entry>
     <title>九州の行</title>
     <url>/2023/10/17/%E4%B9%9D%E5%B7%9E%E3%81%AE%E8%A1%8C/</url>
-    <content><![CDATA[<!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-sBkzPnezdnOeQfRs"></div><script> var sBkzPnezdnOeQfRs_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); sBkzPnezdnOeQfRs_options.container = document.getElementById("mmedia-sBkzPnezdnOeQfRs"); const dp_sBkzPnezdnOeQfRs = new DPlayer(sBkzPnezdnOeQfRs_options); </script> -->
+    <content><![CDATA[<!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-axoUiQqBdEZAOyGN"></div><script> var axoUiQqBdEZAOyGN_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); axoUiQqBdEZAOyGN_options.container = document.getElementById("mmedia-axoUiQqBdEZAOyGN"); const dp_axoUiQqBdEZAOyGN = new DPlayer(axoUiQqBdEZAOyGN_options); </script> -->
 
-<video id="mmedia-SLnNqVBvmhFOtNCs" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
+<video id="mmedia-ayqJoSitBfKCWyJP" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
 
-<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-HzGQyTFFsOmIhbRY" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-HzGQyTFFsOmIhbRY").style.height=document.getElementById("mmedia-HzGQyTFFsOmIhbRY").scrollWidth*0.76+"px";
+<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-eTQkoyxwPPgbFMGF" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-eTQkoyxwPPgbFMGF").style.height=document.getElementById("mmedia-eTQkoyxwPPgbFMGF").scrollWidth*0.76+"px";
     window.onresize = function(){
-      document.getElementById("mmedia-HzGQyTFFsOmIhbRY").style.height=document.getElementById("mmedia-HzGQyTFFsOmIhbRY").scrollWidth*0.76+"px";
+      document.getElementById("mmedia-eTQkoyxwPPgbFMGF").style.height=document.getElementById("mmedia-eTQkoyxwPPgbFMGF").scrollWidth*0.76+"px";
     }; </script> -->]]></content>
       <tags>
         <tag>Trip</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>神笔</title>
-    <url>/2026/01/11/%E7%A5%9E%E7%AC%94/</url>
-    <content><![CDATA[<p>说实话，这曾是一个让我嗤之以鼻的词。</p>
-<p>过往公司曾有个产品也叫这个名字。讽刺的是，别的没看见，反倒常常招来业务方的怨声载道这点确实挺“神”的。<br>“神”这个字还是要慎用，给自己留点余地，看看人家 Nano 和 GPT，真正强大的产品，从不需要形容词来替它正名。 </p>
-<h3 id="Vibe-Coding"><a href="#Vibe-Coding" class="headerlink" title="Vibe Coding"></a>Vibe Coding</h3><p>而当下的你我，或许正在见证这个时代“神笔”的降临。</p>
-<p>半年前、一年前，鲜有人知道它是什么，甚至时至今日关于它的舆论态势也未真正发酵。但凡尝试过的人，或许能慢慢感受到下一代工业革命近在咫尺了。</p>
-<p>或许有人会问，如果未来人人都手握一支神笔，那么神笔还是神笔吗？每一个创新，何尝不是那个时代的神笔？但它们终究会是时代的产物，日常会是它们最终的归宿。那么这支新的神笔，难道不会沿着历史的轨迹，最终归于平凡？</p>
-<p>确实，很有可能。</p>
-<p>但我们记住的，往往或许不是那支笔，而是初见那个时代的弄潮儿时，涌起心底涟漪的那份触动吧。</p>
-<p>昙花虽一现，刹那胜经年。</p>
-]]></content>
   </entry>
   <entry>
     <title>Blog之殇</title>
@@ -333,6 +320,19 @@
       </tags>
   </entry>
   <entry>
+    <title>神笔</title>
+    <url>/2026/01/11/%E7%A5%9E%E7%AC%94/</url>
+    <content><![CDATA[<p>说实话，这曾是一个让我嗤之以鼻的词。</p>
+<p>过往公司曾有个产品也叫这个名字。讽刺的是，别的没看见，反倒常常招来业务方的怨声载道这点确实挺“神”的。<br>“神”这个字还是要慎用，给自己留点余地，看看人家 Nano 和 GPT，真正强大的产品，从不需要形容词来替它正名。 </p>
+<h3 id="Vibe-Coding"><a href="#Vibe-Coding" class="headerlink" title="Vibe Coding"></a>Vibe Coding</h3><p>而当下的你我，或许正在见证这个时代“神笔”的降临。</p>
+<p>半年前、一年前，鲜有人知道它是什么，甚至时至今日关于它的舆论态势也未真正发酵。但凡尝试过的人，或许能慢慢感受到下一代工业革命近在咫尺了。</p>
+<p>或许有人会问，如果未来人人都手握一支神笔，那么神笔还是神笔吗？每一个创新，何尝不是那个时代的神笔？但它们终究会是时代的产物，日常会是它们最终的归宿。那么这支新的神笔，难道不会沿着历史的轨迹，最终归于平凡？</p>
+<p>确实，很有可能。</p>
+<p>但我们记住的，往往或许不是那支笔，而是初见那个时代的弄潮儿时，涌起心底涟漪的那份触动吧。</p>
+<p>昙花虽一现，刹那胜经年。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>归纳与第一性原理</title>
     <url>/2026/01/15/%E5%BD%92%E7%BA%B3%E4%B8%8E%E7%AC%AC%E4%B8%80%E6%80%A7%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[<p>我常在自省，为何自己会沦为一个“年更博主”。起初，我总以“Lazy driven”为借口聊以自慰；后来才惊觉，根源或许在于我骨子里对“好记性不如烂笔头”这一传统信条的消极抵触。</p>
@@ -343,9 +343,10 @@
 <p>早期的统计学，无论是宏观和微观，虽然结构复杂，但以当前的视角来看至少都是结构化的，我们用一堆结构化的模型来描述数据表现的因果，再用数据来估计参数。所有工作的导向，不是预测，而是解释。这也是统计和机器学习在底层数据观上的根本鸿沟。</p>
 <p>然后随着大数据时代的来临，很多模型和方法慢慢转向弱结构化，很多应用方的初衷也慢慢发生了改变，一旦预测比解释更能带来现金流，那么解释的必要性就大打折扣，演绎法的商业局限性就愈发凸显。</p>
 <p>再是十年前机器学习的兴起，工业界就更鲜有人再关心置信度，P值，显著性这些概念，至于什么是因果律，为什么还需要对此保持执念，成了很多从业者的心声。说个笑话，当年连其实不怎么需要知道的随机梯度下降的这套理论，可能都要比知道ANOVA来得多不少。</p>
-<p>LLM——blackbox，动则billion以上的超参，如同众神归位，带领人类来到新世界，或者说这是非理性归纳法的狂欢。我们根本不需要再做任何的segmentation，也不需要做任何的解释，就算模型无法结构化地表达出来，又如何？在这个时代，演绎法在工业界的传统价值正在被快速解构。这归根结底是一场“去结构化”的猛烈冲击：我们正逐步放弃对因果关系的底层执念，转而全面拥抱能够改造现实、加速适应世界的预测力。</p>
-<p>到这里，讽刺的闭环：AI世界的goat推崇的思考方式，难道却是整个发展历程下的“思辨糟粕？</p>
-<p>我不禁好奇，这些由归纳法孕育出的智能体，在未来迈向自主进化的征途中，究竟会以何种逻辑去践行属于它们的“进化”？</p>
+<p>LLM——blackbox，动则billion以上的超参，如同众神归位，带领人类来到新世界，或者说这是非理性归纳法的狂欢。我们根本不需要再做任何的segmentation，也不需要做任何的解释，就算模型无法结构化地表达出来，又如何？在这个时代，演绎法在工业界的价值正在被快速解构。这归根结底是一场“去结构化”的猛烈冲击：我们正逐步放弃对因果关系的底层执念，转而全面拥抱能够改造现实、加速适应的下一代生产力。</p>
+<p>所以回到第一性原理，AI世界的goat推崇的思考方式，难道却是整个发展历程下的“思辨糟粕”？</p>
+<p>我不禁好奇，这些由归纳法孕育出的智能体，在未来迈向自主进化的征途中，究竟会以何种逻辑去践行属于它们自己的“进化”？</p>
+<p>但无论如何，请尽情享受这个时代的变革吧，其余的，就交给时间去回答。</p>
 ]]></content>
   </entry>
 </search>
