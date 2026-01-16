@@ -1,86 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>JupyterHub搭建</title>
-    <url>/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<h3 id="Jupyter是什么"><a href="#Jupyter是什么" class="headerlink" title="Jupyter是什么"></a>Jupyter是什么</h3><p>Jupyter是一款基于python的web notebook服务，目前有大多python数据挖掘与机器学习爱好者使用这款服务，其特性其实与Ipytohn Notebook差不多，准确说Ipython Notebook是一款提供增强型交互的功能的shell，而Jupyter除了Ipython的功能，还加入了普通编辑器的通用功能，是一款带代码交互的动态文档web编辑器。</p>
-<h3 id="Jupyterhub"><a href="#Jupyterhub" class="headerlink" title="Jupyterhub"></a>Jupyterhub</h3><p>由于Jupyter只支持单用户的使用场景，作为一个可交互的web服务，只支持单用户模式实在让人难以理解。估计开发者也觉得这个问题太过鸡肋，于是<a href="https://github.com/jupyterhub/jupyterhub">Jupyterhub</a>因有而生。</p>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><ol>
-<li><p>安装依赖包：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yum install sqlite-devel npm nodejs-legacy zlib-devel openssl-devel</span><br><span class="line">$ npm install -g configurable-http-proxy</span><br></pre></td></tr></table></figure></li>
-<li><p>安装py3：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ wget https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz</span><br><span class="line">$ tar zxvf Python-3.6.1.tgz</span><br><span class="line">$ ./configure --prefix=/usr/<span class="built_in">local</span>/python36 --enable-loadable-sqlite-extensions</span><br><span class="line">$ make -j 20 &amp;&amp; make altinstall</span><br></pre></td></tr></table></figure></li>
-<li><p>Reset环境变量（可选，如果有py2环境需要操作）：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">export</span> PYTHONPATH=<span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>pip安装Jupyterhub：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ pip3.6 install jupyterhub notebook -i https://pypi.douban.com/simple/</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h4 id="启动Jupyterhub"><a href="#启动Jupyterhub" class="headerlink" title="启动Jupyterhub"></a>启动Jupyterhub</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">export</span> PYTHONPATH=<span class="string">&#x27;&#x27;</span> &amp;&amp; ./jupyterhub --ip 0.0.0.0 --port 8888</span><br></pre></td></tr></table></figure>
+    <title>VPN = VPS + VPaas</title>
+    <url>/2018/08/02/VPN-VPS-VPaas/</url>
+    <content><![CDATA[<p>要不是收到关于&lt;<a href="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/" title="JupyterHub搭建">JupyterHub搭建</a>&gt;的咨询邮件，估计要在这个Blog再写写画画会是一个未来很久远的事情。</p>
+<p>几个月下来，做了不少东西，也进行了很多的尝试，每个点应该都可以post一下，不过发现年纪大了，归纳总结的能力也退化了不少，要好好地写一篇路人也能看懂的文似乎也没有以前那么潇洒，虽然自己还是会常常想起几年前一个多月天天就是PPT的工作，只为写一个让分析师理解的计算模型出来，但未来，不太可能会发生同样的事情了吧。</p>
+<p>言归，正传。今天介绍一下当下一个还算比较稳定的VPN的神器，V2Ray。写这种文章实际上有点亏，一来没什么含金量，二来很有可能成为在不久的未来完全被淘汰的东西。科科。</p>
+<h3 id="VPS-Google-Cloud-Platform-GCP"><a href="#VPS-Google-Cloud-Platform-GCP" class="headerlink" title="VPS: Google Cloud Platform(GCP)"></a>VPS: Google Cloud Platform(GCP)</h3><p>我个人早前VPN技术还是比较low的，从以前的goagent到后来的ss的鹦鹉学舌，实际上自己对网络都还是一知半解，不够精通。在此说一下，基于ss的搭建没有这么难，甚至可以说非常简单，大多数人其实是被云主机这类事给唬住罢了。其实只需要找一个VPS供应商，例如Vultr，申请一个VS，然后用python安装下ss，配一下config，service start。除去注册以及等待的时间，也就是5分钟的事情。</p>
+<p>作为VPS，GCP的好处在于，似乎速度还算比较稳定，在日服猖狂的当下，可以支持另外建设湾湾的机房，且目前注册有300刀的白嫖。实际上GCP上租一个乞丐版的VPS，一个月大概3刀左右，网络传输另算，如果不是大流量的客户端请求，也不会有大多的费用，所以300刀基本上也可以维持一个比较长的时间，相对还是比较划算的。</p>
+<img src="/2018/08/02/VPN-VPS-VPaas/gcp.png" class="">
 
-<img src="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/hub-login.png" class="" title="[hub-login]">
+<center>GCP VPS Configuration</center>
 
 <span id="more"></span>
 
-<h4 id="生成config文件"><a href="#生成config文件" class="headerlink" title="生成config文件"></a>生成config文件</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ./jupyterhub --generate-config</span><br></pre></td></tr></table></figure>
-
-<p>理论上到这步为止，jupyterhub安装完毕，可以顺利启动。</p>
-<h3 id="Kernel"><a href="#Kernel" class="headerlink" title="Kernel"></a>Kernel</h3><p>Kernel可以理解为每个notebook运行的后台环境，Jupyterhub以及Jupyter虽然是基于python的application，但这并不意味着其notebook的功能只能为python环境使用，事实上Jupyter的强大就体现在此处，其可以支持任意环境的notebook，目前主流的数据科学环境基本都支持，R， SAS，SPARK等。</p>
-<h4 id="Anaconda-Kernel安装"><a href="#Anaconda-Kernel安装" class="headerlink" title="Anaconda Kernel安装"></a>Anaconda Kernel安装</h4><p>conda环境安装特别简单，首先确保anaconda环境已经集成了Ipython，默认是已经集成了。其次在用户级别下执行一下命令即可：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="variable">$your_anaconda_install_path</span>/bin/ipython kernel install --user --name anaconda</span><br></pre></td></tr></table></figure>
-
-<p>执行完成后，便会在jupyterhub中看到名为anaconda的kernel，还是再<u>重申</u>下，<strong>这个命令需要在每个用户级别下local执行</strong>。new后便可使用anaconda环境中的所有python lib。</p>
-<h4 id="R-Kernel安装"><a href="#R-Kernel安装" class="headerlink" title="R Kernel安装"></a>R Kernel安装</h4><p>安装R Kernel之前需要安装r-irkernel，这步我们使用anaconda来安装：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ conda install -c r r-irkernel</span><br></pre></td></tr></table></figure>
-
-<p>安装完毕之后，运行R命令：</p>
-<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">IRkernel::installspec()</span><br></pre></td></tr></table></figure>
-
-<p>执行完成后，便可在jupyterhub中看到名为R的kernel。</p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h4 id="管理"><a href="#管理" class="headerlink" title="管理"></a>管理</h4><p>作为多用户web应用，势必需要管理员的角色，管理员的配置在jupyterhub生成的config文件里面进行修改：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ vim jupyterhub_config.py</span><br></pre></td></tr></table></figure>
-
-<p>修改如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c.Authenticator.admin_users = (<span class="string">&#x27;zhangsan&#x27;</span>,<span class="string">&#x27;lisi&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>然后重新启动jupyter，用以上配置的用户登录，即可使用管理功能。</p>
-<img src="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/hub-admin.png" class="" title="[hub-admin]">
-
-<h4 id="用户认证"><a href="#用户认证" class="headerlink" title="用户认证"></a>用户认证</h4><p>Jupyterhub支持多种认证方式：PAM和LDAP，默认使用的是PAM，即与系统用户层使用同一认证管理，用户名与密码与系统配置的相同。</p>
-<p>由于比较懒，所以这里采用无密码登陆认证方式。</p>
-<p>首先用py3安装一个<a href="https://github.com/yuvipanda/jupyterhub-dummy-authenticator">插件</a>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ./pip3.6 install jupyterhub-dummyauthenticator -i https://pypi.douban.com/simple/</span><br></pre></td></tr></table></figure>
-
-<p>然后，在配置文件中修改此配置：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c.JupyterHub.authenticator_class = <span class="string">&#x27;dummyauthenticator.DummyAuthenticator&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>具体细节可以参考这个<a href="https://github.com/jupyterhub/jupyterhub/issues/1102">问题</a>。</p>
-<p>另外，jupyterhub默认是不允许root组用户进行访问和使用，如果需要此类配置，需要修改源码 site-packages/jupyterhub/spawner.py，找到如下代码块，添加如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_args</span>(<span class="params">self</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the arguments to be passed after self.cmd</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Doesn&#x27;t expect shell expansion to happen.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    args = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> self.ip:</span><br><span class="line">        args.append(<span class="string">&#x27;--ip=&quot;%s&quot;&#x27;</span> % self.ip)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> self.port:</span><br><span class="line">        args.append(<span class="string">&#x27;--port=%i&#x27;</span> % self.port)</span><br><span class="line">    <span class="keyword">elif</span> self.server.port:</span><br><span class="line">        self.log.warning(<span class="string">&quot;Setting port from user.server is deprecated as of JupyterHub 0.7.&quot;</span>)</span><br><span class="line">        args.append(<span class="string">&#x27;--port=%i&#x27;</span> % self.server.port)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> self.notebook_dir:</span><br><span class="line">        notebook_dir = self.format_string(self.notebook_dir)</span><br><span class="line">        args.append(<span class="string">&#x27;--notebook-dir=&quot;%s&quot;&#x27;</span> % notebook_dir)</span><br><span class="line">    <span class="keyword">if</span> self.default_url:</span><br><span class="line">        default_url = self.format_string(self.default_url)</span><br><span class="line">        args.append(<span class="string">&#x27;--NotebookApp.default_url=&quot;%s&quot;&#x27;</span> % default_url)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> self.debug:</span><br><span class="line">        args.append(<span class="string">&#x27;--debug&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> self.disable_user_config:</span><br><span class="line">        args.append(<span class="string">&#x27;--disable-user-config&#x27;</span>)</span><br><span class="line">    args.append(<span class="string">&#x27;--allow-root&#x27;</span>) <span class="comment">##添加此行代码，实现root访问与登陆</span></span><br><span class="line">    args.extend(self.args)</span><br><span class="line">    <span class="keyword">return</span> args</span><br></pre></td></tr></table></figure>
-
-<h3 id="Theme"><a href="#Theme" class="headerlink" title="Theme"></a>Theme</h3><p>其实Jupyterhub的主题已经非常简约唯美了，基本除了对风格有非常强的偏执一般不会care这样的theme。不过有一点，比较偏好使用暗色系的主题的用户，例如IDE用的是PyCharm Darcula的，可能会觉得不适应，这时候我们可以使用第三方package来实现这一点。</p>
-<p>项目地址：<a href="https://github.com/dunovank/jupyter-themes">jupyter-themes</a></p>
-<p>安装：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ pip install --upgrade jupyterthemes==0.17.3 -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure>
-
-<p>需要注意，这个包有不少依赖，需要评估对其他lib的影响</p>
-<p>安装theme，具体参数请参考官方文档：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ jt -t chesterish -T -N -altp -fs 10 -nfs 11 -tfs 10</span><br></pre></td></tr></table></figure>
-
-<p>命令执行完成后，事实上会在所在用户的home folder下面的.jupyter文件夹内生成所需要的渲染和样式文件。而Jupyterhub启动后，面向每个用户的环境实际上是分别单独启动了一个Jupyter的web server，如下图。因此为了让主题生效，我们需要重启自己的Jupyter Server。</p>
-<img src="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/hub-home.png" class="" title="[hub-home]">
-
-<p>然后就可以使用新的主题。其实这里也可以发现，hub上面的渲染还是原来的明色系，这里的主题只会在server内生效。</p>
-<img src="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/hub-notebook.png" class="" title="[hub-notebook]">
-
-<img src="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/hub-search.png" class="" title="[hub-search]">
-
-<p>Link to this post: <a href="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/" title="JupyterHub搭建">JupyterHub搭建</a></p>
+<h3 id="VPaas：V2ray"><a href="#VPaas：V2ray" class="headerlink" title="VPaas：V2ray"></a>VPaas：V2ray</h3><p><a href="https://www.v2ray.com/">神器</a>。为什么说是Paas，就是一个底层构建，门槛会高一些，但还算能接受。</p>
+<h3 id="IOS-Client-NA"><a href="#IOS-Client-NA" class="headerlink" title="IOS Client: NA"></a>IOS Client: NA</h3><p>目前貌似只能在美区才能购买Kitsunebi Lite和Shadowroket，比较遗憾。所以说这个还是需要一点运气，在Local买了一个SR，12软妹币，结果上当了，不支持Vmess协议，就此作罢。</p>
+<p>最后不得不说效果，湾湾VPS延迟非常低，60ms左右，再加上Vmess目前还不太容易会被detect的Protocol，体验还是非常不错的。建议ss用户可以尽快入手了。</p>
 ]]></content>
       <categories>
         <category>Toolkit</category>
       </categories>
       <tags>
-        <tag>Python</tag>
+        <tag>VPN</tag>
       </tags>
   </entry>
   <entry>
@@ -160,31 +102,6 @@
         <tag>NP-hard</tag>
         <tag>Optimization</tag>
         <tag>ML</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>VPN = VPS + VPaas</title>
-    <url>/2018/08/02/VPN-VPS-VPaas/</url>
-    <content><![CDATA[<p>要不是收到关于&lt;<a href="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/" title="JupyterHub搭建">JupyterHub搭建</a>&gt;的咨询邮件，估计要在这个Blog再写写画画会是一个未来很久远的事情。</p>
-<p>几个月下来，做了不少东西，也进行了很多的尝试，每个点应该都可以post一下，不过发现年纪大了，归纳总结的能力也退化了不少，要好好地写一篇路人也能看懂的文似乎也没有以前那么潇洒，虽然自己还是会常常想起几年前一个多月天天就是PPT的工作，只为写一个让分析师理解的计算模型出来，但未来，不太可能会发生同样的事情了吧。</p>
-<p>言归，正传。今天介绍一下当下一个还算比较稳定的VPN的神器，V2Ray。写这种文章实际上有点亏，一来没什么含金量，二来很有可能成为在不久的未来完全被淘汰的东西。科科。</p>
-<h3 id="VPS-Google-Cloud-Platform-GCP"><a href="#VPS-Google-Cloud-Platform-GCP" class="headerlink" title="VPS: Google Cloud Platform(GCP)"></a>VPS: Google Cloud Platform(GCP)</h3><p>我个人早前VPN技术还是比较low的，从以前的goagent到后来的ss的鹦鹉学舌，实际上自己对网络都还是一知半解，不够精通。在此说一下，基于ss的搭建没有这么难，甚至可以说非常简单，大多数人其实是被云主机这类事给唬住罢了。其实只需要找一个VPS供应商，例如Vultr，申请一个VS，然后用python安装下ss，配一下config，service start。除去注册以及等待的时间，也就是5分钟的事情。</p>
-<p>作为VPS，GCP的好处在于，似乎速度还算比较稳定，在日服猖狂的当下，可以支持另外建设湾湾的机房，且目前注册有300刀的白嫖。实际上GCP上租一个乞丐版的VPS，一个月大概3刀左右，网络传输另算，如果不是大流量的客户端请求，也不会有大多的费用，所以300刀基本上也可以维持一个比较长的时间，相对还是比较划算的。</p>
-<img src="/2018/08/02/VPN-VPS-VPaas/gcp.png" class="">
-
-<center>GCP VPS Configuration</center>
-
-<span id="more"></span>
-
-<h3 id="VPaas：V2ray"><a href="#VPaas：V2ray" class="headerlink" title="VPaas：V2ray"></a>VPaas：V2ray</h3><p><a href="https://www.v2ray.com/">神器</a>。为什么说是Paas，就是一个底层构建，门槛会高一些，但还算能接受。</p>
-<h3 id="IOS-Client-NA"><a href="#IOS-Client-NA" class="headerlink" title="IOS Client: NA"></a>IOS Client: NA</h3><p>目前貌似只能在美区才能购买Kitsunebi Lite和Shadowroket，比较遗憾。所以说这个还是需要一点运气，在Local买了一个SR，12软妹币，结果上当了，不支持Vmess协议，就此作罢。</p>
-<p>最后不得不说效果，湾湾VPS延迟非常低，60ms左右，再加上Vmess目前还不太容易会被detect的Protocol，体验还是非常不错的。建议ss用户可以尽快入手了。</p>
-]]></content>
-      <categories>
-        <category>Toolkit</category>
-      </categories>
-      <tags>
-        <tag>VPN</tag>
       </tags>
   </entry>
   <entry>
@@ -293,13 +210,13 @@
   <entry>
     <title>九州の行</title>
     <url>/2023/10/17/%E4%B9%9D%E5%B7%9E%E3%81%AE%E8%A1%8C/</url>
-    <content><![CDATA[<!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-VzAkfAjJiKfCVnpC"></div><script> var VzAkfAjJiKfCVnpC_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); VzAkfAjJiKfCVnpC_options.container = document.getElementById("mmedia-VzAkfAjJiKfCVnpC"); const dp_VzAkfAjJiKfCVnpC = new DPlayer(VzAkfAjJiKfCVnpC_options); </script> -->
+    <content><![CDATA[<!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-MrbHfAKUbwWULeyC"></div><script> var MrbHfAKUbwWULeyC_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); MrbHfAKUbwWULeyC_options.container = document.getElementById("mmedia-MrbHfAKUbwWULeyC"); const dp_MrbHfAKUbwWULeyC = new DPlayer(MrbHfAKUbwWULeyC_options); </script> -->
 
-<video id="mmedia-uenXYDagloQeKBWJ" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
+<video id="mmedia-KZnqhVFEohQgosHc" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
 
-<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-yaWrgppyJYyHxEqo" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-yaWrgppyJYyHxEqo").style.height=document.getElementById("mmedia-yaWrgppyJYyHxEqo").scrollWidth*0.76+"px";
+<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-QwBIPPaqpLdUEjSD" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-QwBIPPaqpLdUEjSD").style.height=document.getElementById("mmedia-QwBIPPaqpLdUEjSD").scrollWidth*0.76+"px";
     window.onresize = function(){
-      document.getElementById("mmedia-yaWrgppyJYyHxEqo").style.height=document.getElementById("mmedia-yaWrgppyJYyHxEqo").scrollWidth*0.76+"px";
+      document.getElementById("mmedia-QwBIPPaqpLdUEjSD").style.height=document.getElementById("mmedia-QwBIPPaqpLdUEjSD").scrollWidth*0.76+"px";
     }; </script> -->]]></content>
       <tags>
         <tag>Trip</tag>
@@ -361,5 +278,88 @@
 <p>我不禁好奇，这些由归纳法孕育出的智能体，在未来迈向自主进化的征途中，究竟会以何种逻辑去践行属于它们自己的“进化”？</p>
 <p>但无论如何，任何时代的变革都会带来诸多的可能性，所以就交给时间去回答吧。</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>JupyterHub搭建</title>
+    <url>/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h3 id="Jupyter是什么"><a href="#Jupyter是什么" class="headerlink" title="Jupyter是什么"></a>Jupyter是什么</h3><p>Jupyter是一款基于python的web notebook服务，目前有大多python数据挖掘与机器学习爱好者使用这款服务，其特性其实与Ipytohn Notebook差不多，准确说Ipython Notebook是一款提供增强型交互的功能的shell，而Jupyter除了Ipython的功能，还加入了普通编辑器的通用功能，是一款带代码交互的动态文档web编辑器。</p>
+<h3 id="Jupyterhub"><a href="#Jupyterhub" class="headerlink" title="Jupyterhub"></a>Jupyterhub</h3><p>由于Jupyter只支持单用户的使用场景，作为一个可交互的web服务，只支持单用户模式实在让人难以理解。估计开发者也觉得这个问题太过鸡肋，于是<a href="https://github.com/jupyterhub/jupyterhub">Jupyterhub</a>因有而生。</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><ol>
+<li><p>安装依赖包：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yum install sqlite-devel npm nodejs-legacy zlib-devel openssl-devel</span><br><span class="line">$ npm install -g configurable-http-proxy</span><br></pre></td></tr></table></figure></li>
+<li><p>安装py3：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ wget https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz</span><br><span class="line">$ tar zxvf Python-3.6.1.tgz</span><br><span class="line">$ ./configure --prefix=/usr/<span class="built_in">local</span>/python36 --enable-loadable-sqlite-extensions</span><br><span class="line">$ make -j 20 &amp;&amp; make altinstall</span><br></pre></td></tr></table></figure></li>
+<li><p>Reset环境变量（可选，如果有py2环境需要操作）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">export</span> PYTHONPATH=<span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>pip安装Jupyterhub：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ pip3.6 install jupyterhub notebook -i https://pypi.douban.com/simple/</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="启动Jupyterhub"><a href="#启动Jupyterhub" class="headerlink" title="启动Jupyterhub"></a>启动Jupyterhub</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">export</span> PYTHONPATH=<span class="string">&#x27;&#x27;</span> &amp;&amp; ./jupyterhub --ip 0.0.0.0 --port 8888</span><br></pre></td></tr></table></figure>
+
+<img src="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/hub-login.png" class="" title="[hub-login]">
+
+<span id="more"></span>
+
+<h4 id="生成config文件"><a href="#生成config文件" class="headerlink" title="生成config文件"></a>生成config文件</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ./jupyterhub --generate-config</span><br></pre></td></tr></table></figure>
+
+<p>理论上到这步为止，jupyterhub安装完毕，可以顺利启动。</p>
+<h3 id="Kernel"><a href="#Kernel" class="headerlink" title="Kernel"></a>Kernel</h3><p>Kernel可以理解为每个notebook运行的后台环境，Jupyterhub以及Jupyter虽然是基于python的application，但这并不意味着其notebook的功能只能为python环境使用，事实上Jupyter的强大就体现在此处，其可以支持任意环境的notebook，目前主流的数据科学环境基本都支持，R， SAS，SPARK等。</p>
+<h4 id="Anaconda-Kernel安装"><a href="#Anaconda-Kernel安装" class="headerlink" title="Anaconda Kernel安装"></a>Anaconda Kernel安装</h4><p>conda环境安装特别简单，首先确保anaconda环境已经集成了Ipython，默认是已经集成了。其次在用户级别下执行一下命令即可：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="variable">$your_anaconda_install_path</span>/bin/ipython kernel install --user --name anaconda</span><br></pre></td></tr></table></figure>
+
+<p>执行完成后，便会在jupyterhub中看到名为anaconda的kernel，还是再<u>重申</u>下，<strong>这个命令需要在每个用户级别下local执行</strong>。new后便可使用anaconda环境中的所有python lib。</p>
+<h4 id="R-Kernel安装"><a href="#R-Kernel安装" class="headerlink" title="R Kernel安装"></a>R Kernel安装</h4><p>安装R Kernel之前需要安装r-irkernel，这步我们使用anaconda来安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ conda install -c r r-irkernel</span><br></pre></td></tr></table></figure>
+
+<p>安装完毕之后，运行R命令：</p>
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">IRkernel::installspec()</span><br></pre></td></tr></table></figure>
+
+<p>执行完成后，便可在jupyterhub中看到名为R的kernel。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h4 id="管理"><a href="#管理" class="headerlink" title="管理"></a>管理</h4><p>作为多用户web应用，势必需要管理员的角色，管理员的配置在jupyterhub生成的config文件里面进行修改：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ vim jupyterhub_config.py</span><br></pre></td></tr></table></figure>
+
+<p>修改如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c.Authenticator.admin_users = (<span class="string">&#x27;zhangsan&#x27;</span>,<span class="string">&#x27;lisi&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>然后重新启动jupyter，用以上配置的用户登录，即可使用管理功能。</p>
+<img src="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/hub-admin.png" class="" title="[hub-admin]">
+
+<h4 id="用户认证"><a href="#用户认证" class="headerlink" title="用户认证"></a>用户认证</h4><p>Jupyterhub支持多种认证方式：PAM和LDAP，默认使用的是PAM，即与系统用户层使用同一认证管理，用户名与密码与系统配置的相同。</p>
+<p>由于比较懒，所以这里采用无密码登陆认证方式。</p>
+<p>首先用py3安装一个<a href="https://github.com/yuvipanda/jupyterhub-dummy-authenticator">插件</a>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ./pip3.6 install jupyterhub-dummyauthenticator -i https://pypi.douban.com/simple/</span><br></pre></td></tr></table></figure>
+
+<p>然后，在配置文件中修改此配置：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c.JupyterHub.authenticator_class = <span class="string">&#x27;dummyauthenticator.DummyAuthenticator&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>具体细节可以参考这个<a href="https://github.com/jupyterhub/jupyterhub/issues/1102">问题</a>。</p>
+<p>另外，jupyterhub默认是不允许root组用户进行访问和使用，如果需要此类配置，需要修改源码 site-packages/jupyterhub/spawner.py，找到如下代码块，添加如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_args</span>(<span class="params">self</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the arguments to be passed after self.cmd</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Doesn&#x27;t expect shell expansion to happen.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    args = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> self.ip:</span><br><span class="line">        args.append(<span class="string">&#x27;--ip=&quot;%s&quot;&#x27;</span> % self.ip)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> self.port:</span><br><span class="line">        args.append(<span class="string">&#x27;--port=%i&#x27;</span> % self.port)</span><br><span class="line">    <span class="keyword">elif</span> self.server.port:</span><br><span class="line">        self.log.warning(<span class="string">&quot;Setting port from user.server is deprecated as of JupyterHub 0.7.&quot;</span>)</span><br><span class="line">        args.append(<span class="string">&#x27;--port=%i&#x27;</span> % self.server.port)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> self.notebook_dir:</span><br><span class="line">        notebook_dir = self.format_string(self.notebook_dir)</span><br><span class="line">        args.append(<span class="string">&#x27;--notebook-dir=&quot;%s&quot;&#x27;</span> % notebook_dir)</span><br><span class="line">    <span class="keyword">if</span> self.default_url:</span><br><span class="line">        default_url = self.format_string(self.default_url)</span><br><span class="line">        args.append(<span class="string">&#x27;--NotebookApp.default_url=&quot;%s&quot;&#x27;</span> % default_url)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> self.debug:</span><br><span class="line">        args.append(<span class="string">&#x27;--debug&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> self.disable_user_config:</span><br><span class="line">        args.append(<span class="string">&#x27;--disable-user-config&#x27;</span>)</span><br><span class="line">    args.append(<span class="string">&#x27;--allow-root&#x27;</span>) <span class="comment">##添加此行代码，实现root访问与登陆</span></span><br><span class="line">    args.extend(self.args)</span><br><span class="line">    <span class="keyword">return</span> args</span><br></pre></td></tr></table></figure>
+
+<h3 id="Theme"><a href="#Theme" class="headerlink" title="Theme"></a>Theme</h3><p>其实Jupyterhub的主题已经非常简约唯美了，基本除了对风格有非常强的偏执一般不会care这样的theme。不过有一点，比较偏好使用暗色系的主题的用户，例如IDE用的是PyCharm Darcula的，可能会觉得不适应，这时候我们可以使用第三方package来实现这一点。</p>
+<p>项目地址：<a href="https://github.com/dunovank/jupyter-themes">jupyter-themes</a></p>
+<p>安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ pip install --upgrade jupyterthemes==0.17.3 -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure>
+
+<p>需要注意，这个包有不少依赖，需要评估对其他lib的影响</p>
+<p>安装theme，具体参数请参考官方文档：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ jt -t chesterish -T -N -altp -fs 10 -nfs 11 -tfs 10</span><br></pre></td></tr></table></figure>
+
+<p>命令执行完成后，事实上会在所在用户的home folder下面的.jupyter文件夹内生成所需要的渲染和样式文件。而Jupyterhub启动后，面向每个用户的环境实际上是分别单独启动了一个Jupyter的web server，如下图。因此为了让主题生效，我们需要重启自己的Jupyter Server。</p>
+<img src="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/hub-home.png" class="" title="[hub-home]">
+
+<p>然后就可以使用新的主题。其实这里也可以发现，hub上面的渲染还是原来的明色系，这里的主题只会在server内生效。</p>
+<img src="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/hub-notebook.png" class="" title="[hub-notebook]">
+
+<img src="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/hub-search.png" class="" title="[hub-search]">
+
+<p>Link to this post: <a href="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/" title="JupyterHub搭建">JupyterHub搭建</a></p>
+]]></content>
+      <categories>
+        <category>Toolkit</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
   </entry>
 </search>
