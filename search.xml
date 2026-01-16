@@ -293,17 +293,30 @@
   <entry>
     <title>九州の行</title>
     <url>/2023/10/17/%E4%B9%9D%E5%B7%9E%E3%81%AE%E8%A1%8C/</url>
-    <content><![CDATA[<!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-uiFttRlUcqvJNTeT"></div><script> var uiFttRlUcqvJNTeT_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); uiFttRlUcqvJNTeT_options.container = document.getElementById("mmedia-uiFttRlUcqvJNTeT"); const dp_uiFttRlUcqvJNTeT = new DPlayer(uiFttRlUcqvJNTeT_options); </script> -->
+    <content><![CDATA[<!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-oogGBEZlfXkTBcbo"></div><script> var oogGBEZlfXkTBcbo_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); oogGBEZlfXkTBcbo_options.container = document.getElementById("mmedia-oogGBEZlfXkTBcbo"); const dp_oogGBEZlfXkTBcbo = new DPlayer(oogGBEZlfXkTBcbo_options); </script> -->
 
-<video id="mmedia-mHalAICsmTXCuTtt" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
+<video id="mmedia-VOJCuqIaCOrUfrsv" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
 
-<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-QLtwRsJZfqGYJWUu" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-QLtwRsJZfqGYJWUu").style.height=document.getElementById("mmedia-QLtwRsJZfqGYJWUu").scrollWidth*0.76+"px";
+<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-IDSBFkrGhNErARuu" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-IDSBFkrGhNErARuu").style.height=document.getElementById("mmedia-IDSBFkrGhNErARuu").scrollWidth*0.76+"px";
     window.onresize = function(){
-      document.getElementById("mmedia-QLtwRsJZfqGYJWUu").style.height=document.getElementById("mmedia-QLtwRsJZfqGYJWUu").scrollWidth*0.76+"px";
+      document.getElementById("mmedia-IDSBFkrGhNErARuu").style.height=document.getElementById("mmedia-IDSBFkrGhNErARuu").scrollWidth*0.76+"px";
     }; </script> -->]]></content>
       <tags>
         <tag>Trip</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>早櫻花見</title>
+    <url>/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/</url>
+    <content><![CDATA[<p>河津的樱花开了。阳光甚好。</p>
+<p>河津樱有一段在海滨，海滨上人不多，如果不赏樱，可以不妨休憩。<br><a href="javascript:void(0)" style="cursor: default;"><img src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/0.jpg" class=""></a></p>
+<p>孤芳不自赏。<br><a href="javascript:void(0)" style="cursor: default;"><img src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/1.jpg" class=""></a></p>
+<p>云蒸霞蔚。<br><a href="javascript:void(0)" style="cursor: default;"><img src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/3.jpg" class=""></a></p>
+<p>荫庇之下，花见铁马。<br><a href="javascript:void(0)" style="cursor: default;"><img src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/4.jpg" class=""></a></p>
+<p>赏樱，若按黄执中的口吻，或许会问：我们跋涉千里去赏，到底是在捕捉那转瞬即逝、静态的极致之美，还是在借由这粉色烟霞，寻求一份尘嚣之外的安宁？</p>
+<p>但这并非二选一的抉择。捕捉美，是眼睫间的贪婪，是孩童的天真。而寻安宁，是灵魂的吐纳，是人到中年的不惑。</p>
+<p>那一刻，花见不仅是见花，更是见自己吧。</p>
+]]></content>
   </entry>
   <entry>
     <title>Blog之殇</title>
@@ -335,7 +348,7 @@
   <entry>
     <title>归纳与第一性原理</title>
     <url>/2026/01/15/%E5%BD%92%E7%BA%B3%E4%B8%8E%E7%AC%AC%E4%B8%80%E6%80%A7%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[<p>常在自省，为何自己会沦为一个“年更博主”。起初，总以“Lazy driven”为借口聊以自慰；后来才惊觉，根源或许在于骨子里对“好记性不如烂笔头”这一传统信条的消极抵触。</p>
+    <content><![CDATA[<p>有段时间常在自省，为何自己会沦为一个“年更博主”。起初，总以“lazy driven”为借口聊以自慰；后来才惊觉，根源或许在于骨子里对“好记性不如烂笔头”这一传统信条的消极抵触。</p>
 <p>从学生时代跨入职场，一直没有记笔记的意识，而是执迷于通过归纳法因果律去拆解和重构知识。甚至在育儿时，也常常教导Hugo：“归纳才是最快的途径。”（尽管后来意识到，这种极端的“推导至上主义”在应试教育的坐标系下略显笨拙，容易带出不够严谨的做题习惯）。但我曾对这一学习范式深信不疑，未有过半点动摇。</p>
 <p>“第一性原理”，最近这个词热度很高，不得不说，大多数人都是慕强的，Elon Musk 把他思考世界的方式推向了风口浪尖，引来无数拥趸和追捧。人们在礼赞和推崇这一演绎法的同时，也常常提到它的对立面——归纳。</p>
 <p>但有意思的是，归纳法除了作为一种学习范式，目前也正以另一种形态滲入我们的生活。</p>
