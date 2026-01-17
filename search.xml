@@ -109,140 +109,6 @@
       </tags>
   </entry>
   <entry>
-    <title>hexo next客制化</title>
-    <url>/2021/03/27/hexo-next%E5%AE%A2%E5%88%B6%E5%8C%96/</url>
-    <content><![CDATA[<p>17年一篇，18年两篇，然后现在是第四篇文章，更新速度堪比富坚义博。</p>
-<p>快3年了，要不是这个域名，兴许就退了，每年虽然缴的费用不多，但让我一直给供应商白嫖其实也不怎么情愿。正好最近空暇，打理打理这些苟且的栖身之地吧。</p>
-<p>这几年发生了一些变化。别的不说，hexo和next理所当然的更新了几个大版本。原先用来编辑的mbp也老旧了，闲置在家里。现在操作的mbp还是两年派发的，主要还是嫌麻烦的原因，一直没有把hexo的编辑目录迁移过来，毕竟只要每次想到要装一堆插件就心生退意。</p>
-<p>最近几天，重装了hexo和next后，升级到了最新版本，同时把展现细节做了更多的改造，说实在的，上次blog的搭建，也是弄了很久的源码，发现每逢修改的时候，虽然相隔时间比较长（笑），但总比之前会更加深入一些，这次增加修改了更多的布局，类型以及动态脚本。趁着这几天刚操作过还记得，快点记录下来。</p>
-<span id="more"></span>
-
-<h3 id="弃用Coding"><a href="#弃用Coding" class="headerlink" title="弃用Coding"></a>弃用Coding</h3><p>原先很看好Coding这家小作坊，早期代码管理做的不错，并且也是较早推出Web IDE的平台，印象中应该早于VSCode。后来有一天发现双因素不好用了，才知道鹅厂收购了Coding。其实算是一件好事，毕竟不用太担心哪天这个startup挂了，但也多了一层麻烦。原来的Pages不能用，需要迁移到新的ci/cd。而且vps的所在地也发生了相应的变化，访问速度有所变慢。<br>Coding原来的ssl证书还挺简单的，但鹅厂云就复杂一些，而且由于域名还是在福报云上，所以现在等于是两大云厂各需要维护一些东西，又徒增了麻烦。</p>
-<p>随着某天晚上，我再也无法访问自己的站点后，还是决定弃用。由于备案问题，pages只能选择部署在HK的节点。原则上部署完成后可以直接在福报云上的dns上设置cname到HK的源站，但是新版的问题是没有这方面的guide的，所以会直接引导用户在pages的custom domain把cname设置为他们的CDN，而这个CDN一来非免费，二来同样由于备案问题，也只能选择境外服务域，三来和CDN绑定ssl证书申请也相对麻烦。结果效果一言难尽，使用CDN目的号称是加速，但实际上速度感受是并不如旧版的，甚至完全比不上后面采用的最终方案。<br>那天晚上的惨状是，国内无一地区可以访问到站点，除了TW和境外（测试网站工具：<a href="https://www.17ce.com/">17ce</a>），并且所有dns解析地区均不一致，非常奔溃（早上访问正常，晚上问题很大）。<br>本来想再迂回一下，把cname指向到hk源站，但并不成功，而且最主要的还有ssl证书问题，关闭cdn意味着证书也不可用，旧版的公共证书也无法使用了。<br>所以第二天，还是选择成本最小的方案，迁移到GH的Pages服务，操作简单，而且还支持ssl（值得提一句需要站点加入cname文件，否则网上配置在每次部署之后会被重置）。国内gitee的话也是一个选择。</p>
-<h3 id="Nodejs"><a href="#Nodejs" class="headerlink" title="Nodejs"></a>Nodejs</h3><p>把Nodejs升级到了14，然后npm再进行升级，npm原来一直用的global，为了维护方便，还是迁回了local方式，package.json很香。</p>
-<h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><p>hexo安装绕了几个弯子，对hexo和hexo cli有点confuse，一直以为cli就是hexo本身，之前发现cli一直升级不到5以上，比较奔溃。因为安装theme的方式，5和5之前的版本是不同的。好在后面终于顺利搞定。</p>
-<h3 id="Next"><a href="#Next" class="headerlink" title="Next"></a>Next</h3><p>Next变化不大，但这次重构还是做了较大的源码修改，比之前更深入了。变化主要基本分两类，能基于Mist的基本在Mist的样式文件中进行修改，否则只能修改通用的comn文件。其中有些为了保持通用性，增加了通用的config，但实际上可能是不会再使用的，强迫症。这次也改动了div的动态js。</p>
-<p>能想起来的记录如下：</p>
-<ul>
-<li>字体大小修改不建议修改config中的font global，灵活度很小，如果要单独改动post body的size，config不起作用，需要去样式文件修改，title字体size可以直接配置</li>
-<li>由于修改了主题语言，font family基本都可以在config文件更改，menu字体需要去样式修改，比较耐看的字体是：<font face="Shuei Mincho L" >株式会社モリサワ-秀英明朝</font></li>
-<li>heder.styl中对目录栏宽度进行了修改，修改了header-inner和menu的padding，使其分为两行</li>
-<li>整体页面内容宽度也在样式文件中进行了修改，并且可以根据窗口大小，动态切换设置，对移动端比较友好</li>
-<li>config中增加了darkmode, mathjax，pjax，mediumnzoom, quicklink等设置</li>
-<li>增加了avatar，footer文字，facicon，social等信息</li>
-<li>比较复杂地修改了motion.js，单独修改了sidebar中site-description的动态展示效果</li>
-</ul>
-<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p>改名字的时候，知道需要更改，但不知道改什么。随后一瞬想到了阿部芙蓉美（歌不错，但名字…）的「群青」和手嶌葵的专辑「青い図書室」，它们都是过去一段时间内包括现在也非常喜欢的歌曲集，索性就组合在一起，听「<a href="https://nipponcolors.com/#gunjyo">群青</a>」的时候才知道，这是一种颜色的称谓，顺便一提，十一区对颜色称谓相当文艺，例如紺，绯，鳶，楝，瓶覗，柳染，洒落柿，诸如此类。有兴趣的建议移步<a href="https://nipponcolors.com/">日本の伝統色</a>，页面有支持MUNSELL的JS开关，开启高能。<br>此外Sidebar这里的概要也恰逢时宜地选择了「言の葉の庭」中非常受欢迎的雷神短歌上半句。</p>
-<center><font face="Shuei Mincho L" >「鳴る神の 少し響みて  さし曇り 雨も降らぬか 君を留めむ」</font></center><br>
-
-<p>君を留めむ，那是否真的能让你流连驻足呢。</p>
-]]></content>
-      <categories>
-        <category>Toolkit</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>九州の行</title>
-    <url>/2023/10/17/%E4%B9%9D%E5%B7%9E%E3%81%AE%E8%A1%8C/</url>
-    <content><![CDATA[<!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-TWnlCeJxJiqDnqCT"></div><script> var TWnlCeJxJiqDnqCT_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); TWnlCeJxJiqDnqCT_options.container = document.getElementById("mmedia-TWnlCeJxJiqDnqCT"); const dp_TWnlCeJxJiqDnqCT = new DPlayer(TWnlCeJxJiqDnqCT_options); </script> -->
-
-<video id="mmedia-pKnSrddjWzYcbFAK" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
-
-<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-SALqvMrYlcRicTzs" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-SALqvMrYlcRicTzs").style.height=document.getElementById("mmedia-SALqvMrYlcRicTzs").scrollWidth*0.76+"px";
-    window.onresize = function(){
-      document.getElementById("mmedia-SALqvMrYlcRicTzs").style.height=document.getElementById("mmedia-SALqvMrYlcRicTzs").scrollWidth*0.76+"px";
-    }; </script> -->]]></content>
-      <tags>
-        <tag>Trip</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>宫崎骏的鄙夷</title>
-    <url>/2025/08/01/%E5%AE%AB%E5%B4%8E%E9%AA%8F%E7%9A%84%E9%84%99%E5%A4%B7/</url>
-    <content><![CDATA[<p>带Hugo来参加夏校。学校ASIJ其实离市区不近，位于多摩地区的调布市，如果要去学校参观，从新宿还要往西再坐将近40分钟的地铁。好在学校安排了校车，于是我们选择住在离终点站前两站的武蔵境駅附近。</p>
-<p>武蔵境这个地方离三鹰很近，只有一站JR的距离，三鹰是吉卜力的粉丝的朝圣地，美术馆需要提前很久预约，那天去的时候，我和宣在门口草草地望了两眼就打道回府了。然后就吃了目前行程中唯一的一堑，由于天实在太热，我们选择了美术馆门口的公交坐回到武蔵境，结果本来乘JR只需要5分钟的路程，结果公交整整开了50分钟，差点没赶上接Hugo的时间。</p>
-<p>在三鹰往东再乘一站JR就是吉祥寺，吉祥寺是东京最宜居的区域之一，曾经多年在《關東地區居民最想居住的街區》排名中名列前茅，商店街很繁华，商场林立，小吃遍地，我们这些天有好几次是在这边解决的晚餐。</p>
-<p>就在前阵，也是偶然的契机下突然发现《海がきこえる》全国重映，7月4号开始，重映三周。本来我们落地时候正好是重映计划结束的时候，好在重映时间又延长了，那么作为《海がきこえる》的取景地之一 —— 吉祥寺，自然少不了重映的企划。于是选好时间，昨天去重温了这部曾让自己心潮澎湃的作品。</p>
-<p>这是自己第一次在电影院看这部电影，也是第二次在日本观影。宣对吉卜力不是很感冒，和Hugo先回了酒店，只有我一个人去看。虽然没有字幕，但电影前前后后看了好几遍，情节都算记得，所以这次纯为情怀买单，为爱发电。UPLINK影院不大，在地下二层，影厅大概也就是10排的样子，本以为来看这部二三十年前作品的观众应该是三十代或者四十代的居多，未料想，我看的这场，感觉都是国中生和高中生，一共10来人。想起在疫情前第一次在日本观影，看的是《寅次郎的故事》，整个影院除了我和宣，几乎都是花甲之年的长辈。这次却着实出乎意料，看来二次元的经典作品永远不会过时。</p>
-<div class="img-medium">
-<img data-src="/2025/08/01/%E5%AE%AB%E5%B4%8E%E9%AA%8F%E7%9A%84%E9%84%99%E5%A4%B7/ticket.jpg" class="">
-</div>
-
-<p>说到宫崎骏，大家应该都不陌生，但其实有不少人会把他和吉卜力画等号，因此导致像《火垂るの墓》、《平成狸合戦ぽんぽこ》、《おもひでぽろぽろ》这样的作品被误认为也是宫崎骏执导的作品，其实不然，当然也包括这部《海がきこえる》。</p>
-<p>该片原作是氷室冴子写的小说，描绘了发生在1980年代的日本高知县的青春故事。电影描写的是小说前半部分的情节，导演是望月智充，其实算是吉卜力培养新人试水的一部作品。但是宫崎骏对此的评价并不高，甚至有些鄙夷，一方面是其更倾向对原作进行大刀阔斧的改编，另一方面在于对于人物心理的刻画方式存在不同的理念。不过在我看来，望月智充的刻画恰恰是这部作品的精髓所在。</p>
-<p>原作的叙事风格据说更偏向散文，这种行文通常会让读者感受不到太强烈的情绪起伏，而对于悸动而又敏感的青春来说，恰恰通过谈雅的方式来刻画人物之间的交互，反而是最能引起共鸣，含蓄和细腻也可以很有力量。另外，导演也深谙配乐的重要性，永田茂的插曲无可挑剔，而当片尾曲《海になれたら》坂本洋子的歌声响起，闭上双眼，仿佛就置身于高知的海边，听着海浪拍打在堤岸上的声音。</p>
-<p>日本观影有一个特色，片尾的结束才是真正的结束，在此之前影院不会开灯，更不会有人离场，每个观众静静地享受着作品最后的余韵，这或许也是给片尾中每个制作人员给予的最好的尊重和敬意。</p>
-<p>电影散场后，在周边商店入了两件纪念品。夜深了，立在吉祥寺的月台等着返程的列车，夏夜的晚风轻拂吹过，熙攘的人群渐渐散去，只剩下零星几个人，恍惚间似乎瞥见了一抹熟悉的身影。</p>
-<p>时间仿佛被按下了暂停键。</p>
-<p>你好，武藤里伽子。お休みなさい。</p>
-<img data-src="/2025/08/01/%E5%AE%AB%E5%B4%8E%E9%AA%8F%E7%9A%84%E9%84%99%E5%A4%B7/umi050.jpg" class="">
-]]></content>
-  </entry>
-  <entry>
-    <title>字体踩坑</title>
-    <url>/2021/03/30/%E5%AD%97%E4%BD%93%E8%B8%A9%E5%9D%91/</url>
-    <content><![CDATA[<p>觉得还是有必要单独为此记录一篇，这是在近日几天被这个问题折腾之后的决定。<br>先从这里开始说吧。</p>
-<h3 id="ヒラギノ明朝-Pro"><a href="#ヒラギノ明朝-Pro" class="headerlink" title="ヒラギノ明朝 Pro"></a>ヒラギノ明朝 Pro</h3><p>是的，本来觉得字体的选择是一个非常简单的问题，也是重构站点之初最先着手的问题之一，由于所需的字体内容不多，网上搜罗一番后尝试了几个选项，就选择了其中一款还算顺眼的字体。现在想来这个最初的方案确实草率了，其实这都不能算上方案，只是一个选择，再加上缺少frontend的sense，后续出现了诸多的问题。</p>
-<p>在选择字体之后，然后顺利demo，丝滑部署，一切看似非常ok的情况下，登陆了Win试着看下效果，才发现自己忘记了兼容性的问题😱，指定的字体完完全全没有被渲染。尤其在Edge下，Sidebar的字体还因为还原了最初的方案被分段了，orz。</p>
-<p>兼容性的问题不仅仅出现在字体方面，在css多个选项上也出现了与Chrome下的不同效果。好在css的问题相对还比较好解决，但如果要实现跨平台跨浏览器的字体统一还是需要走自定义的方式来做，毕竟hexo的external字体配置虽然可以通过三方字体服务器来做，但在目前默认的google库中并没有合适的选择。</p>
-<span id="more"></span>
-
-<h3 id="秀英明朝-OTF"><a href="#秀英明朝-OTF" class="headerlink" title="秀英明朝 OTF"></a>秀英明朝 OTF</h3><p>既然可以自定义，自由度就大了很多，在各大网站辛苦搜索一番后，终于找到一个更合适的字体。可惜只有OTF格式，不过也可以试一下。<br>接下来就是通过hexo来实现自定义字体的加载，这里就简述下方法。</p>
-<ul>
-<li>首先是在主题目录的source文件夹下创建一个fonts的目录，把下载的字体放入即可</li>
-<li>然后需要添加一个自定义的styl文件，按照网上的教程，大多指向的是主题目录下source/css/_custom/custom.styl这个地址，但从Next某个7版本后，_custom目录发现被移除，现在文件的正确地址应该在站点目录下的source/_data/styles.styl</li>
-<li>继续在文件中定义font-face，这步比较简单，定义下名字，不同的字体格式，format不同的配置，最后修改url指向第一步的安装路径即可</li>
-<li>配置文件指定时，external需要设置为false</li>
-</ul>
-<p>本地测试比较顺利，但部署之后，发现ios端渲染有延迟，pc端基本无法渲染，猜测是字体大小的问题，一看发现整个字体文件竟然达到29M！🙄，只能继续求索。</p>
-<h3 id="font-spider"><a href="#font-spider" class="headerlink" title="font-spider"></a>font-spider</h3><p>字体压缩可以是想到最直接的解决方案。目前普遍的字体压缩方案就是<a href="https://github.com/aui/font-spider/">font-spider</a>，通过网页实际使用的文字进行按需压缩，对于非body类的网页通用字体，是比较好的解决方案。<br>但有几点需要注意：</p>
-<ul>
-<li>字体支持类型不包括otf，最好采用静态网站格式</li>
-<li>需要用css进行目标字体定义（本身使用的就是font-face，不需要额外操作）</li>
-<li>可能需要涉及对html的更改，例如css目录，font目录等</li>
-<li>竖排文字对于标点符号会有特殊情况，需要手动载入，例如「」与﹁﹂</li>
-</ul>
-<p>由于之前的采用的字体只有otf，所以再是一番搜寻，幸运地找到了同款字体的更新版本，来自wx：lxgwshare。</p>
-<table><tr><td bgcolor="#555" style="border-style:none;"><font color="#CCCCCC" face="Shuei Mincho L" >
-伊吕波歌</br>
-平仮名：</br>
-いろはにほへと・ちりぬるを・わかよたれそ・つねならむ・うゐのおくやま・けふこえて・あさきゆめみし・ゑひもせす</br>
-片仮名：</br>
-イロハニホエト・チリヌルヲ・ワカヨタレソ・ツネナラム・ウヰノオクヤマ・ケフコエテ・アサキユメミシ・ヱヒモセス</br>
-</br>
-简体：</br>
-轻轻的我走了，正如我轻轻的来；</br>
-我轻轻的招手，作别西天的云彩。</br>
-那河畔的金柳，是夕阳中的新娘；</br>
-波光里的艳影，在我的心头荡漾。</br></font></td></tr></table>
-
-<p>看上去还不错，效果符合预期，直接安排！</p>
-<p>压缩过程比较简单，顺利搞定。不得不感慨一下，小小的字体，过程竟也波澜不惊，还是多多记录下来，不给未来的自己留坑～</p>
-]]></content>
-      <categories>
-        <category>Toolkit</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>早櫻花見</title>
-    <url>/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/</url>
-    <content><![CDATA[<p>河津的樱花开了。阳光甚好。</p>
-<p>河津樱有一段在海滨，海滨上人不多，如果不赏樱，可以不妨休憩。<br><a href="javascript:void(0)" style="cursor: default;"><img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/0.jpg" class=""></a></p>
-<p>孤芳不自赏。<br><a href="javascript:void(0)" style="cursor: default;"><img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/1.jpg" class=""></a></p>
-<p>云蒸霞蔚。<br><a href="javascript:void(0)" style="cursor: default;"><img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/3.jpg" class=""></a></p>
-<p>荫庇之下，花见铁马。<br><a href="javascript:void(0)" style="cursor: default;"><img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/4.jpg" class=""></a></p>
-<p>赏樱，若按黄执中的口吻，或许会问：我们跋涉千里去赏，到底是在捕捉那转瞬即逝、静态的极致之美，还是在借由这粉色烟霞，寻求一份尘嚣之外的安宁？</p>
-<p>这并非二选一的抉择。捕捉美，是眼睫间的贪婪，是孩童的天真。而寻安宁，是灵魂的吐纳，是人到中年的不惑。</p>
-<p>那一刻，花见不仅是见花，更是见自己吧。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>Machine Scheduling, Machine Learning in Engineering</title>
     <url>/2018/01/03/Machine-Scheduling-Machine-Learning-in-Engineering/</url>
     <content><![CDATA[<h3 id="Perface"><a href="#Perface" class="headerlink" title="Perface"></a>Perface</h3><p>叨叨几分钟。</p>
@@ -322,17 +188,88 @@
       </tags>
   </entry>
   <entry>
-    <title>神笔</title>
-    <url>/2026/01/11/%E7%A5%9E%E7%AC%94/</url>
-    <content><![CDATA[<p>说实话，这曾是一个让我嗤之以鼻的词。</p>
-<p>过往公司曾有个产品也叫这个名字。讽刺的是，别的没看见，反倒常常招来业务方的怨声载道这点确实挺“神”的。<br>“神”这个字还是要慎用，给自己留点余地，看看人家 Nano 和 GPT，真正强大的产品，从不需要形容词来替它正名。 </p>
-<h3 id="Vibe-Coding"><a href="#Vibe-Coding" class="headerlink" title="Vibe Coding"></a>Vibe Coding</h3><p>而当下的你我，或许正在见证这个时代“神笔”的降临。</p>
-<p>半年前、一年前，鲜有人知道它是什么，甚至时至今日关于它的舆论态势也未真正发酵。但凡尝试过的人，或许能慢慢感受到下一代工业革命近在咫尺了。</p>
-<p>或许有人会问，如果未来人人都手握一支神笔，那么神笔还是神笔吗？每一个创新，何尝不是那个时代的神笔？但它们终究会是时代的产物，日常会是它们最终的归宿。那么这支新的神笔，难道不会沿着历史的轨迹，最终归于平凡？</p>
-<p>确实，很有可能。</p>
-<p>但我们记住的，往往或许不是那支笔，而是初见那个时代的弄潮儿时，涌起心底涟漪的那份触动吧。</p>
-<p>昙花虽一现，刹那胜经年。</p>
+    <title>hexo next客制化</title>
+    <url>/2021/03/27/hexo-next%E5%AE%A2%E5%88%B6%E5%8C%96/</url>
+    <content><![CDATA[<p>17年一篇，18年两篇，然后现在是第四篇文章，更新速度堪比富坚义博。</p>
+<p>快3年了，要不是这个域名，兴许就退了，每年虽然缴的费用不多，但让我一直给供应商白嫖其实也不怎么情愿。正好最近空暇，打理打理这些苟且的栖身之地吧。</p>
+<p>这几年发生了一些变化。别的不说，hexo和next理所当然的更新了几个大版本。原先用来编辑的mbp也老旧了，闲置在家里。现在操作的mbp还是两年派发的，主要还是嫌麻烦的原因，一直没有把hexo的编辑目录迁移过来，毕竟只要每次想到要装一堆插件就心生退意。</p>
+<p>最近几天，重装了hexo和next后，升级到了最新版本，同时把展现细节做了更多的改造，说实在的，上次blog的搭建，也是弄了很久的源码，发现每逢修改的时候，虽然相隔时间比较长（笑），但总比之前会更加深入一些，这次增加修改了更多的布局，类型以及动态脚本。趁着这几天刚操作过还记得，快点记录下来。</p>
+<span id="more"></span>
+
+<h3 id="弃用Coding"><a href="#弃用Coding" class="headerlink" title="弃用Coding"></a>弃用Coding</h3><p>原先很看好Coding这家小作坊，早期代码管理做的不错，并且也是较早推出Web IDE的平台，印象中应该早于VSCode。后来有一天发现双因素不好用了，才知道鹅厂收购了Coding。其实算是一件好事，毕竟不用太担心哪天这个startup挂了，但也多了一层麻烦。原来的Pages不能用，需要迁移到新的ci/cd。而且vps的所在地也发生了相应的变化，访问速度有所变慢。<br>Coding原来的ssl证书还挺简单的，但鹅厂云就复杂一些，而且由于域名还是在福报云上，所以现在等于是两大云厂各需要维护一些东西，又徒增了麻烦。</p>
+<p>随着某天晚上，我再也无法访问自己的站点后，还是决定弃用。由于备案问题，pages只能选择部署在HK的节点。原则上部署完成后可以直接在福报云上的dns上设置cname到HK的源站，但是新版的问题是没有这方面的guide的，所以会直接引导用户在pages的custom domain把cname设置为他们的CDN，而这个CDN一来非免费，二来同样由于备案问题，也只能选择境外服务域，三来和CDN绑定ssl证书申请也相对麻烦。结果效果一言难尽，使用CDN目的号称是加速，但实际上速度感受是并不如旧版的，甚至完全比不上后面采用的最终方案。<br>那天晚上的惨状是，国内无一地区可以访问到站点，除了TW和境外（测试网站工具：<a href="https://www.17ce.com/">17ce</a>），并且所有dns解析地区均不一致，非常奔溃（早上访问正常，晚上问题很大）。<br>本来想再迂回一下，把cname指向到hk源站，但并不成功，而且最主要的还有ssl证书问题，关闭cdn意味着证书也不可用，旧版的公共证书也无法使用了。<br>所以第二天，还是选择成本最小的方案，迁移到GH的Pages服务，操作简单，而且还支持ssl（值得提一句需要站点加入cname文件，否则网上配置在每次部署之后会被重置）。国内gitee的话也是一个选择。</p>
+<h3 id="Nodejs"><a href="#Nodejs" class="headerlink" title="Nodejs"></a>Nodejs</h3><p>把Nodejs升级到了14，然后npm再进行升级，npm原来一直用的global，为了维护方便，还是迁回了local方式，package.json很香。</p>
+<h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><p>hexo安装绕了几个弯子，对hexo和hexo cli有点confuse，一直以为cli就是hexo本身，之前发现cli一直升级不到5以上，比较奔溃。因为安装theme的方式，5和5之前的版本是不同的。好在后面终于顺利搞定。</p>
+<h3 id="Next"><a href="#Next" class="headerlink" title="Next"></a>Next</h3><p>Next变化不大，但这次重构还是做了较大的源码修改，比之前更深入了。变化主要基本分两类，能基于Mist的基本在Mist的样式文件中进行修改，否则只能修改通用的comn文件。其中有些为了保持通用性，增加了通用的config，但实际上可能是不会再使用的，强迫症。这次也改动了div的动态js。</p>
+<p>能想起来的记录如下：</p>
+<ul>
+<li>字体大小修改不建议修改config中的font global，灵活度很小，如果要单独改动post body的size，config不起作用，需要去样式文件修改，title字体size可以直接配置</li>
+<li>由于修改了主题语言，font family基本都可以在config文件更改，menu字体需要去样式修改，比较耐看的字体是：<font face="Shuei Mincho L" >株式会社モリサワ-秀英明朝</font></li>
+<li>heder.styl中对目录栏宽度进行了修改，修改了header-inner和menu的padding，使其分为两行</li>
+<li>整体页面内容宽度也在样式文件中进行了修改，并且可以根据窗口大小，动态切换设置，对移动端比较友好</li>
+<li>config中增加了darkmode, mathjax，pjax，mediumnzoom, quicklink等设置</li>
+<li>增加了avatar，footer文字，facicon，social等信息</li>
+<li>比较复杂地修改了motion.js，单独修改了sidebar中site-description的动态展示效果</li>
+</ul>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p>改名字的时候，知道需要更改，但不知道改什么。随后一瞬想到了阿部芙蓉美（歌不错，但名字…）的「群青」和手嶌葵的专辑「青い図書室」，它们都是过去一段时间内包括现在也非常喜欢的歌曲集，索性就组合在一起，听「<a href="https://nipponcolors.com/#gunjyo">群青</a>」的时候才知道，这是一种颜色的称谓，顺便一提，十一区对颜色称谓相当文艺，例如紺，绯，鳶，楝，瓶覗，柳染，洒落柿，诸如此类。有兴趣的建议移步<a href="https://nipponcolors.com/">日本の伝統色</a>，页面有支持MUNSELL的JS开关，开启高能。<br>此外Sidebar这里的概要也恰逢时宜地选择了「言の葉の庭」中非常受欢迎的雷神短歌上半句。</p>
+<center><font face="Shuei Mincho L" >「鳴る神の 少し響みて  さし曇り 雨も降らぬか 君を留めむ」</font></center><br>
+
+<p>君を留めむ，那是否真的能让你流连驻足呢。</p>
 ]]></content>
+      <categories>
+        <category>Toolkit</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>字体踩坑</title>
+    <url>/2021/03/30/%E5%AD%97%E4%BD%93%E8%B8%A9%E5%9D%91/</url>
+    <content><![CDATA[<p>觉得还是有必要单独为此记录一篇，这是在近日几天被这个问题折腾之后的决定。<br>先从这里开始说吧。</p>
+<h3 id="ヒラギノ明朝-Pro"><a href="#ヒラギノ明朝-Pro" class="headerlink" title="ヒラギノ明朝 Pro"></a>ヒラギノ明朝 Pro</h3><p>是的，本来觉得字体的选择是一个非常简单的问题，也是重构站点之初最先着手的问题之一，由于所需的字体内容不多，网上搜罗一番后尝试了几个选项，就选择了其中一款还算顺眼的字体。现在想来这个最初的方案确实草率了，其实这都不能算上方案，只是一个选择，再加上缺少frontend的sense，后续出现了诸多的问题。</p>
+<p>在选择字体之后，然后顺利demo，丝滑部署，一切看似非常ok的情况下，登陆了Win试着看下效果，才发现自己忘记了兼容性的问题😱，指定的字体完完全全没有被渲染。尤其在Edge下，Sidebar的字体还因为还原了最初的方案被分段了，orz。</p>
+<p>兼容性的问题不仅仅出现在字体方面，在css多个选项上也出现了与Chrome下的不同效果。好在css的问题相对还比较好解决，但如果要实现跨平台跨浏览器的字体统一还是需要走自定义的方式来做，毕竟hexo的external字体配置虽然可以通过三方字体服务器来做，但在目前默认的google库中并没有合适的选择。</p>
+<span id="more"></span>
+
+<h3 id="秀英明朝-OTF"><a href="#秀英明朝-OTF" class="headerlink" title="秀英明朝 OTF"></a>秀英明朝 OTF</h3><p>既然可以自定义，自由度就大了很多，在各大网站辛苦搜索一番后，终于找到一个更合适的字体。可惜只有OTF格式，不过也可以试一下。<br>接下来就是通过hexo来实现自定义字体的加载，这里就简述下方法。</p>
+<ul>
+<li>首先是在主题目录的source文件夹下创建一个fonts的目录，把下载的字体放入即可</li>
+<li>然后需要添加一个自定义的styl文件，按照网上的教程，大多指向的是主题目录下source/css/_custom/custom.styl这个地址，但从Next某个7版本后，_custom目录发现被移除，现在文件的正确地址应该在站点目录下的source/_data/styles.styl</li>
+<li>继续在文件中定义font-face，这步比较简单，定义下名字，不同的字体格式，format不同的配置，最后修改url指向第一步的安装路径即可</li>
+<li>配置文件指定时，external需要设置为false</li>
+</ul>
+<p>本地测试比较顺利，但部署之后，发现ios端渲染有延迟，pc端基本无法渲染，猜测是字体大小的问题，一看发现整个字体文件竟然达到29M！🙄，只能继续求索。</p>
+<h3 id="font-spider"><a href="#font-spider" class="headerlink" title="font-spider"></a>font-spider</h3><p>字体压缩可以是想到最直接的解决方案。目前普遍的字体压缩方案就是<a href="https://github.com/aui/font-spider/">font-spider</a>，通过网页实际使用的文字进行按需压缩，对于非body类的网页通用字体，是比较好的解决方案。<br>但有几点需要注意：</p>
+<ul>
+<li>字体支持类型不包括otf，最好采用静态网站格式</li>
+<li>需要用css进行目标字体定义（本身使用的就是font-face，不需要额外操作）</li>
+<li>可能需要涉及对html的更改，例如css目录，font目录等</li>
+<li>竖排文字对于标点符号会有特殊情况，需要手动载入，例如「」与﹁﹂</li>
+</ul>
+<p>由于之前的采用的字体只有otf，所以再是一番搜寻，幸运地找到了同款字体的更新版本，来自wx：lxgwshare。</p>
+<table><tr><td bgcolor="#555" style="border-style:none;"><font color="#CCCCCC" face="Shuei Mincho L" >
+伊吕波歌</br>
+平仮名：</br>
+いろはにほへと・ちりぬるを・わかよたれそ・つねならむ・うゐのおくやま・けふこえて・あさきゆめみし・ゑひもせす</br>
+片仮名：</br>
+イロハニホエト・チリヌルヲ・ワカヨタレソ・ツネナラム・ウヰノオクヤマ・ケフコエテ・アサキユメミシ・ヱヒモセス</br>
+</br>
+简体：</br>
+轻轻的我走了，正如我轻轻的来；</br>
+我轻轻的招手，作别西天的云彩。</br>
+那河畔的金柳，是夕阳中的新娘；</br>
+波光里的艳影，在我的心头荡漾。</br></font></td></tr></table>
+
+<p>看上去还不错，效果符合预期，直接安排！</p>
+<p>压缩过程比较简单，顺利搞定。不得不感慨一下，小小的字体，过程竟也波澜不惊，还是多多记录下来，不给未来的自己留坑～</p>
+]]></content>
+      <categories>
+        <category>Toolkit</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
   </entry>
   <entry>
     <title>USBDriver Reload</title>
@@ -354,20 +291,54 @@
       </tags>
   </entry>
   <entry>
-    <title>归纳与第一性原理</title>
-    <url>/2026/01/15/%E5%BD%92%E7%BA%B3%E4%B8%8E%E7%AC%AC%E4%B8%80%E6%80%A7%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[<p>有段时间常在自省，为何自己会沦为一个“年更博主”。起初，总以“lazy driven”为借口聊以自慰；后来才惊觉，根源或许在于骨子里对“好记性不如烂笔头”这一传统信条的消极抵触。</p>
-<p>从学生时代跨入职场，这么多年一直没有养成记笔记的习惯和意识，而是执迷于通过归纳法因果律去拆解和重构知识。甚至在育儿时，也常常教导Hugo：“归纳才是最快的途径。”（尽管后来意识到，这种极端的“推导至上主义”在应试教育的坐标系下略显笨拙，容易带出不够严谨的做题习惯）。但我曾对这一学习范式深信不疑，未有过半点动摇。</p>
-<p>“第一性原理”，最近这个词热度很高，不得不说，大多数人都是慕强的，Elon Musk 把他思考世界的方式推向了风口浪尖，引来无数拥趸和追捧。人们在礼赞和推崇这一演绎法的同时，也常常提到它的对立面——归纳。</p>
-<p>但有意思的是，归纳法除了作为一种学习范式，目前也正以另一种形态滲入我们的生活。</p>
-<p>没错，还是AI。</p>
-<p>早期的统计学，无论是宏观和微观，虽然结构复杂，但以当前的视角来看至少都是结构化的，我们用一堆结构化的模型来描述数据表现的因果，再用数据来估计参数。所有工作的导向，不是预测，而是解释。这也是统计和机器学习在底层数据观上的根本差异。</p>
-<p>然后随着大数据时代的来临，很多模型和方法慢慢转向弱结构化，很多应用方的初衷也慢慢发生了改变，一旦预测比解释更能带来现金流，那么解释的必要性就大打折扣，演绎法的商业局限性就愈发凸显。</p>
-<p>再是十年前机器学习的兴起，工业界就更鲜有人再关心置信度，P值，显著性这些概念，至于什么是因果律，为什么还需要对此保持执念，成了很多从业者的心声。说个笑话，当年知道随机梯度下降的要比知道F-statistic来得多不少。</p>
-<p>LLM——blackbox，动则billion以上的超参，如同众神归位，带领人类来到新世界，或者说这是非理性归纳法的狂欢。我们根本不需要再做任何的segmentation，也不需要做任何的解释，就算模型无法结构化地表达出来，又如何？在这个时代，演绎法在工业界的价值正在被快速解构，取而代之的是归纳带来的这场“去结构化”的冲击：人们正逐步放弃对因果关系的底层执念，转而全面拥抱能够改造现实、加速适应的下一代生产力。</p>
-<p>所以回到第一性原理，这个所谓AI世界goat推崇的思维方式，难道却是整个发展历程下的思辨糟粕？</p>
-<p>我不禁好奇，这些由归纳法孕育出的智能体，在未来迈向自主进化的征途中，究竟会以何种逻辑去践行属于它们自己的“进化”？</p>
-<p>但无论如何，任何时代的变革都会带来诸多的可能性，所以就交给时间去回答吧。</p>
+    <title>九州の行</title>
+    <url>/2023/10/17/%E4%B9%9D%E5%B7%9E%E3%81%AE%E8%A1%8C/</url>
+    <content><![CDATA[<!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-TBXfSHTnwUkSSUZE"></div><script> var TBXfSHTnwUkSSUZE_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); TBXfSHTnwUkSSUZE_options.container = document.getElementById("mmedia-TBXfSHTnwUkSSUZE"); const dp_TBXfSHTnwUkSSUZE = new DPlayer(TBXfSHTnwUkSSUZE_options); </script> -->
+
+<video id="mmedia-ioxNUAwOytdRrCUZ" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
+
+<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-QrtHlccsUYHgidon" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-QrtHlccsUYHgidon").style.height=document.getElementById("mmedia-QrtHlccsUYHgidon").scrollWidth*0.76+"px";
+    window.onresize = function(){
+      document.getElementById("mmedia-QrtHlccsUYHgidon").style.height=document.getElementById("mmedia-QrtHlccsUYHgidon").scrollWidth*0.76+"px";
+    }; </script> -->]]></content>
+      <tags>
+        <tag>Trip</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>早櫻花見</title>
+    <url>/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/</url>
+    <content><![CDATA[<p>河津的樱花开了。阳光甚好。</p>
+<p>河津樱有一段在海滨，海滨上人不多，如果不赏樱，可以不妨休憩。<br><a href="javascript:void(0)" style="cursor: default;"><img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/0.jpg" class=""></a></p>
+<p>孤芳不自赏。<br><a href="javascript:void(0)" style="cursor: default;"><img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/1.jpg" class=""></a></p>
+<p>云蒸霞蔚。<br><a href="javascript:void(0)" style="cursor: default;"><img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/3.jpg" class=""></a></p>
+<p>荫庇之下，花见铁马。<br><a href="javascript:void(0)" style="cursor: default;"><img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/4.jpg" class=""></a></p>
+<p>赏樱，若按黄执中的口吻，或许会问：我们跋涉千里去赏，到底是在捕捉那转瞬即逝、静态的极致之美，还是在借由这粉色烟霞，寻求一份尘嚣之外的安宁？</p>
+<p>这并非二选一的抉择。捕捉美，是眼睫间的贪婪，是孩童的天真。而寻安宁，是灵魂的吐纳，是人到中年的不惑。</p>
+<p>那一刻，花见不仅是见花，更是见自己吧。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>宫崎骏的鄙夷</title>
+    <url>/2025/08/01/%E5%AE%AB%E5%B4%8E%E9%AA%8F%E7%9A%84%E9%84%99%E5%A4%B7/</url>
+    <content><![CDATA[<p>带Hugo来东京参加夏校。学校ASIJ其实离市区不近，位于多摩地区的调布市，如果要去学校参观，从新宿还要往西再坐将近40分钟的地铁。好在学校安排了校车，于是我们选择住在离终点站前两站的武蔵境駅附近。</p>
+<p>武蔵境这个地方离三鹰很近，只有一站JR的距离，三鹰是吉卜力的粉丝的朝圣地，美术馆需要提前很久预约，那天去的时候，我和宣在门口草草地望了两眼就打道回府了。然后就吃了目前行程中唯一的一堑，由于天实在太热，我们选择了美术馆门口的公交坐回到武蔵境，结果本来乘JR只需要5分钟的路程，结果公交整整开了50分钟，差点没赶上接Hugo的时间。</p>
+<p>三鹰往东再乘一站JR就是吉祥寺，吉祥寺是东京最宜居的区域之一，曾经多年在《關東地區居民最想居住的街區》排名中名列前茅，商店街很繁华，商场林立，小吃遍地，我们这些天有好几次是在这边解决的晚餐。</p>
+<p>就在前阵，也是偶然的契机下突然发现《海がきこえる》全国重映，7月4号开始，重映三周。本来我们落地时候正好是重映计划结束的时候，好在重映时间又延长了，那么作为《海がきこえる》的取景地之一 —— 吉祥寺，自然少不了重映的企划。于是选好时间，昨天去重温了这部曾让自己心潮澎湃的作品。</p>
+<p>这是自己第一次在电影院看这部电影，也是第二次在日本观影。宣对吉卜力不是很感冒，和Hugo先回了酒店，只有我一个人去看。虽然没有字幕，但电影前前后后看了好几遍，情节都算记得，所以这次纯为情怀买单，为爱发电。UPLINK影院不大，在地下二层，影厅大概也就是10排的样子，本以为来看这部二三十年前作品的观众应该是三十代或者四十代的居多，未料想，我看的这场，感觉都是国中生和高中生，一共10来人。想起在疫情前第一次在日本观影，看的是《寅次郎的故事》，整个影院除了我和宣，几乎都是花甲之年的长辈。这次却着实出乎意料，看来二次元的经典作品永远不会过时。</p>
+<div class="img-medium">
+<img data-src="/2025/08/01/%E5%AE%AB%E5%B4%8E%E9%AA%8F%E7%9A%84%E9%84%99%E5%A4%B7/ticket.jpg" class="">
+</div>
+
+<p>说到宫崎骏，大家应该都不陌生，但其实有不少人会把他和吉卜力画等号，因此导致像《火垂るの墓》、《平成狸合戦ぽんぽこ》、《おもひでぽろぽろ》这样的作品被误认为也是宫崎骏执导的作品，其实不然，当然也包括这部《海がきこえる》。</p>
+<p>该片原作是氷室冴子写的小说，描绘了发生在1980年代的日本高知县的青春故事。电影描写的是小说前半部分的情节，导演是望月智充，其实算是吉卜力培养新人试水的一部作品。但是宫崎骏对此的评价并不高，甚至有些鄙夷，一方面是其更倾向对原作进行大刀阔斧的改编，另一方面在于对于人物心理的刻画方式存在不同的理念。不过在我看来，望月智充的刻画恰恰是这部作品的精髓所在。</p>
+<p>原作的叙事风格据说更偏向散文，没有大起大落的情绪铺陈。对于带着悸动与敏感底色的青春来说，这种淡雅的刻画方式，还原着人物相处的本真模样，反而极易触动人心。含蓄的口吻，细腻的描摹，本身就是一种深沉的力量。另外，导演也深谙配乐的重要性，永田茂的插曲无可挑剔，而当片尾曲《海になれたら》坂本洋子的歌声响起，闭上双眼，仿佛就置身于高知的海边，听着海浪拍打在堤岸上的声音。</p>
+<p>日本观影有一个特色，片尾的结束才是真正的结束，在此之前影院不会开灯，更不会有人离场，每个观众静静地享受着作品最后的余韵，这或许也是给片尾中每个制作人员给予的最好的尊重和敬意。</p>
+<p>电影散场后，在周边商店入了两件纪念品。夜深了，立在吉祥寺的月台等着返程的列车，夏夜的晚风轻拂吹过，熙攘的人群渐渐散去，只剩下零星几个人，恍惚间似乎瞥见了一抹熟悉的身影。</p>
+<p>时间被按下了暂停键。</p>
+<p>你好，武藤里伽子。</p>
+<p>お休みなさい。</p>
+<img data-src="/2025/08/01/%E5%AE%AB%E5%B4%8E%E9%AA%8F%E7%9A%84%E9%84%99%E5%A4%B7/umi050.jpg" class="">
 ]]></content>
   </entry>
   <entry>
@@ -383,5 +354,35 @@
       <tags>
         <tag>Impression</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>神笔</title>
+    <url>/2026/01/11/%E7%A5%9E%E7%AC%94/</url>
+    <content><![CDATA[<p>说实话，这曾是一个让我嗤之以鼻的词。</p>
+<p>过往公司曾有个产品也叫这个名字。讽刺的是，别的没看见，反倒常常招来业务方的怨声载道这点确实挺“神”的。<br>“神”这个字还是要慎用，给自己留点余地，看看人家 Nano 和 GPT，真正强大的产品，从不需要形容词来替它正名。 </p>
+<h3 id="Vibe-Coding"><a href="#Vibe-Coding" class="headerlink" title="Vibe Coding"></a>Vibe Coding</h3><p>而当下的你我，或许正在见证这个时代“神笔”的降临。</p>
+<p>半年前、一年前，鲜有人知道它是什么，甚至时至今日关于它的舆论态势也未真正发酵。但凡尝试过的人，或许能慢慢感受到下一代工业革命近在咫尺了。</p>
+<p>或许有人会问，如果未来人人都手握一支神笔，那么神笔还是神笔吗？每一个创新，何尝不是那个时代的神笔？但它们终究会是时代的产物，日常会是它们最终的归宿。那么这支新的神笔，难道不会沿着历史的轨迹，最终归于平凡？</p>
+<p>确实，很有可能。</p>
+<p>但我们记住的，往往或许不是那支笔，而是初见那个时代的弄潮儿时，涌起心底涟漪的那份触动吧。</p>
+<p>昙花虽一现，刹那胜经年。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>归纳与第一性原理</title>
+    <url>/2026/01/15/%E5%BD%92%E7%BA%B3%E4%B8%8E%E7%AC%AC%E4%B8%80%E6%80%A7%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<p>有段时间常在自省，为何自己会沦为一个“年更博主”。起初，总以“lazy driven”为借口聊以自慰；后来才惊觉，根源或许在于骨子里对“好记性不如烂笔头”这一传统信条的消极抵触。</p>
+<p>从学生时代跨入职场，这么多年一直没有养成记笔记的习惯和意识，而是执迷于通过归纳法因果律去拆解和重构知识。甚至在育儿时，也常常教导Hugo：“归纳才是最快的途径。”（尽管后来意识到，这种极端的“推导至上主义”在应试教育的坐标系下略显笨拙，容易带出不够严谨的做题习惯）。但我曾对这一学习范式深信不疑，未有过半点动摇。</p>
+<p>“第一性原理”，最近这个词热度很高，不得不说，大多数人都是慕强的，Elon Musk 把他思考世界的方式推向了风口浪尖，引来无数拥趸和追捧。人们在礼赞和推崇这一演绎法的同时，也常常提到它的对立面——归纳。</p>
+<p>但有意思的是，归纳法除了作为一种学习范式，目前也正以另一种形态滲入我们的生活。</p>
+<p>没错，还是AI。</p>
+<p>早期的统计学，无论是宏观和微观，虽然结构复杂，但以当前的视角来看至少都是结构化的，我们用一堆结构化的模型来描述数据表现的因果，再用数据来估计参数。所有工作的导向，不是预测，而是解释。这也是统计和机器学习在底层数据观上的根本差异。</p>
+<p>然后随着大数据时代的来临，很多模型和方法慢慢转向弱结构化，很多应用方的初衷也慢慢发生了改变，一旦预测比解释更能带来现金流，那么解释的必要性就大打折扣，演绎法的商业局限性就愈发凸显。</p>
+<p>再是十年前机器学习的兴起，工业界就更鲜有人再关心置信度，P值，显著性这些概念，至于什么是因果律，为什么还需要对此保持执念，成了很多从业者的心声。说个笑话，当年知道随机梯度下降的要比知道F-statistic来得多不少。</p>
+<p>LLM——blackbox，动则billion以上的超参，如同众神归位，带领人类来到新世界，或者说这是非理性归纳法的狂欢。我们根本不需要再做任何的segmentation，也不需要做任何的解释，就算模型无法结构化地表达出来，又如何？在这个时代，演绎法在工业界的价值正在被快速解构，取而代之的是归纳带来的这场“去结构化”的冲击：人们正逐步放弃对因果关系的底层执念，转而全面拥抱能够改造现实、加速适应的下一代生产力。</p>
+<p>所以回到第一性原理，这个所谓AI世界goat推崇的思维方式，难道却是整个发展历程下的思辨糟粕？</p>
+<p>我不禁好奇，这些由归纳法孕育出的智能体，在未来迈向自主进化的征途中，究竟会以何种逻辑去践行属于它们自己的“进化”？</p>
+<p>但无论如何，任何时代的变革都会带来诸多的可能性，所以就交给时间去回答吧。</p>
+]]></content>
   </entry>
 </search>
