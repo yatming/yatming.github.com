@@ -3122,8 +3122,10 @@ hr {
   width: 30% !important;
 }
 @media (max-width: 767px) {
-  .img-medium,
+  .img-medium {
+    width: 50% !important;
+  }
   .img-small {
-    width: 90% !important; /* Larger on mobile for better visibility */
+    width: 30% !important;
   }
 }
