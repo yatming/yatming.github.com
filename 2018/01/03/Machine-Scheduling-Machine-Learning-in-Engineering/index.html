@@ -21,7 +21,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yatming.net","root":"/","images":"/images","scheme":"Mist","version":"8.2.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"changyan","storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp","site_description":"zoomIn"}},"prism":false,"i18n":{"placeholder":"検索…","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"yatming.net","root":"/","images":"/images","scheme":"Mist","version":"8.2.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"changyan","storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp","site_description":"zoomIn"}},"prism":false,"i18n":{"placeholder":"検索…","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 <meta name="description" content="Perface叨叨几分钟。 写这篇文章时，单是标题就琢磨了许久。若撇开“信达雅”的包袱，这篇文字其实可以概括为：一个结合机器学习与数学模型来优化平台流程开发的实践案例。 最终还是选了现在的标题，有趣的是，其中的两个“Machine”含义迥异，后文会慢慢展开。 说来这个case其实已经存在许久，5年前还在O记的时候，在一次数据开发并行化的任务中发现的方法。起初刚开始采用的方法比较稚嫩，有点惭愧就在此">
 <meta property="og:type" content="article">
@@ -312,7 +312,7 @@ mjx-container[display="true"] + br {
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Yatming"
-      src="/avatar.jpg">
+      src="/avatar/computer.jpg">
   <p class="site-author-name" itemprop="name">Yatming</p>
   <div class="site-description" itemprop="description">﹁鳴る神の&emsp;少し響みて<br> さし曇り&emsp;雨も降らぬか<br> &emsp;&emsp;君を留めむ﹂<br> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——﹃万葉集﹄</div>
 </div>
@@ -321,7 +321,7 @@ mjx-container[display="true"] + br {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">ポスト</span>
         </a>
       </div>
@@ -401,7 +401,7 @@ mjx-container[display="true"] + br {
     <link itemprop="mainEntityOfPage" href="http://yatming.net/2018/01/03/Machine-Scheduling-Machine-Learning-in-Engineering/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/avatar.jpg">
+      <meta itemprop="image" content="/avatar/computer.jpg">
       <meta itemprop="name" content="Yatming">
       <meta itemprop="description" content="﹁鳴る神の&emsp;少し響みて<br> さし曇り&emsp;雨も降らぬか<br> &emsp;&emsp;君を留めむ﹂<br> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——﹃万葉集﹄">
     </span>
@@ -459,10 +459,10 @@ mjx-container[display="true"] + br {
 <li>其次，程序处理一个Group的耗时即效率和Group本身包含的数据量成一定的正比关系。</li>
 </ol>
 <p>基于这样的条件，我们是否还会采用MR默认的Partition进行分流？这样是不是会引起典型的data skew问题，有没有更好的Partition方法来提高整体的效率？</p>
-<img src="/2018/01/03/Machine-Scheduling-Machine-Learning-in-Engineering/normal.gif" class="" title="MR中默认的Partition是标准的Hash取模">
+<img data-src="/2018/01/03/Machine-Scheduling-Machine-Learning-in-Engineering/normal.gif" class="" title="MR中默认的Partition是标准的Hash取模">
 
 <p>事实上，如上图所示，默认的Partition可能会导致data skew的问题，缘由其做分配时采用的key与key的属性无关，仅与key本身的值相关。因此，我们希望能有一种调度算法使得分配结果更合理，如下图所示。</p>
-<img src="/2018/01/03/Machine-Scheduling-Machine-Learning-in-Engineering/custom.gif" class="" title="合理的分配方式">
+<img data-src="/2018/01/03/Machine-Scheduling-Machine-Learning-in-Engineering/custom.gif" class="" title="合理的分配方式">
 
 <h3 id="Job-Shop"><a href="#Job-Shop" class="headerlink" title="Job Shop"></a>Job Shop</h3><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Job_shop_scheduling">Job-shop</a>，中文叫车间调度，是一个离散的最优化问题，又称为Multiprocessor Scheduling，是一个非常典型的基于Machine Scheduling的运筹问题。可以看一下表述：”Given a set <em>J</em> of jobs where job <em><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.462ex" xmlns="http://www.w3.org/2000/svg" width="1.597ex" height="1.957ex" role="img" focusable="false" viewBox="0 -661 706 865"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D457" d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"></path></g><g data-mml-node="mi" transform="translate(412, -150) scale(0.707)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></g></svg></mjx-container></em> has length <em><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex" xmlns="http://www.w3.org/2000/svg" width="1.339ex" height="1.927ex" role="img" focusable="false" viewBox="0 -694 592 851.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D459" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"></path></g><g data-mml-node="mi" transform="translate(298, -150) scale(0.707)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></g></svg></mjx-container></em> and a number of processors <em>m</em>, what is the minimum possible time required to schedule all jobs in <em>J</em> on <em>m</em> processors such that none overlap?” 换言之，即有一堆大小不同的任务需要由若干个相同产能的机器进行处理，那么整个过程耗时最短时间会是多少？也有另外一种问法，如何安排可以使得最后处理完成的的机器耗时最小？</p>
 <p>我们问题的本质则可以完美映射到Job-shop模型上：Map Processor就像是多台处理能力相同的机器，而各个Group则可以看作大小不一的任务。通过这种类比，原本模糊的 Partition设计就转化为了一个清晰的Job-shop调度策略问题。</p>
@@ -611,6 +611,7 @@ mjx-container[display="true"] + br {
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script>
 var pjax = new Pjax({

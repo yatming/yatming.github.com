@@ -3110,3 +3110,20 @@ hr {
   outline: none !important;
   background: none !important;
 }
+/* Image size utilities */
+.img-medium {
+  display: block !important;
+  margin: 15px auto !important;
+  width: 50% !important;
+}
+.img-small {
+  display: block !important;
+  margin: 15px auto !important;
+  width: 30% !important;
+}
+@media (max-width: 767px) {
+  .img-medium,
+  .img-small {
+    width: 90% !important; /* Larger on mobile for better visibility */
+  }
+}
