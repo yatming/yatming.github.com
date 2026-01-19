@@ -3088,6 +3088,11 @@ hr {
   -webkit-transition: none !important;
   -webkit-backface-visibility: hidden; /* Fix Safari flickering */
 }
+/* Ensure zoomed images remain bright in dark mode */
+.medium-zoom-image--opened {
+  opacity: 1 !important;
+  filter: none !important;
+}
 /* 2. Forced fix for Hover/Active states (All devices) */
 .post-body img:hover,
 .post-body img:active,

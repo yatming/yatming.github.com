@@ -114,14 +114,14 @@
   </url>
   
   <url>
-    <loc>http://yatming.net/tags/index.html</loc>
+    <loc>http://yatming.net/categories/index.html</loc>
     
     <lastmod>2021-03-24</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yatming.net/categories/index.html</loc>
+    <loc>http://yatming.net/tags/index.html</loc>
     
     <lastmod>2021-03-24</lastmod>
     
@@ -138,6 +138,20 @@
   
   <url>
     <loc>http://yatming.net/tags/Python/</loc>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yatming.net/tags/hexo/</loc>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yatming.net/tags/encrypted/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -165,20 +179,6 @@
   </url>
   
   <url>
-    <loc>http://yatming.net/tags/VPN/</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yatming.net/tags/hexo/</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://yatming.net/tags/Dolphin/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>daily</changefreq>
@@ -187,6 +187,34 @@
   
   <url>
     <loc>http://yatming.net/tags/%E4%B9%9D%E5%B7%9E/</loc>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yatming.net/tags/%E4%B8%9C%E4%BA%AC/</loc>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yatming.net/tags/%E5%B2%A9%E4%BA%95%E4%BF%8A%E4%BA%8C/</loc>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yatming.net/tags/%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/</loc>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yatming.net/tags/%E5%9B%9B%E6%9C%88%E7%89%A9%E8%AF%AD/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -207,7 +235,7 @@
   </url>
   
   <url>
-    <loc>http://yatming.net/tags/%E4%B8%9C%E4%BA%AC/</loc>
+    <loc>http://yatming.net/tags/VPN/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -235,21 +263,14 @@
   </url>
   
   <url>
-    <loc>http://yatming.net/tags/%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/</loc>
+    <loc>http://yatming.net/tags/AI/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yatming.net/tags/%E5%B2%A9%E4%BA%95%E4%BF%8A%E4%BA%8C/</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yatming.net/tags/%E5%9B%9B%E6%9C%88%E7%89%A9%E8%AF%AD/</loc>
+    <loc>http://yatming.net/tags/Vibe-Coding/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -257,13 +278,6 @@
   
   <url>
     <loc>http://yatming.net/tags/Summary/</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yatming.net/tags/AI/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -278,20 +292,6 @@
   
   <url>
     <loc>http://yatming.net/tags/Induction/</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yatming.net/tags/encrypted/</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yatming.net/tags/Vibe-Coding/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
