@@ -191,7 +191,7 @@
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Yatming"
-      src="/avatar/computer.jpg">
+      src="/avatar/book.jpg">
   <p class="site-author-name" itemprop="name">Yatming</p>
   <div class="site-description" itemprop="description">﹁鳴る神の&emsp;少し響みて<br> さし曇り&emsp;雨も降らぬか<br> &emsp;&emsp;君を留めむ﹂<br> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——﹃万葉集﹄</div>
 </div>
@@ -460,6 +460,24 @@ if (document.querySelectorAll('.pdf-container').length) {
       });
       });
   </script>
+<script>
+if (!window.mathjaxFixLoaded) {
+  window.mathjaxFixLoaded = true;
+  document.addEventListener('pjax:success', () => {
+    if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+      MathJax.typesetPromise();
+    }
+  });
+
+  document.addEventListener('toggle', (e) => {
+    if (e.target.nodeName.toLowerCase() === 'details' && e.target.open) {
+      if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+        MathJax.typesetPromise([e.target]);
+      }
+    }
+  }, true);
+}
+</script>
 
     </div>
 </body>
