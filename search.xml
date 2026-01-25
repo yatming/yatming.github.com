@@ -84,6 +84,110 @@
       </tags>
   </entry>
   <entry>
+    <title>Machine Scheduling, Machine Learning in Engineering</title>
+    <url>/2018/01/03/Machine-Scheduling-Machine-Learning-in-Engineering/</url>
+    <content><![CDATA[<h3 id="Perface"><a href="#Perface" class="headerlink" title="Perface"></a>Perface</h3><p>叨叨几分钟。</p>
+<p>写这篇文章时，单是标题就琢磨了许久。若撇开“信达雅”的包袱，这篇文字其实可以概括为：一个结合机器学习与数学模型来优化平台流程开发的实践案例。 最终还是选了现在的标题，有趣的是，其中的两个“Machine”含义迥异，后文会慢慢展开。</p>
+<p>说来这个case其实已经存在许久，5年前还在O记的时候，在一次数据开发并行化的任务中发现的方法。起初刚开始采用的方法比较稚嫩，有点惭愧就在此不表，直到后续闲暇下来之后再重新考虑这个问题时候，想到了还在学校惨遭延毕的博士同窗，徐徐聊起来，才发现原来是一个可以结合离散优化和机器学习的典型应用。离开O记之后，或多或少有时还是会联想到这个问题，每次总会得到一些新的感悟。然而最近再看这个问题时，发现当年的一些思路竟已开始模糊，于是决定将其记录下来，权当是给自己、也给这个曾经痴迷过的问题一份正式的总结。</p>
+<h3 id="Parallelism"><a href="#Parallelism" class="headerlink" title="Parallelism"></a>Parallelism</h3><p>上面提到的数据开发并行化其实是一个单机程序进行多机并行化的任务，依稀还记得当初接手这个程序的无语，也是第一次接触逻辑竟能如此晦涩的项目，正是由于这个经历，后面看到“pata”这样的程序并没有受到更多的震撼。这段程序的原始作者之一是自己的老板，  另一个则是高高瘦瘦的犹太人，还记得他的名字Ian Langmore，他是我在O记见过的最硬核的Geek之一，分离式键盘也是受他安利。他不仅技术精湛，性格也极其细腻，离开O记时的Farewell Note里给每个人都留下了专属的寄语。</p>
+<p>这个程序本身是一个集合了multinomial logistic regression以及markov chain的scoring program（也可能是monte carlo simulation，对stochastic process并不熟，忘了是哪个mc，请多包涵笔者这名数学系学渣😑）。程序内部的计算部分逻辑复杂晦涩，又是Probability又是Matrix，若强行拆解逻辑以适配MapReduce框架，实现成本极高，考虑到当时的性能瓶颈主要源于海量计算需求与有限算力资源之间的矛盾，最终还是决定采用“分而治之”的策略。从直观上看，这样的处理复杂度最低：工程师只需巧妙利用 MapReduce 的 Map 与 Shuffle 特性和分配机制进行任务分流，即可完成。</p>
+<p>但这个过程中仔细想想会发现有个很有意思的问题，当然这也是取决于这个任务的特性。</p>
+<ol>
+<li>首先，这个任务需要处理的数据可以看作为是n多的“Group“，而每个“Group”又包含了很多明细数据，明细数据量的分布并不是一个均匀分布，方差实际会比较大。</li>
+</ol>
+<span id="more"></span>
+
+<ol start="2">
+<li>其次，程序处理一个Group的耗时即效率和Group本身包含的数据量成一定的正比关系。</li>
+</ol>
+<p>基于这样的条件，我们是否还会采用MR默认的Partition进行分流？这样是不是会引起典型的data skew问题，有没有更好的Partition方法来提高整体的效率？</p>
+<img data-src="/2018/01/03/Machine-Scheduling-Machine-Learning-in-Engineering/normal.gif" class="" title="MR中默认的Partition是标准的Hash取模">
+
+<p>事实上，如上图所示，默认的Partition可能会导致data skew的问题，缘由其做分配时采用的key与key的属性无关，仅与key本身的值相关。因此，我们希望能有一种调度算法使得分配结果更合理，如下图所示。</p>
+<img data-src="/2018/01/03/Machine-Scheduling-Machine-Learning-in-Engineering/custom.gif" class="" title="合理的分配方式">
+
+<h3 id="Job-Shop"><a href="#Job-Shop" class="headerlink" title="Job Shop"></a>Job Shop</h3><p><a href="https://en.wikipedia.org/wiki/Job_shop_scheduling">Job-shop</a>，中文叫车间调度，是一个离散的最优化问题，又称为Multiprocessor Scheduling，是一个非常典型的基于Machine Scheduling的运筹问题。可以看一下表述：”Given a set <em>J</em> of jobs where job <em>$j_i$</em> has length <em>$l_i$</em> and a number of processors <em>m</em>, what is the minimum possible time required to schedule all jobs in <em>J</em> on <em>m</em> processors such that none overlap?” 换言之，即有一堆大小不同的任务需要由若干个相同产能的机器进行处理，那么整个过程耗时最短时间会是多少？也有另外一种问法，如何安排可以使得最后处理完成的的机器耗时最小？</p>
+<p>我们问题的本质则可以完美映射到Job-shop模型上：Map Processor就像是多台处理能力相同的机器，而各个Group则可以看作大小不一的任务。通过这种类比，原本模糊的 Partition设计就转化为了一个清晰的Job-shop调度策略问题。</p>
+<p>不过很遗憾，Job-shop是一个典型的NP-hard问题，通过遍历解空间来寻求全局最优解在工程上几乎不可行。因此我们需要找到近似方法来解决这个问题，而事实上车间调度并不是一个新的问题，虽然学术界针对这一经典命题已沉淀了如遗传算法等大量近似方案，但考虑到Partition逻辑直接嵌入在对实时性要求极高的Shuffle阶段，任何沉重的算法开销都会适得其反。因此，我们需要一种在分配效果与计算开销之间达成平衡的轻量级算法。</p>
+<h3 id="LPT"><a href="#LPT" class="headerlink" title="LPT"></a>LPT</h3><p>LPT也有称为LPTF，Largest(Longest, Least) Processing Time First。是一种解决车间调度问题的近似方法，顾名思义，最大的任务先做。</p>
+<p>这个方法过程非常<sup>∞</sup>简单，很适合用来作Parition：每个机器machine维护自己要处理的任务job队列，然后从任务中选择最大的任务，分配给当前任务队列中任务耗时总和最小的机器，如果最小的机器超过一个，则随机分配给其中一个。这个过程实施过程中，分配和处理是分离的。因此逻辑上可以直接应用到Partition的设计上。</p>
+<p>这个近似算法的上界为4/3，当初在做这个task时候，由于项目紧张的缘故，我仅停留在这一结论的认知上。直到后来复盘其证明逻辑，才发现其中的推导过程挺有意思。接下来，就来具体看看它的证明推导。</p>
+<h4 id="Definition-1"><a href="#Definition-1" class="headerlink" title="Definition 1"></a>Definition 1</h4><p><strong>我们假设给定 $ m $ 个machine，$ n $ 个job，其中job $ i $ 需要耗时 $ t_i $。$ L_i = \sum_{x(j)=i}t_j $ 表示为machine i的load。</strong></p>
+<h4 id="Lemma-1"><a href="#Lemma-1" class="headerlink" title="Lemma 1"></a>Lemma 1</h4><ul>
+<li>引理：<strong>设 $ l $ 是最后一个需要完成的任务，则 $ L_{max} \leq \sum_j {t_j \over m} + {m-1 \over m}t_l$ 。</strong></li>
+</ul>
+<ul>
+<li>证明：由于$ l $是最后一个完成的任务，则最后一个任务分配之前，m个machine中存在load最小的load，令其为$ t $。因此，显而易见，最小的load的m倍一定小于等于其他所有任务load的总和，表示为 $ \sum_{j \ne l}t_j \geq tm$ ，等价于，$ t \leq \sum_{j \ne l}t_j / m $ 。因此，我们可以得到：<br>$$<br>L_{max} = t + t_l \le \sum_{j \ne l}t_j /m + t_l = \sum_j{t_j \over m} + {m-1 \over m}t_l<br>$$<br>证毕。</li>
+</ul>
+<h4 id="Lemma-2"><a href="#Lemma-2" class="headerlink" title="Lemma 2"></a>Lemma 2</h4><ul>
+<li><p>引理：<strong>适用于任意情况，如果限制最优解在每台machine上最多分配两个任务，则LPT调度算法得到的结果即最优解。</strong></p>
+</li>
+<li><p>证明：不失一般性，我们假设job的数量n和机器的数量m呈以下关系：$ n = 2m $。由于引理中的限制前提，其实无法处理更多的job数量，此外如果job数量小于2m，则我们可以补充一些耗时为0的dummy jobs。相似地，我们使用这样的表述 $ i &lt; j $ 来表示耗时关系 $ t_i \leq t_j $。我们同时也假设所有job的耗时皆不同，且当如果最小load的machine有多台，LPT会选择其中机器标识最小的机器作分配，而不是随机。</p>
+<p>此外，我们使用 $ p(i) $ 和 $ s(i) $ 表示机器i中被分配的最大job和最小job的标识。现在我们可以模拟最优解的过程，看是否能逼近LPT算法的结果。</p>
+<ol>
+<li>假设存在任意两个机器i和j，满足 $ s(i) &lt; p(i) &lt; s(j) &lt; p(j) $ ，我们需要先交换job  $ p(i) $ 和 $ s(j) $ 。对所有满足条件的任意两个机器重复此过程后，我们可以得到，top m大的任务会分配给每台机器上。</li>
+<li>其次，对任意两个机器i和j，满足 $ i &lt; j $ 和 $ p(i) &lt; p(j) $ ，我们交换job  $ p(i) $ 和 $ p(j) $ ，以及 $ s(i) $ 和 $ s(j) $ 。在所有满足条件的机器重复此过程后，我们可以得到 $ p(i) $ 的order为 $ n - i + 1 $ 。</li>
+<li>最后，对任意两个机器i和j，满足 $ i &lt; j $ 和 $ s(i) &gt; s(j) $ ，我们交换job  $ s(i) $ 和 $ s(j) $ 。由于 $ p(i) &gt; p(j) $ ，这步并不会增加最大的load。我们最终会得到 $ p(i) $ 的order为 $ n - i + 1 $， $ s(i) $ 的order为 $ i $ 。</li>
+</ol>
+<p>这个优化方法得到最终每个job的order与LPT得到的结果一致。证毕。</p>
+</li>
+</ul>
+<h4 id="Definition-2"><a href="#Definition-2" class="headerlink" title="Definition 2"></a>Definition 2</h4><p><strong>一个算法如果对所有情况皆可满足近似率 $ \rho $ ，其算法可以得到一个解 $ x(I) $ 满足 $ {f(x(I)) \over f(x^\ast(I))} \leq \rho $ ，其中 $ f(x^\ast(I)) $ 表示为最优解。</strong></p>
+<p>LPT的近似率即上界即为4/3，接下来进行证明。</p>
+<h4 id="Theorem"><a href="#Theorem" class="headerlink" title="Theorem"></a>Theorem</h4><ul>
+<li><p>定理：<strong>对于车间调度问题，LPT的近似率为 $ {4 \over 3} - {1 \over 3m} $ ，m为<a href="#Definition-1">Definition 1</a>中定义的机器数量。</strong></p>
+</li>
+<li><p>证明：反证，假设定理是错误的，即成立：<br>$$<br>\begin{equation}<br>{f(x) \over f(x^\ast)} &gt; {4 \over 3} - {1 \over 3m}<br>\label{eq:eq1}<br>\tag{1}<br>\end{equation}<br>$$<br>然后利用<a href="#Lemma-1">Lemma 1</a>，我们可以得到，设 $ l $ 是最后一个需要完成的任务：<br>$$<br>\begin{equation}<br>{4 \over 3} - {1 \over 3m} &lt; {f(x) \over f(x^\ast)} \le {\sum_jt_j/m \over f(x^\ast)} + {m - 1\over m} \cdot {t_l \over f(x^\ast)}<br>\tag{2}<br>\end{equation}<br>$$<br>由于最优解显然大于等于所有耗时的平均值： $ {\sum_jt_j/m \over f(x^\ast)} \leq 1 $ 。<br>$$<br>\begin{equation}<br>{4 \over 3} - {1 \over 3m} &lt; 1 + {m - 1\over m} \cdot {t_l \over f(x^\ast)}<br>\tag{3}<br>\end{equation}<br>$$<br>进行约化，可得：<br>$$<br>\begin{equation}<br>f(x^\ast) &lt; 3t_l<br>\tag{4}<br>\end{equation}<br>$$<br>由于 $ t_j $ 是最小的job，这个公式说明了对于最优解 $ x^\ast $ ，没有任何机器可以被分配两个以上的job。因此套用<a href="#Lemma-2">Lemma 2</a>的结论，LPT算法得到结果即是最优解：<br>$$<br>\begin{equation}<br>{f(x) \over f(x^\ast)} = 1<br>\label{eq:eq5}<br>\tag{5}<br>\end{equation}<br>$$<br>考虑 $ \eqref{eq:eq1} $ 中m取值1时，等式右边达到最小值，可以得到：<br>$$<br>\begin{equation}<br>{f(x) \over f(x^\ast)} &gt; {4 \over 3} - {1 \over 3} = 1<br>\label{eq:eq6}<br>\tag{6}<br>\end{equation}<br>$$<br>因此 $ \eqref{eq:eq5} $ 和  $ \eqref{eq:eq6} $ 矛盾，假设不成立，定理得证。</p>
+</li>
+</ul>
+<h3 id="Implement"><a href="#Implement" class="headerlink" title="Implement"></a>Implement</h3><p>LPT代码的实现非常简单，核心代码3、4行即可。其余的部分，交给MR框架进行实现。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line">jobs = random.sample(xrange(<span class="number">100</span>), <span class="number">10</span>) <span class="comment"># init jobs</span></span><br><span class="line">jobs = <span class="built_in">sorted</span>(jobs, reverse=<span class="literal">True</span>) <span class="comment"># sort jobs</span></span><br><span class="line">machines = [[] <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">3</span>)] <span class="comment"># init machines</span></span><br><span class="line"><span class="built_in">map</span>(<span class="keyword">lambda</span> x:<span class="built_in">min</span>(machines, key=<span class="built_in">sum</span>).append(x), jobs) <span class="comment"># LPT scheduling</span></span><br><span class="line"><span class="built_in">print</span> machines</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Machine-Learning"><a href="#Machine-Learning" class="headerlink" title="Machine Learning"></a>Machine Learning</h3><p>至此还没有提到和机器学习相关的任何东西，不过在这个case，机器学习的应用相对简单很多。前文提到Group中的明细数据量和Group的耗时成正比，因此我们可以利用Group中的明细数据对Group被计算的耗时进行预估，这是一个比较典型的Linear Regression，甚至可以是univariate的。当我们模型完成后，只要在LPT进行分配的时候，对数据量进行模型打分得到最终的耗时，再进行分配即可，由于模型参数是一个可忽略不计大小的配置，其对效率也基本不会有任何影响。</p>
+<p>再进一步，我们甚至可以利用online-learning的方法不断去optimize这个univariate的regression，所以最终会是一个结合MS和ML的工程优化实例。</p>
+<h3 id="Summay"><a href="#Summay" class="headerlink" title="Summay"></a>Summay</h3><ul>
+<li>Operation Research &amp; Cybernetic是在Machine Learning以及Data Mining之前，数学领域在工业界主要的应用方向。与ML的连续性问题不同，大多case是离散问题，特点不一定需要很多数据，依靠算法和技巧解决一些实际的工业流程优化问题。所以一般的工具，matlab就够。不过对理论基础要求很高，和高校举办的数学模型内容比较相似。而且近两年，随着交通、物流、外卖类服务的互联网智能化越来越深入，各大厂也开始大肆招募OR方向优化的能人，从长远的发展来看，其应用具备非常独立的场景，前景看好。</li>
+<li>随着ML的大热，OR领域也迎来不少新的突破，有些新的方法加入了ML的元素。然而另一方面，趋势引领潮流，一般的研发工作可能无法直接和分析、模型接触，甚至连算法也被越来越多的开源项目给封装，套路变多了，新鲜的挑战似乎变少了。然而，正如技术总是在不断解构与重组，尝试将新技术趋势融入经典OR模型，也不失为一种打破舒适区、寻找创新的契机。ML和DM的思维方式，不仅是解决问题的工具，更是窥探逻辑之美、洞察世界运行规律的另一扇窗口。</li>
+<li>最后共勉一句话吧：Unless you try to do something beyond what you have already mastered, you will never grow.</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>NP-hard</tag>
+        <tag>Optimization</tag>
+        <tag>ML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>VPN = VPS + VPaas</title>
+    <url>/2018/08/02/VPN-VPS-VPaas/</url>
+    <content><![CDATA[<p>要不是收到关于&lt;<a href="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/" title="JupyterHub搭建">JupyterHub搭建</a>&gt;的咨询邮件，估计要在这个Blog再写写画画会是一个未来很久远的事情。</p>
+<p>几个月下来，做了不少东西，也进行了很多的尝试，每个点应该都可以post一下，不过发现年纪大了，归纳总结的能力也退化了不少，要好好地写一篇路人也能看懂的文似乎也没有以前那么潇洒，虽然自己还是会常常想起几年前一个多月天天就是PPT的工作，只为写一个让分析师理解的计算模型出来，但未来，不太可能会发生同样的事情了吧。</p>
+<p>言归，正传。今天介绍一下当下一个还算比较稳定的VPN的神器，V2Ray。写这种文章实际上有点亏，一来没什么含金量，二来很有可能成为在不久的未来完全被淘汰的东西。科科。</p>
+<h3 id="VPS-Google-Cloud-Platform-GCP"><a href="#VPS-Google-Cloud-Platform-GCP" class="headerlink" title="VPS: Google Cloud Platform(GCP)"></a>VPS: Google Cloud Platform(GCP)</h3><p>我个人早前VPN技术还是比较low的，从以前的goagent到后来的ss的鹦鹉学舌，实际上自己对网络都还是一知半解，不够精通。在此说一下，基于ss的搭建没有这么难，甚至可以说非常简单，大多数人其实是被云主机这类事给唬住罢了。其实只需要找一个VPS供应商，例如Vultr，申请一个VS，然后用python安装下ss，配一下config，service start。除去注册以及等待的时间，也就是5分钟的事情。</p>
+<p>作为VPS，GCP的好处在于，似乎速度还算比较稳定，在日服猖狂的当下，可以支持另外建设湾湾的机房，且目前注册有300刀的白嫖。实际上GCP上租一个乞丐版的VPS，一个月大概3刀左右，网络传输另算，如果不是大流量的客户端请求，也不会有大多的费用，所以300刀基本上也可以维持一个比较长的时间，相对还是比较划算的。</p>
+<img data-src="/2018/08/02/VPN-VPS-VPaas/gcp.png" class="">
+
+<center>GCP VPS Configuration</center>
+
+<span id="more"></span>
+
+<h3 id="VPaas：V2ray"><a href="#VPaas：V2ray" class="headerlink" title="VPaas：V2ray"></a>VPaas：V2ray</h3><p><a href="https://www.v2ray.com/">神器</a>。为什么说是Paas，就是一个底层构建，门槛会高一些，但还算能接受。</p>
+<h3 id="IOS-Client-NA"><a href="#IOS-Client-NA" class="headerlink" title="IOS Client: NA"></a>IOS Client: NA</h3><p>目前貌似只能在美区才能购买Kitsunebi Lite和Shadowroket，比较遗憾。所以说这个还是需要一点运气，在Local买了一个SR，12软妹币，结果上当了，不支持Vmess协议，就此作罢。</p>
+<p>最后不得不说效果，湾湾VPS延迟非常低，60ms左右，再加上Vmess目前还不太容易会被detect的Protocol，体验还是非常不错的。建议ss用户可以尽快入手了。</p>
+]]></content>
+      <categories>
+        <category>Toolkit</category>
+      </categories>
+      <tags>
+        <tag>VPN</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo next客制化</title>
     <url>/2021/03/27/hexo-next%E5%AE%A2%E5%88%B6%E5%8C%96/</url>
     <content><![CDATA[<p>17年一篇，18年两篇，然后现在是第四篇文章，更新速度堪比富坚义博。</p>
@@ -187,94 +291,43 @@
       </tags>
   </entry>
   <entry>
-    <title>Machine Scheduling, Machine Learning in Engineering</title>
-    <url>/2018/01/03/Machine-Scheduling-Machine-Learning-in-Engineering/</url>
-    <content><![CDATA[<h3 id="Perface"><a href="#Perface" class="headerlink" title="Perface"></a>Perface</h3><p>叨叨几分钟。</p>
-<p>写这篇文章时，单是标题就琢磨了许久。若撇开“信达雅”的包袱，这篇文字其实可以概括为：一个结合机器学习与数学模型来优化平台流程开发的实践案例。 最终还是选了现在的标题，有趣的是，其中的两个“Machine”含义迥异，后文会慢慢展开。</p>
-<p>说来这个case其实已经存在许久，5年前还在O记的时候，在一次数据开发并行化的任务中发现的方法。起初刚开始采用的方法比较稚嫩，有点惭愧就在此不表，直到后续闲暇下来之后再重新考虑这个问题时候，想到了还在学校惨遭延毕的博士同窗，徐徐聊起来，才发现原来是一个可以结合离散优化和机器学习的典型应用。离开O记之后，或多或少有时还是会联想到这个问题，每次总会得到一些新的感悟。然而最近再看这个问题时，发现当年的一些思路竟已开始模糊，于是决定将其记录下来，权当是给自己、也给这个曾经痴迷过的问题一份正式的总结。</p>
-<h3 id="Parallelism"><a href="#Parallelism" class="headerlink" title="Parallelism"></a>Parallelism</h3><p>上面提到的数据开发并行化其实是一个单机程序进行多机并行化的任务，依稀还记得当初接手这个程序的无语，也是第一次接触逻辑竟能如此晦涩的项目，正是由于这个经历，后面看到“pata”这样的程序并没有受到更多的震撼。这段程序的原始作者之一是自己的老板，  另一个则是高高瘦瘦的犹太人，还记得他的名字Ian Langmore，他是我在O记见过的最硬核的Geek之一，分离式键盘也是受他安利。他不仅技术精湛，性格也极其细腻，离开O记时的Farewell Note里给每个人都留下了专属的寄语。</p>
-<p>这个程序本身是一个集合了multinomial logistic regression以及markov chain的scoring program（也可能是monte carlo simulation，对stochastic process并不熟，忘了是哪个mc，请多包涵笔者这名数学系学渣😑）。程序内部的计算部分逻辑复杂晦涩，又是Probability又是Matrix，若强行拆解逻辑以适配MapReduce框架，实现成本极高，考虑到当时的性能瓶颈主要源于海量计算需求与有限算力资源之间的矛盾，最终还是决定采用“分而治之”的策略。从直观上看，这样的处理复杂度最低：工程师只需巧妙利用 MapReduce 的 Map 与 Shuffle 特性和分配机制进行任务分流，即可完成。</p>
-<p>但这个过程中仔细想想会发现有个很有意思的问题，当然这也是取决于这个任务的特性。</p>
-<ol>
-<li>首先，这个任务需要处理的数据可以看作为是n多的“Group“，而每个“Group”又包含了很多明细数据，明细数据量的分布并不是一个均匀分布，方差实际会比较大。</li>
-</ol>
-<span id="more"></span>
+    <title>早櫻花見</title>
+    <url>/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/</url>
+    <content><![CDATA[<p>河津的樱花开了。阳光甚好。</p>
+<p>河津樱道有一段在海滨，海滨上人不多，如果不赏樱，可以不妨在此休憩。</p>
+<img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/0.jpg" class="">
 
-<ol start="2">
-<li>其次，程序处理一个Group的耗时即效率和Group本身包含的数据量成一定的正比关系。</li>
-</ol>
-<p>基于这样的条件，我们是否还会采用MR默认的Partition进行分流？这样是不是会引起典型的data skew问题，有没有更好的Partition方法来提高整体的效率？</p>
-<img data-src="/2018/01/03/Machine-Scheduling-Machine-Learning-in-Engineering/normal.gif" class="" title="MR中默认的Partition是标准的Hash取模">
+<p>孤芳不自赏。</p>
+<img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/1.jpg" class="">
 
-<p>事实上，如上图所示，默认的Partition可能会导致data skew的问题，缘由其做分配时采用的key与key的属性无关，仅与key本身的值相关。因此，我们希望能有一种调度算法使得分配结果更合理，如下图所示。</p>
-<img data-src="/2018/01/03/Machine-Scheduling-Machine-Learning-in-Engineering/custom.gif" class="" title="合理的分配方式">
+<p>云蒸霞蔚。</p>
+<img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/3.jpg" class="">
 
-<h3 id="Job-Shop"><a href="#Job-Shop" class="headerlink" title="Job Shop"></a>Job Shop</h3><p><a href="https://en.wikipedia.org/wiki/Job_shop_scheduling">Job-shop</a>，中文叫车间调度，是一个离散的最优化问题，又称为Multiprocessor Scheduling，是一个非常典型的基于Machine Scheduling的运筹问题。可以看一下表述：”Given a set <em>J</em> of jobs where job <em>$j_i$</em> has length <em>$l_i$</em> and a number of processors <em>m</em>, what is the minimum possible time required to schedule all jobs in <em>J</em> on <em>m</em> processors such that none overlap?” 换言之，即有一堆大小不同的任务需要由若干个相同产能的机器进行处理，那么整个过程耗时最短时间会是多少？也有另外一种问法，如何安排可以使得最后处理完成的的机器耗时最小？</p>
-<p>我们问题的本质则可以完美映射到Job-shop模型上：Map Processor就像是多台处理能力相同的机器，而各个Group则可以看作大小不一的任务。通过这种类比，原本模糊的 Partition设计就转化为了一个清晰的Job-shop调度策略问题。</p>
-<p>不过很遗憾，Job-shop是一个典型的NP-hard问题，通过遍历解空间来寻求全局最优解在工程上几乎不可行。因此我们需要找到近似方法来解决这个问题，而事实上车间调度并不是一个新的问题，虽然学术界针对这一经典命题已沉淀了如遗传算法等大量近似方案，但考虑到Partition逻辑直接嵌入在对实时性要求极高的Shuffle阶段，任何沉重的算法开销都会适得其反。因此，我们需要一种在分配效果与计算开销之间达成平衡的轻量级算法。</p>
-<h3 id="LPT"><a href="#LPT" class="headerlink" title="LPT"></a>LPT</h3><p>LPT也有称为LPTF，Largest(Longest, Least) Processing Time First。是一种解决车间调度问题的近似方法，顾名思义，最大的任务先做。</p>
-<p>这个方法过程非常<sup>∞</sup>简单，很适合用来作Parition：每个机器machine维护自己要处理的任务job队列，然后从任务中选择最大的任务，分配给当前任务队列中任务耗时总和最小的机器，如果最小的机器超过一个，则随机分配给其中一个。这个过程实施过程中，分配和处理是分离的。因此逻辑上可以直接应用到Partition的设计上。</p>
-<p>这个近似算法的上界为4/3，当初在做这个task时候，由于项目紧张的缘故，我仅停留在这一结论的认知上。直到后来复盘其证明逻辑，才发现其中的推导过程挺有意思。接下来，就来具体看看它的证明推导。</p>
-<h4 id="Definition-1"><a href="#Definition-1" class="headerlink" title="Definition 1"></a>Definition 1</h4><p><strong>我们假设给定 $ m $ 个machine，$ n $ 个job，其中job $ i $ 需要耗时 $ t_i $。$ L_i = \sum_{x(j)=i}t_j $ 表示为machine i的load。</strong></p>
-<h4 id="Lemma-1"><a href="#Lemma-1" class="headerlink" title="Lemma 1"></a>Lemma 1</h4><ul>
-<li>引理：<strong>设 $ l $ 是最后一个需要完成的任务，则 $ L_{max} \leq \sum_j {t_j \over m} + {m-1 \over m}t_l$ 。</strong></li>
-</ul>
-<ul>
-<li>证明：由于$ l $是最后一个完成的任务，则最后一个任务分配之前，m个machine中存在load最小的load，令其为$ t $。因此，显而易见，最小的load的m倍一定小于等于其他所有任务load的总和，表示为 $ \sum_{j \ne l}t_j \geq tm$ ，等价于，$ t \leq \sum_{j \ne l}t_j / m $ 。因此，我们可以得到：<br>$$<br>L_{max} = t + t_l \le \sum_{j \ne l}t_j /m + t_l = \sum_j{t_j \over m} + {m-1 \over m}t_l<br>$$<br>证毕。</li>
-</ul>
-<h4 id="Lemma-2"><a href="#Lemma-2" class="headerlink" title="Lemma 2"></a>Lemma 2</h4><ul>
-<li><p>引理：<strong>适用于任意情况，如果限制最优解在每台machine上最多分配两个任务，则LPT调度算法得到的结果即最优解。</strong></p>
-</li>
-<li><p>证明：不失一般性，我们假设job的数量n和机器的数量m呈以下关系：$ n = 2m $。由于引理中的限制前提，其实无法处理更多的job数量，此外如果job数量小于2m，则我们可以补充一些耗时为0的dummy jobs。相似地，我们使用这样的表述 $ i &lt; j $ 来表示耗时关系 $ t_i \leq t_j $。我们同时也假设所有job的耗时皆不同，且当如果最小load的machine有多台，LPT会选择其中机器标识最小的机器作分配，而不是随机。</p>
-<p>此外，我们使用 $ p(i) $ 和 $ s(i) $ 表示机器i中被分配的最大job和最小job的标识。现在我们可以模拟最优解的过程，看是否能逼近LPT算法的结果。</p>
-<ol>
-<li>假设存在任意两个机器i和j，满足 $ s(i) &lt; p(i) &lt; s(j) &lt; p(j) $ ，我们需要先交换job  $ p(i) $ 和 $ s(j) $ 。对所有满足条件的任意两个机器重复此过程后，我们可以得到，top m大的任务会分配给每台机器上。</li>
-<li>其次，对任意两个机器i和j，满足 $ i &lt; j $ 和 $ p(i) &lt; p(j) $ ，我们交换job  $ p(i) $ 和 $ p(j) $ ，以及 $ s(i) $ 和 $ s(j) $ 。在所有满足条件的机器重复此过程后，我们可以得到 $ p(i) $ 的order为 $ n - i + 1 $ 。</li>
-<li>最后，对任意两个机器i和j，满足 $ i &lt; j $ 和 $ s(i) &gt; s(j) $ ，我们交换job  $ s(i) $ 和 $ s(j) $ 。由于 $ p(i) &gt; p(j) $ ，这步并不会增加最大的load。我们最终会得到 $ p(i) $ 的order为 $ n - i + 1 $， $ s(i) $ 的order为 $ i $ 。</li>
-</ol>
-<p>这个优化方法得到最终每个job的order与LPT得到的结果一致。证毕。</p>
-</li>
-</ul>
-<h4 id="Definition-2"><a href="#Definition-2" class="headerlink" title="Definition 2"></a>Definition 2</h4><p><strong>一个算法如果对所有情况皆可满足近似率 $ \rho $ ，其算法可以得到一个解 $ x(I) $ 满足 $ {f(x(I)) \over f(x^\ast(I))} \leq \rho $ ，其中 $ f(x^\ast(I)) $ 表示为最优解。</strong></p>
-<p>LPT的近似率即上界即为4/3，接下来进行证明。</p>
-<h4 id="Theorem"><a href="#Theorem" class="headerlink" title="Theorem"></a>Theorem</h4><ul>
-<li><p>定理：<strong>对于车间调度问题，LPT的近似率为 $ {4 \over 3} - {1 \over 3m} $ ，m为<a href="#Definition-1">Definition 1</a>中定义的机器数量。</strong></p>
-</li>
-<li><p>证明：反证，假设定理是错误的，即成立：<br>$$<br>\begin{equation}<br>{f(x) \over f(x^\ast)} &gt; {4 \over 3} - {1 \over 3m}<br>\label{eq:eq1}<br>\tag{1}<br>\end{equation}<br>$$<br>然后利用<a href="#Lemma-1">Lemma 1</a>，我们可以得到，设 $ l $ 是最后一个需要完成的任务：<br>$$<br>\begin{equation}<br>{4 \over 3} - {1 \over 3m} &lt; {f(x) \over f(x^\ast)} \le {\sum_jt_j/m \over f(x^\ast)} + {m - 1\over m} \cdot {t_l \over f(x^\ast)}<br>\tag{2}<br>\end{equation}<br>$$<br>由于最优解显然大于等于所有耗时的平均值： $ {\sum_jt_j/m \over f(x^\ast)} \leq 1 $ 。<br>$$<br>\begin{equation}<br>{4 \over 3} - {1 \over 3m} &lt; 1 + {m - 1\over m} \cdot {t_l \over f(x^\ast)}<br>\tag{3}<br>\end{equation}<br>$$<br>进行约化，可得：<br>$$<br>\begin{equation}<br>f(x^\ast) &lt; 3t_l<br>\tag{4}<br>\end{equation}<br>$$<br>由于 $ t_j $ 是最小的job，这个公式说明了对于最优解 $ x^\ast $ ，没有任何机器可以被分配两个以上的job。因此套用<a href="#Lemma-2">Lemma 2</a>的结论，LPT算法得到结果即是最优解：<br>$$<br>\begin{equation}<br>{f(x) \over f(x^\ast)} = 1<br>\label{eq:eq5}<br>\tag{5}<br>\end{equation}<br>$$<br>考虑 $ \eqref{eq:eq1} $ 中m取值1时，等式右边达到最小值，可以得到：<br>$$<br>\begin{equation}<br>{f(x) \over f(x^\ast)} &gt; {4 \over 3} - {1 \over 3} = 1<br>\label{eq:eq6}<br>\tag{6}<br>\end{equation}<br>$$<br>因此 $ \eqref{eq:eq5} $ 和  $ \eqref{eq:eq6} $ 矛盾，假设不成立，定理得证。</p>
-</li>
-</ul>
-<h3 id="Implement"><a href="#Implement" class="headerlink" title="Implement"></a>Implement</h3><p>LPT代码的实现非常简单，核心代码3、4行即可。其余的部分，交给MR框架进行实现。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line">jobs = random.sample(xrange(<span class="number">100</span>), <span class="number">10</span>) <span class="comment"># init jobs</span></span><br><span class="line">jobs = <span class="built_in">sorted</span>(jobs, reverse=<span class="literal">True</span>) <span class="comment"># sort jobs</span></span><br><span class="line">machines = [[] <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">3</span>)] <span class="comment"># init machines</span></span><br><span class="line"><span class="built_in">map</span>(<span class="keyword">lambda</span> x:<span class="built_in">min</span>(machines, key=<span class="built_in">sum</span>).append(x), jobs) <span class="comment"># LPT scheduling</span></span><br><span class="line"><span class="built_in">print</span> machines</span><br></pre></td></tr></table></figure>
+<p>荫庇之下，花见铁马。</p>
+<img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/4.jpg" class="">
 
-
-
-<h3 id="Machine-Learning"><a href="#Machine-Learning" class="headerlink" title="Machine Learning"></a>Machine Learning</h3><p>至此还没有提到和机器学习相关的任何东西，不过在这个case，机器学习的应用相对简单很多。前文提到Group中的明细数据量和Group的耗时成正比，因此我们可以利用Group中的明细数据对Group被计算的耗时进行预估，这是一个比较典型的Linear Regression，甚至可以是univariate的。当我们模型完成后，只要在LPT进行分配的时候，对数据量进行模型打分得到最终的耗时，再进行分配即可，由于模型参数是一个可忽略不计大小的配置，其对效率也基本不会有任何影响。</p>
-<p>再进一步，我们甚至可以利用online-learning的方法不断去optimize这个univariate的regression，所以最终会是一个结合MS和ML的工程优化实例。</p>
-<h3 id="Summay"><a href="#Summay" class="headerlink" title="Summay"></a>Summay</h3><ul>
-<li>Operation Research &amp; Cybernetic是在Machine Learning以及Data Mining之前，数学领域在工业界主要的应用方向。与ML的连续性问题不同，大多case是离散问题，特点不一定需要很多数据，依靠算法和技巧解决一些实际的工业流程优化问题。所以一般的工具，matlab就够。不过对理论基础要求很高，和高校举办的数学模型内容比较相似。而且近两年，随着交通、物流、外卖类服务的互联网智能化越来越深入，各大厂也开始大肆招募OR方向优化的能人，从长远的发展来看，其应用具备非常独立的场景，前景看好。</li>
-<li>随着ML的大热，OR领域也迎来不少新的突破，有些新的方法加入了ML的元素。然而另一方面，趋势引领潮流，一般的研发工作可能无法直接和分析、模型接触，甚至连算法也被越来越多的开源项目给封装，套路变多了，新鲜的挑战似乎变少了。然而，正如技术总是在不断解构与重组，尝试将新技术趋势融入经典OR模型，也不失为一种打破舒适区、寻找创新的契机。ML和DM的思维方式，不仅是解决问题的工具，更是窥探逻辑之美、洞察世界运行规律的另一扇窗口。</li>
-<li>最后共勉一句话吧：Unless you try to do something beyond what you have already mastered, you will never grow.</li>
-</ul>
+<p>赏樱，若按黄执中的口吻，或许会问：我们跋涉千里去赏，到底是在捕捉那转瞬即逝、静态的极致之美，还是在借由这粉色烟霞，寻求一份尘嚣之外的安宁？</p>
+<p>这并非二选一的抉择。捕捉美，是眼睫间的贪婪，是孩童的天真。而寻安宁，是灵魂的吐纳，是人到中年的不惑。</p>
+<p>那一刻，花见不仅是见花，更是见自己吧。</p>
 ]]></content>
       <categories>
-        <category>Algorithm</category>
+        <category>Trip</category>
       </categories>
       <tags>
-        <tag>NP-hard</tag>
-        <tag>Optimization</tag>
-        <tag>ML</tag>
+        <tag>樱花</tag>
+        <tag>河津</tag>
       </tags>
   </entry>
   <entry>
     <title>九州の行</title>
     <url>/2023/10/17/%E4%B9%9D%E5%B7%9E%E3%81%AE%E8%A1%8C/</url>
-    <content><![CDATA[<!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-SGdVPFMrgxvArJta"></div><script> var SGdVPFMrgxvArJta_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); SGdVPFMrgxvArJta_options.container = document.getElementById("mmedia-SGdVPFMrgxvArJta"); const dp_SGdVPFMrgxvArJta = new DPlayer(SGdVPFMrgxvArJta_options); </script> -->
+    <content><![CDATA[<!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-lPXikhlBufihmhmK"></div><script> var lPXikhlBufihmhmK_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); lPXikhlBufihmhmK_options.container = document.getElementById("mmedia-lPXikhlBufihmhmK"); const dp_lPXikhlBufihmhmK = new DPlayer(lPXikhlBufihmhmK_options); </script> -->
 
-<video id="mmedia-kzxfArFCGrJKIkIM" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
+<video id="mmedia-HBZOdviQxTjGywaX" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
 
-<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-OgzQBJmCTchmHPmo" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-OgzQBJmCTchmHPmo").style.height=document.getElementById("mmedia-OgzQBJmCTchmHPmo").scrollWidth*0.76+"px";
+<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-bGHMzjjahRUUMYzk" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-bGHMzjjahRUUMYzk").style.height=document.getElementById("mmedia-bGHMzjjahRUUMYzk").scrollWidth*0.76+"px";
     window.onresize = function(){
-      document.getElementById("mmedia-OgzQBJmCTchmHPmo").style.height=document.getElementById("mmedia-OgzQBJmCTchmHPmo").scrollWidth*0.76+"px";
+      document.getElementById("mmedia-bGHMzjjahRUUMYzk").style.height=document.getElementById("mmedia-bGHMzjjahRUUMYzk").scrollWidth*0.76+"px";
     }; </script> -->]]></content>
       <categories>
         <category>Trip</category>
@@ -282,6 +335,78 @@
       <tags>
         <tag>Dolphin</tag>
         <tag>九州</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>宫崎骏的鄙夷</title>
+    <url>/2025/08/01/%E5%AE%AB%E5%B4%8E%E9%AA%8F%E7%9A%84%E9%84%99%E5%A4%B7/</url>
+    <content><![CDATA[<p>带Hugo来东京参加夏校。学校ASIJ离市区不近，位于多摩地区的调布市，如果要去学校参观，从新宿还要往西再坐将近40分钟的地铁。好在学校安排了校车，于是我们选择住在离终点站前两站的武蔵境駅附近。</p>
+<p>武蔵境与三鹰仅一站JR之遥，三鹰是吉卜力粉丝的朝圣地，美术馆需要提前很久预约，那天去的时候，我和宣在门口草草地望了两眼就打道回府了。然后就吃了此行中唯一的一“堑”，由于天实在太热，我们选择了美术馆门口的公交坐回到武蔵境，结果本来乘JR只需要5分钟的路程，结果公交整整开了50分钟，差点没赶上接Hugo的时间。</p>
+<p>三鹰往东再乘一站JR就是吉祥寺，吉祥寺是东京最宜居的区域之一，曾经多年在《關東地區居民最想居住的街區》排名中名列前茅，商店街很繁华，商场林立，小吃遍地，这些天有好几次是在这边打的牙祭。</p>
+<p>就在前阵，也是偶然的契机下突然发现《海がきこえる》全国重映，7月4号开始，重映三周。本来我们落地时候正好是重映计划结束的时候，好在重映时间又延长了，那么作为《海がきこえる》的取景地之一 —— 吉祥寺，自然少不了重映的企划。于是选好时间，昨天去重温了这部曾让自己心潮澎湃的作品。</p>
+<p>这是自己第一次在电影院看这部电影，也是第二次在日本观影。宣对吉卜力不是很感冒，和Hugo先回了酒店，只有我一个人去看。虽然没有字幕，但电影前前后后看了好几遍，情节都算记得，所以这次纯为情怀买单，为爱发电。</p>
+<p>UPLINK影院不大，在地下二层，影厅大概也就是10排的样子，本以为来看这部二三十年前作品的观众应该是三十代或者四十代的居多，未料想，我看的这场，感觉大多是国中生和高中生，一共10来人。想起在疫情前第一次在日本观影，看的是《寅次郎的故事》，整个影院除了我和宣，几乎都是花甲之年的长辈。这次却着实出乎意料，看来二次元的经典作品永远不会过时。</p>
+<div class="img-medium">
+<img data-src="/2025/08/01/%E5%AE%AB%E5%B4%8E%E9%AA%8F%E7%9A%84%E9%84%99%E5%A4%B7/ticket.jpg" class="">
+</div>
+
+<p>说到宫崎骏，应该都不陌生，但有不少人会把他和吉卜力画等号，因此导致像《火垂るの墓》、《平成狸合戦ぽんぽこ》、《おもひでぽろぽろ》这样的作品被误认为也是宫崎骏执导的作品，其实不然，当然也包括这部《海がきこえる》。</p>
+<p>该片原作是氷室冴子写的小说，描绘了发生在1980年代的日本高知县的青春故事。电影演绎的是小说前半部分的情节，导演是望月智充，算是吉卜力培养新人试水的一部作品。但是宫崎骏对此的评价并不高，甚至有些鄙夷，一方面是其更倾向对原作进行大刀阔斧的改编，另一方面在于对于人物心理的刻画方式存在不同的理念。不过在我看来，望月智充的刻画恰恰是这部作品的精髓所在。</p>
+<p>原作的叙事风格据说更偏向散文，没有大起大落的情绪铺陈。望月导演在此基础上原创了两段情节，除了吉祥寺的重逢，还有一处是“睡在浴缸里的人”，这段情节也是宫崎骏不认同的地方之一，他对于这样的情节感到不可思议，而我对他的不可思议同样深感不可思议，毕竟在他后续的作品《耳をすませば》中，有很多类似的表达。对于带着悸动与敏感底色的青春来说，望月导演采用的这种淡雅的刻画方式，其实更能还原人物相处的本真模样，也是极易触动人心的。含蓄的口吻，细腻的描摹，本身也是一种深沉的力量。铃木敏夫曾解释，宫崎骏批判是因为他自知做不来这样的作品，他的怒火其实也是对该作的一种认可。呵呵，不愧是铃木，什么话都让你说了。</p>
+<p>但有一点，我相信电影的配乐应该不会受到工作室同僚的诟病，永田茂大师的插曲无可挑剔，而当片尾曲《海になれたら》坂本洋子的歌声响起时，闭上双眼，仿佛就置身于高知的海边，可以听见海浪拍打在堤岸上的声音。</p>
+<p>日本观影有一个习俗，片尾的结束才是真正的结束，在此之前影院不会开灯，更不会有人离场，每个观众静静地享受着作品最后的余韵，这或许也是给片尾中每个制作人员给予最好的尊重和敬意。</p>
+<p>电影散场后，在周边商店入了两件纪念品。夜深了，立在吉祥寺的月台等着返程的列车，夏夜的晚风轻轻拂过，熙攘的人群渐渐散去，只剩下零星几个人，恍惚间似乎瞥见了一抹熟悉的身影。</p>
+<p>时间被按下了暂停键。</p>
+<p>你好，武藤里伽子。</p>
+<p>お休みなさい。</p>
+<img data-src="/2025/08/01/%E5%AE%AB%E5%B4%8E%E9%AA%8F%E7%9A%84%E9%84%99%E5%A4%B7/umi050.jpg" class="">
+]]></content>
+      <categories>
+        <category>Trip</category>
+      </categories>
+      <tags>
+        <tag>东京</tag>
+        <tag>吉卜力</tag>
+        <tag>宫崎骏</tag>
+        <tag>听见涛声</tag>
+        <tag>圣地巡礼</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Blog之殇</title>
+    <url>/2025/12/31/Blog%E4%B9%8B%E6%AE%87/</url>
+    <content><![CDATA[<p>2025年最后一天，年更一下blog，写完这寥寥两句，竟也不知道继续该写些什么。</p>
+<p>前些日子，偶然发现曾经关注的一些领域大牛，技术布道者们，他们的blog也宛如无人照料的小家后院，虽然不见杂草蔓延，但最后种下的那一棵树，那一枝花再也没有变过，时间仿佛在那个旖旎的时空中静止了。</p>
+<p>作为一个恋旧之人，这种感觉似曾相识，看着这些文章，怀念起那个时间发生的人和事陷入神伤，好似在高山，小田原，香川参观昭和馆的感受，残桓旧物述说着往昔的故事，眼前萧瑟却让人唏嘘。</p>
+<p>曾经执掌统计编程论坛的坛主，3年前渐渐淡出大众视线，在另一半球追寻内心的安宁。拥有计量经济学背景的园主，从月更也慢慢变成了季更，几篇行文的字里行间也散发出不曾有过的怅然，“若为自由故”，“从心所欲，不逾矩”，“愿得一世自由” 云云。而曾经的技术大牛，早在8年前便彻底封笔，再无留下只言片语，就连其GitHub也鲜有更新。</p>
+<p>本以为博客和分享的消逝或许是因于这“AI”盛世，未料想，一切不过是在岁月中悄然蹉跎。</p>
+<p>再不打理，恐怕连自己都认不出来了。</p>
+]]></content>
+      <categories>
+        <category>Impression</category>
+      </categories>
+      <tags>
+        <tag>Summary</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>神笔</title>
+    <url>/2026/01/11/%E7%A5%9E%E7%AC%94/</url>
+    <content><![CDATA[<p>说实话，这曾是一个让我嗤之以鼻的词。</p>
+<p>过往公司曾有个产品也叫这个名字。讽刺的是，别的没看见，反倒常常招来业务方的怨声载道这点确实挺“神”的。<br>“神”这个字还是要慎用，给自己留点余地，看看人家 Nano 和 GPT，真正强大的产品，从不需要形容词来替它正名。 </p>
+<h3 id="Vibe-Coding"><a href="#Vibe-Coding" class="headerlink" title="Vibe Coding"></a>Vibe Coding</h3><p>而当下的你我，或许正在见证这个时代“神笔”的降临。</p>
+<p>半年前、一年前，鲜有人知道它是什么，甚至时至今日关于它的舆论态势也未真正发酵。但凡尝试过的人，或许能慢慢感受到下一代工业革命近在咫尺了。</p>
+<p>或许有人会问，如果未来人人都手握一支神笔，那么神笔还是神笔吗？每一个创新，何尝不是那个时代的神笔？但它们终究会是时代的产物，日常会是它们最终的归宿。那么这支新的神笔，难道不会沿着历史的轨迹，最终归于平凡？</p>
+<p>确实，很有可能。</p>
+<p>但我们记住的，往往或许不是那支笔，而是初见那个时代的弄潮儿时，涌起心底涟漪的那份触动吧。</p>
+<p>昙花虽一现，刹那胜经年。</p>
+]]></content>
+      <categories>
+        <category>Impression</category>
+      </categories>
+      <tags>
+        <tag>AI</tag>
+        <tag>Vibe Coding</tag>
       </tags>
   </entry>
   <entry>
@@ -312,134 +437,9 @@
       </categories>
       <tags>
         <tag>东京</tag>
+        <tag>圣地巡礼</tag>
         <tag>岩井俊二</tag>
-        <tag>圣地巡礼</tag>
         <tag>四月物语</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>早櫻花見</title>
-    <url>/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/</url>
-    <content><![CDATA[<p>河津的樱花开了。阳光甚好。</p>
-<p>河津樱道有一段在海滨，海滨上人不多，如果不赏樱，可以不妨在此休憩。</p>
-<img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/0.jpg" class="">
-
-<p>孤芳不自赏。</p>
-<img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/1.jpg" class="">
-
-<p>云蒸霞蔚。</p>
-<img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/3.jpg" class="">
-
-<p>荫庇之下，花见铁马。</p>
-<img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/4.jpg" class="">
-
-<p>赏樱，若按黄执中的口吻，或许会问：我们跋涉千里去赏，到底是在捕捉那转瞬即逝、静态的极致之美，还是在借由这粉色烟霞，寻求一份尘嚣之外的安宁？</p>
-<p>这并非二选一的抉择。捕捉美，是眼睫间的贪婪，是孩童的天真。而寻安宁，是灵魂的吐纳，是人到中年的不惑。</p>
-<p>那一刻，花见不仅是见花，更是见自己吧。</p>
-]]></content>
-      <categories>
-        <category>Trip</category>
-      </categories>
-      <tags>
-        <tag>樱花</tag>
-        <tag>河津</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>VPN = VPS + VPaas</title>
-    <url>/2018/08/02/VPN-VPS-VPaas/</url>
-    <content><![CDATA[<p>要不是收到关于&lt;<a href="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/" title="JupyterHub搭建">JupyterHub搭建</a>&gt;的咨询邮件，估计要在这个Blog再写写画画会是一个未来很久远的事情。</p>
-<p>几个月下来，做了不少东西，也进行了很多的尝试，每个点应该都可以post一下，不过发现年纪大了，归纳总结的能力也退化了不少，要好好地写一篇路人也能看懂的文似乎也没有以前那么潇洒，虽然自己还是会常常想起几年前一个多月天天就是PPT的工作，只为写一个让分析师理解的计算模型出来，但未来，不太可能会发生同样的事情了吧。</p>
-<p>言归，正传。今天介绍一下当下一个还算比较稳定的VPN的神器，V2Ray。写这种文章实际上有点亏，一来没什么含金量，二来很有可能成为在不久的未来完全被淘汰的东西。科科。</p>
-<h3 id="VPS-Google-Cloud-Platform-GCP"><a href="#VPS-Google-Cloud-Platform-GCP" class="headerlink" title="VPS: Google Cloud Platform(GCP)"></a>VPS: Google Cloud Platform(GCP)</h3><p>我个人早前VPN技术还是比较low的，从以前的goagent到后来的ss的鹦鹉学舌，实际上自己对网络都还是一知半解，不够精通。在此说一下，基于ss的搭建没有这么难，甚至可以说非常简单，大多数人其实是被云主机这类事给唬住罢了。其实只需要找一个VPS供应商，例如Vultr，申请一个VS，然后用python安装下ss，配一下config，service start。除去注册以及等待的时间，也就是5分钟的事情。</p>
-<p>作为VPS，GCP的好处在于，似乎速度还算比较稳定，在日服猖狂的当下，可以支持另外建设湾湾的机房，且目前注册有300刀的白嫖。实际上GCP上租一个乞丐版的VPS，一个月大概3刀左右，网络传输另算，如果不是大流量的客户端请求，也不会有大多的费用，所以300刀基本上也可以维持一个比较长的时间，相对还是比较划算的。</p>
-<img data-src="/2018/08/02/VPN-VPS-VPaas/gcp.png" class="">
-
-<center>GCP VPS Configuration</center>
-
-<span id="more"></span>
-
-<h3 id="VPaas：V2ray"><a href="#VPaas：V2ray" class="headerlink" title="VPaas：V2ray"></a>VPaas：V2ray</h3><p><a href="https://www.v2ray.com/">神器</a>。为什么说是Paas，就是一个底层构建，门槛会高一些，但还算能接受。</p>
-<h3 id="IOS-Client-NA"><a href="#IOS-Client-NA" class="headerlink" title="IOS Client: NA"></a>IOS Client: NA</h3><p>目前貌似只能在美区才能购买Kitsunebi Lite和Shadowroket，比较遗憾。所以说这个还是需要一点运气，在Local买了一个SR，12软妹币，结果上当了，不支持Vmess协议，就此作罢。</p>
-<p>最后不得不说效果，湾湾VPS延迟非常低，60ms左右，再加上Vmess目前还不太容易会被detect的Protocol，体验还是非常不错的。建议ss用户可以尽快入手了。</p>
-]]></content>
-      <categories>
-        <category>Toolkit</category>
-      </categories>
-      <tags>
-        <tag>VPN</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>宫崎骏的鄙夷</title>
-    <url>/2025/08/01/%E5%AE%AB%E5%B4%8E%E9%AA%8F%E7%9A%84%E9%84%99%E5%A4%B7/</url>
-    <content><![CDATA[<p>带Hugo来东京参加夏校。学校ASIJ其实离市区不近，位于多摩地区的调布市，如果要去学校参观，从新宿还要往西再坐将近40分钟的地铁。好在学校安排了校车，于是我们选择住在离终点站前两站的武蔵境駅附近。</p>
-<p>武蔵境这个地方离三鹰很近，只有一站JR的距离，三鹰是吉卜力的粉丝的朝圣地，美术馆需要提前很久预约，那天去的时候，我和宣在门口草草地望了两眼就打道回府了。然后就吃了目前行程中唯一的一堑，由于天实在太热，我们选择了美术馆门口的公交坐回到武蔵境，结果本来乘JR只需要5分钟的路程，结果公交整整开了50分钟，差点没赶上接Hugo的时间。</p>
-<p>三鹰往东再乘一站JR就是吉祥寺，吉祥寺是东京最宜居的区域之一，曾经多年在《關東地區居民最想居住的街區》排名中名列前茅，商店街很繁华，商场林立，小吃遍地，这些天有好几次是在这边打的牙祭。</p>
-<p>就在前阵，也是偶然的契机下突然发现《海がきこえる》全国重映，7月4号开始，重映三周。本来我们落地时候正好是重映计划结束的时候，好在重映时间又延长了，那么作为《海がきこえる》的取景地之一 —— 吉祥寺，自然少不了重映的企划。于是选好时间，昨天去重温了这部曾让自己心潮澎湃的作品。</p>
-<p>这是自己第一次在电影院看这部电影，也是第二次在日本观影。宣对吉卜力不是很感冒，和Hugo先回了酒店，只有我一个人去看。虽然没有字幕，但电影前前后后看了好几遍，情节都算记得，所以这次纯为情怀买单，为爱发电。</p>
-<p>UPLINK影院不大，在地下二层，影厅大概也就是10排的样子，本以为来看这部二三十年前作品的观众应该是三十代或者四十代的居多，未料想，我看的这场，感觉大多是国中生和高中生，一共10来人。想起在疫情前第一次在日本观影，看的是《寅次郎的故事》，整个影院除了我和宣，几乎都是花甲之年的长辈。这次却着实出乎意料，看来二次元的经典作品永远不会过时。</p>
-<div class="img-medium">
-<img data-src="/2025/08/01/%E5%AE%AB%E5%B4%8E%E9%AA%8F%E7%9A%84%E9%84%99%E5%A4%B7/ticket.jpg" class="">
-</div>
-
-<p>说到宫崎骏，大家应该都不陌生，但其实有不少人会把他和吉卜力画等号，因此导致像《火垂るの墓》、《平成狸合戦ぽんぽこ》、《おもひでぽろぽろ》这样的作品被误认为也是宫崎骏执导的作品，其实不然，当然也包括这部《海がきこえる》。</p>
-<p>该片原作是氷室冴子写的小说，描绘了发生在1980年代的日本高知县的青春故事。电影演绎的是小说前半部分的情节，导演是望月智充，其实算是吉卜力培养新人试水的一部作品。但是宫崎骏对此的评价并不高，甚至有些鄙夷，一方面是其更倾向对原作进行大刀阔斧的改编，另一方面在于对于人物心理的刻画方式存在不同的理念。不过在我看来，望月智充的刻画恰恰是这部作品的精髓所在。</p>
-<p>原作的叙事风格据说更偏向散文，没有大起大落的情绪铺陈。望月导演在此基础上原创了两段情节，除了吉祥寺的重逢，还有一处是“睡在浴缸里的人”，这段情节也是宫崎骏不认同的地方之一，他对于这样的情节感到不可思议，而我对他的不可思议同样深感不可思议，毕竟在他后续的作品《耳をすませば》中，有很多类似的表达。对于带着悸动与敏感底色的青春来说，其实这种淡雅的刻画方式，更能还原人物相处的本真模样，也是极易触动人心的。含蓄的口吻，细腻的描摹，本身也是一种深沉的力量。铃木敏夫曾解释，宫崎骏批判是因为他自知做不来这样的作品，他的怒火其实也是对该作的一种认可。呵呵，不愧是铃木，什么话都让你说了。</p>
-<p>但有一点，我相信电影的配乐应该不会受到工作室同僚的诟病，永田茂大师的插曲无可挑剔，而当片尾曲《海になれたら》坂本洋子的歌声响起时，闭上双眼，仿佛就置身于高知的海边，可以听见海浪拍打在堤岸上的声音。</p>
-<p>日本观影有一个习俗，片尾的结束才是真正的结束，在此之前影院不会开灯，更不会有人离场，每个观众静静地享受着作品最后的余韵，这或许也是给片尾中每个制作人员给予最好的尊重和敬意。</p>
-<p>电影散场后，在周边商店入了两件纪念品。夜深了，立在吉祥寺的月台等着返程的列车，夏夜的晚风轻轻拂过，熙攘的人群渐渐散去，只剩下零星几个人，恍惚间似乎瞥见了一抹熟悉的身影。</p>
-<p>时间被按下了暂停键。</p>
-<p>你好，武藤里伽子。</p>
-<p>お休みなさい。</p>
-<img data-src="/2025/08/01/%E5%AE%AB%E5%B4%8E%E9%AA%8F%E7%9A%84%E9%84%99%E5%A4%B7/umi050.jpg" class="">
-]]></content>
-      <categories>
-        <category>Trip</category>
-      </categories>
-      <tags>
-        <tag>东京</tag>
-        <tag>圣地巡礼</tag>
-        <tag>吉卜力</tag>
-        <tag>宫崎骏</tag>
-        <tag>听见涛声</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>神笔</title>
-    <url>/2026/01/11/%E7%A5%9E%E7%AC%94/</url>
-    <content><![CDATA[<p>说实话，这曾是一个让我嗤之以鼻的词。</p>
-<p>过往公司曾有个产品也叫这个名字。讽刺的是，别的没看见，反倒常常招来业务方的怨声载道这点确实挺“神”的。<br>“神”这个字还是要慎用，给自己留点余地，看看人家 Nano 和 GPT，真正强大的产品，从不需要形容词来替它正名。 </p>
-<h3 id="Vibe-Coding"><a href="#Vibe-Coding" class="headerlink" title="Vibe Coding"></a>Vibe Coding</h3><p>而当下的你我，或许正在见证这个时代“神笔”的降临。</p>
-<p>半年前、一年前，鲜有人知道它是什么，甚至时至今日关于它的舆论态势也未真正发酵。但凡尝试过的人，或许能慢慢感受到下一代工业革命近在咫尺了。</p>
-<p>或许有人会问，如果未来人人都手握一支神笔，那么神笔还是神笔吗？每一个创新，何尝不是那个时代的神笔？但它们终究会是时代的产物，日常会是它们最终的归宿。那么这支新的神笔，难道不会沿着历史的轨迹，最终归于平凡？</p>
-<p>确实，很有可能。</p>
-<p>但我们记住的，往往或许不是那支笔，而是初见那个时代的弄潮儿时，涌起心底涟漪的那份触动吧。</p>
-<p>昙花虽一现，刹那胜经年。</p>
-]]></content>
-      <categories>
-        <category>Impression</category>
-      </categories>
-      <tags>
-        <tag>AI</tag>
-        <tag>Vibe Coding</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Blog之殇</title>
-    <url>/2025/12/31/Blog%E4%B9%8B%E6%AE%87/</url>
-    <content><![CDATA[<p>2025年最后一天，年更一下blog，写完这寥寥两句，竟也不知道继续该写些什么。</p>
-<p>前些日子，偶然发现曾经关注的一些领域大牛，技术布道者们，他们的blog也宛如无人照料的小家后院，虽然不见杂草蔓延，但最后种下的那一棵树，那一枝花再也没有变过，时间仿佛在那个旖旎的时空中静止了。</p>
-<p>作为一个恋旧之人，这种感觉似曾相识，看着这些文章，怀念起那个时间发生的人和事陷入神伤，好似在高山，小田原，香川参观昭和馆的感受，残桓旧物述说着往昔的故事，眼前萧瑟却让人唏嘘。</p>
-<p>曾经执掌统计编程论坛的坛主，3年前渐渐淡出大众视线，在另一半球追寻内心的安宁。拥有计量经济学背景的园主，从月更也慢慢变成了季更，几篇行文的字里行间也散发出不曾有过的怅然，“若为自由故”，“从心所欲，不逾矩”，“愿得一世自由” 云云。而曾经的技术大牛，早在8年前便彻底封笔，再无留下只言片语，就连其GitHub也鲜有更新。</p>
-<p>本以为博客和分享的消逝或许是因于这“AI”盛世，未料想，一切不过是在岁月中悄然蹉跎。</p>
-<p>再不打理，恐怕连自己都认不出来了。</p>
-]]></content>
-      <categories>
-        <category>Impression</category>
-      </categories>
-      <tags>
-        <tag>Summary</tag>
       </tags>
   </entry>
   <entry>
