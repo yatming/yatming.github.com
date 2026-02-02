@@ -163,6 +163,31 @@
       </tags>
   </entry>
   <entry>
+    <title>VPN = VPS + VPaas</title>
+    <url>/2018/08/02/VPN-VPS-VPaas/</url>
+    <content><![CDATA[<p>要不是收到关于&lt;<a href="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/" title="JupyterHub搭建">JupyterHub搭建</a>&gt;的咨询邮件，估计要在这个Blog再写写画画会是一个未来很久远的事情。</p>
+<p>几个月下来，做了不少东西，也进行了很多的尝试，每个点应该都可以post一下，不过发现年纪大了，归纳总结的能力也退化了不少，要好好地写一篇路人也能看懂的文似乎也没有以前那么潇洒，虽然自己还是会常常想起几年前一个多月天天就是PPT的工作，只为写一个让分析师理解的计算模型出来，但未来，不太可能会发生同样的事情了吧。</p>
+<p>言归，正传。今天介绍一下当下一个还算比较稳定的VPN的神器，V2Ray。写这种文章实际上有点亏，一来没什么含金量，二来很有可能成为在不久的未来完全被淘汰的东西。科科。</p>
+<h3 id="VPS-Google-Cloud-Platform-GCP"><a href="#VPS-Google-Cloud-Platform-GCP" class="headerlink" title="VPS: Google Cloud Platform(GCP)"></a>VPS: Google Cloud Platform(GCP)</h3><p>我个人早前VPN技术还是比较low的，从以前的goagent到后来的ss的鹦鹉学舌，实际上自己对网络都还是一知半解，不够精通。在此说一下，基于ss的搭建没有这么难，甚至可以说非常简单，大多数人其实是被云主机这类事给唬住罢了。其实只需要找一个VPS供应商，例如Vultr，申请一个VS，然后用python安装下ss，配一下config，service start。除去注册以及等待的时间，也就是5分钟的事情。</p>
+<p>作为VPS，GCP的好处在于，似乎速度还算比较稳定，在日服猖狂的当下，可以支持另外建设湾湾的机房，且目前注册有300刀的白嫖。实际上GCP上租一个乞丐版的VPS，一个月大概3刀左右，网络传输另算，如果不是大流量的客户端请求，也不会有大多的费用，所以300刀基本上也可以维持一个比较长的时间，相对还是比较划算的。</p>
+<img data-src="/2018/08/02/VPN-VPS-VPaas/gcp.png" class="">
+
+<center>GCP VPS Configuration</center>
+
+<span id="more"></span>
+
+<h3 id="VPaas：V2ray"><a href="#VPaas：V2ray" class="headerlink" title="VPaas：V2ray"></a>VPaas：V2ray</h3><p><a href="https://www.v2ray.com/">神器</a>。为什么说是Paas，就是一个底层构建，门槛会高一些，但还算能接受。</p>
+<h3 id="IOS-Client-NA"><a href="#IOS-Client-NA" class="headerlink" title="IOS Client: NA"></a>IOS Client: NA</h3><p>目前貌似只能在美区才能购买Kitsunebi Lite和Shadowroket，比较遗憾。所以说这个还是需要一点运气，在Local买了一个SR，12软妹币，结果上当了，不支持Vmess协议，就此作罢。</p>
+<p>最后不得不说效果，湾湾VPS延迟非常低，60ms左右，再加上Vmess目前还不太容易会被detect的Protocol，体验还是非常不错的。建议ss用户可以尽快入手了。</p>
+]]></content>
+      <categories>
+        <category>Toolkit</category>
+      </categories>
+      <tags>
+        <tag>VPN</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo next客制化</title>
     <url>/2021/03/27/hexo-next%E5%AE%A2%E5%88%B6%E5%8C%96/</url>
     <content><![CDATA[<p>17年一篇，18年两篇，然后现在是第四篇文章，更新速度堪比富坚义博。</p>
@@ -196,130 +221,6 @@
       </categories>
       <tags>
         <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>VPN = VPS + VPaas</title>
-    <url>/2018/08/02/VPN-VPS-VPaas/</url>
-    <content><![CDATA[<p>要不是收到关于&lt;<a href="/2017/12/28/JupyterHub%E6%90%AD%E5%BB%BA/" title="JupyterHub搭建">JupyterHub搭建</a>&gt;的咨询邮件，估计要在这个Blog再写写画画会是一个未来很久远的事情。</p>
-<p>几个月下来，做了不少东西，也进行了很多的尝试，每个点应该都可以post一下，不过发现年纪大了，归纳总结的能力也退化了不少，要好好地写一篇路人也能看懂的文似乎也没有以前那么潇洒，虽然自己还是会常常想起几年前一个多月天天就是PPT的工作，只为写一个让分析师理解的计算模型出来，但未来，不太可能会发生同样的事情了吧。</p>
-<p>言归，正传。今天介绍一下当下一个还算比较稳定的VPN的神器，V2Ray。写这种文章实际上有点亏，一来没什么含金量，二来很有可能成为在不久的未来完全被淘汰的东西。科科。</p>
-<h3 id="VPS-Google-Cloud-Platform-GCP"><a href="#VPS-Google-Cloud-Platform-GCP" class="headerlink" title="VPS: Google Cloud Platform(GCP)"></a>VPS: Google Cloud Platform(GCP)</h3><p>我个人早前VPN技术还是比较low的，从以前的goagent到后来的ss的鹦鹉学舌，实际上自己对网络都还是一知半解，不够精通。在此说一下，基于ss的搭建没有这么难，甚至可以说非常简单，大多数人其实是被云主机这类事给唬住罢了。其实只需要找一个VPS供应商，例如Vultr，申请一个VS，然后用python安装下ss，配一下config，service start。除去注册以及等待的时间，也就是5分钟的事情。</p>
-<p>作为VPS，GCP的好处在于，似乎速度还算比较稳定，在日服猖狂的当下，可以支持另外建设湾湾的机房，且目前注册有300刀的白嫖。实际上GCP上租一个乞丐版的VPS，一个月大概3刀左右，网络传输另算，如果不是大流量的客户端请求，也不会有大多的费用，所以300刀基本上也可以维持一个比较长的时间，相对还是比较划算的。</p>
-<img data-src="/2018/08/02/VPN-VPS-VPaas/gcp.png" class="">
-
-<center>GCP VPS Configuration</center>
-
-<span id="more"></span>
-
-<h3 id="VPaas：V2ray"><a href="#VPaas：V2ray" class="headerlink" title="VPaas：V2ray"></a>VPaas：V2ray</h3><p><a href="https://www.v2ray.com/">神器</a>。为什么说是Paas，就是一个底层构建，门槛会高一些，但还算能接受。</p>
-<h3 id="IOS-Client-NA"><a href="#IOS-Client-NA" class="headerlink" title="IOS Client: NA"></a>IOS Client: NA</h3><p>目前貌似只能在美区才能购买Kitsunebi Lite和Shadowroket，比较遗憾。所以说这个还是需要一点运气，在Local买了一个SR，12软妹币，结果上当了，不支持Vmess协议，就此作罢。</p>
-<p>最后不得不说效果，湾湾VPS延迟非常低，60ms左右，再加上Vmess目前还不太容易会被detect的Protocol，体验还是非常不错的。建议ss用户可以尽快入手了。</p>
-]]></content>
-      <categories>
-        <category>Toolkit</category>
-      </categories>
-      <tags>
-        <tag>VPN</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>九州の行</title>
-    <url>/2023/10/17/%E4%B9%9D%E5%B7%9E%E3%81%AE%E8%A1%8C/</url>
-    <content><![CDATA[<!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-fuCLhOYwcKSQzFtb"></div><script> var fuCLhOYwcKSQzFtb_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); fuCLhOYwcKSQzFtb_options.container = document.getElementById("mmedia-fuCLhOYwcKSQzFtb"); const dp_fuCLhOYwcKSQzFtb = new DPlayer(fuCLhOYwcKSQzFtb_options); </script> -->
-
-<video id="mmedia-aNyjWYLZGtibcxJc" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
-
-<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-oneVNscdXNPBwfPV" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-oneVNscdXNPBwfPV").style.height=document.getElementById("mmedia-oneVNscdXNPBwfPV").scrollWidth*0.76+"px";
-    window.onresize = function(){
-      document.getElementById("mmedia-oneVNscdXNPBwfPV").style.height=document.getElementById("mmedia-oneVNscdXNPBwfPV").scrollWidth*0.76+"px";
-    }; </script> -->]]></content>
-      <categories>
-        <category>Trip</category>
-      </categories>
-      <tags>
-        <tag>Dolphin</tag>
-        <tag>九州</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>早櫻花見</title>
-    <url>/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/</url>
-    <content><![CDATA[<p>河津的樱花开了。阳光甚好。</p>
-<p>河津樱道有一段在海滨，海滨上人不多，如果不赏樱，可以不妨在此休憩。</p>
-<img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/0.jpg" class="">
-
-<p>孤芳不自赏。</p>
-<img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/1.jpg" class="">
-
-<p>云蒸霞蔚。</p>
-<img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/3.jpg" class="">
-
-<p>荫庇之下，花见铁马。</p>
-<img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/4.jpg" class="">
-
-<p>赏樱，若按黄执中的口吻，或许会问：我们跋涉千里去赏，到底是在捕捉那转瞬即逝、静态的极致之美，还是在借由这粉色烟霞，寻求一份尘嚣之外的安宁？</p>
-<p>这并非二选一的抉择。捕捉美，是眼睫间的贪婪，是孩童的天真。而寻安宁，是灵魂的吐纳，是人到中年的不惑。</p>
-<p>那一刻，花见不仅是见花，更是见自己吧。</p>
-]]></content>
-      <categories>
-        <category>Trip</category>
-      </categories>
-      <tags>
-        <tag>樱花</tag>
-        <tag>河津</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>USBDriver Reload</title>
-    <url>/2023/09/19/USBDriver/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="Oh, these decrypted content cannot be verified, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="aaa4f91028b10978092729341d5bde7acaef0e7fab9164849f693203d8157e36">10d79030e8222445804370796b90fca1662db977fbc011472d8cbe51030ee77b3a54e2b2fada1983c7a0dcb0f949a423f22dfc1e74b0d1530f81377701a765059c771f94949961c230d801d6baa33ee3f9974eef6072a7ef037ad3a31c1b07da21567d22b2f5e1da74076779511669aa295290a10b34d5eee3b9dab36be4c4a9694685530e3dfd909340db7bfe156646eface5d9d3939f7e45974c2edc5532184635acb1248da2f36667f6365f165d06bd04f1e2b52b5c5c48ec23eee36dae38a57eb2d8c856e4936d75be34ae3907d39c16c1ef20eaf13464c5f5fa477e4475b5ac27472f45b26d8c3319bd6467960ede32e0cf10cc4929dcd904d3ce508ce868d6abd8aca4358c2028f4aaf0427d0a441e31e99affc949398d73d0bc8d96922e8ebdb2389b4de919a1269e22459cc3841d0c777c0f31034d33e6eb8ff88b2c0bd9f0c3244d55cc49ece115e58f14309cf03d8e7a979e0a30c77906089454ab8aedb7cda88d9cd79e121816e70d661b462cc30d745c35a05295666b57305c191f311ad901ecaf7efb73ce9170a8cdeae5b0aa6afeba49463d5320b78e55c6d12f54bcbaed79c2222d3b8c75897c1812109b3ef763db50ff38f0d8ede3910091132261ab477983efc7a846a52980ae6a5f8637e82e64d45752aaba7e6863c438f67f8c98e88fceaaa4c158f7f9751ed5d1e8fae7ef13b2a999e58770f33063c9adbb7d4f0de2228ac2cd80e34e1bbbcae2abb293dbadd9bdfb30b9b7f71565736e6ba591b1cafa97fbc72f87ab3fb95da9c405450dc93a2a9c257a60889c84aa2c7280172b1c9ab8be3b74855beac7cdc609da54cd5a400c026981b0584890ff72d9ed206cec5fcce3b49b3dc03137fc874f7abe86fab700ee89541bc9d0a6cb66adc874e5fe89074adbb6fc77dd7098dca46859e60b1ec35b3d29a97448d982ae5bbb2988f78da6558a21d146ce2998d60884828b44e2239849179db36ca0f9745ed8ff3cea03e6279cc016af520e7320fe439a763b28b1522e8ce637bcdc42b72af1f232d867154e55768b5d5df2443f7c6b3bc26b52234b00fded6ba44cfdf977e5721d45d6909f1145dfa0e709909da77cd548b54e1841ae1dec68694fcffb8b28ebc2b14a14eb5a70f17be08a47b7b47e752306af6033616e25a8b02a45b098e47cb374e19413274c6a71983d2a14d7da44dba3ae56afbf650860f3d6229840e51a351fe1dba73d77e013c8fe4a3dacee4c564301afb29c92a0871f256c303f09ca2e78aef7845b25afccb284fd00d9c21b109bd09694f24c6e32167ac932d0da677892784b893db1da2fb390e130b5212f3a84ea777839dcd6d3e3566e227d8e5065d457ab3fd793fc8394772e95351aa780d9caf2c3e76d6ef49b409d6851ad7770ba0a5125daeaaa516d40632f8b9ca82f6a0030b3d09edd8cb8d491c9bf25cbf9a512c37f5f3c6847bbf9f2f3e508743fff5427295b0499650102b9bc43df752e4a36d79b139dbb30e9963ce4634c35ae370f93af996caca6ae6eeb7c0ddce829d5c33d5bc44ed66cf09d5e81c371ffeb3c7899f6e524e90d57f0b51f3efa2ee0b05b9167d0275815d912de</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-up">
-      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-up">Hey, password is required here.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <tags>
-        <tag>encrypted</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>迟到了十二年的偿愿</title>
-    <url>/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/</url>
-    <content><![CDATA[<p>每次来日本，如果时间允许的话，都尽可能安排一次圣地巡礼，而这次的巡礼迟到了十二年。</p>
-<p>某种程度上，我深感庆幸身处这个科技足以打捞回忆的时代。想起童年最深刻的记忆，是二年级的时候，学校组织去看《天空の城》，当时荧幕上的画面，Laputa，海盗飞艇，浴火的机器人历历在目，整个过程受到的震撼，至今都难以忘怀。可这种震撼却成了一个人守护的秘密，几年之后身边的同学任凭我怎么描述也无人共鸣。直到大概千禧年那会儿，随着手机的普及，终于在和弦铃声网站里听到了久违的《君を乗せて》，那一刻的激动，刻骨铭心。</p>
-<p>而真正让这些埋藏许久的回忆有了具象落点的是，是前几年出的一款叫做“片场”的App，它记录了很多经典影视剧中取景地的地理位置，前几次的圣地巡礼，其实都是靠它才能有迹可循。小樽半山腰的船见坂，日本棋院的深奥幽玄，市ヶ谷駅前地下横断歩道，赤名莉香告别的梅津寺駅，半泽直树的三井住友银行，过往的经典场景得以再一次次浮现在眼前。</p>
-<p>但唯独有个地方，这个藏了十二年的念想，始终没有抵达 —— 千叶海滨美滨街道。它是《四月物语》中片尾“小红伞”场景的取景地。这个坐标在十二年前被我花了好久才定位到，当时凭电影片段中的建筑标识，在地图上反复核对才得以确认，此后便一直停留在浏览器收藏夹里。</p>
-<p>上次来东京的时候没能去成，所以这次不会再错过了。</p>
-<p>千叶位于东京都的东边，临海，从三鹰出发需要两个小时的车程才能抵达海滨幕张。从幕张站出来，绕过一段人行道，便到了海滨公园，工作日的午后，公园里行人寥寥，听不见海鸟的鸣叫，只有掠过海面的微风带着淡淡的咸味。穿过公园步入美滨街道，四周愈发安静，这里是一片居住区，大概只有我一个游客吧。</p>
-<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/0.jpg" class="">
-
-<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/1.jpg" class="">
-
-<p>在这个电影最后一幕的取景地，松隆子饰演的卯月与田边诚一饰演的学长重逢的书店早已结业，原址现已变成一家地产社。相比之下，卯月借还雨伞的报告厅大门倒是基本维持了原样，经历了三十年的风雨，这幢建筑还保留着电影中的轮廓。</p>
-<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/2.jpg" class="">
-
-<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/3.jpg" class="">
-
-<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/4.jpg" class="">
-
-<p>电影的结尾，卯月打着红伞内心自白：“考上大学的时候，连老师都说是奇迹，然而，若真要说这是奇迹，我倒想称它是——爱的奇迹”。</p>
-<p>而这场跨越了十二年的偿愿，大概也是一种小小的奇迹吧。</p>
-]]></content>
-      <categories>
-        <category>Trip</category>
-      </categories>
-      <tags>
-        <tag>东京</tag>
-        <tag>岩井俊二</tag>
-        <tag>圣地巡礼</tag>
-        <tag>四月物语</tag>
       </tags>
   </entry>
   <entry>
@@ -371,6 +272,140 @@
       </tags>
   </entry>
   <entry>
+    <title>USBDriver Reload</title>
+    <url>/2023/09/19/USBDriver/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="Oh, these decrypted content cannot be verified, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="aaa4f91028b10978092729341d5bde7acaef0e7fab9164849f693203d8157e36">10d79030e8222445804370796b90fca1662db977fbc011472d8cbe51030ee77b3a54e2b2fada1983c7a0dcb0f949a423f22dfc1e74b0d1530f81377701a765059c771f94949961c230d801d6baa33ee3f9974eef6072a7ef037ad3a31c1b07da21567d22b2f5e1da74076779511669aa295290a10b34d5eee3b9dab36be4c4a9694685530e3dfd909340db7bfe156646eface5d9d3939f7e45974c2edc5532184635acb1248da2f36667f6365f165d06bd04f1e2b52b5c5c48ec23eee36dae38a57eb2d8c856e4936d75be34ae3907d39c16c1ef20eaf13464c5f5fa477e4475b5ac27472f45b26d8c3319bd6467960ede32e0cf10cc4929dcd904d3ce508ce868d6abd8aca4358c2028f4aaf0427d0a441e31e99affc949398d73d0bc8d96922e8ebdb2389b4de919a1269e22459cc3841d0c777c0f31034d33e6eb8ff88b2c0bd9f0c3244d55cc49ece115e58f14309cf03d8e7a979e0a30c77906089454ab8aedb7cda88d9cd79e121816e70d661b462cc30d745c35a05295666b57305c191f311ad901ecaf7efb73ce9170a8cdeae5b0aa6afeba49463d5320b78e55c6d12f54bcbaed79c2222d3b8c75897c1812109b3ef763db50ff38f0d8ede3910091132261ab477983efc7a846a52980ae6a5f8637e82e64d45752aaba7e6863c438f67f8c98e88fceaaa4c158f7f9751ed5d1e8fae7ef13b2a999e58770f33063c9adbb7d4f0de2228ac2cd80e34e1bbbcae2abb293dbadd9bdfb30b9b7f71565736e6ba591b1cafa97fbc72f87ab3fb95da9c405450dc93a2a9c257a60889c84aa2c7280172b1c9ab8be3b74855beac7cdc609da54cd5a400c026981b0584890ff72d9ed206cec5fcce3b49b3dc03137fc874f7abe86fab700ee89541bc9d0a6cb66adc874e5fe89074adbb6fc77dd7098dca46859e60b1ec35b3d29a97448d982ae5bbb2988f78da6558a21d146ce2998d60884828b44e2239849179db36ca0f9745ed8ff3cea03e6279cc016af520e7320fe439a763b28b1522e8ce637bcdc42b72af1f232d867154e55768b5d5df2443f7c6b3bc26b52234b00fded6ba44cfdf977e5721d45d6909f1145dfa0e709909da77cd548b54e1841ae1dec68694fcffb8b28ebc2b14a14eb5a70f17be08a47b7b47e752306af6033616e25a8b02a45b098e47cb374e19413274c6a71983d2a14d7da44dba3ae56afbf650860f3d6229840e51a351fe1dba73d77e013c8fe4a3dacee4c564301afb29c92a0871f256c303f09ca2e78aef7845b25afccb284fd00d9c21b109bd09694f24c6e32167ac932d0da677892784b893db1da2fb390e130b5212f3a84ea777839dcd6d3e3566e227d8e5065d457ab3fd793fc8394772e95351aa780d9caf2c3e76d6ef49b409d6851ad7770ba0a5125daeaaa516d40632f8b9ca82f6a0030b3d09edd8cb8d491c9bf25cbf9a512c37f5f3c6847bbf9f2f3e508743fff5427295b0499650102b9bc43df752e4a36d79b139dbb30e9963ce4634c35ae370f93af996caca6ae6eeb7c0ddce829d5c33d5bc44ed66cf09d5e81c371ffeb3c7899f6e524e90d57f0b51f3efa2ee0b05b9167d0275815d912de</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-up">
+      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-up">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <tags>
+        <tag>encrypted</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>九州の行</title>
+    <url>/2023/10/17/%E4%B9%9D%E5%B7%9E%E3%81%AE%E8%A1%8C/</url>
+    <content><![CDATA[<!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-PHpmsqvWksRfDdxj"></div><script> var PHpmsqvWksRfDdxj_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); PHpmsqvWksRfDdxj_options.container = document.getElementById("mmedia-PHpmsqvWksRfDdxj"); const dp_PHpmsqvWksRfDdxj = new DPlayer(PHpmsqvWksRfDdxj_options); </script> -->
+
+<video id="mmedia-AItWzShWDoESUvYU" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
+
+<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-WOBWoUxFXBbhrvcO" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-WOBWoUxFXBbhrvcO").style.height=document.getElementById("mmedia-WOBWoUxFXBbhrvcO").scrollWidth*0.76+"px";
+    window.onresize = function(){
+      document.getElementById("mmedia-WOBWoUxFXBbhrvcO").style.height=document.getElementById("mmedia-WOBWoUxFXBbhrvcO").scrollWidth*0.76+"px";
+    }; </script> -->]]></content>
+      <categories>
+        <category>Trip</category>
+      </categories>
+      <tags>
+        <tag>Dolphin</tag>
+        <tag>九州</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>早櫻花見</title>
+    <url>/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/</url>
+    <content><![CDATA[<p>河津的樱花开了。阳光甚好。</p>
+<p>河津樱道有一段在海滨，海滨上人不多，如果不赏樱，可以不妨在此休憩。</p>
+<img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/0.jpg" class="">
+
+<p>孤芳不自赏。</p>
+<img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/1.jpg" class="">
+
+<p>云蒸霞蔚。</p>
+<img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/3.jpg" class="">
+
+<p>荫庇之下，花见铁马。</p>
+<img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/4.jpg" class="">
+
+<p>赏樱，若按黄执中的口吻，或许会问：我们跋涉千里去赏，到底是在捕捉那转瞬即逝、静态的极致之美，还是在借由这粉色烟霞，寻求一份尘嚣之外的安宁？</p>
+<p>这并非二选一的抉择。捕捉美，是眼睫间的贪婪，是孩童的天真。而寻安宁，是灵魂的吐纳，是人到中年的不惑。</p>
+<p>那一刻，花见不仅是见花，更是见自己吧。</p>
+]]></content>
+      <categories>
+        <category>Trip</category>
+      </categories>
+      <tags>
+        <tag>樱花</tag>
+        <tag>河津</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>宫崎骏的鄙夷</title>
+    <url>/2025/08/01/%E5%AE%AB%E5%B4%8E%E9%AA%8F%E7%9A%84%E9%84%99%E5%A4%B7/</url>
+    <content><![CDATA[<p>带Hugo来东京参加夏校。学校ASIJ离市区不近，位于多摩地区的调布市，如果要去学校参观，从新宿还要往西再坐将近40分钟的地铁。好在学校安排了校车，于是我们选择住在离终点站前两站的武蔵境駅附近。</p>
+<p>武蔵境与三鹰仅一站JR之遥，三鹰是吉卜力粉丝的朝圣地，美术馆需要提前很久预约，那天去的时候，我和宣在门口草草地望了两眼就打道回府了。然后就吃了此行中唯一的一“堑”，由于天实在太热，我们选择了美术馆门口的公交坐回到武蔵境，结果本来乘JR只需要5分钟的路程，结果公交整整开了50分钟，差点没赶上接Hugo的时间。</p>
+<p>三鹰往东再乘一站JR就是吉祥寺，吉祥寺是东京最宜居的区域之一，曾经多年在《關東地區居民最想居住的街區》排名中名列前茅，商店街很繁华，商场林立，小吃遍地，这些天有好几次是在这边打的牙祭。</p>
+<p>就在前阵，也是偶然的契机下突然发现《海がきこえる》全国重映，7月4号开始，重映三周。本来我们落地时候正好是重映计划结束的时候，好在重映时间又延长了，那么作为《海がきこえる》的取景地之一 —— 吉祥寺，自然少不了重映的企划。于是选好时间，昨天去重温了这部曾让自己心潮澎湃的作品。</p>
+<p>这是自己第一次在电影院看这部电影，也是第二次在日本观影。宣对吉卜力不是很感冒，和Hugo先回了酒店，只有我一个人去看。虽然没有字幕，但电影前前后后看了好几遍，情节都算记得，所以这次纯为情怀买单，为爱发电。</p>
+<p>UPLINK影院不大，在地下二层，影厅大概也就是10排的样子，本以为来看这部二三十年前作品的观众应该是三十代或者四十代的居多，未料想，我看的这场，感觉大多是国中生和高中生，一共10来人。想起在疫情前第一次在日本观影，看的是《寅次郎的故事》，整个影院除了我和宣，几乎都是花甲之年的长辈。这次却着实出乎意料，看来二次元的经典作品永远不会过时。</p>
+<div class="img-medium">
+<img data-src="/2025/08/01/%E5%AE%AB%E5%B4%8E%E9%AA%8F%E7%9A%84%E9%84%99%E5%A4%B7/ticket.jpg" class="">
+</div>
+
+<p>说到宫崎骏，应该都不陌生，但有不少人会把他和吉卜力画等号，因此导致像《火垂るの墓》、《平成狸合戦ぽんぽこ》、《おもひでぽろぽろ》这样的作品被误认为也是宫崎骏执导的作品，其实不然，当然也包括这部《海がきこえる》。</p>
+<p>该片原作是氷室冴子写的小说，描绘了发生在1980年代的日本高知县的青春故事。电影演绎的是小说前半部分的情节，导演是望月智充，算是吉卜力培养新人试水的一部作品。但是宫崎骏对此的评价并不高，甚至有些鄙夷，一方面是其更倾向对原作进行大刀阔斧的改编，另一方面在于对于人物心理的刻画方式存在不同的理念。不过在我看来，望月智充的刻画恰恰是这部作品的精髓所在。</p>
+<p>原作的叙事风格据说更偏向散文，没有大起大落的情绪铺陈。望月导演在此基础上原创了两段情节，除了吉祥寺的重逢，还有一处是“睡在浴缸里的人”，这段情节也是宫崎骏不认同的地方之一，他对于这样的情节感到不可思议，而我对他的不可思议同样深感不可思议，毕竟在他后续的作品《耳をすませば》中，有很多类似的表达。对于带着悸动与敏感底色的青春来说，望月导演采用的这种淡雅的刻画方式，其实更能还原人物相处的本真模样，也是极易触动人心的。含蓄的口吻，细腻的描摹，本身也是一种深沉的力量。铃木敏夫曾解释，宫崎骏批判是因为他自知做不来这样的作品，他的怒火其实也是对该作的一种认可。呵呵，不愧是铃木，什么话都让你说了。</p>
+<p>但有一点，我相信电影的配乐应该不会受到工作室同僚的诟病，永田茂大师的插曲无可挑剔，而当片尾曲《海になれたら》坂本洋子的歌声响起时，闭上双眼，仿佛就置身于高知的海边，可以听见海浪拍打在堤岸上的声音。</p>
+<p>日本观影有一个习俗，片尾的结束才是真正的结束，在此之前影院不会开灯，更不会有人离场，每个观众静静地享受着作品最后的余韵，这或许也是给片尾中每个制作人员给予最好的尊重和敬意。</p>
+<p>电影散场后，在周边商店入了两件纪念品。夜深了，立在吉祥寺的月台等着返程的列车，夏夜的晚风轻轻拂过，熙攘的人群渐渐散去，只剩下零星几个人，恍惚间似乎瞥见了一抹熟悉的身影。</p>
+<p>时间被按下了暂停键。</p>
+<p>你好，武藤里伽子。</p>
+<p>お休みなさい。</p>
+<img data-src="/2025/08/01/%E5%AE%AB%E5%B4%8E%E9%AA%8F%E7%9A%84%E9%84%99%E5%A4%B7/umi050.jpg" class="">
+]]></content>
+      <categories>
+        <category>Trip</category>
+      </categories>
+      <tags>
+        <tag>东京</tag>
+        <tag>吉卜力</tag>
+        <tag>宫崎骏</tag>
+        <tag>听见涛声</tag>
+        <tag>圣地巡礼</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>迟到了十二年的偿愿</title>
+    <url>/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/</url>
+    <content><![CDATA[<p>每次来日本，如果时间允许的话，都尽可能安排一次圣地巡礼，而这次的巡礼迟到了十二年。</p>
+<p>某种程度上，我深感庆幸身处这个科技足以打捞回忆的时代。想起童年最深刻的记忆，是二年级的时候，学校组织去看《天空の城》，当时荧幕上的画面，Laputa，海盗飞艇，浴火的机器人历历在目，整个过程受到的震撼，至今都难以忘怀。可这种震撼却成了一个人守护的秘密，几年之后身边的同学任凭我怎么描述也无人共鸣。直到大概千禧年那会儿，随着手机的普及，终于在和弦铃声网站里听到了久违的《君を乗せて》，那一刻的激动，刻骨铭心。</p>
+<p>而真正让这些埋藏许久的回忆有了具象落点的是，是前几年出的一款叫做“片场”的App，它记录了很多经典影视剧中取景地的地理位置，前几次的圣地巡礼，其实都是靠它才能有迹可循。小樽半山腰的船见坂，日本棋院的深奥幽玄，市ヶ谷駅前地下横断歩道，赤名莉香告别的梅津寺駅，半泽直树的三井住友银行，过往的经典场景得以再一次次浮现在眼前。</p>
+<p>但唯独有个地方，这个藏了十二年的念想，始终没有抵达 —— 千叶海滨美滨街道。它是《四月物语》中片尾“小红伞”场景的取景地。这个坐标在十二年前被我花了好久才定位到，当时凭电影片段中的建筑标识，在地图上反复核对才得以确认，此后便一直停留在浏览器收藏夹里。</p>
+<p>上次来东京的时候没能去成，所以这次不会再错过了。</p>
+<p>千叶位于东京都的东边，临海，从三鹰出发需要两个小时的车程才能抵达海滨幕张。从幕张站出来，绕过一段人行道，便到了海滨公园，工作日的午后，公园里行人寥寥，听不见海鸟的鸣叫，只有掠过海面的微风带着淡淡的咸味。穿过公园步入美滨街道，四周愈发安静，这里是一片居住区，大概只有我一个游客吧。</p>
+<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/0.jpg" class="">
+
+<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/1.jpg" class="">
+
+<p>在这个电影最后一幕的取景地，松隆子饰演的卯月与田边诚一饰演的学长重逢的书店早已结业，原址现已变成一家地产社。相比之下，卯月借还雨伞的报告厅大门倒是基本维持了原样，经历了三十年的风雨，这幢建筑还保留着电影中的轮廓。</p>
+<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/2.jpg" class="">
+
+<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/3.jpg" class="">
+
+<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/4.jpg" class="">
+
+<p>电影的结尾，卯月打着红伞内心自白：“考上大学的时候，连老师都说是奇迹，然而，若真要说这是奇迹，我倒想称它是——爱的奇迹”。</p>
+<p>而这场跨越了十二年的偿愿，大概也是一种小小的奇迹吧。</p>
+]]></content>
+      <categories>
+        <category>Trip</category>
+      </categories>
+      <tags>
+        <tag>东京</tag>
+        <tag>圣地巡礼</tag>
+        <tag>岩井俊二</tag>
+        <tag>四月物语</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Blog之殇</title>
     <url>/2025/12/31/Blog%E4%B9%8B%E6%AE%87/</url>
     <content><![CDATA[<p>2025年最后一天，年更一下blog，写完这寥寥两句，竟也不知道继续该写些什么。</p>
@@ -408,41 +443,6 @@
       </tags>
   </entry>
   <entry>
-    <title>宫崎骏的鄙夷</title>
-    <url>/2025/08/01/%E5%AE%AB%E5%B4%8E%E9%AA%8F%E7%9A%84%E9%84%99%E5%A4%B7/</url>
-    <content><![CDATA[<p>带Hugo来东京参加夏校。学校ASIJ离市区不近，位于多摩地区的调布市，如果要去学校参观，从新宿还要往西再坐将近40分钟的地铁。好在学校安排了校车，于是我们选择住在离终点站前两站的武蔵境駅附近。</p>
-<p>武蔵境与三鹰仅一站JR之遥，三鹰是吉卜力粉丝的朝圣地，美术馆需要提前很久预约，那天去的时候，我和宣在门口草草地望了两眼就打道回府了。然后就吃了此行中唯一的一“堑”，由于天实在太热，我们选择了美术馆门口的公交坐回到武蔵境，结果本来乘JR只需要5分钟的路程，结果公交整整开了50分钟，差点没赶上接Hugo的时间。</p>
-<p>三鹰往东再乘一站JR就是吉祥寺，吉祥寺是东京最宜居的区域之一，曾经多年在《關東地區居民最想居住的街區》排名中名列前茅，商店街很繁华，商场林立，小吃遍地，这些天有好几次是在这边打的牙祭。</p>
-<p>就在前阵，也是偶然的契机下突然发现《海がきこえる》全国重映，7月4号开始，重映三周。本来我们落地时候正好是重映计划结束的时候，好在重映时间又延长了，那么作为《海がきこえる》的取景地之一 —— 吉祥寺，自然少不了重映的企划。于是选好时间，昨天去重温了这部曾让自己心潮澎湃的作品。</p>
-<p>这是自己第一次在电影院看这部电影，也是第二次在日本观影。宣对吉卜力不是很感冒，和Hugo先回了酒店，只有我一个人去看。虽然没有字幕，但电影前前后后看了好几遍，情节都算记得，所以这次纯为情怀买单，为爱发电。</p>
-<p>UPLINK影院不大，在地下二层，影厅大概也就是10排的样子，本以为来看这部二三十年前作品的观众应该是三十代或者四十代的居多，未料想，我看的这场，感觉大多是国中生和高中生，一共10来人。想起在疫情前第一次在日本观影，看的是《寅次郎的故事》，整个影院除了我和宣，几乎都是花甲之年的长辈。这次却着实出乎意料，看来二次元的经典作品永远不会过时。</p>
-<div class="img-medium">
-<img data-src="/2025/08/01/%E5%AE%AB%E5%B4%8E%E9%AA%8F%E7%9A%84%E9%84%99%E5%A4%B7/ticket.jpg" class="">
-</div>
-
-<p>说到宫崎骏，应该都不陌生，但有不少人会把他和吉卜力画等号，因此导致像《火垂るの墓》、《平成狸合戦ぽんぽこ》、《おもひでぽろぽろ》这样的作品被误认为也是宫崎骏执导的作品，其实不然，当然也包括这部《海がきこえる》。</p>
-<p>该片原作是氷室冴子写的小说，描绘了发生在1980年代的日本高知县的青春故事。电影演绎的是小说前半部分的情节，导演是望月智充，算是吉卜力培养新人试水的一部作品。但是宫崎骏对此的评价并不高，甚至有些鄙夷，一方面是其更倾向对原作进行大刀阔斧的改编，另一方面在于对于人物心理的刻画方式存在不同的理念。不过在我看来，望月智充的刻画恰恰是这部作品的精髓所在。</p>
-<p>原作的叙事风格据说更偏向散文，没有大起大落的情绪铺陈。望月导演在此基础上原创了两段情节，除了吉祥寺的重逢，还有一处是“睡在浴缸里的人”，这段情节也是宫崎骏不认同的地方之一，他对于这样的情节感到不可思议，而我对他的不可思议同样深感不可思议，毕竟在他后续的作品《耳をすませば》中，有很多类似的表达。对于带着悸动与敏感底色的青春来说，望月导演采用的这种淡雅的刻画方式，其实更能还原人物相处的本真模样，也是极易触动人心的。含蓄的口吻，细腻的描摹，本身也是一种深沉的力量。铃木敏夫曾解释，宫崎骏批判是因为他自知做不来这样的作品，他的怒火其实也是对该作的一种认可。呵呵，不愧是铃木，什么话都让你说了。</p>
-<p>但有一点，我相信电影的配乐应该不会受到工作室同僚的诟病，永田茂大师的插曲无可挑剔，而当片尾曲《海になれたら》坂本洋子的歌声响起时，闭上双眼，仿佛就置身于高知的海边，可以听见海浪拍打在堤岸上的声音。</p>
-<p>日本观影有一个习俗，片尾的结束才是真正的结束，在此之前影院不会开灯，更不会有人离场，每个观众静静地享受着作品最后的余韵，这或许也是给片尾中每个制作人员给予最好的尊重和敬意。</p>
-<p>电影散场后，在周边商店入了两件纪念品。夜深了，立在吉祥寺的月台等着返程的列车，夏夜的晚风轻轻拂过，熙攘的人群渐渐散去，只剩下零星几个人，恍惚间似乎瞥见了一抹熟悉的身影。</p>
-<p>时间被按下了暂停键。</p>
-<p>你好，武藤里伽子。</p>
-<p>お休みなさい。</p>
-<img data-src="/2025/08/01/%E5%AE%AB%E5%B4%8E%E9%AA%8F%E7%9A%84%E9%84%99%E5%A4%B7/umi050.jpg" class="">
-]]></content>
-      <categories>
-        <category>Trip</category>
-      </categories>
-      <tags>
-        <tag>东京</tag>
-        <tag>圣地巡礼</tag>
-        <tag>吉卜力</tag>
-        <tag>宫崎骏</tag>
-        <tag>听见涛声</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>归纳与第一性原理</title>
     <url>/2026/01/15/%E5%BD%92%E7%BA%B3%E4%B8%8E%E7%AC%AC%E4%B8%80%E6%80%A7%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[<p>有段时间常在自省，为何自己会沦为一个“年更博主”。起初，总以“lazy driven”为借口聊以自慰；后来才惊觉，根源或许在于骨子里对“好记性不如烂笔头”这一传统信条的消极抵触。</p>
@@ -470,16 +470,16 @@
   <entry>
     <title>Hugo的数学猜想</title>
     <url>/2026/01/20/Hugo%E7%9A%84%E6%95%B0%E5%AD%A6%E7%8C%9C%E6%83%B3/</url>
-    <content><![CDATA[<p>最近几周，随着 Hugo 考试临近，周末两天我们都会带他去图书馆。家里虽也安逸，但总觉得图书馆那种沉静的学术氛围，更能让他心无旁骛地沉浸其中。</p>
-<p>今天送他去图书馆的路上，Hugo 兴致勃勃地给我们分享了三个他“发现”的数学规律。在他稚嫩的词汇里，这些还没经过严格证明的“猜想”被他煞有其事地冠名为“定理”。其中两个逻辑清晰，我们还能勉强跟上他的思路进行推演，但第三个规律却着实让我们有些吃惊。</p>
-<p>那是一个关于<strong>完美数（Perfect Number）</strong>的表述：</p>
+    <content><![CDATA[<p>最近几周，随着Hugo考试临近，周末两天都会带他去图书馆。家里虽也安逸，但总觉得图书馆那种沉静的读书氛围，更能让他心无旁骛地沉浸其中。</p>
+<p>今天送他去图书馆的路上，Hugo兴致勃勃地给我们分享了三个他“发现”的数学规律，这些还没经过严格证明的“猜想”被他煞有其事地冠名为“定理”。其中两个逻辑清晰，我们还能勉强跟上他的思路进行推演，但第三个规律却着实让我们有些吃惊。</p>
+<p>那是一个关于<strong>完美数</strong>的表述：</p>
 <blockquote>
 <p>如果 $ 2^n - 1 $ 是一个素数，那么这个数乘以 $ 2^{n-1} $ 就能构成一个完美数。</p>
 </blockquote>
-<p>当 Hugo 试图描述其中的对应关系时，我们这两位数学专业的“愚徒”还在反复确认他表达的细节。直到后来向 AI 求证，才发现这是已被冠名的欧几里得-欧拉定理。</p>
+<p>当Hugo试图描述其中的对应关系时，我们这两位数学专业的“愚徒”还在反复确认他表达的细节。直到后来向AI求证，才发现这是已被冠名的欧几里得-欧拉定理。</p>
 <p>他甚至还不知道梅森素数的具体定义，却能仅凭直觉窥见这条隐秘的数字通道，这确实让我感到惊讶。</p>
-<p>回想起来，这几年他在数感上的成长其实早有迹象。有些数论游戏我已经完全玩不过他了， Switch上《脑锻炼》的数论板块，与他的多次对战中，我的胜率一直是0%。或许从那个时候起，我就该意识到，身边的这个臭小子，羽翼正渐渐丰满。</p>
-<p>学校老师也曾评价说他的数感极佳。虽然我总觉得他在几何感上的天赋显得平庸，但这次切身感受到他对数字规律的敏锐捕捉，让我释然了不少。这份独特的数感，或许正是他未来在数学世界里走得更远、钻得更深的底气吧。</p>
+<p>回想起来，这几年他在数感上的成长似乎早有迹象。有些数论游戏我已经完全玩不过他了， Switch上《脑锻炼》的数论板块，与他的多次对战中，我的胜率一直是0%，每次都被虐地体无完肤，我一度怀疑是不是自己真的太菜了，现在看好像还真不一定。所以，或许从那个时候起，我就该意识到，身边的这个臭小子，正在以超过我们想象的速度成长着。</p>
+<p>学校老师也曾评价说他的数感极佳。虽然相比之下，我总觉得他在几何上的天赋比较平庸，但这次切身感受到他对数字规律的敏锐捕捉，让我释然了不少。这份独特的数感，或许正是他未来在数学世界里走得更远、钻得更深的底气吧。</p>
 ]]></content>
       <categories>
         <category>Growth</category>
