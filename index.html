@@ -326,7 +326,7 @@
 <p>今天送他去图书馆的路上，Hugo 兴致勃勃地给我们分享了三个他“发现”的数学规律。在他稚嫩的词汇里，这些还没经过严格证明的“猜想”被他煞有其事地冠名为“定理”。其中两个逻辑清晰，我们还能勉强跟上他的思路进行推演，但第三个规律却着实让我们有些吃惊。</p>
 <p>那是一个关于<strong>完美数（Perfect Number）</strong>的表述：</p>
 <blockquote>
-<p>如果 $2^n - 1$ 是一个素数，那么这个数乘以 $2^{n-1}$ 就能构成一个完美数。</p>
+<p>如果 $ 2^n - 1 $ 是一个素数，那么这个数乘以 $ 2^{n-1} $ 就能构成一个完美数。</p>
 </blockquote>
 <p>当 Hugo 试图描述其中的对应关系时，我们这两位数学专业的“愚徒”还在反复确认他表达的细节。直到后来向 AI 求证，才发现这是已被冠名的欧几里得-欧拉定理。</p>
 <p>他甚至还不知道梅森素数的具体定义，却能仅凭直觉窥见这条隐秘的数字通道，这确实让我感到惊讶。</p>
@@ -917,13 +917,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-YUBTCJVqntPqpizg"></div><script> var YUBTCJVqntPqpizg_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); YUBTCJVqntPqpizg_options.container = document.getElementById("mmedia-YUBTCJVqntPqpizg"); const dp_YUBTCJVqntPqpizg = new DPlayer(YUBTCJVqntPqpizg_options); </script> -->
+          <!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-fuCLhOYwcKSQzFtb"></div><script> var fuCLhOYwcKSQzFtb_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); fuCLhOYwcKSQzFtb_options.container = document.getElementById("mmedia-fuCLhOYwcKSQzFtb"); const dp_fuCLhOYwcKSQzFtb = new DPlayer(fuCLhOYwcKSQzFtb_options); </script> -->
 
-<video id="mmedia-IQnkmLjCRdFOtgzK" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
+<video id="mmedia-aNyjWYLZGtibcxJc" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
 
-<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-TISvPYwCtAObnoop" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-TISvPYwCtAObnoop").style.height=document.getElementById("mmedia-TISvPYwCtAObnoop").scrollWidth*0.76+"px";
+<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-oneVNscdXNPBwfPV" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-oneVNscdXNPBwfPV").style.height=document.getElementById("mmedia-oneVNscdXNPBwfPV").scrollWidth*0.76+"px";
     window.onresize = function(){
-      document.getElementById("mmedia-TISvPYwCtAObnoop").style.height=document.getElementById("mmedia-TISvPYwCtAObnoop").scrollWidth*0.76+"px";
+      document.getElementById("mmedia-oneVNscdXNPBwfPV").style.height=document.getElementById("mmedia-oneVNscdXNPBwfPV").scrollWidth*0.76+"px";
     }; </script> -->
       
     </div>
@@ -1217,7 +1217,38 @@ if (document.querySelectorAll('.pdf-container').length) {
 
     <div class="pjax">
 
-  
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
 
   <script src="https://cdn.jsdelivr.net/npm/quicklink@2.1.0/dist/quicklink.umd.js"></script>
   <script>
