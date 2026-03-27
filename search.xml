@@ -188,42 +188,6 @@
       </tags>
   </entry>
   <entry>
-    <title>hexo next客制化</title>
-    <url>/2021/03/27/hexo-next%E5%AE%A2%E5%88%B6%E5%8C%96/</url>
-    <content><![CDATA[<p>17年一篇，18年两篇，然后现在是第四篇文章，更新速度堪比富坚义博。</p>
-<p>快3年了，要不是这个域名，兴许就退了，每年虽然缴的费用不多，但让我一直给供应商白嫖其实也不怎么情愿。正好最近空暇，打理打理这些苟且的栖身之地吧。</p>
-<p>这几年发生了一些变化。别的不说，hexo和next理所当然的更新了几个大版本。原先用来编辑的mbp也老旧了，闲置在家里。现在操作的mbp还是两年派发的，主要还是嫌麻烦的原因，一直没有把hexo的编辑目录迁移过来，毕竟只要每次想到要装一堆插件就心生退意。</p>
-<p>最近几天，重装了hexo和next后，升级到了最新版本，同时把展现细节做了更多的改造，说实在的，上次blog的搭建，也是弄了很久的源码，发现每逢修改的时候，虽然相隔时间比较长（笑），但总比之前会更加深入一些，这次增加修改了更多的布局，类型以及动态脚本。趁着这几天刚操作过还记得，快点记录下来。</p>
-<span id="more"></span>
-
-<h3 id="弃用Coding"><a href="#弃用Coding" class="headerlink" title="弃用Coding"></a>弃用Coding</h3><p>原先很看好Coding这家小作坊，早期代码管理做的不错，并且也是较早推出Web IDE的平台，印象中应该早于VSCode。后来有一天发现双因素不好用了，才知道鹅厂收购了Coding。其实算是一件好事，毕竟不用太担心哪天这个startup挂了，但也多了一层麻烦。原来的Pages不能用，需要迁移到新的ci/cd。而且vps的所在地也发生了相应的变化，访问速度有所变慢。<br>Coding原来的ssl证书还挺简单的，但鹅厂云就复杂一些，而且由于域名还是在福报云上，所以现在等于是两大云厂各需要维护一些东西，又徒增了麻烦。</p>
-<p>随着某天晚上，我再也无法访问自己的站点后，还是决定弃用。由于备案问题，pages只能选择部署在HK的节点。原则上部署完成后可以直接在福报云上的dns上设置cname到HK的源站，但是新版的问题是没有这方面的guide的，所以会直接引导用户在pages的custom domain把cname设置为他们的CDN，而这个CDN一来非免费，二来同样由于备案问题，也只能选择境外服务域，三来和CDN绑定ssl证书申请也相对麻烦。结果效果一言难尽，使用CDN目的号称是加速，但实际上速度感受是并不如旧版的，甚至完全比不上后面采用的最终方案。<br>那天晚上的惨状是，国内无一地区可以访问到站点，除了TW和境外（测试网站工具：<a href="https://www.17ce.com/">17ce</a>），并且所有dns解析地区均不一致，非常奔溃（早上访问正常，晚上问题很大）。<br>本来想再迂回一下，把cname指向到hk源站，但并不成功，而且最主要的还有ssl证书问题，关闭cdn意味着证书也不可用，旧版的公共证书也无法使用了。<br>所以第二天，还是选择成本最小的方案，迁移到GH的Pages服务，操作简单，而且还支持ssl（值得提一句需要站点加入cname文件，否则网上配置在每次部署之后会被重置）。国内gitee的话也是一个选择。</p>
-<h3 id="Nodejs"><a href="#Nodejs" class="headerlink" title="Nodejs"></a>Nodejs</h3><p>把Nodejs升级到了14，然后npm再进行升级，npm原来一直用的global，为了维护方便，还是迁回了local方式，package.json很香。</p>
-<h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><p>hexo安装绕了几个弯子，对hexo和hexo cli有点confuse，一直以为cli就是hexo本身，之前发现cli一直升级不到5以上，比较奔溃。因为安装theme的方式，5和5之前的版本是不同的。好在后面终于顺利搞定。</p>
-<h3 id="Next"><a href="#Next" class="headerlink" title="Next"></a>Next</h3><p>Next变化不大，但这次重构还是做了较大的源码修改，比之前更深入了。变化主要基本分两类，能基于Mist的基本在Mist的样式文件中进行修改，否则只能修改通用的comn文件。其中有些为了保持通用性，增加了通用的config，但实际上可能是不会再使用的，强迫症。这次也改动了div的动态js。</p>
-<p>能想起来的记录如下：</p>
-<ul>
-<li>字体大小修改不建议修改config中的font global，灵活度很小，如果要单独改动post body的size，config不起作用，需要去样式文件修改，title字体size可以直接配置</li>
-<li>由于修改了主题语言，font family基本都可以在config文件更改，menu字体需要去样式修改，比较耐看的字体是：<font face="Shuei Mincho L" >株式会社モリサワ-秀英明朝</font></li>
-<li>heder.styl中对目录栏宽度进行了修改，修改了header-inner和menu的padding，使其分为两行</li>
-<li>整体页面内容宽度也在样式文件中进行了修改，并且可以根据窗口大小，动态切换设置，对移动端比较友好</li>
-<li>config中增加了darkmode, mathjax，pjax，mediumnzoom, quicklink等设置</li>
-<li>增加了avatar，footer文字，facicon，social等信息</li>
-<li>比较复杂地修改了motion.js，单独修改了sidebar中site-description的动态展示效果</li>
-</ul>
-<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p>改名字的时候，知道需要更改，但不知道改什么。随后一瞬想到了阿部芙蓉美（歌不错，但名字…）的「群青」和手嶌葵的专辑「青い図書室」，它们都是过去一段时间内包括现在也非常喜欢的歌曲集，索性就组合在一起，听「<a href="https://nipponcolors.com/#gunjyo">群青</a>」的时候才知道，这是一种颜色的称谓，顺便一提，十一区对颜色称谓相当文艺，例如紺，绯，鳶，楝，瓶覗，柳染，洒落柿，诸如此类。有兴趣的建议移步<a href="https://nipponcolors.com/">日本の伝統色</a>，页面有支持MUNSELL的JS开关，开启高能。<br>此外Sidebar这里的概要也恰逢时宜地选择了「言の葉の庭」中非常受欢迎的雷神短歌上半句。</p>
-<center><font face="Shuei Mincho L" >「鳴る神の 少し響みて  さし曇り 雨も降らぬか 君を留めむ」</font></center><br>
-
-<p>君を留めむ，那是否真的能让你流连驻足呢。</p>
-]]></content>
-      <categories>
-        <category>Toolkit</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>字体踩坑</title>
     <url>/2021/03/30/%E5%AD%97%E4%BD%93%E8%B8%A9%E5%9D%91/</url>
     <content><![CDATA[<p>觉得还是有必要单独为此记录一篇，这是在近日几天被这个问题折腾之后的决定。<br>先从这里开始说吧。</p>
@@ -272,6 +236,61 @@
       </tags>
   </entry>
   <entry>
+    <title>hexo next客制化</title>
+    <url>/2021/03/27/hexo-next%E5%AE%A2%E5%88%B6%E5%8C%96/</url>
+    <content><![CDATA[<p>17年一篇，18年两篇，然后现在是第四篇文章，更新速度堪比富坚义博。</p>
+<p>快3年了，要不是这个域名，兴许就退了，每年虽然缴的费用不多，但让我一直给供应商白嫖其实也不怎么情愿。正好最近空暇，打理打理这些苟且的栖身之地吧。</p>
+<p>这几年发生了一些变化。别的不说，hexo和next理所当然的更新了几个大版本。原先用来编辑的mbp也老旧了，闲置在家里。现在操作的mbp还是两年派发的，主要还是嫌麻烦的原因，一直没有把hexo的编辑目录迁移过来，毕竟只要每次想到要装一堆插件就心生退意。</p>
+<p>最近几天，重装了hexo和next后，升级到了最新版本，同时把展现细节做了更多的改造，说实在的，上次blog的搭建，也是弄了很久的源码，发现每逢修改的时候，虽然相隔时间比较长（笑），但总比之前会更加深入一些，这次增加修改了更多的布局，类型以及动态脚本。趁着这几天刚操作过还记得，快点记录下来。</p>
+<span id="more"></span>
+
+<h3 id="弃用Coding"><a href="#弃用Coding" class="headerlink" title="弃用Coding"></a>弃用Coding</h3><p>原先很看好Coding这家小作坊，早期代码管理做的不错，并且也是较早推出Web IDE的平台，印象中应该早于VSCode。后来有一天发现双因素不好用了，才知道鹅厂收购了Coding。其实算是一件好事，毕竟不用太担心哪天这个startup挂了，但也多了一层麻烦。原来的Pages不能用，需要迁移到新的ci/cd。而且vps的所在地也发生了相应的变化，访问速度有所变慢。<br>Coding原来的ssl证书还挺简单的，但鹅厂云就复杂一些，而且由于域名还是在福报云上，所以现在等于是两大云厂各需要维护一些东西，又徒增了麻烦。</p>
+<p>随着某天晚上，我再也无法访问自己的站点后，还是决定弃用。由于备案问题，pages只能选择部署在HK的节点。原则上部署完成后可以直接在福报云上的dns上设置cname到HK的源站，但是新版的问题是没有这方面的guide的，所以会直接引导用户在pages的custom domain把cname设置为他们的CDN，而这个CDN一来非免费，二来同样由于备案问题，也只能选择境外服务域，三来和CDN绑定ssl证书申请也相对麻烦。结果效果一言难尽，使用CDN目的号称是加速，但实际上速度感受是并不如旧版的，甚至完全比不上后面采用的最终方案。<br>那天晚上的惨状是，国内无一地区可以访问到站点，除了TW和境外（测试网站工具：<a href="https://www.17ce.com/">17ce</a>），并且所有dns解析地区均不一致，非常奔溃（早上访问正常，晚上问题很大）。<br>本来想再迂回一下，把cname指向到hk源站，但并不成功，而且最主要的还有ssl证书问题，关闭cdn意味着证书也不可用，旧版的公共证书也无法使用了。<br>所以第二天，还是选择成本最小的方案，迁移到GH的Pages服务，操作简单，而且还支持ssl（值得提一句需要站点加入cname文件，否则网上配置在每次部署之后会被重置）。国内gitee的话也是一个选择。</p>
+<h3 id="Nodejs"><a href="#Nodejs" class="headerlink" title="Nodejs"></a>Nodejs</h3><p>把Nodejs升级到了14，然后npm再进行升级，npm原来一直用的global，为了维护方便，还是迁回了local方式，package.json很香。</p>
+<h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><p>hexo安装绕了几个弯子，对hexo和hexo cli有点confuse，一直以为cli就是hexo本身，之前发现cli一直升级不到5以上，比较奔溃。因为安装theme的方式，5和5之前的版本是不同的。好在后面终于顺利搞定。</p>
+<h3 id="Next"><a href="#Next" class="headerlink" title="Next"></a>Next</h3><p>Next变化不大，但这次重构还是做了较大的源码修改，比之前更深入了。变化主要基本分两类，能基于Mist的基本在Mist的样式文件中进行修改，否则只能修改通用的comn文件。其中有些为了保持通用性，增加了通用的config，但实际上可能是不会再使用的，强迫症。这次也改动了div的动态js。</p>
+<p>能想起来的记录如下：</p>
+<ul>
+<li>字体大小修改不建议修改config中的font global，灵活度很小，如果要单独改动post body的size，config不起作用，需要去样式文件修改，title字体size可以直接配置</li>
+<li>由于修改了主题语言，font family基本都可以在config文件更改，menu字体需要去样式修改，比较耐看的字体是：<font face="Shuei Mincho L" >株式会社モリサワ-秀英明朝</font></li>
+<li>heder.styl中对目录栏宽度进行了修改，修改了header-inner和menu的padding，使其分为两行</li>
+<li>整体页面内容宽度也在样式文件中进行了修改，并且可以根据窗口大小，动态切换设置，对移动端比较友好</li>
+<li>config中增加了darkmode, mathjax，pjax，mediumnzoom, quicklink等设置</li>
+<li>增加了avatar，footer文字，facicon，social等信息</li>
+<li>比较复杂地修改了motion.js，单独修改了sidebar中site-description的动态展示效果</li>
+</ul>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p>改名字的时候，知道需要更改，但不知道改什么。随后一瞬想到了阿部芙蓉美（歌不错，但名字…）的「群青」和手嶌葵的专辑「青い図書室」，它们都是过去一段时间内包括现在也非常喜欢的歌曲集，索性就组合在一起，听「<a href="https://nipponcolors.com/#gunjyo">群青</a>」的时候才知道，这是一种颜色的称谓，顺便一提，十一区对颜色称谓相当文艺，例如紺，绯，鳶，楝，瓶覗，柳染，洒落柿，诸如此类。有兴趣的建议移步<a href="https://nipponcolors.com/">日本の伝統色</a>，页面有支持MUNSELL的JS开关，开启高能。<br>此外Sidebar这里的概要也恰逢时宜地选择了「言の葉の庭」中非常受欢迎的雷神短歌上半句。</p>
+<center><font face="Shuei Mincho L" >「鳴る神の 少し響みて  さし曇り 雨も降らぬか 君を留めむ」</font></center><br>
+
+<p>君を留めむ，那是否真的能让你流连驻足呢。</p>
+]]></content>
+      <categories>
+        <category>Toolkit</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>九州の行</title>
+    <url>/2023/10/17/%E4%B9%9D%E5%B7%9E%E3%81%AE%E8%A1%8C/</url>
+    <content><![CDATA[<!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-EQDqbkVokswLaJtl"></div><script> var EQDqbkVokswLaJtl_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); EQDqbkVokswLaJtl_options.container = document.getElementById("mmedia-EQDqbkVokswLaJtl"); const dp_EQDqbkVokswLaJtl = new DPlayer(EQDqbkVokswLaJtl_options); </script> -->
+
+<video id="mmedia-ZAVrPsSepwGBwSHU" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
+
+<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-jQUhYPdaazVLZERJ" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-jQUhYPdaazVLZERJ").style.height=document.getElementById("mmedia-jQUhYPdaazVLZERJ").scrollWidth*0.76+"px";
+    window.onresize = function(){
+      document.getElementById("mmedia-jQUhYPdaazVLZERJ").style.height=document.getElementById("mmedia-jQUhYPdaazVLZERJ").scrollWidth*0.76+"px";
+    }; </script> -->]]></content>
+      <categories>
+        <category>Trip</category>
+      </categories>
+      <tags>
+        <tag>Dolphin</tag>
+        <tag>九州</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>USBDriver Reload</title>
     <url>/2023/09/19/USBDriver/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="Oh, these decrypted content cannot be verified, but you can still have a look.">
@@ -291,22 +310,36 @@
       </tags>
   </entry>
   <entry>
-    <title>九州の行</title>
-    <url>/2023/10/17/%E4%B9%9D%E5%B7%9E%E3%81%AE%E8%A1%8C/</url>
-    <content><![CDATA[<!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-PHpmsqvWksRfDdxj"></div><script> var PHpmsqvWksRfDdxj_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); PHpmsqvWksRfDdxj_options.container = document.getElementById("mmedia-PHpmsqvWksRfDdxj"); const dp_PHpmsqvWksRfDdxj = new DPlayer(PHpmsqvWksRfDdxj_options); </script> -->
+    <title>迟到了十二年的偿愿</title>
+    <url>/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/</url>
+    <content><![CDATA[<p>每次来日本，如果时间允许的话，都尽可能安排一次圣地巡礼，而这次的巡礼迟到了十二年。</p>
+<p>某种程度上，我深感庆幸身处这个科技足以打捞回忆的时代。想起童年最深刻的记忆，是二年级的时候，学校组织去看《天空の城》，当时荧幕上的画面，Laputa，海盗飞艇，浴火的机器人历历在目，整个过程受到的震撼，至今都难以忘怀。可这种震撼却成了一个人守护的秘密，几年之后身边的同学任凭我怎么描述也无人共鸣。直到大概千禧年那会儿，随着手机的普及，终于在和弦铃声网站里听到了久违的《君を乗せて》，那一刻的激动，刻骨铭心。</p>
+<p>而真正让这些埋藏许久的回忆有了具象落点的是，是前几年出的一款叫做“片场”的App，它记录了很多经典影视剧中取景地的地理位置，前几次的圣地巡礼，其实都是靠它才能有迹可循。小樽半山腰的船见坂，日本棋院的深奥幽玄，市ヶ谷駅前地下横断歩道，赤名莉香告别的梅津寺駅，半泽直树的三井住友银行，过往的经典场景得以再一次次浮现在眼前。</p>
+<p>但唯独有个地方，这个藏了十二年的念想，始终没有抵达 —— 千叶海滨美滨街道。它是《四月物语》中片尾“小红伞”场景的取景地。这个坐标在十二年前被我花了好久才定位到，当时凭电影片段中的建筑标识，在地图上反复核对才得以确认，此后便一直停留在浏览器收藏夹里。</p>
+<p>上次来东京的时候没能去成，所以这次不会再错过了。</p>
+<p>千叶位于东京都的东边，临海，从三鹰出发需要两个小时的车程才能抵达海滨幕张。从幕张站出来，绕过一段人行道，便到了海滨公园，工作日的午后，公园里行人寥寥，听不见海鸟的鸣叫，只有掠过海面的微风带着淡淡的咸味。穿过公园步入美滨街道，四周愈发安静，这里是一片居住区，大概只有我一个游客吧。</p>
+<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/0.jpg" class="">
 
-<video id="mmedia-AItWzShWDoESUvYU" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
+<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/1.jpg" class="">
 
-<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-WOBWoUxFXBbhrvcO" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-WOBWoUxFXBbhrvcO").style.height=document.getElementById("mmedia-WOBWoUxFXBbhrvcO").scrollWidth*0.76+"px";
-    window.onresize = function(){
-      document.getElementById("mmedia-WOBWoUxFXBbhrvcO").style.height=document.getElementById("mmedia-WOBWoUxFXBbhrvcO").scrollWidth*0.76+"px";
-    }; </script> -->]]></content>
+<p>在这个电影最后一幕的取景地，松隆子饰演的卯月与田边诚一饰演的学长重逢的书店早已结业，原址现已变成一家地产社。相比之下，卯月借还雨伞的报告厅大门倒是基本维持了原样，经历了三十年的风雨，这幢建筑还保留着电影中的轮廓。</p>
+<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/2.jpg" class="">
+
+<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/3.jpg" class="">
+
+<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/4.jpg" class="">
+
+<p>电影的结尾，卯月打着红伞内心自白：“考上大学的时候，连老师都说是奇迹，然而，若真要说这是奇迹，我倒想称它是——爱的奇迹”。</p>
+<p>而这场跨越了十二年的偿愿，大概也是一种小小的奇迹吧。</p>
+]]></content>
       <categories>
         <category>Trip</category>
       </categories>
       <tags>
-        <tag>Dolphin</tag>
-        <tag>九州</tag>
+        <tag>东京</tag>
+        <tag>岩井俊二</tag>
+        <tag>圣地巡礼</tag>
+        <tag>四月物语</tag>
       </tags>
   </entry>
   <entry>
@@ -341,11 +374,11 @@
     <title>宫崎骏的鄙夷</title>
     <url>/2025/08/01/%E5%AE%AB%E5%B4%8E%E9%AA%8F%E7%9A%84%E9%84%99%E5%A4%B7/</url>
     <content><![CDATA[<p>带Hugo来东京参加夏校。学校ASIJ离市区不近，位于多摩地区的调布市，如果要去学校参观，从新宿还要往西再坐将近40分钟的地铁。好在学校安排了校车，于是我们选择住在离终点站前两站的武蔵境駅附近。</p>
-<p>武蔵境与三鹰仅一站JR之遥，三鹰是吉卜力粉丝的朝圣地，美术馆需要提前很久预约，那天去的时候，我和宣在门口草草地望了两眼就打道回府了。然后就吃了此行中唯一的一“堑”，由于天实在太热，我们选择了美术馆门口的公交坐回到武蔵境，结果本来乘JR只需要5分钟的路程，结果公交整整开了50分钟，差点没赶上接Hugo的时间。</p>
+<p>武蔵境与三鹰仅一站JR之遥，三鹰是吉卜力粉丝的朝圣地，美术馆需要提前很久预约，那天去的时候，我们在门口草草地望了两眼就打道回府了。然后就吃了此行中唯一的一“堑”，由于天实在太热，我们选择了美术馆门口的公交坐回到武蔵境，结果本来乘JR只需要5分钟的路程，结果公交整整开了50分钟，差点没赶上接Hugo的时间。</p>
 <p>三鹰往东再乘一站JR就是吉祥寺，吉祥寺是东京最宜居的区域之一，曾经多年在《關東地區居民最想居住的街區》排名中名列前茅，商店街很繁华，商场林立，小吃遍地，这些天有好几次是在这边打的牙祭。</p>
 <p>就在前阵，也是偶然的契机下突然发现《海がきこえる》全国重映，7月4号开始，重映三周。本来我们落地时候正好是重映计划结束的时候，好在重映时间又延长了，那么作为《海がきこえる》的取景地之一 —— 吉祥寺，自然少不了重映的企划。于是选好时间，昨天去重温了这部曾让自己心潮澎湃的作品。</p>
-<p>这是自己第一次在电影院看这部电影，也是第二次在日本观影。宣对吉卜力不是很感冒，和Hugo先回了酒店，只有我一个人去看。虽然没有字幕，但电影前前后后看了好几遍，情节都算记得，所以这次纯为情怀买单，为爱发电。</p>
-<p>UPLINK影院不大，在地下二层，影厅大概也就是10排的样子，本以为来看这部二三十年前作品的观众应该是三十代或者四十代的居多，未料想，我看的这场，感觉大多是国中生和高中生，一共10来人。想起在疫情前第一次在日本观影，看的是《寅次郎的故事》，整个影院除了我和宣，几乎都是花甲之年的长辈。这次却着实出乎意料，看来二次元的经典作品永远不会过时。</p>
+<p>这是自己第一次在电影院看这部电影，也是第二次在日本观影。家人对吉卜力不是很感冒，先回了酒店，只有我一个人去看。虽然没有字幕，但电影前前后后看了好几遍，情节都算记得，所以这次纯为情怀买单，为爱发电。</p>
+<p>UPLINK影院不大，在地下二层，影厅大概也就是10排的样子，本以为来看这部二三十年前作品的观众应该是三十代或者四十代的居多，未料想，我看的这场，感觉大多是国中生和高中生，一共10来人。想起在疫情前第一次在日本观影，看的是《寅次郎的故事》，整个影院除了我们，几乎都是花甲之年的长辈。这次却着实出乎意料，看来二次元的经典作品永远不会过时。</p>
 <div class="img-medium">
 <img data-src="/2025/08/01/%E5%AE%AB%E5%B4%8E%E9%AA%8F%E7%9A%84%E9%84%99%E5%A4%B7/ticket.jpg" class="">
 </div>
@@ -366,43 +399,10 @@
       </categories>
       <tags>
         <tag>东京</tag>
+        <tag>圣地巡礼</tag>
         <tag>吉卜力</tag>
         <tag>宫崎骏</tag>
         <tag>听见涛声</tag>
-        <tag>圣地巡礼</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>迟到了十二年的偿愿</title>
-    <url>/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/</url>
-    <content><![CDATA[<p>每次来日本，如果时间允许的话，都尽可能安排一次圣地巡礼，而这次的巡礼迟到了十二年。</p>
-<p>某种程度上，我深感庆幸身处这个科技足以打捞回忆的时代。想起童年最深刻的记忆，是二年级的时候，学校组织去看《天空の城》，当时荧幕上的画面，Laputa，海盗飞艇，浴火的机器人历历在目，整个过程受到的震撼，至今都难以忘怀。可这种震撼却成了一个人守护的秘密，几年之后身边的同学任凭我怎么描述也无人共鸣。直到大概千禧年那会儿，随着手机的普及，终于在和弦铃声网站里听到了久违的《君を乗せて》，那一刻的激动，刻骨铭心。</p>
-<p>而真正让这些埋藏许久的回忆有了具象落点的是，是前几年出的一款叫做“片场”的App，它记录了很多经典影视剧中取景地的地理位置，前几次的圣地巡礼，其实都是靠它才能有迹可循。小樽半山腰的船见坂，日本棋院的深奥幽玄，市ヶ谷駅前地下横断歩道，赤名莉香告别的梅津寺駅，半泽直树的三井住友银行，过往的经典场景得以再一次次浮现在眼前。</p>
-<p>但唯独有个地方，这个藏了十二年的念想，始终没有抵达 —— 千叶海滨美滨街道。它是《四月物语》中片尾“小红伞”场景的取景地。这个坐标在十二年前被我花了好久才定位到，当时凭电影片段中的建筑标识，在地图上反复核对才得以确认，此后便一直停留在浏览器收藏夹里。</p>
-<p>上次来东京的时候没能去成，所以这次不会再错过了。</p>
-<p>千叶位于东京都的东边，临海，从三鹰出发需要两个小时的车程才能抵达海滨幕张。从幕张站出来，绕过一段人行道，便到了海滨公园，工作日的午后，公园里行人寥寥，听不见海鸟的鸣叫，只有掠过海面的微风带着淡淡的咸味。穿过公园步入美滨街道，四周愈发安静，这里是一片居住区，大概只有我一个游客吧。</p>
-<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/0.jpg" class="">
-
-<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/1.jpg" class="">
-
-<p>在这个电影最后一幕的取景地，松隆子饰演的卯月与田边诚一饰演的学长重逢的书店早已结业，原址现已变成一家地产社。相比之下，卯月借还雨伞的报告厅大门倒是基本维持了原样，经历了三十年的风雨，这幢建筑还保留着电影中的轮廓。</p>
-<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/2.jpg" class="">
-
-<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/3.jpg" class="">
-
-<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/4.jpg" class="">
-
-<p>电影的结尾，卯月打着红伞内心自白：“考上大学的时候，连老师都说是奇迹，然而，若真要说这是奇迹，我倒想称它是——爱的奇迹”。</p>
-<p>而这场跨越了十二年的偿愿，大概也是一种小小的奇迹吧。</p>
-]]></content>
-      <categories>
-        <category>Trip</category>
-      </categories>
-      <tags>
-        <tag>东京</tag>
-        <tag>圣地巡礼</tag>
-        <tag>岩井俊二</tag>
-        <tag>四月物语</tag>
       </tags>
   </entry>
   <entry>
@@ -420,26 +420,6 @@
       </categories>
       <tags>
         <tag>Summary</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>神笔</title>
-    <url>/2026/01/11/%E7%A5%9E%E7%AC%94/</url>
-    <content><![CDATA[<p>说实话，这曾是一个让我嗤之以鼻的词。</p>
-<p>过往公司曾有个产品也叫这个名字。讽刺的是，别的没看见，反倒常常招来业务方的怨声载道这点确实挺“神”的。<br>“神”这个字还是要慎用，给自己留点余地，看看人家 Nano 和 GPT，真正强大的产品，从不需要形容词来替它正名。 </p>
-<h3 id="Vibe-Coding"><a href="#Vibe-Coding" class="headerlink" title="Vibe Coding"></a>Vibe Coding</h3><p>而当下的你我，或许正在见证这个时代“神笔”的降临。</p>
-<p>半年前、一年前，鲜有人知道它是什么，甚至时至今日关于它的舆论态势也未真正发酵。但凡尝试过的人，或许能慢慢感受到下一代工业革命近在咫尺了。</p>
-<p>或许有人会问，如果未来人人都手握一支神笔，那么神笔还是神笔吗？每一个创新，何尝不是那个时代的神笔？但它们终究会是时代的产物，日常会是它们最终的归宿。那么这支新的神笔，难道不会沿着历史的轨迹，最终归于平凡？</p>
-<p>确实，很有可能。</p>
-<p>但我们记住的，往往或许不是那支笔，而是初见那个时代的弄潮儿时，涌起心底涟漪的那份触动吧。</p>
-<p>昙花虽一现，刹那胜经年。</p>
-]]></content>
-      <categories>
-        <category>Impression</category>
-      </categories>
-      <tags>
-        <tag>AI</tag>
-        <tag>Vibe Coding</tag>
       </tags>
   </entry>
   <entry>
@@ -468,15 +448,35 @@
       </tags>
   </entry>
   <entry>
+    <title>神笔</title>
+    <url>/2026/01/11/%E7%A5%9E%E7%AC%94/</url>
+    <content><![CDATA[<p>说实话，这曾是一个让我嗤之以鼻的词。</p>
+<p>过往公司曾有个产品也叫这个名字。讽刺的是，别的没看见，反倒常常招来业务方的怨声载道这点确实挺“神”的。<br>“神”这个字还是要慎用，给自己留点余地，看看人家 Nano 和 GPT，真正强大的产品，从不需要形容词来替它正名。 </p>
+<h3 id="Vibe-Coding"><a href="#Vibe-Coding" class="headerlink" title="Vibe Coding"></a>Vibe Coding</h3><p>而当下的你我，或许正在见证这个时代“神笔”的降临。</p>
+<p>半年前、一年前，鲜有人知道它是什么，甚至时至今日关于它的舆论态势也未真正发酵。但凡尝试过的人，或许能慢慢感受到下一代工业革命近在咫尺了。</p>
+<p>或许有人会问，如果未来人人都手握一支神笔，那么神笔还是神笔吗？每一个创新，何尝不是那个时代的神笔？但它们终究会是时代的产物，日常会是它们最终的归宿。那么这支新的神笔，难道不会沿着历史的轨迹，最终归于平凡？</p>
+<p>确实，很有可能。</p>
+<p>但我们记住的，往往或许不是那支笔，而是初见那个时代的弄潮儿时，涌起心底涟漪的那份触动吧。</p>
+<p>昙花虽一现，刹那胜经年。</p>
+]]></content>
+      <categories>
+        <category>Impression</category>
+      </categories>
+      <tags>
+        <tag>AI</tag>
+        <tag>Vibe Coding</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hugo的数学猜想</title>
     <url>/2026/01/20/Hugo%E7%9A%84%E6%95%B0%E5%AD%A6%E7%8C%9C%E6%83%B3/</url>
     <content><![CDATA[<p>最近几周，随着Hugo考试临近，周末两天都会带他去图书馆。家里虽也安逸，但总觉得图书馆那种沉静的读书氛围，更能让他心无旁骛地沉浸其中。</p>
-<p>今天送他去图书馆的路上，Hugo兴致勃勃地给我们分享了三个他“发现”的数学规律，这些还没经过严格证明的“猜想”被他煞有其事地冠名为“定理”。其中两个逻辑清晰，我们还能勉强跟上他的思路进行推演，但第三个规律却着实让我们有些吃惊。</p>
+<p>今天送他去图书馆的路上，Hugo兴致勃勃地分享了三个他“发现”的数学规律，这些还没经过严格证明的“猜想”被他煞有其事地冠名为“定理”。其中两个逻辑清晰，我还能勉强跟上他的思路进行推演，但第三个规律却着实让我有些吃惊。</p>
 <p>那是一个关于<strong>完美数</strong>的表述：</p>
 <blockquote>
 <p>如果 $ 2^n - 1 $ 是一个素数，那么这个数乘以 $ 2^{n-1} $ 就能构成一个完美数。</p>
 </blockquote>
-<p>当Hugo试图描述其中的对应关系时，我们这两位数学专业的“愚徒”还在反复确认他表达的细节。直到后来向AI求证，才发现这是已被冠名的欧几里得-欧拉定理。</p>
+<p>当Hugo试图描述其中的对应关系时，我这个数学专业的“愚徒”还在反复确认他表达的细节。直到后来向AI求证，才发现这是已被冠名的欧几里得-欧拉定理。</p>
 <p>他甚至还不知道梅森素数的具体定义，却能仅凭直觉窥见这条隐秘的数字通道，这确实让我感到惊讶。</p>
 <p>回想起来，这几年他在数感上的成长似乎早有迹象。有些数论游戏我已经完全玩不过他了， Switch上《脑锻炼》的数论板块，与他的多次对战中，我的胜率一直是0%，每次都被虐地体无完肤，我一度怀疑是不是自己真的太菜了，现在看好像还真不一定。所以，或许从那个时候起，我就该意识到，身边的这个臭小子，正在以超过我们想象的速度成长着。</p>
 <p>学校老师也曾评价说他的数感极佳。虽然相比之下，我总觉得他在几何上的天赋比较平庸，但这次切身感受到他对数字规律的敏锐捕捉，让我释然了不少。这份独特的数感，或许正是他未来在数学世界里走得更远、钻得更深的底气吧。</p>
