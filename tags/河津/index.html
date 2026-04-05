@@ -465,6 +465,96 @@ if (!window.mathjaxFixLoaded) {
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
 
+<!-- BGM Player for moonriver page -->
+<script>
+(function() {
+  function cleanupBGM() {
+    var audio = document.getElementById('bgm-audio');
+    if (audio) { audio.pause(); audio.remove(); }
+    var player = document.querySelector('.bgm-player');
+    if (player) player.remove();
+    if (window._bgmCheckInterval) {
+      clearInterval(window._bgmCheckInterval);
+      window._bgmCheckInterval = null;
+    }
+  }
+
+  function initBGM() {
+    if (!window.location.pathname.includes('moonriver')) return;
+    if (document.getElementById('bgm-audio')) return;
+
+    window._bgmCheckInterval = setInterval(function() {
+      var postBody = document.querySelector('.post-body');
+      if (postBody && postBody.querySelector('.love-divider')) {
+        clearInterval(window._bgmCheckInterval);
+        window._bgmCheckInterval = null;
+
+        // Create audio
+        var audio = document.createElement('audio');
+        audio.id = 'bgm-audio';
+        audio.src = '/music/hosekibako_lite.mp3';
+        audio.loop = true;
+        audio.preload = 'auto';
+        audio.volume = 0.3;
+        document.body.appendChild(audio);
+
+        // Create floating player button
+        var player = document.createElement('div');
+        player.className = 'bgm-player';
+        player.innerHTML = '<button class="bgm-btn" title="播放/暂停 BGM"><span class="bgm-disc">♪</span></button>';
+        document.body.appendChild(player);
+
+        var btn = player.querySelector('.bgm-btn');
+
+        // Auto play after short delay
+        setTimeout(function() {
+          player.classList.add('visible');
+          audio.play().then(function() {
+            btn.classList.remove('paused');
+          }).catch(function() {
+            btn.classList.add('paused');
+          });
+        }, 600);
+
+        // Toggle play/pause
+        btn.addEventListener('click', function() {
+          if (audio.paused) {
+            audio.play();
+            btn.classList.remove('paused');
+          } else {
+            audio.pause();
+            btn.classList.add('paused');
+          }
+        });
+      }
+    }, 500);
+
+    // Safety: stop polling after 60s
+    setTimeout(function() {
+      if (window._bgmCheckInterval) {
+        clearInterval(window._bgmCheckInterval);
+        window._bgmCheckInterval = null;
+      }
+    }, 60000);
+  }
+
+  initBGM();
+  document.addEventListener('pjax:send', cleanupBGM);
+  document.addEventListener('pjax:success', initBGM);
+
+  // Force re-enter password on every visit (so autoplay always works)
+  if (window.location.pathname.includes('moonriver')) {
+    window.addEventListener('beforeunload', function() {
+      Object.keys(localStorage).forEach(function(key) {
+        if (key.indexOf('hexo-blog-encrypt') !== -1) {
+          localStorage.removeItem(key);
+        }
+      });
+    });
+  }
+})();
+</script>
+
     </div>
 </body>
 </html>
