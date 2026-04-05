@@ -45,7 +45,17 @@
     isPost : false,
     lang   : 'ja'
   };
+</script><!-- Force re-enter password on moonriver page (clear cached password before hexo-blog-encrypt reads it) -->
+<script>
+if (window.location.pathname.indexOf('moonriver') !== -1) {
+  Object.keys(localStorage).forEach(function(key) {
+    if (key.indexOf('hexo-blog-encrypt') !== -1) {
+      localStorage.removeItem(key);
+    }
+  });
+}
 </script>
+
 <title>カテゴリ: Impression | 群青い図書室</title>
   
 
@@ -584,17 +594,6 @@ if (!window.mathjaxFixLoaded) {
   initBGM();
   document.addEventListener('pjax:send', cleanupBGM);
   document.addEventListener('pjax:success', initBGM);
-
-  // Force re-enter password on every visit (so autoplay always works)
-  if (window.location.pathname.includes('moonriver')) {
-    window.addEventListener('beforeunload', function() {
-      Object.keys(localStorage).forEach(function(key) {
-        if (key.indexOf('hexo-blog-encrypt') !== -1) {
-          localStorage.removeItem(key);
-        }
-      });
-    });
-  }
 })();
 </script>
 
