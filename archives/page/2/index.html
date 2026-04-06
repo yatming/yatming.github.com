@@ -536,30 +536,69 @@ if (!window.mathjaxFixLoaded) {
 <!-- BGM Player for moonriver page -->
 <script>
 (function() {
+  if (window._bgmPluginLoaded) return;
+  window._bgmPluginLoaded = true;
+
+  var bgmAudioId = 'bgm-audio';
+  var bgmCheckTimer = null;
+
   function cleanupBGM() {
-    var audio = document.getElementById('bgm-audio');
-    if (audio) { audio.pause(); audio.remove(); }
-    var player = document.querySelector('.bgm-player');
-    if (player) player.remove();
-    if (window._bgmCheckInterval) {
-      clearInterval(window._bgmCheckInterval);
-      window._bgmCheckInterval = null;
+    if (bgmCheckTimer) {
+      clearInterval(bgmCheckTimer);
+      bgmCheckTimer = null;
+    }
+    var audio = document.getElementById(bgmAudioId);
+    if (audio) {
+      audio.pause();
+      audio.src = '';
+      try { audio.load(); } catch(e) {}
+      audio.remove();
+    }
+    var players = document.querySelectorAll('.bgm-player');
+    players.forEach(function(p) { p.remove(); });
+  }
+
+  function clearEncryption() {
+    if (window.location.pathname.includes('moonriver')) {
+      Object.keys(localStorage).forEach(function(key) {
+        if (key.indexOf('hexo-blog-encrypt') !== -1) {
+          localStorage.removeItem(key);
+        }
+      });
     }
   }
 
   function initBGM() {
-    if (!window.location.pathname.includes('moonriver')) return;
-    if (document.getElementById('bgm-audio')) return;
+    // Always clear encryption status on navigation to moonriver page
+    clearEncryption();
 
-    window._bgmCheckInterval = setInterval(function() {
+    if (!window.location.pathname.includes('moonriver')) {
+      cleanupBGM();
+      return;
+    }
+
+    // Don't start another if one already exists
+    if (document.getElementById(bgmAudioId)) return;
+
+    // Clear any pending timer
+    if (bgmCheckTimer) clearInterval(bgmCheckTimer);
+
+    bgmCheckTimer = setInterval(function() {
+      // Re-check inside interval
+      if (document.getElementById(bgmAudioId)) {
+        clearInterval(bgmCheckTimer);
+        bgmCheckTimer = null;
+        return;
+      }
+
       var postBody = document.querySelector('.post-body');
       if (postBody && postBody.querySelector('.love-divider')) {
-        clearInterval(window._bgmCheckInterval);
-        window._bgmCheckInterval = null;
+        clearInterval(bgmCheckTimer);
+        bgmCheckTimer = null;
 
         // Create audio
         var audio = document.createElement('audio');
-        audio.id = 'bgm-audio';
+        audio.id = bgmAudioId;
         audio.src = '/music/farewell_lite.mp3';
         audio.loop = true;
         audio.preload = 'auto';
@@ -599,15 +638,21 @@ if (!window.mathjaxFixLoaded) {
 
     // Safety: stop polling after 60s
     setTimeout(function() {
-      if (window._bgmCheckInterval) {
-        clearInterval(window._bgmCheckInterval);
-        window._bgmCheckInterval = null;
+      if (bgmCheckTimer) {
+        clearInterval(bgmCheckTimer);
+        bgmCheckTimer = null;
       }
     }, 60000);
   }
 
+  // Initial call
   initBGM();
-  document.addEventListener('pjax:send', cleanupBGM);
+
+  // PJAX listeners (added only once due to outer guard)
+  document.addEventListener('pjax:send', function() {
+    clearEncryption(); // Clear early
+    cleanupBGM();
+  });
   document.addEventListener('pjax:success', initBGM);
 })();
 </script>
