@@ -628,6 +628,68 @@ if (!window.mathjaxFixLoaded) {
 })();
 </script>
 
+<!-- DiceBear Avatar for Twikoo -->
+<script>
+(function () {
+  var STYLE = 'lorelei-neutral'; // 改这里换风格：bottts / pixel-art / adventurer / lorelei 等
+  var BASE  = 'https://api.dicebear.com/9.x/' + STYLE + '/svg?seed=';
+
+  function replaceAvatars() {
+    document.querySelectorAll('.tk-avatar-img').forEach(function (img) {
+      if (img.dataset.dicebear) return;
+      if (!img.src || img.src === window.location.href) return; // src 还未设置
+      var m = img.src.match(/avatar\/([a-f0-9]{32})/i);
+      if (!m) return; // 不是 Gravatar/Cravatar 格式，跳过（防止重复替换）
+      var seed = m[1];
+      img.src = BASE + seed;
+      img.dataset.dicebear = '1';
+    });
+  }
+
+  var _observer = null;
+  var _pollTimer = null;
+
+  function startObserver() {
+    var container = document.getElementById('tcomment');
+    if (!container) return false;
+
+    // 立刻替换一次
+    replaceAvatars();
+
+    if (_observer) _observer.disconnect();
+    _observer = new MutationObserver(replaceAvatars);
+    // childList: 捕获节点插入；attributes+attributeFilter: 捕获 src 属性延迟赋值
+    _observer.observe(container, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['src']
+    });
+    return true;
+  }
+
+  function init() {
+    if (_pollTimer) clearInterval(_pollTimer);
+    _observer = null;
+
+    // 轮询等待 #tcomment 出现
+    _pollTimer = setInterval(function () {
+      if (startObserver()) {
+        clearInterval(_pollTimer);
+      }
+    }, 300);
+    // 最多等 20 秒
+    setTimeout(function () { clearInterval(_pollTimer); }, 20000);
+  }
+
+  // 兜底：每隔 2 秒扫一次，防止异步加载的评论被漏掉
+  setInterval(replaceAvatars, 2000);
+
+  init();
+  document.addEventListener('pjax:success', init);
+})();
+</script>
+
     </div>
 </body>
 </html>
