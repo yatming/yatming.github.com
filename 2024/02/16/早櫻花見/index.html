@@ -574,6 +574,18 @@ if (!window.mathjaxFixLoaded) {
   var bgmAudioId = 'bgm-audio';
   var bgmCheckTimer = null;
 
+  // Playlist — add / reorder tracks here freely
+  var playlist = [
+    { src: '/music/loveislove_lite.mp3',   name: 'Love is Love' },
+    { src: '/music/itsokaytoday_lite.mp3',   name: 'It\'s Okay Today' },
+    { src: '/music/dearyou_lite.mp3',    name: '疍家之歌' },
+    { src: '/music/goodevening_lite.mp3',name: 'Good Evening' },
+    //{ src: '/music/farewell_lite.mp3',   name: '突然の別れ' }
+    { src: '/music/hosekibako_lite.mp3', name: '宝石箱' }
+  ];
+  var currentIndex = 0;
+  var toastTimer = null;
+
   function cleanupBGM() {
     if (bgmCheckTimer) {
       clearInterval(bgmCheckTimer);
@@ -600,8 +612,33 @@ if (!window.mathjaxFixLoaded) {
     }
   }
 
+  // Show a brief toast with the current track name
+  function showToast(toast, name) {
+    if (toastTimer) clearTimeout(toastTimer);
+    toast.textContent = '♪  ' + name;
+    toast.classList.add('show');
+    toastTimer = setTimeout(function() {
+      toast.classList.remove('show');
+    }, 3500);
+  }
+
+  // Switch to a track by index and optionally auto-play it
+  function playTrack(audio, btn, toast, index, autoPlay) {
+    currentIndex = ((index % playlist.length) + playlist.length) % playlist.length;
+    var track = playlist[currentIndex];
+    audio.src = track.src;
+    audio.load();
+    if (autoPlay) {
+      audio.play().then(function() {
+        btn.classList.remove('paused');
+      }).catch(function() {
+        btn.classList.add('paused');
+      });
+    }
+    showToast(toast, track.name);
+  }
+
   function initBGM() {
-    // Always clear encryption status on navigation to moonriver page
     clearEncryption();
 
     if (!window.location.pathname.includes('moonriver')) {
@@ -609,14 +646,10 @@ if (!window.mathjaxFixLoaded) {
       return;
     }
 
-    // Don't start another if one already exists
     if (document.getElementById(bgmAudioId)) return;
-
-    // Clear any pending timer
     if (bgmCheckTimer) clearInterval(bgmCheckTimer);
 
     bgmCheckTimer = setInterval(function() {
-      // Re-check inside interval
       if (document.getElementById(bgmAudioId)) {
         clearInterval(bgmCheckTimer);
         bgmCheckTimer = null;
@@ -628,24 +661,27 @@ if (!window.mathjaxFixLoaded) {
         clearInterval(bgmCheckTimer);
         bgmCheckTimer = null;
 
-        // Create audio
+        // ── Audio element ──
         var audio = document.createElement('audio');
         audio.id = bgmAudioId;
-        audio.src = '/music/dearyou_lite.mp3';
-        audio.loop = true;
+        audio.src = playlist[currentIndex].src;
         audio.preload = 'auto';
         audio.volume = 0.3;
         document.body.appendChild(audio);
 
-        // Create floating player button
+        // ── Player shell ──
         var player = document.createElement('div');
         player.className = 'bgm-player';
-        player.innerHTML = '<button class="bgm-btn" title="播放/暂停 BGM"><span class="bgm-disc">♪</span></button>';
+        player.innerHTML =
+          '<button class="bgm-btn" title="单击播放/暂停 · 双击下一首"><span class="bgm-disc">♪</span></button>' +
+          '<span class="bgm-toast"></span>';
         document.body.appendChild(player);
 
-        var btn = player.querySelector('.bgm-btn');
+        var btn   = player.querySelector('.bgm-btn');
+        var toast = player.querySelector('.bgm-toast');
+        var clickTimer = null;
 
-        // Auto play after short delay
+        // ── Auto-play first track ──
         setTimeout(function() {
           player.classList.add('visible');
           audio.play().then(function() {
@@ -655,20 +691,35 @@ if (!window.mathjaxFixLoaded) {
           });
         }, 600);
 
-        // Toggle play/pause
+        // ── Single click: play/pause  |  Double click: next track ──
         btn.addEventListener('click', function() {
-          if (audio.paused) {
-            audio.play();
-            btn.classList.remove('paused');
+          if (clickTimer) {
+            // Second click arrived within 250 ms → double-click → next track
+            clearTimeout(clickTimer);
+            clickTimer = null;
+            playTrack(audio, btn, toast, currentIndex + 1, true);
           } else {
-            audio.pause();
-            btn.classList.add('paused');
+            clickTimer = setTimeout(function() {
+              clickTimer = null;
+              // Single click → play / pause
+              if (audio.paused) {
+                audio.play();
+                btn.classList.remove('paused');
+              } else {
+                audio.pause();
+                btn.classList.add('paused');
+              }
+            }, 250);
           }
+        });
+
+        // ── Auto-advance when song ends ──
+        audio.addEventListener('ended', function() {
+          playTrack(audio, btn, toast, currentIndex + 1, true);
         });
       }
     }, 500);
 
-    // Safety: stop polling after 60s
     setTimeout(function() {
       if (bgmCheckTimer) {
         clearInterval(bgmCheckTimer);
@@ -677,12 +728,10 @@ if (!window.mathjaxFixLoaded) {
     }, 60000);
   }
 
-  // Initial call
   initBGM();
 
-  // PJAX listeners (added only once due to outer guard)
   document.addEventListener('pjax:send', function() {
-    clearEncryption(); // Clear early
+    clearEncryption();
     cleanupBGM();
   });
   document.addEventListener('pjax:success', initBGM);
