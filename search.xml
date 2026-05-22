@@ -188,6 +188,25 @@
       </tags>
   </entry>
   <entry>
+    <title>USBDriver Reload</title>
+    <url>/2023/09/19/USBDriver/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="Oh, these decrypted content cannot be verified, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="aaa4f91028b10978092729341d5bde7acaef0e7fab9164849f693203d8157e36">10d79030e8222445804370796b90fca1662db977fbc011472d8cbe51030ee77b3a54e2b2fada1983c7a0dcb0f949a423f22dfc1e74b0d1530f81377701a765059c771f94949961c230d801d6baa33ee3f9974eef6072a7ef037ad3a31c1b07da21567d22b2f5e1da74076779511669aa295290a10b34d5eee3b9dab36be4c4a9694685530e3dfd909340db7bfe156646eface5d9d3939f7e45974c2edc5532184635acb1248da2f36667f6365f165d06bd04f1e2b52b5c5c48ec23eee36dae38a57eb2d8c856e4936d75be34ae3907d39c16c1ef20eaf13464c5f5fa477e4475b5ac27472f45b26d8c3319bd6467960ede32e0cf10cc4929dcd904d3ce508ce868d6abd8aca4358c2028f4aaf0427d0a441e31e99affc949398d73d0bc8d96922e8ebdb2389b4de919a1269e22459cc3841d0c777c0f31034d33e6eb8ff88b2c0bd9f0c3244d55cc49ece115e58f14309cf03d8e7a979e0a30c77906089454ab8aedb7cda88d9cd79e121816e70d661b462cc30d745c35a05295666b57305c191f311ad901ecaf7efb73ce9170a8cdeae5b0aa6afeba49463d5320b78e55c6d12f54bcbaed79c2222d3b8c75897c1812109b3ef763db50ff38f0d8ede3910091132261ab477983efc7a846a52980ae6a5f8637e82e64d45752aaba7e6863c438f67f8c98e88fceaaa4c158f7f9751ed5d1e8fae7ef13b2a999e58770f33063c9adbb7d4f0de2228ac2cd80e34e1bbbcae2abb293dbadd9bdfb30b9b7f71565736e6ba591b1cafa97fbc72f87ab3fb95da9c405450dc93a2a9c257a60889c84aa2c7280172b1c9ab8be3b74855beac7cdc609da54cd5a400c026981b0584890ff72d9ed206cec5fcce3b49b3dc03137fc874f7abe86fab700ee89541bc9d0a6cb66adc874e5fe89074adbb6fc77dd7098dca46859e60b1ec35b3d29a97448d982ae5bbb2988f78da6558a21d146ce2998d60884828b44e2239849179db36ca0f9745ed8ff3cea03e6279cc016af520e7320fe439a763b28b1522e8ce637bcdc42b72af1f232d867154e55768b5d5df2443f7c6b3bc26b52234b00fded6ba44cfdf977e5721d45d6909f1145dfa0e709909da77cd548b54e1841ae1dec68694fcffb8b28ebc2b14a14eb5a70f17be08a47b7b47e752306af6033616e25a8b02a45b098e47cb374e19413274c6a71983d2a14d7da44dba3ae56afbf650860f3d6229840e51a351fe1dba73d77e013c8fe4a3dacee4c564301afb29c92a0871f256c303f09ca2e78aef7845b25afccb284fd00d9c21b109bd09694f24c6e32167ac932d0da677892784b893db1da2fb390e130b5212f3a84ea777839dcd6d3e3566e227d8e5065d457ab3fd793fc8394772e95351aa780d9caf2c3e76d6ef49b409d6851ad7770ba0a5125daeaaa516d40632f8b9ca82f6a0030b3d09edd8cb8d491c9bf25cbf9a512c37f5f3c6847bbf9f2f3e508743fff5427295b0499650102b9bc43df752e4a36d79b139dbb30e9963ce4634c35ae370f93af996caca6ae6eeb7c0ddce829d5c33d5bc44ed66cf09d5e81c371ffeb3c7899f6e524e90d57f0b51f3efa2ee0b05b9167d0275815d912de</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-up">
+      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-up">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <tags>
+        <tag>encrypted</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>字体踩坑</title>
     <url>/2021/03/30/%E5%AD%97%E4%BD%93%E8%B8%A9%E5%9D%91/</url>
     <content><![CDATA[<p>觉得还是有必要单独为此记录一篇，这是在近日几天被这个问题折腾之后的决定。<br>先从这里开始说吧。</p>
@@ -236,51 +255,15 @@
       </tags>
   </entry>
   <entry>
-    <title>hexo next客制化</title>
-    <url>/2021/03/27/hexo-next%E5%AE%A2%E5%88%B6%E5%8C%96/</url>
-    <content><![CDATA[<p>17年一篇，18年两篇，然后现在是第四篇文章，更新速度堪比富坚义博。</p>
-<p>快3年了，要不是这个域名，兴许就退了，每年虽然缴的费用不多，但让我一直给供应商白嫖其实也不怎么情愿。正好最近空暇，打理打理这些苟且的栖身之地吧。</p>
-<p>这几年发生了一些变化。别的不说，hexo和next理所当然的更新了几个大版本。原先用来编辑的mbp也老旧了，闲置在家里。现在操作的mbp还是两年派发的，主要还是嫌麻烦的原因，一直没有把hexo的编辑目录迁移过来，毕竟只要每次想到要装一堆插件就心生退意。</p>
-<p>最近几天，重装了hexo和next后，升级到了最新版本，同时把展现细节做了更多的改造，说实在的，上次blog的搭建，也是弄了很久的源码，发现每逢修改的时候，虽然相隔时间比较长（笑），但总比之前会更加深入一些，这次增加修改了更多的布局，类型以及动态脚本。趁着这几天刚操作过还记得，快点记录下来。</p>
-<span id="more"></span>
-
-<h3 id="弃用Coding"><a href="#弃用Coding" class="headerlink" title="弃用Coding"></a>弃用Coding</h3><p>原先很看好Coding这家小作坊，早期代码管理做的不错，并且也是较早推出Web IDE的平台，印象中应该早于VSCode。后来有一天发现双因素不好用了，才知道鹅厂收购了Coding。其实算是一件好事，毕竟不用太担心哪天这个startup挂了，但也多了一层麻烦。原来的Pages不能用，需要迁移到新的ci/cd。而且vps的所在地也发生了相应的变化，访问速度有所变慢。<br>Coding原来的ssl证书还挺简单的，但鹅厂云就复杂一些，而且由于域名还是在福报云上，所以现在等于是两大云厂各需要维护一些东西，又徒增了麻烦。</p>
-<p>随着某天晚上，我再也无法访问自己的站点后，还是决定弃用。由于备案问题，pages只能选择部署在HK的节点。原则上部署完成后可以直接在福报云上的dns上设置cname到HK的源站，但是新版的问题是没有这方面的guide的，所以会直接引导用户在pages的custom domain把cname设置为他们的CDN，而这个CDN一来非免费，二来同样由于备案问题，也只能选择境外服务域，三来和CDN绑定ssl证书申请也相对麻烦。结果效果一言难尽，使用CDN目的号称是加速，但实际上速度感受是并不如旧版的，甚至完全比不上后面采用的最终方案。<br>那天晚上的惨状是，国内无一地区可以访问到站点，除了TW和境外（测试网站工具：<a href="https://www.17ce.com/">17ce</a>），并且所有dns解析地区均不一致，非常奔溃（早上访问正常，晚上问题很大）。<br>本来想再迂回一下，把cname指向到hk源站，但并不成功，而且最主要的还有ssl证书问题，关闭cdn意味着证书也不可用，旧版的公共证书也无法使用了。<br>所以第二天，还是选择成本最小的方案，迁移到GH的Pages服务，操作简单，而且还支持ssl（值得提一句需要站点加入cname文件，否则网上配置在每次部署之后会被重置）。国内gitee的话也是一个选择。</p>
-<h3 id="Nodejs"><a href="#Nodejs" class="headerlink" title="Nodejs"></a>Nodejs</h3><p>把Nodejs升级到了14，然后npm再进行升级，npm原来一直用的global，为了维护方便，还是迁回了local方式，package.json很香。</p>
-<h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><p>hexo安装绕了几个弯子，对hexo和hexo cli有点confuse，一直以为cli就是hexo本身，之前发现cli一直升级不到5以上，比较奔溃。因为安装theme的方式，5和5之前的版本是不同的。好在后面终于顺利搞定。</p>
-<h3 id="Next"><a href="#Next" class="headerlink" title="Next"></a>Next</h3><p>Next变化不大，但这次重构还是做了较大的源码修改，比之前更深入了。变化主要基本分两类，能基于Mist的基本在Mist的样式文件中进行修改，否则只能修改通用的comn文件。其中有些为了保持通用性，增加了通用的config，但实际上可能是不会再使用的，强迫症。这次也改动了div的动态js。</p>
-<p>能想起来的记录如下：</p>
-<ul>
-<li>字体大小修改不建议修改config中的font global，灵活度很小，如果要单独改动post body的size，config不起作用，需要去样式文件修改，title字体size可以直接配置</li>
-<li>由于修改了主题语言，font family基本都可以在config文件更改，menu字体需要去样式修改，比较耐看的字体是：<font face="Shuei Mincho L" >株式会社モリサワ-秀英明朝</font></li>
-<li>heder.styl中对目录栏宽度进行了修改，修改了header-inner和menu的padding，使其分为两行</li>
-<li>整体页面内容宽度也在样式文件中进行了修改，并且可以根据窗口大小，动态切换设置，对移动端比较友好</li>
-<li>config中增加了darkmode, mathjax，pjax，mediumnzoom, quicklink等设置</li>
-<li>增加了avatar，footer文字，facicon，social等信息</li>
-<li>比较复杂地修改了motion.js，单独修改了sidebar中site-description的动态展示效果</li>
-</ul>
-<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p>改名字的时候，知道需要更改，但不知道改什么。随后一瞬想到了阿部芙蓉美（歌不错，但名字…）的「群青」和手嶌葵的专辑「青い図書室」，它们都是过去一段时间内包括现在也非常喜欢的歌曲集，索性就组合在一起，听「<a href="https://nipponcolors.com/#gunjyo">群青</a>」的时候才知道，这是一种颜色的称谓，顺便一提，十一区对颜色称谓相当文艺，例如紺，绯，鳶，楝，瓶覗，柳染，洒落柿，诸如此类。有兴趣的建议移步<a href="https://nipponcolors.com/">日本の伝統色</a>，页面有支持MUNSELL的JS开关，开启高能。<br>此外Sidebar这里的概要也恰逢时宜地选择了「言の葉の庭」中非常受欢迎的雷神短歌上半句。</p>
-<center><font face="Shuei Mincho L" >「鳴る神の 少し響みて  さし曇り 雨も降らぬか 君を留めむ」</font></center><br>
-
-<p>君を留めむ，那是否真的能让你流连驻足呢。</p>
-]]></content>
-      <categories>
-        <category>Toolkit</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>九州の行</title>
     <url>/2023/10/17/%E4%B9%9D%E5%B7%9E%E3%81%AE%E8%A1%8C/</url>
-    <content><![CDATA[<!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-EQDqbkVokswLaJtl"></div><script> var EQDqbkVokswLaJtl_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); EQDqbkVokswLaJtl_options.container = document.getElementById("mmedia-EQDqbkVokswLaJtl"); const dp_EQDqbkVokswLaJtl = new DPlayer(EQDqbkVokswLaJtl_options); </script> -->
+    <content><![CDATA[<!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-OeEOjEDaLaGocvMn"></div><script> var OeEOjEDaLaGocvMn_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); OeEOjEDaLaGocvMn_options.container = document.getElementById("mmedia-OeEOjEDaLaGocvMn"); const dp_OeEOjEDaLaGocvMn = new DPlayer(OeEOjEDaLaGocvMn_options); </script> -->
 
-<video id="mmedia-ZAVrPsSepwGBwSHU" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
+<video id="mmedia-BejzPdSRhoNTuxIa" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
 
-<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-jQUhYPdaazVLZERJ" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-jQUhYPdaazVLZERJ").style.height=document.getElementById("mmedia-jQUhYPdaazVLZERJ").scrollWidth*0.76+"px";
+<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-yxaEROqvFsMvigqq" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-yxaEROqvFsMvigqq").style.height=document.getElementById("mmedia-yxaEROqvFsMvigqq").scrollWidth*0.76+"px";
     window.onresize = function(){
-      document.getElementById("mmedia-jQUhYPdaazVLZERJ").style.height=document.getElementById("mmedia-jQUhYPdaazVLZERJ").scrollWidth*0.76+"px";
+      document.getElementById("mmedia-yxaEROqvFsMvigqq").style.height=document.getElementById("mmedia-yxaEROqvFsMvigqq").scrollWidth*0.76+"px";
     }; </script> -->]]></content>
       <categories>
         <category>Trip</category>
@@ -291,22 +274,31 @@
       </tags>
   </entry>
   <entry>
-    <title>USBDriver Reload</title>
-    <url>/2023/09/19/USBDriver/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="Oh, these decrypted content cannot be verified, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="aaa4f91028b10978092729341d5bde7acaef0e7fab9164849f693203d8157e36">10d79030e8222445804370796b90fca1662db977fbc011472d8cbe51030ee77b3a54e2b2fada1983c7a0dcb0f949a423f22dfc1e74b0d1530f81377701a765059c771f94949961c230d801d6baa33ee3f9974eef6072a7ef037ad3a31c1b07da21567d22b2f5e1da74076779511669aa295290a10b34d5eee3b9dab36be4c4a9694685530e3dfd909340db7bfe156646eface5d9d3939f7e45974c2edc5532184635acb1248da2f36667f6365f165d06bd04f1e2b52b5c5c48ec23eee36dae38a57eb2d8c856e4936d75be34ae3907d39c16c1ef20eaf13464c5f5fa477e4475b5ac27472f45b26d8c3319bd6467960ede32e0cf10cc4929dcd904d3ce508ce868d6abd8aca4358c2028f4aaf0427d0a441e31e99affc949398d73d0bc8d96922e8ebdb2389b4de919a1269e22459cc3841d0c777c0f31034d33e6eb8ff88b2c0bd9f0c3244d55cc49ece115e58f14309cf03d8e7a979e0a30c77906089454ab8aedb7cda88d9cd79e121816e70d661b462cc30d745c35a05295666b57305c191f311ad901ecaf7efb73ce9170a8cdeae5b0aa6afeba49463d5320b78e55c6d12f54bcbaed79c2222d3b8c75897c1812109b3ef763db50ff38f0d8ede3910091132261ab477983efc7a846a52980ae6a5f8637e82e64d45752aaba7e6863c438f67f8c98e88fceaaa4c158f7f9751ed5d1e8fae7ef13b2a999e58770f33063c9adbb7d4f0de2228ac2cd80e34e1bbbcae2abb293dbadd9bdfb30b9b7f71565736e6ba591b1cafa97fbc72f87ab3fb95da9c405450dc93a2a9c257a60889c84aa2c7280172b1c9ab8be3b74855beac7cdc609da54cd5a400c026981b0584890ff72d9ed206cec5fcce3b49b3dc03137fc874f7abe86fab700ee89541bc9d0a6cb66adc874e5fe89074adbb6fc77dd7098dca46859e60b1ec35b3d29a97448d982ae5bbb2988f78da6558a21d146ce2998d60884828b44e2239849179db36ca0f9745ed8ff3cea03e6279cc016af520e7320fe439a763b28b1522e8ce637bcdc42b72af1f232d867154e55768b5d5df2443f7c6b3bc26b52234b00fded6ba44cfdf977e5721d45d6909f1145dfa0e709909da77cd548b54e1841ae1dec68694fcffb8b28ebc2b14a14eb5a70f17be08a47b7b47e752306af6033616e25a8b02a45b098e47cb374e19413274c6a71983d2a14d7da44dba3ae56afbf650860f3d6229840e51a351fe1dba73d77e013c8fe4a3dacee4c564301afb29c92a0871f256c303f09ca2e78aef7845b25afccb284fd00d9c21b109bd09694f24c6e32167ac932d0da677892784b893db1da2fb390e130b5212f3a84ea777839dcd6d3e3566e227d8e5065d457ab3fd793fc8394772e95351aa780d9caf2c3e76d6ef49b409d6851ad7770ba0a5125daeaaa516d40632f8b9ca82f6a0030b3d09edd8cb8d491c9bf25cbf9a512c37f5f3c6847bbf9f2f3e508743fff5427295b0499650102b9bc43df752e4a36d79b139dbb30e9963ce4634c35ae370f93af996caca6ae6eeb7c0ddce829d5c33d5bc44ed66cf09d5e81c371ffeb3c7899f6e524e90d57f0b51f3efa2ee0b05b9167d0275815d912de</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-up">
-      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-up">Hey, password is required here.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    <title>早櫻花見</title>
+    <url>/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/</url>
+    <content><![CDATA[<p>河津的樱花开了。阳光甚好。</p>
+<p>河津樱道有一段在海滨，海滨上人不多，如果不赏樱，可以不妨在此休憩。</p>
+<img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/0.jpg" class="">
+
+<p>孤芳不自赏。</p>
+<img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/1.jpg" class="">
+
+<p>云蒸霞蔚。</p>
+<img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/3.jpg" class="">
+
+<p>荫庇之下，花见铁马。</p>
+<img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/4.jpg" class="">
+
+<p>赏樱，若按黄执中的口吻，或许会问：我们跋涉千里去赏，到底是在捕捉那转瞬即逝、静态的极致之美，还是在借由这粉色烟霞，寻求一份尘嚣之外的安宁？</p>
+<p>这并非二选一的抉择。捕捉美，是眼睫间的贪婪，是孩童的天真。而寻安宁，是灵魂的吐纳，是人到中年的不惑。</p>
+<p>那一刻，花见不仅是见花，更是见自己吧。</p>
+]]></content>
+      <categories>
+        <category>Trip</category>
+      </categories>
       <tags>
-        <tag>encrypted</tag>
+        <tag>樱花</tag>
+        <tag>河津</tag>
       </tags>
   </entry>
   <entry>
@@ -343,31 +335,56 @@
       </tags>
   </entry>
   <entry>
-    <title>早櫻花見</title>
-    <url>/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/</url>
-    <content><![CDATA[<p>河津的樱花开了。阳光甚好。</p>
-<p>河津樱道有一段在海滨，海滨上人不多，如果不赏樱，可以不妨在此休憩。</p>
-<img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/0.jpg" class="">
+    <title>hexo next客制化</title>
+    <url>/2021/03/27/hexo-next%E5%AE%A2%E5%88%B6%E5%8C%96/</url>
+    <content><![CDATA[<p>17年一篇，18年两篇，然后现在是第四篇文章，更新速度堪比富坚义博。</p>
+<p>快3年了，要不是这个域名，兴许就退了，每年虽然缴的费用不多，但让我一直给供应商白嫖其实也不怎么情愿。正好最近空暇，打理打理这些苟且的栖身之地吧。</p>
+<p>这几年发生了一些变化。别的不说，hexo和next理所当然的更新了几个大版本。原先用来编辑的mbp也老旧了，闲置在家里。现在操作的mbp还是两年派发的，主要还是嫌麻烦的原因，一直没有把hexo的编辑目录迁移过来，毕竟只要每次想到要装一堆插件就心生退意。</p>
+<p>最近几天，重装了hexo和next后，升级到了最新版本，同时把展现细节做了更多的改造，说实在的，上次blog的搭建，也是弄了很久的源码，发现每逢修改的时候，虽然相隔时间比较长（笑），但总比之前会更加深入一些，这次增加修改了更多的布局，类型以及动态脚本。趁着这几天刚操作过还记得，快点记录下来。</p>
+<span id="more"></span>
 
-<p>孤芳不自赏。</p>
-<img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/1.jpg" class="">
+<h3 id="弃用Coding"><a href="#弃用Coding" class="headerlink" title="弃用Coding"></a>弃用Coding</h3><p>原先很看好Coding这家小作坊，早期代码管理做的不错，并且也是较早推出Web IDE的平台，印象中应该早于VSCode。后来有一天发现双因素不好用了，才知道鹅厂收购了Coding。其实算是一件好事，毕竟不用太担心哪天这个startup挂了，但也多了一层麻烦。原来的Pages不能用，需要迁移到新的ci/cd。而且vps的所在地也发生了相应的变化，访问速度有所变慢。<br>Coding原来的ssl证书还挺简单的，但鹅厂云就复杂一些，而且由于域名还是在福报云上，所以现在等于是两大云厂各需要维护一些东西，又徒增了麻烦。</p>
+<p>随着某天晚上，我再也无法访问自己的站点后，还是决定弃用。由于备案问题，pages只能选择部署在HK的节点。原则上部署完成后可以直接在福报云上的dns上设置cname到HK的源站，但是新版的问题是没有这方面的guide的，所以会直接引导用户在pages的custom domain把cname设置为他们的CDN，而这个CDN一来非免费，二来同样由于备案问题，也只能选择境外服务域，三来和CDN绑定ssl证书申请也相对麻烦。结果效果一言难尽，使用CDN目的号称是加速，但实际上速度感受是并不如旧版的，甚至完全比不上后面采用的最终方案。<br>那天晚上的惨状是，国内无一地区可以访问到站点，除了TW和境外（测试网站工具：<a href="https://www.17ce.com/">17ce</a>），并且所有dns解析地区均不一致，非常奔溃（早上访问正常，晚上问题很大）。<br>本来想再迂回一下，把cname指向到hk源站，但并不成功，而且最主要的还有ssl证书问题，关闭cdn意味着证书也不可用，旧版的公共证书也无法使用了。<br>所以第二天，还是选择成本最小的方案，迁移到GH的Pages服务，操作简单，而且还支持ssl（值得提一句需要站点加入cname文件，否则网上配置在每次部署之后会被重置）。国内gitee的话也是一个选择。</p>
+<h3 id="Nodejs"><a href="#Nodejs" class="headerlink" title="Nodejs"></a>Nodejs</h3><p>把Nodejs升级到了14，然后npm再进行升级，npm原来一直用的global，为了维护方便，还是迁回了local方式，package.json很香。</p>
+<h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><p>hexo安装绕了几个弯子，对hexo和hexo cli有点confuse，一直以为cli就是hexo本身，之前发现cli一直升级不到5以上，比较奔溃。因为安装theme的方式，5和5之前的版本是不同的。好在后面终于顺利搞定。</p>
+<h3 id="Next"><a href="#Next" class="headerlink" title="Next"></a>Next</h3><p>Next变化不大，但这次重构还是做了较大的源码修改，比之前更深入了。变化主要基本分两类，能基于Mist的基本在Mist的样式文件中进行修改，否则只能修改通用的comn文件。其中有些为了保持通用性，增加了通用的config，但实际上可能是不会再使用的，强迫症。这次也改动了div的动态js。</p>
+<p>能想起来的记录如下：</p>
+<ul>
+<li>字体大小修改不建议修改config中的font global，灵活度很小，如果要单独改动post body的size，config不起作用，需要去样式文件修改，title字体size可以直接配置</li>
+<li>由于修改了主题语言，font family基本都可以在config文件更改，menu字体需要去样式修改，比较耐看的字体是：<font face="Shuei Mincho L" >株式会社モリサワ-秀英明朝</font></li>
+<li>heder.styl中对目录栏宽度进行了修改，修改了header-inner和menu的padding，使其分为两行</li>
+<li>整体页面内容宽度也在样式文件中进行了修改，并且可以根据窗口大小，动态切换设置，对移动端比较友好</li>
+<li>config中增加了darkmode, mathjax，pjax，mediumnzoom, quicklink等设置</li>
+<li>增加了avatar，footer文字，facicon，social等信息</li>
+<li>比较复杂地修改了motion.js，单独修改了sidebar中site-description的动态展示效果</li>
+</ul>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p>改名字的时候，知道需要更改，但不知道改什么。随后一瞬想到了阿部芙蓉美（歌不错，但名字…）的「群青」和手嶌葵的专辑「青い図書室」，它们都是过去一段时间内包括现在也非常喜欢的歌曲集，索性就组合在一起，听「<a href="https://nipponcolors.com/#gunjyo">群青</a>」的时候才知道，这是一种颜色的称谓，顺便一提，十一区对颜色称谓相当文艺，例如紺，绯，鳶，楝，瓶覗，柳染，洒落柿，诸如此类。有兴趣的建议移步<a href="https://nipponcolors.com/">日本の伝統色</a>，页面有支持MUNSELL的JS开关，开启高能。<br>此外Sidebar这里的概要也恰逢时宜地选择了「言の葉の庭」中非常受欢迎的雷神短歌上半句。</p>
+<center><font face="Shuei Mincho L" >「鳴る神の 少し響みて  さし曇り 雨も降らぬか 君を留めむ」</font></center><br>
 
-<p>云蒸霞蔚。</p>
-<img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/3.jpg" class="">
-
-<p>荫庇之下，花见铁马。</p>
-<img data-src="/2024/02/16/%E6%97%A9%E6%AB%BB%E8%8A%B1%E8%A6%8B/4.jpg" class="">
-
-<p>赏樱，若按黄执中的口吻，或许会问：我们跋涉千里去赏，到底是在捕捉那转瞬即逝、静态的极致之美，还是在借由这粉色烟霞，寻求一份尘嚣之外的安宁？</p>
-<p>这并非二选一的抉择。捕捉美，是眼睫间的贪婪，是孩童的天真。而寻安宁，是灵魂的吐纳，是人到中年的不惑。</p>
-<p>那一刻，花见不仅是见花，更是见自己吧。</p>
+<p>君を留めむ，那是否真的能让你流连驻足呢。</p>
 ]]></content>
       <categories>
-        <category>Trip</category>
+        <category>Toolkit</category>
       </categories>
       <tags>
-        <tag>樱花</tag>
-        <tag>河津</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Blog之殇</title>
+    <url>/2025/12/31/Blog%E4%B9%8B%E6%AE%87/</url>
+    <content><![CDATA[<p>2025年最后一天，年更一下blog，写完这寥寥两句，竟也不知道继续该写些什么。</p>
+<p>前些日子，偶然发现曾经关注的一些领域大牛，技术布道者们，他们的blog也宛如无人照料的小家后院，虽然不见杂草蔓延，但最后种下的那一棵树，那一枝花再也没有变过，时间仿佛在那个旖旎的时空中静止了。</p>
+<p>作为一个恋旧之人，这种感觉似曾相识，看着这些文章，怀念起那个时间发生的人和事陷入神伤，好似在高山，小田原，香川参观昭和馆的感受，残桓旧物述说着往昔的故事，眼前萧瑟却让人唏嘘。</p>
+<p>曾经执掌统计编程论坛的坛主，3年前渐渐淡出大众视线，在另一半球追寻内心的安宁。拥有计量经济学背景的园主，从月更也慢慢变成了季更，几篇行文的字里行间也散发出不曾有过的怅然，“若为自由故”，“从心所欲，不逾矩”，“愿得一世自由” 云云。而曾经的技术大牛，早在8年前便彻底封笔，再无留下只言片语，就连其GitHub也鲜有更新。</p>
+<p>本以为博客和分享的消逝或许是因于这“AI”盛世，未料想，一切不过是在岁月中悄然蹉跎。</p>
+<p>再不打理，恐怕连自己都认不出来了。</p>
+]]></content>
+      <categories>
+        <category>Impression</category>
+      </categories>
+      <tags>
+        <tag>Summary</tag>
       </tags>
   </entry>
   <entry>
@@ -403,48 +420,6 @@
         <tag>吉卜力</tag>
         <tag>宫崎骏</tag>
         <tag>听见涛声</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Blog之殇</title>
-    <url>/2025/12/31/Blog%E4%B9%8B%E6%AE%87/</url>
-    <content><![CDATA[<p>2025年最后一天，年更一下blog，写完这寥寥两句，竟也不知道继续该写些什么。</p>
-<p>前些日子，偶然发现曾经关注的一些领域大牛，技术布道者们，他们的blog也宛如无人照料的小家后院，虽然不见杂草蔓延，但最后种下的那一棵树，那一枝花再也没有变过，时间仿佛在那个旖旎的时空中静止了。</p>
-<p>作为一个恋旧之人，这种感觉似曾相识，看着这些文章，怀念起那个时间发生的人和事陷入神伤，好似在高山，小田原，香川参观昭和馆的感受，残桓旧物述说着往昔的故事，眼前萧瑟却让人唏嘘。</p>
-<p>曾经执掌统计编程论坛的坛主，3年前渐渐淡出大众视线，在另一半球追寻内心的安宁。拥有计量经济学背景的园主，从月更也慢慢变成了季更，几篇行文的字里行间也散发出不曾有过的怅然，“若为自由故”，“从心所欲，不逾矩”，“愿得一世自由” 云云。而曾经的技术大牛，早在8年前便彻底封笔，再无留下只言片语，就连其GitHub也鲜有更新。</p>
-<p>本以为博客和分享的消逝或许是因于这“AI”盛世，未料想，一切不过是在岁月中悄然蹉跎。</p>
-<p>再不打理，恐怕连自己都认不出来了。</p>
-]]></content>
-      <categories>
-        <category>Impression</category>
-      </categories>
-      <tags>
-        <tag>Summary</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>归纳与第一性原理</title>
-    <url>/2026/01/15/%E5%BD%92%E7%BA%B3%E4%B8%8E%E7%AC%AC%E4%B8%80%E6%80%A7%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[<p>有段时间常在自省，为何自己会沦为一个“年更博主”。起初，总以“lazy driven”为借口聊以自慰；后来才惊觉，根源或许在于骨子里对“好记性不如烂笔头”这一传统信条的消极抵触。</p>
-<p>从学生时代跨入职场，这么多年一直没有养成记笔记的习惯和意识，而是执迷于通过归纳法因果律去拆解和重构知识。甚至在育儿时，也常常教导Hugo：“归纳才是最快的途径。”（尽管后来意识到，这种极端的“推导至上主义”在应试教育的体系下略显笨拙，容易养成不够严谨的做题习惯）。但我曾对这一学习范式深信不疑，未有过半点动摇。</p>
-<p>“第一性原理”，最近这个词热度很高，不得不说，大多数人都是慕强的，Elon Musk 把他思考世界的方式推向了风口浪尖，引来无数拥趸和追捧。人们在礼赞和推崇这一演绎法的同时，也常常提到它的对立面——归纳。</p>
-<p>但有意思的是，归纳法除了作为一种学习范式，目前也正以另一种形态滲入我们的生活。</p>
-<p>没错，还是AI。</p>
-<p>早期的统计学，无论是宏观和微观，虽然结构复杂，但以当前的视角来看至少都是结构化的，我们用一堆结构化的模型来描述数据表现的因果，再用数据来估计参数。所有工作的导向，不是预测，而是解释。这也是统计和机器学习在底层数据观上的根本差异。</p>
-<p>然后随着大数据时代的来临，很多模型和方法慢慢转向弱结构化，很多应用方的初衷也慢慢发生了改变，一旦预测比解释更能带来现金流，那么解释的必要性就大打折扣，演绎法的商业局限性就愈发凸显。</p>
-<p>再是十年前机器学习的兴起，工业界就更鲜有人再关心置信度，P值，显著性这些概念，至于什么是因果律，为什么还需要对此保持执念，成了很多从业者的心声。说个笑话，当年知道随机梯度下降的要比知道F-statistic来得多不少。</p>
-<p>LLM——blackbox，动则billion以上的超参，如同众神归位，带领人类来到新世界，或者说这是非理性归纳法的狂欢。我们根本不需要再做任何的segmentation，也不需要做任何的解释，就算模型无法结构化地表达出来，又如何？在这个时代，演绎法在工业界的价值正在被快速解构，取而代之的是归纳带来的这场“去结构化”的冲击：人们正逐步放弃对因果关系的底层执念，转而全面拥抱能够改造现实、加速适应的下一代生产力。</p>
-<p>所以回到第一性原理，这个所谓AI世界goat推崇的思维方式，难道却是整个发展历程下的思辨糟粕？</p>
-<p>我不禁好奇，这些由归纳法孕育出的智能体，在未来迈向自主进化的征途中，究竟会以何种逻辑去践行属于它们自己的“进化”？</p>
-<p>但无论如何，任何时代的变革都会带来诸多的可能性，所以就交给时间去回答吧。</p>
-]]></content>
-      <categories>
-        <category>Impression</category>
-      </categories>
-      <tags>
-        <tag>AI</tag>
-        <tag>First Principles</tag>
-        <tag>Induction</tag>
       </tags>
   </entry>
   <entry>
@@ -487,6 +462,31 @@
       <tags>
         <tag>Math</tag>
         <tag>Education</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>归纳与第一性原理</title>
+    <url>/2026/01/15/%E5%BD%92%E7%BA%B3%E4%B8%8E%E7%AC%AC%E4%B8%80%E6%80%A7%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<p>有段时间常在自省，为何自己会沦为一个“年更博主”。起初，总以“lazy driven”为借口聊以自慰；后来才惊觉，根源或许在于骨子里对“好记性不如烂笔头”这一传统信条的消极抵触。</p>
+<p>从学生时代跨入职场，这么多年一直没有养成记笔记的习惯和意识，而是执迷于通过归纳法因果律去拆解和重构知识。甚至在育儿时，也常常教导Hugo：“归纳才是最快的途径。”（尽管后来意识到，这种极端的“推导至上主义”在应试教育的体系下略显笨拙，容易养成不够严谨的做题习惯）。但我曾对这一学习范式深信不疑，未有过半点动摇。</p>
+<p>“第一性原理”，最近这个词热度很高，不得不说，大多数人都是慕强的，Elon Musk 把他思考世界的方式推向了风口浪尖，引来无数拥趸和追捧。人们在礼赞和推崇这一演绎法的同时，也常常提到它的对立面——归纳。</p>
+<p>但有意思的是，归纳法除了作为一种学习范式，目前也正以另一种形态滲入我们的生活。</p>
+<p>没错，还是AI。</p>
+<p>早期的统计学，无论是宏观和微观，虽然结构复杂，但以当前的视角来看至少都是结构化的，我们用一堆结构化的模型来描述数据表现的因果，再用数据来估计参数。所有工作的导向，不是预测，而是解释。这也是统计和机器学习在底层数据观上的根本差异。</p>
+<p>然后随着大数据时代的来临，很多模型和方法慢慢转向弱结构化，很多应用方的初衷也慢慢发生了改变，一旦预测比解释更能带来现金流，那么解释的必要性就大打折扣，演绎法的商业局限性就愈发凸显。</p>
+<p>再是十年前机器学习的兴起，工业界就更鲜有人再关心置信度，P值，显著性这些概念，至于什么是因果律，为什么还需要对此保持执念，成了很多从业者的心声。说个笑话，当年知道随机梯度下降的要比知道F-statistic来得多不少。</p>
+<p>LLM——blackbox，动则billion以上的超参，如同众神归位，带领人类来到新世界，或者说这是非理性归纳法的狂欢。我们根本不需要再做任何的segmentation，也不需要做任何的解释，就算模型无法结构化地表达出来，又如何？在这个时代，演绎法在工业界的价值正在被快速解构，取而代之的是归纳带来的这场“去结构化”的冲击：人们正逐步放弃对因果关系的底层执念，转而全面拥抱能够改造现实、加速适应的下一代生产力。</p>
+<p>所以回到第一性原理，这个所谓AI世界goat推崇的思维方式，难道却是整个发展历程下的思辨糟粕？</p>
+<p>我不禁好奇，这些由归纳法孕育出的智能体，在未来迈向自主进化的征途中，究竟会以何种逻辑去践行属于它们自己的“进化”？</p>
+<p>但无论如何，任何时代的变革都会带来诸多的可能性，所以就交给时间去回答吧。</p>
+]]></content>
+      <categories>
+        <category>Impression</category>
+      </categories>
+      <tags>
+        <tag>AI</tag>
+        <tag>First Principles</tag>
+        <tag>Induction</tag>
       </tags>
   </entry>
 </search>

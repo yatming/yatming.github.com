@@ -632,6 +632,10 @@ if (!window.mathjaxFixLoaded) {
           }
         });
 
+        btn.addEventListener('dblclick', function(e) {
+          e.preventDefault();
+        });
+
         // ── Auto-advance when song ends ──
         audio.addEventListener('ended', function() {
           playTrack(audio, btn, toast, currentIndex + 1, true);

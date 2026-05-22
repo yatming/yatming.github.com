@@ -3134,3 +3134,391 @@ hr {
     width: 30% !important;
   }
 }
+/* 只针对这篇文章隐藏 post-meta 和 更改标题字体 */
+article:has(link[itemprop="mainEntityOfPage"][href*="/moonriver/"]) .post-meta-container {
+  display: none !important;
+}
+article:has(link[itemprop="mainEntityOfPage"][href*="/moonriver/"]) .post-title {
+  font-family: 'Shuei Mincho L', sans-serif !important;
+}
+/* 好看的自定义分隔线与多行留白 */
+.love-divider {
+  margin: 60px auto; /* 核心留白：上下空出足够多行 */
+  text-align: center;
+  opacity: 0.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.love-divider::before,
+.love-divider::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 1px;
+}
+.love-divider::before {
+  background: linear-gradient(to right, transparent, var(--text-color, #888));
+}
+.love-divider::after {
+  background: linear-gradient(to left, transparent, var(--text-color, #888));
+}
+.love-divider-icon {
+  color: var(--text-color, #888);
+  font-size: 1.2em;
+}
+/* BGM floating player — flex shell */
+.bgm-player {
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  z-index: 9999 !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.bgm-player.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* ── Main play/pause button ── */
+.bgm-btn {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(81,168,221,0.4);
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #51a8dd;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 16px rgba(81,168,221,0.15);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  padding: 0;
+  line-height: 1;
+  touch-action: manipulation; /* disables double-tap zoom on mobile */
+}
+.bgm-btn .bgm-disc {
+  display: block;
+  animation: bgm-spin 3s linear infinite;
+}
+.bgm-btn:hover {
+  border-color: rgba(81,168,221,0.8);
+  box-shadow: 0 2px 20px rgba(81,168,221,0.3);
+}
+.bgm-btn.paused .bgm-disc {
+  animation-play-state: paused;
+}
+.bgm-btn.paused {
+  border-color: rgba(136,136,136,0.3);
+  color: #999;
+}
+/* ── Toast — pill label that slides out on track change ── */
+.bgm-toast {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(81,168,221,0.25);
+  background: rgba(255,255,255,0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #51a8dd;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 14px rgba(81,168,221,0.12);
+  opacity: 0;
+  transform: translateX(-8px);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.bgm-toast.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+/* Dark mode */
+.dark .bgm-btn {
+  background: rgba(30,30,30,0.85);
+  border-color: rgba(81,168,221,0.3);
+  color: #51a8dd;
+}
+.dark .bgm-btn.paused {
+  border-color: rgba(136,136,136,0.2);
+  color: #666;
+}
+.dark .bgm-toast {
+  background: rgba(30,30,30,0.82);
+  border-color: rgba(81,168,221,0.2);
+  color: #51a8dd;
+}
+@media (prefers-color-scheme: dark) {
+  .bgm-btn {
+    background: rgba(30,30,30,0.85);
+    border-color: rgba(81,168,221,0.3);
+  }
+  .bgm-toast {
+    background: rgba(30,30,30,0.82);
+    border-color: rgba(81,168,221,0.2);
+    color: #51a8dd;
+  }
+}
+@media (max-width: 767px) {
+  .bgm-player {
+    bottom: 20px;
+    left: 20px;
+  }
+  .bgm-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+  .bgm-toast {
+    font-size: 11px;
+    padding: 3px 10px;
+  }
+}
+/* 针对 moonriver 页面的页脚固定设置 (理解一：状态栏式) */
+body:has(article[data-permalink*="moonriver"]) .main-inner,
+body:has(link[itemprop="mainEntityOfPage"][href*="/moonriver/"]) .main-inner {
+  padding-bottom: 80px !important; /* 给固定的页脚留白 */
+}
+body:has(article[data-permalink*="moonriver"]) .footer,
+body:has(link[itemprop="mainEntityOfPage"][href*="/moonriver/"]) .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+/* 毛玻璃质感背景 */
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+/* 样式美化 */
+  padding: 12px 0;
+  border-top: 1px solid rgba(81,168,221,0.15);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.04);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+/* 深色模式适配 */
+@media (prefers-color-scheme: dark) {
+  body:has(article[data-permalink*="moonriver"]) .footer,
+  body:has(link[itemprop="mainEntityOfPage"][href*="/moonriver/"]) .footer {
+    background: rgba(24,24,24,0.8) !important;
+    border-top-color: rgba(255,255,255,0.05);
+    box-shadow: 0 -4px 30px rgba(0,0,0,0.3);
+  }
+}
+/* 手动控制的 .dark 类适配 (如果有) */
+.dark body:has(article[data-permalink*="moonriver"]) .footer,
+.dark body:has(link[itemprop="mainEntityOfPage"][href*="/moonriver/"]) .footer {
+  background: rgba(24,24,24,0.8) !important;
+  border-top-color: rgba(255,255,255,0.05);
+}
+/* ---------------------------------------------------------
+   Moonriver Post Specific Styles
+   --------------------------------------------------------- */
+.heartbeat-date {
+  display: inline-block;
+  color: #ff8080;
+  animation: heartbeat 1.2s ease-in-out infinite;
+  transform-origin: center;
+}
+.memo-quote {
+  padding: 20px 25px;
+  margin: 10px 0;
+  background: rgba(128,128,128,0.08);
+  border-left: none;
+  border-radius: 6px;
+  font-family: "Shuei Mincho L", serif;
+  font-weight: 300;
+  opacity: 0.7;
+  font-style: italic;
+  line-height: 1.8;
+  position: relative;
+}
+/* Kapok Bloom Effect */
+.kapok-bloom-container {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 0 5px;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+  vertical-align: -4px;
+}
+.kapok-bloom-container:hover {
+  background: rgba(229,57,53,0.08);
+}
+.kapok-svg {
+  overflow: visible;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.kapok-svg .petal {
+  transform-origin: 50px 50px;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.kapok-svg .flower-center {
+  transform-origin: 50px 50px;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+/* Initial state (Bud) */
+.kapok-bloom-container:not(:hover) .kapok-svg {
+  transform: translateY(25%);
+}
+.kapok-bloom-container:not(:hover) .kapok-svg .petal.p1 {
+  transform: rotate(0deg) scale(1);
+}
+.kapok-bloom-container:not(:hover) .kapok-svg .petal.p2 {
+  transform: rotate(15deg) scale(1);
+}
+.kapok-bloom-container:not(:hover) .kapok-svg .petal.p3 {
+  transform: rotate(-15deg) scale(1);
+}
+.kapok-bloom-container:not(:hover) .kapok-svg .petal.p4 {
+  transform: rotate(30deg) scale(1);
+}
+.kapok-bloom-container:not(:hover) .kapok-svg .petal.p5 {
+  transform: rotate(-30deg) scale(1);
+}
+.kapok-bloom-container:not(:hover) .kapok-svg .flower-center {
+  transform: scale(0);
+  opacity: 0;
+}
+/* Blooming state */
+.kapok-bloom-container:hover .kapok-svg {
+  transform: translateY(0);
+}
+.kapok-bloom-container:hover .kapok-svg .petal.p1 {
+  transform: rotate(0deg) scale(1);
+}
+.kapok-bloom-container:hover .kapok-svg .petal.p2 {
+  transform: rotate(72deg) scale(1);
+}
+.kapok-bloom-container:hover .kapok-svg .petal.p3 {
+  transform: rotate(144deg) scale(1);
+}
+.kapok-bloom-container:hover .kapok-svg .petal.p4 {
+  transform: rotate(216deg) scale(1);
+}
+.kapok-bloom-container:hover .kapok-svg .petal.p5 {
+  transform: rotate(288deg) scale(1);
+}
+.kapok-bloom-container:hover .kapok-svg .flower-center {
+  transform: scale(1);
+  opacity: 1;
+  transition-delay: 0.3s;
+}
+@-moz-keyframes bgm-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes bgm-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes bgm-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes bgm-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.1);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.15);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.1);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.15);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+@-o-keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.1);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.15);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.1);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.15);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
