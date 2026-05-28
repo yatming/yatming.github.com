@@ -265,16 +265,6 @@ NexT.utils = {
             scrollTop: offset + 10
           });
         });
-
-        // Scheme B: Transition from Overview to TOC after successful decryption
-        const sidebarInner = document.querySelector('.sidebar-inner.hbe-encrypted');
-        if (sidebarInner) {
-          sidebarInner.classList.remove('hbe-encrypted');
-          setTimeout(() => {
-            const tocTab = document.querySelector('.sidebar-nav-toc');
-            if (tocTab) tocTab.click();
-          }, 100);
-        }
       }
       return target;
     });

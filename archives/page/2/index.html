@@ -898,6 +898,40 @@ if (!window.mathjaxFixLoaded) {
 })();
 </script>
 
+<!-- Decryption TOC Sidebar Transition Script -->
+<script>
+(function() {
+  function wrapTOC() {
+    if (window.NexT && NexT.utils && NexT.utils.registerSidebarTOC && !NexT.utils.registerSidebarTOC.isWrapped) {
+      const originalRegisterSidebarTOC = NexT.utils.registerSidebarTOC;
+      NexT.utils.registerSidebarTOC = function() {
+        originalRegisterSidebarTOC.call(this);
+        const sidebarInner = document.querySelector('.sidebar-inner.hbe-encrypted');
+        if (sidebarInner) {
+          const hasDecryptedHeaders = document.querySelector('.post-body h1, .post-body h2, .post-body h3, .post-body h4, .post-body h5, .post-body h6');
+          if (hasDecryptedHeaders) {
+            sidebarInner.classList.remove('hbe-encrypted');
+            setTimeout(() => {
+              const tocTab = document.querySelector('.sidebar-nav-toc');
+              if (tocTab) tocTab.click();
+            }, 100);
+          }
+        }
+      };
+      NexT.utils.registerSidebarTOC.isWrapped = true;
+    }
+  }
+
+  wrapTOC();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', wrapTOC);
+  } else {
+    wrapTOC();
+  }
+  document.addEventListener('pjax:success', wrapTOC);
+})();
+</script>
+
 
 
 
