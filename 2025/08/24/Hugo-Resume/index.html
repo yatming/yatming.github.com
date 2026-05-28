@@ -893,6 +893,7 @@ if (!window.mathjaxFixLoaded) {
           const hasDecryptedHeaders = document.querySelector('.post-body h1, .post-body h2, .post-body h3, .post-body h4, .post-body h5, .post-body h6');
           if (hasDecryptedHeaders) {
             sidebarInner.classList.remove('hbe-encrypted');
+            sidebarInner.classList.add('sidebar-nav-active');
             setTimeout(() => {
               const tocTab = document.querySelector('.sidebar-nav-toc');
               if (tocTab) tocTab.click();
