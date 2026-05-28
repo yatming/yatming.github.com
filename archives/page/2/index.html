@@ -773,6 +773,136 @@ if (!window.mathjaxFixLoaded) {
 </script>
 -->
 
+<!-- 一键导航到评论区 -->
+<style>
+/* 一键直达评论区按钮 */
+.go-to-comments {
+  background: #222;
+  bottom: -100px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  position: fixed;
+  transition: bottom 0.2s ease-in-out, opacity 0.2s ease-in-out, color 0.2s ease-in-out;
+  z-index: 1300;
+  right: 30px;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+}
+
+.go-to-comments.visible {
+  opacity: 0.8;
+  bottom: 50px;
+}
+
+.go-to-comments.visible.solo {
+  bottom: 19px;
+}
+
+.go-to-comments:hover {
+  opacity: 1;
+  color: #87daff;
+}
+
+@media (max-width: 991px) {
+  .go-to-comments {
+    right: 20px;
+  }
+}
+</style>
+
+<script>
+(function() {
+  function initCommentsNav() {
+    if (window._commentsNavTimer) {
+      clearInterval(window._commentsNavTimer);
+    }
+
+    function checkAndBuild() {
+      const target = document.getElementById('tcomment') || 
+                     document.querySelector('.twikoo') || 
+                     document.querySelector('.tk-comments') ||
+                     document.getElementById('comments') || 
+                     document.querySelector('.comments') || 
+                     document.querySelector('.tabs-comment');
+
+      const existingBtn = document.querySelector('.go-to-comments');
+
+      if (target) {
+        if (!existingBtn) {
+          const btn = document.createElement('div');
+          btn.className = 'go-to-comments animated';
+          btn.setAttribute('role', 'button');
+          btn.setAttribute('title', '一键直达评论区');
+          btn.innerHTML = '<i class="fa fa-comment"></i>';
+          
+          btn.addEventListener('click', function() {
+            var liveTarget = document.getElementById('tcomment') || 
+                             document.querySelector('.twikoo') || 
+                             document.querySelector('.tk-comments') ||
+                             document.getElementById('comments') || 
+                             document.querySelector('.comments') || 
+                             document.querySelector('.tabs-comment');
+            if (liveTarget) {
+              liveTarget.scrollIntoView({ behavior: 'smooth' });
+            }
+          });
+
+          document.body.appendChild(btn);
+
+          function updatePosition() {
+            const b2t = document.querySelector('.back-to-top');
+            if (b2t && b2t.classList.contains('back-to-top-on')) {
+              btn.classList.remove('solo');
+            } else {
+              btn.classList.add('solo');
+            }
+            btn.classList.add('visible');
+          }
+
+          if (window._commentsScrollListener) {
+            window.removeEventListener('scroll', window._commentsScrollListener);
+          }
+          window._commentsScrollListener = updatePosition;
+          window.addEventListener('scroll', updatePosition);
+          
+          updatePosition();
+        }
+      } else {
+        if (existingBtn) {
+          existingBtn.remove();
+          if (window._commentsScrollListener) {
+            window.removeEventListener('scroll', window._commentsScrollListener);
+            window._commentsScrollListener = null;
+          }
+        }
+      }
+    }
+
+    checkAndBuild();
+    window._commentsNavTimer = setInterval(checkAndBuild, 1000);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCommentsNav);
+  } else {
+    initCommentsNav();
+  }
+  
+  document.addEventListener('pjax:success', initCommentsNav);
+})();
+</script>
+
+
+
+
+
+
     </div>
 </body>
 </html>

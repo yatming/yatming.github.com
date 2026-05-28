@@ -188,22 +188,39 @@
       </tags>
   </entry>
   <entry>
-    <title>USBDriver Reload</title>
-    <url>/2023/09/19/USBDriver/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="Oh, these decrypted content cannot be verified, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="aaa4f91028b10978092729341d5bde7acaef0e7fab9164849f693203d8157e36">10d79030e8222445804370796b90fca1662db977fbc011472d8cbe51030ee77b3a54e2b2fada1983c7a0dcb0f949a423f22dfc1e74b0d1530f81377701a765059c771f94949961c230d801d6baa33ee3f9974eef6072a7ef037ad3a31c1b07da21567d22b2f5e1da74076779511669aa295290a10b34d5eee3b9dab36be4c4a9694685530e3dfd909340db7bfe156646eface5d9d3939f7e45974c2edc5532184635acb1248da2f36667f6365f165d06bd04f1e2b52b5c5c48ec23eee36dae38a57eb2d8c856e4936d75be34ae3907d39c16c1ef20eaf13464c5f5fa477e4475b5ac27472f45b26d8c3319bd6467960ede32e0cf10cc4929dcd904d3ce508ce868d6abd8aca4358c2028f4aaf0427d0a441e31e99affc949398d73d0bc8d96922e8ebdb2389b4de919a1269e22459cc3841d0c777c0f31034d33e6eb8ff88b2c0bd9f0c3244d55cc49ece115e58f14309cf03d8e7a979e0a30c77906089454ab8aedb7cda88d9cd79e121816e70d661b462cc30d745c35a05295666b57305c191f311ad901ecaf7efb73ce9170a8cdeae5b0aa6afeba49463d5320b78e55c6d12f54bcbaed79c2222d3b8c75897c1812109b3ef763db50ff38f0d8ede3910091132261ab477983efc7a846a52980ae6a5f8637e82e64d45752aaba7e6863c438f67f8c98e88fceaaa4c158f7f9751ed5d1e8fae7ef13b2a999e58770f33063c9adbb7d4f0de2228ac2cd80e34e1bbbcae2abb293dbadd9bdfb30b9b7f71565736e6ba591b1cafa97fbc72f87ab3fb95da9c405450dc93a2a9c257a60889c84aa2c7280172b1c9ab8be3b74855beac7cdc609da54cd5a400c026981b0584890ff72d9ed206cec5fcce3b49b3dc03137fc874f7abe86fab700ee89541bc9d0a6cb66adc874e5fe89074adbb6fc77dd7098dca46859e60b1ec35b3d29a97448d982ae5bbb2988f78da6558a21d146ce2998d60884828b44e2239849179db36ca0f9745ed8ff3cea03e6279cc016af520e7320fe439a763b28b1522e8ce637bcdc42b72af1f232d867154e55768b5d5df2443f7c6b3bc26b52234b00fded6ba44cfdf977e5721d45d6909f1145dfa0e709909da77cd548b54e1841ae1dec68694fcffb8b28ebc2b14a14eb5a70f17be08a47b7b47e752306af6033616e25a8b02a45b098e47cb374e19413274c6a71983d2a14d7da44dba3ae56afbf650860f3d6229840e51a351fe1dba73d77e013c8fe4a3dacee4c564301afb29c92a0871f256c303f09ca2e78aef7845b25afccb284fd00d9c21b109bd09694f24c6e32167ac932d0da677892784b893db1da2fb390e130b5212f3a84ea777839dcd6d3e3566e227d8e5065d457ab3fd793fc8394772e95351aa780d9caf2c3e76d6ef49b409d6851ad7770ba0a5125daeaaa516d40632f8b9ca82f6a0030b3d09edd8cb8d491c9bf25cbf9a512c37f5f3c6847bbf9f2f3e508743fff5427295b0499650102b9bc43df752e4a36d79b139dbb30e9963ce4634c35ae370f93af996caca6ae6eeb7c0ddce829d5c33d5bc44ed66cf09d5e81c371ffeb3c7899f6e524e90d57f0b51f3efa2ee0b05b9167d0275815d912de</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-up">
-      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-up">Hey, password is required here.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    <title>hexo next客制化</title>
+    <url>/2021/03/27/hexo-next%E5%AE%A2%E5%88%B6%E5%8C%96/</url>
+    <content><![CDATA[<p>17年一篇，18年两篇，然后现在是第四篇文章，更新速度堪比富坚义博。</p>
+<p>快3年了，要不是这个域名，兴许就退了，每年虽然缴的费用不多，但让我一直给供应商白嫖其实也不怎么情愿。正好最近空暇，打理打理这些苟且的栖身之地吧。</p>
+<p>这几年发生了一些变化。别的不说，hexo和next理所当然的更新了几个大版本。原先用来编辑的mbp也老旧了，闲置在家里。现在操作的mbp还是两年派发的，主要还是嫌麻烦的原因，一直没有把hexo的编辑目录迁移过来，毕竟只要每次想到要装一堆插件就心生退意。</p>
+<p>最近几天，重装了hexo和next后，升级到了最新版本，同时把展现细节做了更多的改造，说实在的，上次blog的搭建，也是弄了很久的源码，发现每逢修改的时候，虽然相隔时间比较长（笑），但总比之前会更加深入一些，这次增加修改了更多的布局，类型以及动态脚本。趁着这几天刚操作过还记得，快点记录下来。</p>
+<span id="more"></span>
+
+<h3 id="弃用Coding"><a href="#弃用Coding" class="headerlink" title="弃用Coding"></a>弃用Coding</h3><p>原先很看好Coding这家小作坊，早期代码管理做的不错，并且也是较早推出Web IDE的平台，印象中应该早于VSCode。后来有一天发现双因素不好用了，才知道鹅厂收购了Coding。其实算是一件好事，毕竟不用太担心哪天这个startup挂了，但也多了一层麻烦。原来的Pages不能用，需要迁移到新的ci/cd。而且vps的所在地也发生了相应的变化，访问速度有所变慢。<br>Coding原来的ssl证书还挺简单的，但鹅厂云就复杂一些，而且由于域名还是在福报云上，所以现在等于是两大云厂各需要维护一些东西，又徒增了麻烦。</p>
+<p>随着某天晚上，我再也无法访问自己的站点后，还是决定弃用。由于备案问题，pages只能选择部署在HK的节点。原则上部署完成后可以直接在福报云上的dns上设置cname到HK的源站，但是新版的问题是没有这方面的guide的，所以会直接引导用户在pages的custom domain把cname设置为他们的CDN，而这个CDN一来非免费，二来同样由于备案问题，也只能选择境外服务域，三来和CDN绑定ssl证书申请也相对麻烦。结果效果一言难尽，使用CDN目的号称是加速，但实际上速度感受是并不如旧版的，甚至完全比不上后面采用的最终方案。<br>那天晚上的惨状是，国内无一地区可以访问到站点，除了TW和境外（测试网站工具：<a href="https://www.17ce.com/">17ce</a>），并且所有dns解析地区均不一致，非常奔溃（早上访问正常，晚上问题很大）。<br>本来想再迂回一下，把cname指向到hk源站，但并不成功，而且最主要的还有ssl证书问题，关闭cdn意味着证书也不可用，旧版的公共证书也无法使用了。<br>所以第二天，还是选择成本最小的方案，迁移到GH的Pages服务，操作简单，而且还支持ssl（值得提一句需要站点加入cname文件，否则网上配置在每次部署之后会被重置）。国内gitee的话也是一个选择。</p>
+<h3 id="Nodejs"><a href="#Nodejs" class="headerlink" title="Nodejs"></a>Nodejs</h3><p>把Nodejs升级到了14，然后npm再进行升级，npm原来一直用的global，为了维护方便，还是迁回了local方式，package.json很香。</p>
+<h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><p>hexo安装绕了几个弯子，对hexo和hexo cli有点confuse，一直以为cli就是hexo本身，之前发现cli一直升级不到5以上，比较奔溃。因为安装theme的方式，5和5之前的版本是不同的。好在后面终于顺利搞定。</p>
+<h3 id="Next"><a href="#Next" class="headerlink" title="Next"></a>Next</h3><p>Next变化不大，但这次重构还是做了较大的源码修改，比之前更深入了。变化主要基本分两类，能基于Mist的基本在Mist的样式文件中进行修改，否则只能修改通用的comn文件。其中有些为了保持通用性，增加了通用的config，但实际上可能是不会再使用的，强迫症。这次也改动了div的动态js。</p>
+<p>能想起来的记录如下：</p>
+<ul>
+<li>字体大小修改不建议修改config中的font global，灵活度很小，如果要单独改动post body的size，config不起作用，需要去样式文件修改，title字体size可以直接配置</li>
+<li>由于修改了主题语言，font family基本都可以在config文件更改，menu字体需要去样式修改，比较耐看的字体是：<font face="Shuei Mincho L" >株式会社モリサワ-秀英明朝</font></li>
+<li>heder.styl中对目录栏宽度进行了修改，修改了header-inner和menu的padding，使其分为两行</li>
+<li>整体页面内容宽度也在样式文件中进行了修改，并且可以根据窗口大小，动态切换设置，对移动端比较友好</li>
+<li>config中增加了darkmode, mathjax，pjax，mediumnzoom, quicklink等设置</li>
+<li>增加了avatar，footer文字，facicon，social等信息</li>
+<li>比较复杂地修改了motion.js，单独修改了sidebar中site-description的动态展示效果</li>
+</ul>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p>改名字的时候，知道需要更改，但不知道改什么。随后一瞬想到了阿部芙蓉美（歌不错，但名字…）的「群青」和手嶌葵的专辑「青い図書室」，它们都是过去一段时间内包括现在也非常喜欢的歌曲集，索性就组合在一起，听「<a href="https://nipponcolors.com/#gunjyo">群青</a>」的时候才知道，这是一种颜色的称谓，顺便一提，十一区对颜色称谓相当文艺，例如紺，绯，鳶，楝，瓶覗，柳染，洒落柿，诸如此类。有兴趣的建议移步<a href="https://nipponcolors.com/">日本の伝統色</a>，页面有支持MUNSELL的JS开关，开启高能。<br>此外Sidebar这里的概要也恰逢时宜地选择了「言の葉の庭」中非常受欢迎的雷神短歌上半句。</p>
+<center><font face="Shuei Mincho L" >「鳴る神の 少し響みて  さし曇り 雨も降らぬか 君を留めむ」</font></center><br>
+
+<p>君を留めむ，那是否真的能让你流连驻足呢。</p>
+]]></content>
+      <categories>
+        <category>Toolkit</category>
+      </categories>
       <tags>
-        <tag>encrypted</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -255,15 +272,34 @@
       </tags>
   </entry>
   <entry>
+    <title>USBDriver Reload</title>
+    <url>/2023/09/19/USBDriver/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="Oh, these decrypted content cannot be verified, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="aaa4f91028b10978092729341d5bde7acaef0e7fab9164849f693203d8157e36">10d79030e8222445804370796b90fca1662db977fbc011472d8cbe51030ee77b3a54e2b2fada1983c7a0dcb0f949a423f22dfc1e74b0d1530f81377701a765059c771f94949961c230d801d6baa33ee3f9974eef6072a7ef037ad3a31c1b07da21567d22b2f5e1da74076779511669aa295290a10b34d5eee3b9dab36be4c4a9694685530e3dfd909340db7bfe156646eface5d9d3939f7e45974c2edc5532184635acb1248da2f36667f6365f165d06bd04f1e2b52b5c5c48ec23eee36dae38a57eb2d8c856e4936d75be34ae3907d39c16c1ef20eaf13464c5f5fa477e4475b5ac27472f45b26d8c3319bd6467960ede32e0cf10cc4929dcd904d3ce508ce868d6abd8aca4358c2028f4aaf0427d0a441e31e99affc949398d73d0bc8d96922e8ebdb2389b4de919a1269e22459cc3841d0c777c0f31034d33e6eb8ff88b2c0bd9f0c3244d55cc49ece115e58f14309cf03d8e7a979e0a30c77906089454ab8aedb7cda88d9cd79e121816e70d661b462cc30d745c35a05295666b57305c191f311ad901ecaf7efb73ce9170a8cdeae5b0aa6afeba49463d5320b78e55c6d12f54bcbaed79c2222d3b8c75897c1812109b3ef763db50ff38f0d8ede3910091132261ab477983efc7a846a52980ae6a5f8637e82e64d45752aaba7e6863c438f67f8c98e88fceaaa4c158f7f9751ed5d1e8fae7ef13b2a999e58770f33063c9adbb7d4f0de2228ac2cd80e34e1bbbcae2abb293dbadd9bdfb30b9b7f71565736e6ba591b1cafa97fbc72f87ab3fb95da9c405450dc93a2a9c257a60889c84aa2c7280172b1c9ab8be3b74855beac7cdc609da54cd5a400c026981b0584890ff72d9ed206cec5fcce3b49b3dc03137fc874f7abe86fab700ee89541bc9d0a6cb66adc874e5fe89074adbb6fc77dd7098dca46859e60b1ec35b3d29a97448d982ae5bbb2988f78da6558a21d146ce2998d60884828b44e2239849179db36ca0f9745ed8ff3cea03e6279cc016af520e7320fe439a763b28b1522e8ce637bcdc42b72af1f232d867154e55768b5d5df2443f7c6b3bc26b52234b00fded6ba44cfdf977e5721d45d6909f1145dfa0e709909da77cd548b54e1841ae1dec68694fcffb8b28ebc2b14a14eb5a70f17be08a47b7b47e752306af6033616e25a8b02a45b098e47cb374e19413274c6a71983d2a14d7da44dba3ae56afbf650860f3d6229840e51a351fe1dba73d77e013c8fe4a3dacee4c564301afb29c92a0871f256c303f09ca2e78aef7845b25afccb284fd00d9c21b109bd09694f24c6e32167ac932d0da677892784b893db1da2fb390e130b5212f3a84ea777839dcd6d3e3566e227d8e5065d457ab3fd793fc8394772e95351aa780d9caf2c3e76d6ef49b409d6851ad7770ba0a5125daeaaa516d40632f8b9ca82f6a0030b3d09edd8cb8d491c9bf25cbf9a512c37f5f3c6847bbf9f2f3e508743fff5427295b0499650102b9bc43df752e4a36d79b139dbb30e9963ce4634c35ae370f93af996caca6ae6eeb7c0ddce829d5c33d5bc44ed66cf09d5e81c371ffeb3c7899f6e524e90d57f0b51f3efa2ee0b05b9167d0275815d912de</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-up">
+      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-up">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <tags>
+        <tag>encrypted</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>九州の行</title>
     <url>/2023/10/17/%E4%B9%9D%E5%B7%9E%E3%81%AE%E8%A1%8C/</url>
-    <content><![CDATA[<!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-OeEOjEDaLaGocvMn"></div><script> var OeEOjEDaLaGocvMn_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); OeEOjEDaLaGocvMn_options.container = document.getElementById("mmedia-OeEOjEDaLaGocvMn"); const dp_OeEOjEDaLaGocvMn = new DPlayer(OeEOjEDaLaGocvMn_options); </script> -->
+    <content><![CDATA[<!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-IbgtunHWlqcmqnWh"></div><script> var IbgtunHWlqcmqnWh_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); IbgtunHWlqcmqnWh_options.container = document.getElementById("mmedia-IbgtunHWlqcmqnWh"); const dp_IbgtunHWlqcmqnWh = new DPlayer(IbgtunHWlqcmqnWh_options); </script> -->
 
-<video id="mmedia-BejzPdSRhoNTuxIa" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
+<video id="mmedia-aJszEuRVNIfcFfDW" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
 
-<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-yxaEROqvFsMvigqq" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-yxaEROqvFsMvigqq").style.height=document.getElementById("mmedia-yxaEROqvFsMvigqq").scrollWidth*0.76+"px";
+<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-LAVeYjQmBMMSgpGZ" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-LAVeYjQmBMMSgpGZ").style.height=document.getElementById("mmedia-LAVeYjQmBMMSgpGZ").scrollWidth*0.76+"px";
     window.onresize = function(){
-      document.getElementById("mmedia-yxaEROqvFsMvigqq").style.height=document.getElementById("mmedia-yxaEROqvFsMvigqq").scrollWidth*0.76+"px";
+      document.getElementById("mmedia-LAVeYjQmBMMSgpGZ").style.height=document.getElementById("mmedia-LAVeYjQmBMMSgpGZ").scrollWidth*0.76+"px";
     }; </script> -->]]></content>
       <categories>
         <category>Trip</category>
@@ -302,92 +338,6 @@
       </tags>
   </entry>
   <entry>
-    <title>迟到了十二年的偿愿</title>
-    <url>/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/</url>
-    <content><![CDATA[<p>每次来日本，如果时间允许的话，都尽可能安排一次圣地巡礼，而这次的巡礼迟到了十二年。</p>
-<p>某种程度上，我深感庆幸身处这个科技足以打捞回忆的时代。想起童年最深刻的记忆，是二年级的时候，学校组织去看《天空の城》，当时荧幕上的画面，Laputa，海盗飞艇，浴火的机器人历历在目，整个过程受到的震撼，至今都难以忘怀。可这种震撼却成了一个人守护的秘密，几年之后身边的同学任凭我怎么描述也无人共鸣。直到大概千禧年那会儿，随着手机的普及，终于在和弦铃声网站里听到了久违的《君を乗せて》，那一刻的激动，刻骨铭心。</p>
-<p>而真正让这些埋藏许久的回忆有了具象落点的是，是前几年出的一款叫做“片场”的App，它记录了很多经典影视剧中取景地的地理位置，前几次的圣地巡礼，其实都是靠它才能有迹可循。小樽半山腰的船见坂，日本棋院的深奥幽玄，市ヶ谷駅前地下横断歩道，赤名莉香告别的梅津寺駅，半泽直树的三井住友银行，过往的经典场景得以再一次次浮现在眼前。</p>
-<p>但唯独有个地方，这个藏了十二年的念想，始终没有抵达 —— 千叶海滨美滨街道。它是《四月物语》中片尾“小红伞”场景的取景地。这个坐标在十二年前被我花了好久才定位到，当时凭电影片段中的建筑标识，在地图上反复核对才得以确认，此后便一直停留在浏览器收藏夹里。</p>
-<p>上次来东京的时候没能去成，所以这次不会再错过了。</p>
-<p>千叶位于东京都的东边，临海，从三鹰出发需要两个小时的车程才能抵达海滨幕张。从幕张站出来，绕过一段人行道，便到了海滨公园，工作日的午后，公园里行人寥寥，听不见海鸟的鸣叫，只有掠过海面的微风带着淡淡的咸味。穿过公园步入美滨街道，四周愈发安静，这里是一片居住区，大概只有我一个游客吧。</p>
-<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/0.jpg" class="">
-
-<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/1.jpg" class="">
-
-<p>在这个电影最后一幕的取景地，松隆子饰演的卯月与田边诚一饰演的学长重逢的书店早已结业，原址现已变成一家地产社。相比之下，卯月借还雨伞的报告厅大门倒是基本维持了原样，经历了三十年的风雨，这幢建筑还保留着电影中的轮廓。</p>
-<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/2.jpg" class="">
-
-<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/3.jpg" class="">
-
-<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/4.jpg" class="">
-
-<p>电影的结尾，卯月打着红伞内心自白：“考上大学的时候，连老师都说是奇迹，然而，若真要说这是奇迹，我倒想称它是——爱的奇迹”。</p>
-<p>而这场跨越了十二年的偿愿，大概也是一种小小的奇迹吧。</p>
-]]></content>
-      <categories>
-        <category>Trip</category>
-      </categories>
-      <tags>
-        <tag>东京</tag>
-        <tag>岩井俊二</tag>
-        <tag>圣地巡礼</tag>
-        <tag>四月物语</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo next客制化</title>
-    <url>/2021/03/27/hexo-next%E5%AE%A2%E5%88%B6%E5%8C%96/</url>
-    <content><![CDATA[<p>17年一篇，18年两篇，然后现在是第四篇文章，更新速度堪比富坚义博。</p>
-<p>快3年了，要不是这个域名，兴许就退了，每年虽然缴的费用不多，但让我一直给供应商白嫖其实也不怎么情愿。正好最近空暇，打理打理这些苟且的栖身之地吧。</p>
-<p>这几年发生了一些变化。别的不说，hexo和next理所当然的更新了几个大版本。原先用来编辑的mbp也老旧了，闲置在家里。现在操作的mbp还是两年派发的，主要还是嫌麻烦的原因，一直没有把hexo的编辑目录迁移过来，毕竟只要每次想到要装一堆插件就心生退意。</p>
-<p>最近几天，重装了hexo和next后，升级到了最新版本，同时把展现细节做了更多的改造，说实在的，上次blog的搭建，也是弄了很久的源码，发现每逢修改的时候，虽然相隔时间比较长（笑），但总比之前会更加深入一些，这次增加修改了更多的布局，类型以及动态脚本。趁着这几天刚操作过还记得，快点记录下来。</p>
-<span id="more"></span>
-
-<h3 id="弃用Coding"><a href="#弃用Coding" class="headerlink" title="弃用Coding"></a>弃用Coding</h3><p>原先很看好Coding这家小作坊，早期代码管理做的不错，并且也是较早推出Web IDE的平台，印象中应该早于VSCode。后来有一天发现双因素不好用了，才知道鹅厂收购了Coding。其实算是一件好事，毕竟不用太担心哪天这个startup挂了，但也多了一层麻烦。原来的Pages不能用，需要迁移到新的ci/cd。而且vps的所在地也发生了相应的变化，访问速度有所变慢。<br>Coding原来的ssl证书还挺简单的，但鹅厂云就复杂一些，而且由于域名还是在福报云上，所以现在等于是两大云厂各需要维护一些东西，又徒增了麻烦。</p>
-<p>随着某天晚上，我再也无法访问自己的站点后，还是决定弃用。由于备案问题，pages只能选择部署在HK的节点。原则上部署完成后可以直接在福报云上的dns上设置cname到HK的源站，但是新版的问题是没有这方面的guide的，所以会直接引导用户在pages的custom domain把cname设置为他们的CDN，而这个CDN一来非免费，二来同样由于备案问题，也只能选择境外服务域，三来和CDN绑定ssl证书申请也相对麻烦。结果效果一言难尽，使用CDN目的号称是加速，但实际上速度感受是并不如旧版的，甚至完全比不上后面采用的最终方案。<br>那天晚上的惨状是，国内无一地区可以访问到站点，除了TW和境外（测试网站工具：<a href="https://www.17ce.com/">17ce</a>），并且所有dns解析地区均不一致，非常奔溃（早上访问正常，晚上问题很大）。<br>本来想再迂回一下，把cname指向到hk源站，但并不成功，而且最主要的还有ssl证书问题，关闭cdn意味着证书也不可用，旧版的公共证书也无法使用了。<br>所以第二天，还是选择成本最小的方案，迁移到GH的Pages服务，操作简单，而且还支持ssl（值得提一句需要站点加入cname文件，否则网上配置在每次部署之后会被重置）。国内gitee的话也是一个选择。</p>
-<h3 id="Nodejs"><a href="#Nodejs" class="headerlink" title="Nodejs"></a>Nodejs</h3><p>把Nodejs升级到了14，然后npm再进行升级，npm原来一直用的global，为了维护方便，还是迁回了local方式，package.json很香。</p>
-<h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><p>hexo安装绕了几个弯子，对hexo和hexo cli有点confuse，一直以为cli就是hexo本身，之前发现cli一直升级不到5以上，比较奔溃。因为安装theme的方式，5和5之前的版本是不同的。好在后面终于顺利搞定。</p>
-<h3 id="Next"><a href="#Next" class="headerlink" title="Next"></a>Next</h3><p>Next变化不大，但这次重构还是做了较大的源码修改，比之前更深入了。变化主要基本分两类，能基于Mist的基本在Mist的样式文件中进行修改，否则只能修改通用的comn文件。其中有些为了保持通用性，增加了通用的config，但实际上可能是不会再使用的，强迫症。这次也改动了div的动态js。</p>
-<p>能想起来的记录如下：</p>
-<ul>
-<li>字体大小修改不建议修改config中的font global，灵活度很小，如果要单独改动post body的size，config不起作用，需要去样式文件修改，title字体size可以直接配置</li>
-<li>由于修改了主题语言，font family基本都可以在config文件更改，menu字体需要去样式修改，比较耐看的字体是：<font face="Shuei Mincho L" >株式会社モリサワ-秀英明朝</font></li>
-<li>heder.styl中对目录栏宽度进行了修改，修改了header-inner和menu的padding，使其分为两行</li>
-<li>整体页面内容宽度也在样式文件中进行了修改，并且可以根据窗口大小，动态切换设置，对移动端比较友好</li>
-<li>config中增加了darkmode, mathjax，pjax，mediumnzoom, quicklink等设置</li>
-<li>增加了avatar，footer文字，facicon，social等信息</li>
-<li>比较复杂地修改了motion.js，单独修改了sidebar中site-description的动态展示效果</li>
-</ul>
-<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p>改名字的时候，知道需要更改，但不知道改什么。随后一瞬想到了阿部芙蓉美（歌不错，但名字…）的「群青」和手嶌葵的专辑「青い図書室」，它们都是过去一段时间内包括现在也非常喜欢的歌曲集，索性就组合在一起，听「<a href="https://nipponcolors.com/#gunjyo">群青</a>」的时候才知道，这是一种颜色的称谓，顺便一提，十一区对颜色称谓相当文艺，例如紺，绯，鳶，楝，瓶覗，柳染，洒落柿，诸如此类。有兴趣的建议移步<a href="https://nipponcolors.com/">日本の伝統色</a>，页面有支持MUNSELL的JS开关，开启高能。<br>此外Sidebar这里的概要也恰逢时宜地选择了「言の葉の庭」中非常受欢迎的雷神短歌上半句。</p>
-<center><font face="Shuei Mincho L" >「鳴る神の 少し響みて  さし曇り 雨も降らぬか 君を留めむ」</font></center><br>
-
-<p>君を留めむ，那是否真的能让你流连驻足呢。</p>
-]]></content>
-      <categories>
-        <category>Toolkit</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Blog之殇</title>
-    <url>/2025/12/31/Blog%E4%B9%8B%E6%AE%87/</url>
-    <content><![CDATA[<p>2025年最后一天，年更一下blog，写完这寥寥两句，竟也不知道继续该写些什么。</p>
-<p>前些日子，偶然发现曾经关注的一些领域大牛，技术布道者们，他们的blog也宛如无人照料的小家后院，虽然不见杂草蔓延，但最后种下的那一棵树，那一枝花再也没有变过，时间仿佛在那个旖旎的时空中静止了。</p>
-<p>作为一个恋旧之人，这种感觉似曾相识，看着这些文章，怀念起那个时间发生的人和事陷入神伤，好似在高山，小田原，香川参观昭和馆的感受，残桓旧物述说着往昔的故事，眼前萧瑟却让人唏嘘。</p>
-<p>曾经执掌统计编程论坛的坛主，3年前渐渐淡出大众视线，在另一半球追寻内心的安宁。拥有计量经济学背景的园主，从月更也慢慢变成了季更，几篇行文的字里行间也散发出不曾有过的怅然，“若为自由故”，“从心所欲，不逾矩”，“愿得一世自由” 云云。而曾经的技术大牛，早在8年前便彻底封笔，再无留下只言片语，就连其GitHub也鲜有更新。</p>
-<p>本以为博客和分享的消逝或许是因于这“AI”盛世，未料想，一切不过是在岁月中悄然蹉跎。</p>
-<p>再不打理，恐怕连自己都认不出来了。</p>
-]]></content>
-      <categories>
-        <category>Impression</category>
-      </categories>
-      <tags>
-        <tag>Summary</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>宫崎骏的鄙夷</title>
     <url>/2025/08/01/%E5%AE%AB%E5%B4%8E%E9%AA%8F%E7%9A%84%E9%84%99%E5%A4%B7/</url>
     <content><![CDATA[<p>带Hugo来东京参加夏校。学校ASIJ离市区不近，位于多摩地区的调布市，如果要去学校参观，从新宿还要往西再坐将近40分钟的地铁。好在学校安排了校车，于是我们选择住在离终点站前两站的武蔵境駅附近。</p>
@@ -416,10 +366,60 @@
       </categories>
       <tags>
         <tag>东京</tag>
-        <tag>圣地巡礼</tag>
         <tag>吉卜力</tag>
         <tag>宫崎骏</tag>
         <tag>听见涛声</tag>
+        <tag>圣地巡礼</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>迟到了十二年的偿愿</title>
+    <url>/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/</url>
+    <content><![CDATA[<p>每次来日本，如果时间允许的话，都尽可能安排一次圣地巡礼，而这次的巡礼迟到了十二年。</p>
+<p>某种程度上，我深感庆幸身处这个科技足以打捞回忆的时代。想起童年最深刻的记忆，是二年级的时候，学校组织去看《天空の城》，当时荧幕上的画面，Laputa，海盗飞艇，浴火的机器人历历在目，整个过程受到的震撼，至今都难以忘怀。可这种震撼却成了一个人守护的秘密，几年之后身边的同学任凭我怎么描述也无人共鸣。直到大概千禧年那会儿，随着手机的普及，终于在和弦铃声网站里听到了久违的《君を乗せて》，那一刻的激动，刻骨铭心。</p>
+<p>而真正让这些埋藏许久的回忆有了具象落点的是，是前几年出的一款叫做“片场”的App，它记录了很多经典影视剧中取景地的地理位置，前几次的圣地巡礼，其实都是靠它才能有迹可循。小樽半山腰的船见坂，日本棋院的深奥幽玄，市ヶ谷駅前地下横断歩道，赤名莉香告别的梅津寺駅，半泽直树的三井住友银行，过往的经典场景得以再一次次浮现在眼前。</p>
+<p>但唯独有个地方，这个藏了十二年的念想，始终没有抵达 —— 千叶海滨美滨街道。它是《四月物语》中片尾“小红伞”场景的取景地。这个坐标在十二年前被我花了好久才定位到，当时凭电影片段中的建筑标识，在地图上反复核对才得以确认，此后便一直停留在浏览器收藏夹里。</p>
+<p>上次来东京的时候没能去成，所以这次不会再错过了。</p>
+<p>千叶位于东京都的东边，临海，从三鹰出发需要两个小时的车程才能抵达海滨幕张。从幕张站出来，绕过一段人行道，便到了海滨公园，工作日的午后，公园里行人寥寥，听不见海鸟的鸣叫，只有掠过海面的微风带着淡淡的咸味。穿过公园步入美滨街道，四周愈发安静，这里是一片居住区，大概只有我一个游客吧。</p>
+<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/0.jpg" class="">
+
+<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/1.jpg" class="">
+
+<p>在这个电影最后一幕的取景地，松隆子饰演的卯月与田边诚一饰演的学长重逢的书店早已结业，原址现已变成一家地产社。相比之下，卯月借还雨伞的报告厅大门倒是基本维持了原样，经历了三十年的风雨，这幢建筑还保留着电影中的轮廓。</p>
+<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/2.jpg" class="">
+
+<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/3.jpg" class="">
+
+<img data-src="/2025/08/03/%E8%BF%9F%E5%88%B0%E4%BA%86%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%9A%84%E5%81%BF%E6%84%BF/4.jpg" class="">
+
+<p>电影的结尾，卯月打着红伞内心自白：“考上大学的时候，连老师都说是奇迹，然而，若真要说这是奇迹，我倒想称它是——爱的奇迹”。</p>
+<p>而这场跨越了十二年的偿愿，大概也是一种小小的奇迹吧。</p>
+]]></content>
+      <categories>
+        <category>Trip</category>
+      </categories>
+      <tags>
+        <tag>东京</tag>
+        <tag>圣地巡礼</tag>
+        <tag>岩井俊二</tag>
+        <tag>四月物语</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Blog之殇</title>
+    <url>/2025/12/31/Blog%E4%B9%8B%E6%AE%87/</url>
+    <content><![CDATA[<p>2025年最后一天，年更一下blog，写完这寥寥两句，竟也不知道继续该写些什么。</p>
+<p>前些日子，偶然发现曾经关注的一些领域大牛，技术布道者们，他们的blog也宛如无人照料的小家后院，虽然不见杂草蔓延，但最后种下的那一棵树，那一枝花再也没有变过，时间仿佛在那个旖旎的时空中静止了。</p>
+<p>作为一个恋旧之人，这种感觉似曾相识，看着这些文章，怀念起那个时间发生的人和事陷入神伤，好似在高山，小田原，香川参观昭和馆的感受，残桓旧物述说着往昔的故事，眼前萧瑟却让人唏嘘。</p>
+<p>曾经执掌统计编程论坛的坛主，3年前渐渐淡出大众视线，在另一半球追寻内心的安宁。拥有计量经济学背景的园主，从月更也慢慢变成了季更，几篇行文的字里行间也散发出不曾有过的怅然，“若为自由故”，“从心所欲，不逾矩”，“愿得一世自由” 云云。而曾经的技术大牛，早在8年前便彻底封笔，再无留下只言片语，就连其GitHub也鲜有更新。</p>
+<p>本以为博客和分享的消逝或许是因于这“AI”盛世，未料想，一切不过是在岁月中悄然蹉跎。</p>
+<p>再不打理，恐怕连自己都认不出来了。</p>
+]]></content>
+      <categories>
+        <category>Impression</category>
+      </categories>
+      <tags>
+        <tag>Summary</tag>
       </tags>
   </entry>
   <entry>
@@ -440,28 +440,6 @@
       <tags>
         <tag>AI</tag>
         <tag>Vibe Coding</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hugo的数学猜想</title>
-    <url>/2026/01/20/Hugo%E7%9A%84%E6%95%B0%E5%AD%A6%E7%8C%9C%E6%83%B3/</url>
-    <content><![CDATA[<p>最近几周，随着Hugo考试临近，周末两天都会带他去图书馆。家里虽也安逸，但总觉得图书馆那种沉静的读书氛围，更能让他心无旁骛地沉浸其中。</p>
-<p>今天送他去图书馆的路上，Hugo兴致勃勃地分享了三个他“发现”的数学规律，这些还没经过严格证明的“猜想”被他煞有其事地冠名为“定理”。其中两个逻辑清晰，我还能勉强跟上他的思路进行推演，但第三个规律却着实让我有些吃惊。</p>
-<p>那是一个关于<strong>完美数</strong>的表述：</p>
-<blockquote>
-<p>如果 $ 2^n - 1 $ 是一个素数，那么这个数乘以 $ 2^{n-1} $ 就能构成一个完美数。</p>
-</blockquote>
-<p>当Hugo试图描述其中的对应关系时，我这个惭愧的专业“愚徒”还在反复确认他表达的细节。直到后来向AI求证，才发现这是已被冠名的欧几里得-欧拉定理。</p>
-<p>他甚至还不知道梅森素数的具体定义，却能仅凭直觉窥见这条隐秘的数字通道，这确实让我感到惊讶。</p>
-<p>回想起来，这几年他在数感上的成长似乎早有迹象。有些数论游戏我已经完全玩不过他了， Switch上《脑锻炼》的数论板块，与他的多次对战中，我的胜率一直是0%，每次都被虐地体无完肤，我一度怀疑是不是自己真的太菜了，现在看好像还真不一定。所以，或许从那个时候起，我就该意识到，身边的这个臭小子，正在以超过我们想象的速度成长着。</p>
-<p>学校老师也曾评价说他的数感极佳。虽然相比之下，我总觉得他在几何上的天赋比较平庸，但这次切身感受到他对数字规律的敏锐捕捉，让我释然了不少。这份独特的数感，或许正是他未来在数学世界里走得更远、钻得更深的底气吧。</p>
-]]></content>
-      <categories>
-        <category>Growth</category>
-      </categories>
-      <tags>
-        <tag>Math</tag>
-        <tag>Education</tag>
       </tags>
   </entry>
   <entry>
@@ -487,6 +465,28 @@
         <tag>AI</tag>
         <tag>First Principles</tag>
         <tag>Induction</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hugo的数学猜想</title>
+    <url>/2026/01/20/Hugo%E7%9A%84%E6%95%B0%E5%AD%A6%E7%8C%9C%E6%83%B3/</url>
+    <content><![CDATA[<p>最近几周，随着Hugo考试临近，周末两天都会带他去图书馆。家里虽也安逸，但总觉得图书馆那种沉静的读书氛围，更能让他心无旁骛地沉浸其中。</p>
+<p>今天送他去图书馆的路上，Hugo兴致勃勃地分享了三个他“发现”的数学规律，这些还没经过严格证明的“猜想”被他煞有其事地冠名为“定理”。其中两个逻辑清晰，我还能勉强跟上他的思路进行推演，但第三个规律却着实让我有些吃惊。</p>
+<p>那是一个关于<strong>完美数</strong>的表述：</p>
+<blockquote>
+<p>如果 $ 2^n - 1 $ 是一个素数，那么这个数乘以 $ 2^{n-1} $ 就能构成一个完美数。</p>
+</blockquote>
+<p>当Hugo试图描述其中的对应关系时，我这个惭愧的专业“愚徒”还在反复确认他表达的细节。直到后来向AI求证，才发现这是已被冠名的欧几里得-欧拉定理。</p>
+<p>他甚至还不知道梅森素数的具体定义，却能仅凭直觉窥见这条隐秘的数字通道，这确实让我感到惊讶。</p>
+<p>回想起来，这几年他在数感上的成长似乎早有迹象。有些数论游戏我已经完全玩不过他了， Switch上《脑锻炼》的数论板块，与他的多次对战中，我的胜率一直是0%，每次都被虐地体无完肤，我一度怀疑是不是自己真的太菜了，现在看好像还真不一定。所以，或许从那个时候起，我就该意识到，身边的这个臭小子，正在以超过我们想象的速度成长着。</p>
+<p>学校老师也曾评价说他的数感极佳。虽然相比之下，我总觉得他在几何上的天赋比较平庸，但这次切身感受到他对数字规律的敏锐捕捉，让我释然了不少。这份独特的数感，或许正是他未来在数学世界里走得更远、钻得更深的底气吧。</p>
+]]></content>
+      <categories>
+        <category>Growth</category>
+      </categories>
+      <tags>
+        <tag>Math</tag>
+        <tag>Education</tag>
       </tags>
   </entry>
 </search>

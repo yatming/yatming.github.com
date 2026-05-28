@@ -252,17 +252,30 @@ NexT.utils = {
   registerSidebarTOC: function() {
     this.sections = [...document.querySelectorAll('.post-toc li a.nav-link')].map(element => {
       const target = document.getElementById(decodeURI(element.getAttribute('href')).replace('#', ''));
-      // TOC item animation navigate.
-      element.addEventListener('click', event => {
-        event.preventDefault();
-        const offset = target.getBoundingClientRect().top + window.scrollY;
-        window.anime({
-          targets  : document.scrollingElement,
-          duration : 500,
-          easing   : 'linear',
-          scrollTop: offset + 10
+      if (target && !element.dataset.tocListenerAdded) {
+        element.dataset.tocListenerAdded = 'true';
+        // TOC item animation navigate.
+        element.addEventListener('click', event => {
+          event.preventDefault();
+          const offset = target.getBoundingClientRect().top + window.scrollY;
+          window.anime({
+            targets  : document.scrollingElement,
+            duration : 500,
+            easing   : 'linear',
+            scrollTop: offset + 10
+          });
         });
-      });
+
+        // Scheme B: Transition from Overview to TOC after successful decryption
+        const sidebarInner = document.querySelector('.sidebar-inner.hbe-encrypted');
+        if (sidebarInner) {
+          sidebarInner.classList.remove('hbe-encrypted');
+          setTimeout(() => {
+            const tocTab = document.querySelector('.sidebar-nav-toc');
+            if (tocTab) tocTab.click();
+          }, 100);
+        }
+      }
       return target;
     });
   },
