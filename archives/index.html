@@ -922,8 +922,8 @@ if (!window.mathjaxFixLoaded) {
 }
 
 .go-to-comments.visible {
-  opacity: 0.8;
-  bottom: 50px;
+  opacity: 1;
+  bottom: 45px;
 }
 
 .go-to-comments.visible.solo {
@@ -1056,6 +1056,121 @@ if (!window.mathjaxFixLoaded) {
     wrapTOC();
   }
   document.addEventListener('pjax:success', wrapTOC);
+})();
+</script>
+
+<!-- 一键复制文章内容 (仅针对 moonriver 页面) -->
+<script>
+(function() {
+  function initCopyPostContent() {
+    if (!window.location.pathname.includes('moonriver')) return;
+
+    const posts = document.querySelectorAll('.post-block');
+    posts.forEach(post => {
+      if (post.querySelector('.post-copy-item')) return;
+
+      const postMeta = post.querySelector('.post-meta');
+      if (!postMeta) return;
+
+      const postBody = post.querySelector('.post-body');
+      if (!postBody) return;
+
+      const checkAndInit = () => {
+        const isEncrypted = postBody.querySelector('#hbePass');
+        if (isEncrypted) {
+          const observer = new MutationObserver(() => {
+            const stillEncrypted = postBody.querySelector('#hbePass');
+            if (!stillEncrypted) {
+              observer.disconnect();
+              buildBtn();
+            }
+          });
+          observer.observe(postBody, { childList: true, subtree: true });
+        } else {
+          buildBtn();
+        }
+      };
+
+      const buildBtn = () => {
+        if (postMeta.querySelector('.post-copy-item')) return;
+
+        const btn = document.createElement('span');
+        btn.className = 'post-meta-item post-copy-item';
+        btn.style.cursor = 'pointer';
+        btn.title = '复制文章全文';
+        btn.innerHTML = `
+          <span class="post-meta-item-icon">
+            <i class="far fa-copy"></i>
+          </span>
+          <span class="post-copy-text" style="text-decoration: underline;">复制全文</span>
+        `;
+
+        btn.addEventListener('click', () => {
+          const clone = postBody.cloneNode(true);
+          clone.querySelectorAll('.copy-btn, .post-copy-item, .bgm-player, .comments, #comments, .twikoo, #tcomment, .tk-comments, .tabs-comment, style, script, template').forEach(el => el.remove());
+          
+          let text = clone.innerText || clone.textContent || '';
+          text = text.trim();
+
+          if (!text) return;
+
+          navigator.clipboard.writeText(text).then(() => {
+            const textEl = btn.querySelector('.post-copy-text');
+            const iconEl = btn.querySelector('.post-meta-item-icon i');
+            
+            textEl.textContent = '已复制!';
+            iconEl.className = 'fa fa-check';
+            const originalColor = btn.style.color;
+            btn.style.color = '#1dc59e';
+            
+            setTimeout(() => {
+              textEl.textContent = '复制全文';
+              iconEl.className = 'far fa-copy';
+              btn.style.color = originalColor;
+            }, 2000);
+          }).catch(err => {
+            console.error('Failed to copy: ', err);
+            try {
+              const textarea = document.createElement('textarea');
+              textarea.value = text;
+              textarea.style.position = 'fixed';
+              textarea.style.opacity = '0';
+              document.body.appendChild(textarea);
+              textarea.select();
+              document.execCommand('copy');
+              document.body.removeChild(textarea);
+              
+              const textEl = btn.querySelector('.post-copy-text');
+              const iconEl = btn.querySelector('.post-meta-item-icon i');
+              textEl.textContent = '已复制!';
+              iconEl.className = 'fa fa-check';
+              const originalColor = btn.style.color;
+              btn.style.color = '#1dc59e';
+              setTimeout(() => {
+                textEl.textContent = '复制全文';
+                iconEl.className = 'far fa-copy';
+                btn.style.color = originalColor;
+              }, 2000);
+            } catch (fallbackErr) {
+              alert('复制失败，请手动选择复制');
+            }
+          });
+        });
+
+        postMeta.appendChild(btn);
+      };
+
+      checkAndInit();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCopyPostContent);
+  } else {
+    initCopyPostContent();
+  }
+  
+  document.addEventListener('pjax:success', initCopyPostContent);
 })();
 </script>
 

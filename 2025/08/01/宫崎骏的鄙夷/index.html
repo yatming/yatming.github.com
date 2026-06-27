@@ -36,10 +36,10 @@
 <meta property="article:modified_time" content="2026-05-10T13:17:57.904Z">
 <meta property="article:author" content="Yatming">
 <meta property="article:tag" content="东京">
+<meta property="article:tag" content="圣地巡礼">
 <meta property="article:tag" content="吉卜力">
 <meta property="article:tag" content="宫崎骏">
 <meta property="article:tag" content="听见涛声">
-<meta property="article:tag" content="圣地巡礼">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yatming.net/2025/08/01/%E5%AE%AB%E5%B4%8E%E9%AA%8F%E7%9A%84%E9%84%99%E5%A4%B7/ticket.jpg">
 
@@ -390,10 +390,10 @@ if (window.location.pathname.indexOf('moonriver') !== -1) {
 
           <div class="post-tags">
               <a href="/tags/%E4%B8%9C%E4%BA%AC/" rel="tag"># 东京</a>
+              <a href="/tags/%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/" rel="tag"># 圣地巡礼</a>
               <a href="/tags/%E5%90%89%E5%8D%9C%E5%8A%9B/" rel="tag"># 吉卜力</a>
               <a href="/tags/%E5%AE%AB%E5%B4%8E%E9%AA%8F/" rel="tag"># 宫崎骏</a>
               <a href="/tags/%E5%90%AC%E8%A7%81%E6%B6%9B%E5%A3%B0/" rel="tag"># 听见涛声</a>
-              <a href="/tags/%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/" rel="tag"># 圣地巡礼</a>
           </div>
 
         
@@ -836,8 +836,8 @@ if (!window.mathjaxFixLoaded) {
 }
 
 .go-to-comments.visible {
-  opacity: 0.8;
-  bottom: 50px;
+  opacity: 1;
+  bottom: 45px;
 }
 
 .go-to-comments.visible.solo {
@@ -970,6 +970,121 @@ if (!window.mathjaxFixLoaded) {
     wrapTOC();
   }
   document.addEventListener('pjax:success', wrapTOC);
+})();
+</script>
+
+<!-- 一键复制文章内容 (仅针对 moonriver 页面) -->
+<script>
+(function() {
+  function initCopyPostContent() {
+    if (!window.location.pathname.includes('moonriver')) return;
+
+    const posts = document.querySelectorAll('.post-block');
+    posts.forEach(post => {
+      if (post.querySelector('.post-copy-item')) return;
+
+      const postMeta = post.querySelector('.post-meta');
+      if (!postMeta) return;
+
+      const postBody = post.querySelector('.post-body');
+      if (!postBody) return;
+
+      const checkAndInit = () => {
+        const isEncrypted = postBody.querySelector('#hbePass');
+        if (isEncrypted) {
+          const observer = new MutationObserver(() => {
+            const stillEncrypted = postBody.querySelector('#hbePass');
+            if (!stillEncrypted) {
+              observer.disconnect();
+              buildBtn();
+            }
+          });
+          observer.observe(postBody, { childList: true, subtree: true });
+        } else {
+          buildBtn();
+        }
+      };
+
+      const buildBtn = () => {
+        if (postMeta.querySelector('.post-copy-item')) return;
+
+        const btn = document.createElement('span');
+        btn.className = 'post-meta-item post-copy-item';
+        btn.style.cursor = 'pointer';
+        btn.title = '复制文章全文';
+        btn.innerHTML = `
+          <span class="post-meta-item-icon">
+            <i class="far fa-copy"></i>
+          </span>
+          <span class="post-copy-text" style="text-decoration: underline;">复制全文</span>
+        `;
+
+        btn.addEventListener('click', () => {
+          const clone = postBody.cloneNode(true);
+          clone.querySelectorAll('.copy-btn, .post-copy-item, .bgm-player, .comments, #comments, .twikoo, #tcomment, .tk-comments, .tabs-comment, style, script, template').forEach(el => el.remove());
+          
+          let text = clone.innerText || clone.textContent || '';
+          text = text.trim();
+
+          if (!text) return;
+
+          navigator.clipboard.writeText(text).then(() => {
+            const textEl = btn.querySelector('.post-copy-text');
+            const iconEl = btn.querySelector('.post-meta-item-icon i');
+            
+            textEl.textContent = '已复制!';
+            iconEl.className = 'fa fa-check';
+            const originalColor = btn.style.color;
+            btn.style.color = '#1dc59e';
+            
+            setTimeout(() => {
+              textEl.textContent = '复制全文';
+              iconEl.className = 'far fa-copy';
+              btn.style.color = originalColor;
+            }, 2000);
+          }).catch(err => {
+            console.error('Failed to copy: ', err);
+            try {
+              const textarea = document.createElement('textarea');
+              textarea.value = text;
+              textarea.style.position = 'fixed';
+              textarea.style.opacity = '0';
+              document.body.appendChild(textarea);
+              textarea.select();
+              document.execCommand('copy');
+              document.body.removeChild(textarea);
+              
+              const textEl = btn.querySelector('.post-copy-text');
+              const iconEl = btn.querySelector('.post-meta-item-icon i');
+              textEl.textContent = '已复制!';
+              iconEl.className = 'fa fa-check';
+              const originalColor = btn.style.color;
+              btn.style.color = '#1dc59e';
+              setTimeout(() => {
+                textEl.textContent = '复制全文';
+                iconEl.className = 'far fa-copy';
+                btn.style.color = originalColor;
+              }, 2000);
+            } catch (fallbackErr) {
+              alert('复制失败，请手动选择复制');
+            }
+          });
+        });
+
+        postMeta.appendChild(btn);
+      };
+
+      checkAndInit();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCopyPostContent);
+  } else {
+    initCopyPostContent();
+  }
+  
+  document.addEventListener('pjax:success', initCopyPostContent);
 })();
 </script>
 
