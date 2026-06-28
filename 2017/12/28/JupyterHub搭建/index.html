@@ -1056,12 +1056,12 @@ if (!window.mathjaxFixLoaded) {
         const btn = document.createElement('span');
         btn.className = 'post-meta-item post-copy-item';
         btn.style.cursor = 'pointer';
-        btn.title = '复制文章全文';
+        btn.title = '全文コピー';
         btn.innerHTML = `
           <span class="post-meta-item-icon">
             <i class="far fa-copy"></i>
           </span>
-          <span class="post-copy-text" style="text-decoration: underline;">复制全文</span>
+          <span class="post-copy-text" style="text-decoration: underline;">全文コピー</span>
         `;
 
         btn.addEventListener('click', () => {
@@ -1077,13 +1077,13 @@ if (!window.mathjaxFixLoaded) {
             const textEl = btn.querySelector('.post-copy-text');
             const iconEl = btn.querySelector('.post-meta-item-icon i');
             
-            textEl.textContent = '已复制!';
+            textEl.textContent = 'コピーしました!';
             iconEl.className = 'fa fa-check';
             const originalColor = btn.style.color;
             btn.style.color = '#1dc59e';
             
             setTimeout(() => {
-              textEl.textContent = '复制全文';
+              textEl.textContent = '全文コピー';
               iconEl.className = 'far fa-copy';
               btn.style.color = originalColor;
             }, 2000);
@@ -1101,17 +1101,17 @@ if (!window.mathjaxFixLoaded) {
               
               const textEl = btn.querySelector('.post-copy-text');
               const iconEl = btn.querySelector('.post-meta-item-icon i');
-              textEl.textContent = '已复制!';
+              textEl.textContent = 'コピーしました!';
               iconEl.className = 'fa fa-check';
               const originalColor = btn.style.color;
               btn.style.color = '#1dc59e';
               setTimeout(() => {
-                textEl.textContent = '复制全文';
+                textEl.textContent = '全文コピー';
                 iconEl.className = 'far fa-copy';
                 btn.style.color = originalColor;
               }, 2000);
             } catch (fallbackErr) {
-              alert('复制失败，请手动选择复制');
+              alert('コピーに失敗しました。手動でコピーしてください。');
             }
           });
         });
