@@ -3134,10 +3134,7 @@ hr {
     width: 30% !important;
   }
 }
-/* 只针对这篇文章隐藏 post-meta 和 更改标题字体 */
-article:has(link[itemprop="mainEntityOfPage"][href*="/moonriver/"]) .post-meta-container {
-  display: none !important;
-}
+/* 只针对这篇文章更改标题字体 */
 article:has(link[itemprop="mainEntityOfPage"][href*="/moonriver/"]) .post-title {
   font-family: 'Shuei Mincho L', sans-serif !important;
 }

@@ -293,13 +293,13 @@
   <entry>
     <title>九州の行</title>
     <url>/2023/10/17/%E4%B9%9D%E5%B7%9E%E3%81%AE%E8%A1%8C/</url>
-    <content><![CDATA[<!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-YSdCBjRFEmgvUgst"></div><script> var YSdCBjRFEmgvUgst_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); YSdCBjRFEmgvUgst_options.container = document.getElementById("mmedia-YSdCBjRFEmgvUgst"); const dp_YSdCBjRFEmgvUgst = new DPlayer(YSdCBjRFEmgvUgst_options); </script> -->
+    <content><![CDATA[<!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-nmpxcSwogmTgoBGl"></div><script> var nmpxcSwogmTgoBGl_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); nmpxcSwogmTgoBGl_options.container = document.getElementById("mmedia-nmpxcSwogmTgoBGl"); const dp_nmpxcSwogmTgoBGl = new DPlayer(nmpxcSwogmTgoBGl_options); </script> -->
 
-<video id="mmedia-BilqzZcPsRnEMVUO" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
+<video id="mmedia-HYeZkFYYWgGVsdjg" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
 
-<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-lMZckLtuSRfwKTaA" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-lMZckLtuSRfwKTaA").style.height=document.getElementById("mmedia-lMZckLtuSRfwKTaA").scrollWidth*0.76+"px";
+<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-qJCqvCKLPAUyptSA" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-qJCqvCKLPAUyptSA").style.height=document.getElementById("mmedia-qJCqvCKLPAUyptSA").scrollWidth*0.76+"px";
     window.onresize = function(){
-      document.getElementById("mmedia-lMZckLtuSRfwKTaA").style.height=document.getElementById("mmedia-lMZckLtuSRfwKTaA").scrollWidth*0.76+"px";
+      document.getElementById("mmedia-qJCqvCKLPAUyptSA").style.height=document.getElementById("mmedia-qJCqvCKLPAUyptSA").scrollWidth*0.76+"px";
     }; </script> -->]]></content>
       <categories>
         <category>Trip</category>
@@ -406,6 +406,23 @@
       </tags>
   </entry>
   <entry>
+    <title>Blog之殇</title>
+    <url>/2025/12/31/Blog%E4%B9%8B%E6%AE%87/</url>
+    <content><![CDATA[<p>2025年最后一天，年更一下blog，写完这寥寥两句，竟也不知道继续该写些什么。</p>
+<p>前些日子，偶然发现曾经关注的一些领域大牛，技术布道者们，他们的blog也宛如无人照料的小家后院，虽然不见杂草蔓延，但最后种下的那一棵树，那一枝花再也没有变过，时间仿佛在那个旖旎的时空中静止了。</p>
+<p>作为一个恋旧之人，这种感觉似曾相识，看着这些文章，怀念起那个时间发生的人和事陷入神伤，好似在高山，小田原，香川参观昭和馆的感受，残桓旧物述说着往昔的故事，眼前萧瑟却让人唏嘘。</p>
+<p>曾经执掌统计编程论坛的坛主，3年前渐渐淡出大众视线，在另一半球追寻内心的安宁。拥有计量经济学背景的园主，从月更也慢慢变成了季更，几篇行文的字里行间也散发出不曾有过的怅然，“若为自由故”，“从心所欲，不逾矩”，“愿得一世自由” 云云。而曾经的技术大牛，早在8年前便彻底封笔，再无留下只言片语，就连其GitHub也鲜有更新。</p>
+<p>本以为博客和分享的消逝或许是因于这“AI”盛世，未料想，一切不过是在岁月中悄然蹉跎。</p>
+<p>再不打理，恐怕连自己都认不出来了。</p>
+]]></content>
+      <categories>
+        <category>Impression</category>
+      </categories>
+      <tags>
+        <tag>Summary</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>神笔</title>
     <url>/2026/01/11/%E7%A5%9E%E7%AC%94/</url>
     <content><![CDATA[<p>说实话，这曾是一个让我嗤之以鼻的词。</p>
@@ -423,23 +440,6 @@
       <tags>
         <tag>AI</tag>
         <tag>Vibe Coding</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Blog之殇</title>
-    <url>/2025/12/31/Blog%E4%B9%8B%E6%AE%87/</url>
-    <content><![CDATA[<p>2025年最后一天，年更一下blog，写完这寥寥两句，竟也不知道继续该写些什么。</p>
-<p>前些日子，偶然发现曾经关注的一些领域大牛，技术布道者们，他们的blog也宛如无人照料的小家后院，虽然不见杂草蔓延，但最后种下的那一棵树，那一枝花再也没有变过，时间仿佛在那个旖旎的时空中静止了。</p>
-<p>作为一个恋旧之人，这种感觉似曾相识，看着这些文章，怀念起那个时间发生的人和事陷入神伤，好似在高山，小田原，香川参观昭和馆的感受，残桓旧物述说着往昔的故事，眼前萧瑟却让人唏嘘。</p>
-<p>曾经执掌统计编程论坛的坛主，3年前渐渐淡出大众视线，在另一半球追寻内心的安宁。拥有计量经济学背景的园主，从月更也慢慢变成了季更，几篇行文的字里行间也散发出不曾有过的怅然，“若为自由故”，“从心所欲，不逾矩”，“愿得一世自由” 云云。而曾经的技术大牛，早在8年前便彻底封笔，再无留下只言片语，就连其GitHub也鲜有更新。</p>
-<p>本以为博客和分享的消逝或许是因于这“AI”盛世，未料想，一切不过是在岁月中悄然蹉跎。</p>
-<p>再不打理，恐怕连自己都认不出来了。</p>
-]]></content>
-      <categories>
-        <category>Impression</category>
-      </categories>
-      <tags>
-        <tag>Summary</tag>
       </tags>
   </entry>
   <entry>
