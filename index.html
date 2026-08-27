@@ -1810,6 +1810,36 @@ if (!window.mathjaxFixLoaded) {
 })();
 </script>
 
+<!-- 鹊桥相会点击切换诗句 -->
+<script>
+(function() {
+  var poems = [
+    '「 金风玉露一相逢，便胜却人间无数 」',
+    '「 纤云弄巧，飞星传恨，银汉迢迢暗度 」',
+    '「 愿我如星君如月，夜夜流光相皎洁 」',
+    '「 海上月是天上月，眼前人是心上人 」',
+    '「 两情若是久长时，又岂在朝朝暮暮 」'
+  ];
+  var pIdx = 0;
+
+  document.addEventListener('click', function(e) {
+    var card = e.target.closest('#queqiao-card');
+    if (!card) return;
+
+    var caption = card.querySelector('#queqiao-caption') || document.getElementById('queqiao-caption');
+    if (caption) {
+      pIdx = (pIdx + 1) % poems.length;
+      caption.style.opacity = '0';
+      setTimeout(function() {
+        caption.textContent = poems[pIdx];
+        caption.style.opacity = '0.95';
+      }, 200);
+    }
+  });
+})();
+</script>
+
+
 
 
 
