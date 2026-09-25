@@ -1019,6 +1019,123 @@ if (!window.mathjaxFixLoaded) {
 })();
 </script>
 
+<!-- 中秋满月玉兔竖排诗句循环显隐与点击切换 -->
+<script>
+(function() {
+  var zqPoems = [
+    '但愿人长久<br>千里共婵娟',
+    '此时相望不相闻<br>愿逐月华流照君',
+    '名月や<br>池をめぐりて<br>夜もすがら',
+    '吹灭读书灯<br>一身都是月',
+    '今夜虽相隔<br>心与月同圆',
+    '人间秋晚<br>云淡风柔<br>月满中天<br>思念同酬',
+    '爱永在，月常圆'
+  ];
+
+  var currentIndex = 0;
+  var isAnimating = false;
+  var timer = null;
+  var initialized = false;
+
+  function showNextPoem(fast) {
+    var poemEl = document.getElementById('zq-poem-content');
+    if (!poemEl) return;
+    if (isAnimating) return;
+    isAnimating = true;
+
+    if (timer) {
+      clearTimeout(timer);
+      timer = null;
+    }
+
+    if (fast) {
+      poemEl.style.transition = 'opacity 0.28s ease, transform 0.28s ease, filter 0.28s ease';
+    }
+
+    // 诗句淡出消失
+    poemEl.classList.remove('active');
+
+    var fadeOutDuration = fast ? 280 : 1000;
+    setTimeout(function() {
+      // 切换诗句
+      currentIndex = (currentIndex + 1) % zqPoems.length;
+      poemEl.innerHTML = zqPoems[currentIndex];
+
+      // 诗句显现
+      setTimeout(function() {
+        poemEl.classList.add('active');
+        setTimeout(function() {
+          poemEl.style.transition = '';
+          isAnimating = false;
+        }, fast ? 300 : 1000);
+
+        // 设定下一句诗的循环计时
+        timer = setTimeout(function() {
+          showNextPoem(false);
+        }, 4000);
+      }, 60);
+    }, fadeOutDuration);
+  }
+
+  function startCycle() {
+    var card = document.getElementById('zhongqiu-card');
+    var poemEl = document.getElementById('zq-poem-content');
+    if (!card || !poemEl) return false;
+
+    if (initialized && timer) return true;
+    initialized = true;
+
+    // 保证初始诗句激活显现
+    poemEl.classList.add('active');
+
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(function() {
+      showNextPoem(false);
+    }, 4000);
+
+    return true;
+  }
+
+  // 点击中秋卡片立即切换下一句诗并重置循环
+  document.addEventListener('click', function(e) {
+    var card = e.target.closest('#zhongqiu-card');
+    if (!card) return;
+    showNextPoem(true);
+  });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startCycle);
+  } else {
+    startCycle();
+  }
+  document.addEventListener('pjax:success', function() {
+    initialized = false;
+    startCycle();
+  });
+
+  // 监听解密动态渲染或 DOM 变动
+  if (window.MutationObserver) {
+    var observer = new MutationObserver(function() {
+      var card = document.getElementById('zhongqiu-card');
+      if (card && !initialized) {
+        startCycle();
+      }
+    });
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+  }
+
+  // 兜底定时轮询
+  var poll = setInterval(function() {
+    if (document.getElementById('zhongqiu-card')) {
+      if (startCycle()) {
+        clearInterval(poll);
+      }
+    }
+  }, 800);
+})();
+</script>
+
+
 
 
 

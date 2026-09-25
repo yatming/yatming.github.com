@@ -3428,6 +3428,332 @@ body:has(link[itemprop="mainEntityOfPage"][href*="/moonriver/"]) .footer {
 .hbe-encrypted .post-toc-wrap {
   display: none !important;
 }
+/* ---------------------------------------------------------
+   Queqiao (鹊桥相会) Romantic Micro-Animation
+   --------------------------------------------------------- */
+.queqiao-card {
+  margin: 32px auto 24px auto;
+  max-width: 420px;
+  padding: 16px 16px 14px 16px;
+  background: radial-gradient(ellipse at 50% 120%, rgba(81,168,221,0.28) 0%, rgba(20,27,45,0.95) 55%, rgba(11,15,26,0.98) 100%);
+  border: 1px solid rgba(81,168,221,0.22);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(10,15,30,0.22), inset 0 1px 0 rgba(255,255,255,0.08);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.queqiao-card:hover {
+  border-color: rgba(81,168,221,0.45);
+  box-shadow: 0 12px 36px rgba(81,168,221,0.2), inset 0 1px 0 rgba(255,255,255,0.15);
+  background: radial-gradient(ellipse at 50% 120%, rgba(81,168,221,0.35) 0%, rgba(24,32,54,0.96) 55%, rgba(13,18,32,0.99) 100%);
+  transform: translateY(-2px);
+}
+.queqiao-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+/* Star Twinkle */
+.qq-star {
+  animation: star-twinkle 3s ease-in-out infinite;
+  transform-origin: center;
+}
+.qq-star:nth-child(2n) {
+  animation-delay: 0.7s;
+  animation-duration: 2.4s;
+}
+.qq-star:nth-child(3n) {
+  animation-delay: 1.4s;
+  animation-duration: 3.6s;
+}
+.qq-star:nth-child(5n) {
+  animation-delay: 2.1s;
+  animation-duration: 4.2s;
+}
+/* Moon gentle float & glow */
+.qq-moon {
+  animation: moon-breathe 4s ease-in-out infinite;
+  transform-origin: center;
+}
+/* Magpie Wing Flap */
+.qq-magpie {
+  animation: magpie-flutter 1.8s ease-in-out infinite;
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+.qq-magpie:nth-child(2n) {
+  animation-delay: 0.3s;
+  animation-duration: 1.6s;
+}
+.qq-magpie:nth-child(3n) {
+  animation-delay: 0.6s;
+  animation-duration: 2s;
+}
+.qq-magpie:nth-child(4n) {
+  animation-delay: 0.9s;
+  animation-duration: 1.7s;
+}
+/* Lovers Meeting Movement Cycle (10s timeline) */
+.qq-lover-left {
+  animation: lover-left-walk 10s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  transform-origin: 75px 122px;
+}
+.qq-lover-right {
+  animation: lover-right-walk 10s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  transform-origin: 325px 122px;
+}
+/* Celestial Ribbon Flow */
+.qq-ribbon {
+  animation: ribbon-flow 3s ease-in-out infinite;
+  transform-origin: top left;
+}
+/* Starlight Bloom at Meeting Moment */
+.qq-bloom {
+  animation: meeting-bloom 10s ease-in-out infinite;
+  transform-origin: 200px 75px;
+}
+/* Floating Stardust Particles */
+.qq-dust-1 {
+  animation: stardust-drift 10s ease-in-out infinite;
+  transform-origin: 195px 65px;
+}
+.qq-dust-2 {
+  animation: stardust-drift 10s ease-in-out infinite 0.4s;
+  transform-origin: 205px 60px;
+}
+.qq-dust-3 {
+  animation: stardust-drift 10s ease-in-out infinite 0.8s;
+  transform-origin: 200px 52px;
+}
+/* Poetic Caption */
+.queqiao-caption {
+  margin-top: 6px;
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", "BiauKai", "楷体", "楷体_GB2312", serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.82);
+  opacity: 0.85;
+  letter-spacing: 0.12em;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+.queqiao-card:hover .queqiao-caption {
+  opacity: 1;
+  color: #87daff;
+}
+/* ---------------------------------------------------------
+   Zhongqiu (中秋满月·双兔泛舟相依背影) Romantic Micro-Animation
+   --------------------------------------------------------- */
+.zhongqiu-card {
+  margin: 32px auto 24px auto;
+  max-width: 420px;
+  padding: 16px 16px 14px 16px;
+  background: radial-gradient(ellipse at 50% 28%, rgba(254,211,48,0.2) 0%, rgba(24,32,58,0.95) 55%, rgba(9,13,24,0.98) 100%);
+  border: 1px solid rgba(254,211,48,0.26);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(8,12,26,0.32), inset 0 1px 0 rgba(255,255,255,0.1);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.zhongqiu-card:hover {
+  border-color: rgba(254,211,48,0.58);
+  box-shadow: 0 12px 38px rgba(254,211,48,0.24), inset 0 1px 0 rgba(255,255,255,0.2);
+  background: radial-gradient(ellipse at 50% 28%, rgba(254,211,48,0.28) 0%, rgba(30,40,70,0.96) 55%, rgba(11,16,30,0.99) 100%);
+  transform: translateY(-2px);
+}
+.zhongqiu-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+/* Star Twinkle */
+.zq-star {
+  animation: zq-star-twinkle 3.2s ease-in-out infinite;
+  transform-origin: center;
+}
+.zq-star:nth-child(2n) {
+  animation-delay: 0.8s;
+  animation-duration: 2.6s;
+}
+.zq-star:nth-child(3n) {
+  animation-delay: 1.6s;
+  animation-duration: 3.8s;
+}
+.zq-star:nth-child(5n) {
+  animation-delay: 2.2s;
+  animation-duration: 4.4s;
+}
+/* Shooting Star */
+.zq-meteor {
+  animation: zq-meteor-pass 9s ease-out infinite;
+  animation-delay: 3s;
+}
+/* Full Moon Breathing & Glow */
+.zq-moon-group {
+  animation: zq-moon-radiance 5s ease-in-out infinite;
+  transform-origin: 200px 48px;
+}
+.zq-moon-halo {
+  animation: zq-halo-pulse 4s ease-in-out infinite;
+  transform-origin: 200px 48px;
+}
+/* Osmanthus Branch gentle sway */
+.zq-branch {
+  animation: zq-branch-sway 6s ease-in-out infinite;
+  transform-origin: 390px 2px;
+}
+/* Drifting Golden Petals */
+.zq-petal-1 {
+  animation: zq-petal-drift-1 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+.zq-petal-2 {
+  animation: zq-petal-drift-2 6.5s cubic-bezier(0.4, 0, 0.2, 1) infinite 1.5s;
+}
+.zq-petal-3 {
+  animation: zq-petal-drift-1 6s cubic-bezier(0.4, 0, 0.2, 1) infinite 2.8s;
+}
+.zq-petal-4 {
+  animation: zq-petal-drift-2 5.2s cubic-bezier(0.4, 0, 0.2, 1) infinite 0.7s;
+}
+.zq-petal-5 {
+  animation: zq-petal-drift-1 7s cubic-bezier(0.4, 0, 0.2, 1) infinite 3.5s;
+}
+/* Moon Reflection Shimmer on River (Dynamic Water Flow) */
+.zq-shimmer-1 {
+  animation: zq-shimmer-pulse 3.6s ease-in-out infinite;
+  transform-origin: 200px 102px;
+}
+.zq-shimmer-2 {
+  animation: zq-shimmer-pulse 4.2s ease-in-out infinite 0.5s;
+  transform-origin: 200px 110px;
+}
+.zq-shimmer-3 {
+  animation: zq-shimmer-pulse 3.8s ease-in-out infinite 1s;
+  transform-origin: 200px 120px;
+}
+.zq-shimmer-4 {
+  animation: zq-shimmer-pulse 4.6s ease-in-out infinite 1.5s;
+  transform-origin: 200px 132px;
+}
+.zq-shimmer-5 {
+  animation: zq-shimmer-pulse 4s ease-in-out infinite 2s;
+  transform-origin: 200px 148px;
+}
+/* River Ripples with subtle flow */
+.zq-ripple-line-1 {
+  animation: zq-ripple-line-drift 4.2s ease-in-out infinite;
+  transform-origin: 100px 118px;
+}
+.zq-ripple-line-2 {
+  animation: zq-ripple-line-drift 4.8s ease-in-out infinite 0.8s;
+  transform-origin: 300px 116px;
+}
+.zq-ripple-line-3 {
+  animation: zq-ripple-line-drift 3.6s ease-in-out infinite 1.4s;
+  transform-origin: 200px 154px;
+}
+/* The Wooden Boat & Rabbits Sailing along Moon River (18s Flowing Motion) */
+.zq-boat-and-rabbits {
+  animation: zq-boat-sailing 18s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+  transform-origin: 0 0;
+}
+/* Oar Dynamic Rowing Motion (Stroke & Glide) */
+.zq-boat-oar {
+  animation: zq-oar-rowing 4.5s ease-in-out infinite;
+  transform-origin: 0 0;
+}
+/* Boat Stern Wake Breathing & Trailing */
+.zq-boat-wake {
+  animation: zq-wake-pulse 4.5s ease-in-out infinite;
+  transform-origin: 0 8px;
+}
+/* Prow Lantern Rocking with Sailing Wind */
+.zq-lantern-group {
+  animation: zq-lantern-rock 3.6s ease-in-out infinite;
+  transform-origin: 0 0;
+}
+.zq-lantern-glow {
+  animation: zq-lantern-glow-breathe 2.8s ease-in-out infinite;
+  transform-origin: -2px 11px;
+}
+/* Rabbits Back View Breathing & Gentle Motion */
+.zq-rabbits-backview {
+  animation: zq-rabbit-breathe-back 3.6s ease-in-out infinite;
+  transform-origin: 0 0;
+}
+/* Ears Gentle Sway & Wiggle (Back View) */
+.zq-ear-boy-back-1 {
+  animation: zq-ear-wiggle-boy-back 5.2s ease-in-out infinite;
+  transform-origin: -1.5px -17px;
+}
+.zq-ear-boy-back-2 {
+  animation: zq-ear-wiggle-boy-back 5.2s ease-in-out infinite 0.15s;
+  transform-origin: 2px -17px;
+}
+.zq-ear-girl-back-1 {
+  animation: zq-ear-wiggle-girl-back 5.6s ease-in-out infinite;
+  transform-origin: -1px -5px;
+}
+.zq-ear-girl-back-2 {
+  animation: zq-ear-wiggle-girl-back 5.6s ease-in-out infinite 0.15s;
+  transform-origin: 2px -5px;
+}
+/* Tails Wagging in Boat */
+.zq-tail-boy-back {
+  animation: zq-tail-wag-back 2.6s ease-in-out infinite;
+  transform-origin: -7px 0;
+}
+.zq-tail-girl-back {
+  animation: zq-tail-wag-back 3s ease-in-out infinite 0.4s;
+  transform-origin: 7px 0;
+}
+/* Love Heart Floating between Heads */
+.zq-love-heart-back {
+  animation: zq-heart-float-back 3.2s ease-in-out infinite;
+  transform-origin: 0 5px;
+}
+/* Vertical Poetic Inscription (Left of the Moon) */
+.zhongqiu-vertical-poem {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  max-height: 125px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: flex-start;
+  pointer-events: none;
+  user-select: none;
+  z-index: 10;
+}
+.zq-poem-content {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", "BiauKai", "楷体", "楷体_GB2312", serif;
+  font-size: 13px;
+  line-height: 1.6;
+  letter-spacing: 0.18em;
+  color: rgba(255,246,204,0.92);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8), 0 0 10px rgba(254,211,48,0.45);
+  opacity: 0;
+  transform: translateY(6px);
+  filter: blur(2px);
+  transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), filter 1.2s ease;
+}
+.zq-poem-content.active {
+  opacity: 0.95;
+  transform: translateY(0);
+  filter: blur(0px);
+}
 @-moz-keyframes bgm-spin {
   from {
     transform: rotate(0deg);
@@ -3526,5 +3852,1373 @@ body:has(link[itemprop="mainEntityOfPage"][href*="/moonriver/"]) .footer {
   }
   70% {
     transform: scale(1);
+  }
+}
+@-moz-keyframes star-twinkle {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.2);
+  }
+}
+@-webkit-keyframes star-twinkle {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.2);
+  }
+}
+@-o-keyframes star-twinkle {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.2);
+  }
+}
+@keyframes star-twinkle {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.2);
+  }
+}
+@-moz-keyframes moon-breathe {
+  0%, 100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 0 6px rgba(254,211,48,0.4));
+  }
+  50% {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 12px rgba(254,211,48,0.75));
+  }
+}
+@-webkit-keyframes moon-breathe {
+  0%, 100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 0 6px rgba(254,211,48,0.4));
+  }
+  50% {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 12px rgba(254,211,48,0.75));
+  }
+}
+@-o-keyframes moon-breathe {
+  0%, 100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 0 6px rgba(254,211,48,0.4));
+  }
+  50% {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 12px rgba(254,211,48,0.75));
+  }
+}
+@keyframes moon-breathe {
+  0%, 100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 0 6px rgba(254,211,48,0.4));
+  }
+  50% {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 12px rgba(254,211,48,0.75));
+  }
+}
+@-moz-keyframes magpie-flutter {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-2.5px) rotate(4deg);
+  }
+}
+@-webkit-keyframes magpie-flutter {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-2.5px) rotate(4deg);
+  }
+}
+@-o-keyframes magpie-flutter {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-2.5px) rotate(4deg);
+  }
+}
+@keyframes magpie-flutter {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-2.5px) rotate(4deg);
+  }
+}
+@-moz-keyframes lover-left-walk {
+  0%, 12% {
+    transform: translate(0px, 0px);
+    opacity: 0.4;
+  }
+  42%, 78% {
+    transform: translate(110px, -35px);
+    opacity: 1;
+  }
+  92%, 100% {
+    transform: translate(0px, 0px);
+    opacity: 0.4;
+  }
+}
+@-webkit-keyframes lover-left-walk {
+  0%, 12% {
+    transform: translate(0px, 0px);
+    opacity: 0.4;
+  }
+  42%, 78% {
+    transform: translate(110px, -35px);
+    opacity: 1;
+  }
+  92%, 100% {
+    transform: translate(0px, 0px);
+    opacity: 0.4;
+  }
+}
+@-o-keyframes lover-left-walk {
+  0%, 12% {
+    transform: translate(0px, 0px);
+    opacity: 0.4;
+  }
+  42%, 78% {
+    transform: translate(110px, -35px);
+    opacity: 1;
+  }
+  92%, 100% {
+    transform: translate(0px, 0px);
+    opacity: 0.4;
+  }
+}
+@keyframes lover-left-walk {
+  0%, 12% {
+    transform: translate(0px, 0px);
+    opacity: 0.4;
+  }
+  42%, 78% {
+    transform: translate(110px, -35px);
+    opacity: 1;
+  }
+  92%, 100% {
+    transform: translate(0px, 0px);
+    opacity: 0.4;
+  }
+}
+@-moz-keyframes lover-right-walk {
+  0%, 12% {
+    transform: translate(0px, 0px);
+    opacity: 0.4;
+  }
+  42%, 78% {
+    transform: translate(-110px, -35px);
+    opacity: 1;
+  }
+  92%, 100% {
+    transform: translate(0px, 0px);
+    opacity: 0.4;
+  }
+}
+@-webkit-keyframes lover-right-walk {
+  0%, 12% {
+    transform: translate(0px, 0px);
+    opacity: 0.4;
+  }
+  42%, 78% {
+    transform: translate(-110px, -35px);
+    opacity: 1;
+  }
+  92%, 100% {
+    transform: translate(0px, 0px);
+    opacity: 0.4;
+  }
+}
+@-o-keyframes lover-right-walk {
+  0%, 12% {
+    transform: translate(0px, 0px);
+    opacity: 0.4;
+  }
+  42%, 78% {
+    transform: translate(-110px, -35px);
+    opacity: 1;
+  }
+  92%, 100% {
+    transform: translate(0px, 0px);
+    opacity: 0.4;
+  }
+}
+@keyframes lover-right-walk {
+  0%, 12% {
+    transform: translate(0px, 0px);
+    opacity: 0.4;
+  }
+  42%, 78% {
+    transform: translate(-110px, -35px);
+    opacity: 1;
+  }
+  92%, 100% {
+    transform: translate(0px, 0px);
+    opacity: 0.4;
+  }
+}
+@-moz-keyframes ribbon-flow {
+  0%, 100% {
+    transform: rotate(0deg) skewX(0deg);
+  }
+  50% {
+    transform: rotate(-5deg) skewX(4deg);
+  }
+}
+@-webkit-keyframes ribbon-flow {
+  0%, 100% {
+    transform: rotate(0deg) skewX(0deg);
+  }
+  50% {
+    transform: rotate(-5deg) skewX(4deg);
+  }
+}
+@-o-keyframes ribbon-flow {
+  0%, 100% {
+    transform: rotate(0deg) skewX(0deg);
+  }
+  50% {
+    transform: rotate(-5deg) skewX(4deg);
+  }
+}
+@keyframes ribbon-flow {
+  0%, 100% {
+    transform: rotate(0deg) skewX(0deg);
+  }
+  50% {
+    transform: rotate(-5deg) skewX(4deg);
+  }
+}
+@-moz-keyframes meeting-bloom {
+  0%, 38% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  46% {
+    transform: scale(1.3);
+    opacity: 0.95;
+  }
+  54%, 72% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  82%, 100% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes meeting-bloom {
+  0%, 38% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  46% {
+    transform: scale(1.3);
+    opacity: 0.95;
+  }
+  54%, 72% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  82%, 100% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+}
+@-o-keyframes meeting-bloom {
+  0%, 38% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  46% {
+    transform: scale(1.3);
+    opacity: 0.95;
+  }
+  54%, 72% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  82%, 100% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+}
+@keyframes meeting-bloom {
+  0%, 38% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  46% {
+    transform: scale(1.3);
+    opacity: 0.95;
+  }
+  54%, 72% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  82%, 100% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+}
+@-moz-keyframes stardust-drift {
+  0%, 40% {
+    transform: translateY(0) scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(-8px) scale(1);
+  }
+  75% {
+    opacity: 0.6;
+    transform: translateY(-20px) scale(0.85);
+  }
+  85%, 100% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0);
+  }
+}
+@-webkit-keyframes stardust-drift {
+  0%, 40% {
+    transform: translateY(0) scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(-8px) scale(1);
+  }
+  75% {
+    opacity: 0.6;
+    transform: translateY(-20px) scale(0.85);
+  }
+  85%, 100% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0);
+  }
+}
+@-o-keyframes stardust-drift {
+  0%, 40% {
+    transform: translateY(0) scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(-8px) scale(1);
+  }
+  75% {
+    opacity: 0.6;
+    transform: translateY(-20px) scale(0.85);
+  }
+  85%, 100% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0);
+  }
+}
+@keyframes stardust-drift {
+  0%, 40% {
+    transform: translateY(0) scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(-8px) scale(1);
+  }
+  75% {
+    opacity: 0.6;
+    transform: translateY(-20px) scale(0.85);
+  }
+  85%, 100% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0);
+  }
+}
+@-moz-keyframes zq-star-twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.25);
+  }
+}
+@-webkit-keyframes zq-star-twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.25);
+  }
+}
+@-o-keyframes zq-star-twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.25);
+  }
+}
+@keyframes zq-star-twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.25);
+  }
+}
+@-moz-keyframes zq-meteor-pass {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  2% {
+    opacity: 0.9;
+  }
+  8% {
+    transform: translate(-80px, 40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-80px, 40px);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes zq-meteor-pass {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  2% {
+    opacity: 0.9;
+  }
+  8% {
+    transform: translate(-80px, 40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-80px, 40px);
+    opacity: 0;
+  }
+}
+@-o-keyframes zq-meteor-pass {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  2% {
+    opacity: 0.9;
+  }
+  8% {
+    transform: translate(-80px, 40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-80px, 40px);
+    opacity: 0;
+  }
+}
+@keyframes zq-meteor-pass {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  2% {
+    opacity: 0.9;
+  }
+  8% {
+    transform: translate(-80px, 40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-80px, 40px);
+    opacity: 0;
+  }
+}
+@-moz-keyframes zq-moon-radiance {
+  0%, 100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 0 10px rgba(254,211,48,0.55));
+  }
+  50% {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 18px rgba(254,211,48,0.9));
+  }
+}
+@-webkit-keyframes zq-moon-radiance {
+  0%, 100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 0 10px rgba(254,211,48,0.55));
+  }
+  50% {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 18px rgba(254,211,48,0.9));
+  }
+}
+@-o-keyframes zq-moon-radiance {
+  0%, 100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 0 10px rgba(254,211,48,0.55));
+  }
+  50% {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 18px rgba(254,211,48,0.9));
+  }
+}
+@keyframes zq-moon-radiance {
+  0%, 100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 0 10px rgba(254,211,48,0.55));
+  }
+  50% {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 18px rgba(254,211,48,0.9));
+  }
+}
+@-moz-keyframes zq-halo-pulse {
+  0%, 100% {
+    transform: scale(0.96);
+    opacity: 0.82;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes zq-halo-pulse {
+  0%, 100% {
+    transform: scale(0.96);
+    opacity: 0.82;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+@-o-keyframes zq-halo-pulse {
+  0%, 100% {
+    transform: scale(0.96);
+    opacity: 0.82;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+@keyframes zq-halo-pulse {
+  0%, 100% {
+    transform: scale(0.96);
+    opacity: 0.82;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+@-moz-keyframes zq-branch-sway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-1.5deg);
+  }
+}
+@-webkit-keyframes zq-branch-sway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-1.5deg);
+  }
+}
+@-o-keyframes zq-branch-sway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-1.5deg);
+  }
+}
+@keyframes zq-branch-sway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-1.5deg);
+  }
+}
+@-moz-keyframes zq-petal-drift-1 {
+  0% {
+    transform: translate(0, 0) scale(0.7);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-45px, 60px) scale(1.1);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes zq-petal-drift-1 {
+  0% {
+    transform: translate(0, 0) scale(0.7);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-45px, 60px) scale(1.1);
+    opacity: 0;
+  }
+}
+@-o-keyframes zq-petal-drift-1 {
+  0% {
+    transform: translate(0, 0) scale(0.7);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-45px, 60px) scale(1.1);
+    opacity: 0;
+  }
+}
+@keyframes zq-petal-drift-1 {
+  0% {
+    transform: translate(0, 0) scale(0.7);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-45px, 60px) scale(1.1);
+    opacity: 0;
+  }
+}
+@-moz-keyframes zq-petal-drift-2 {
+  0% {
+    transform: translate(0, 0) scale(0.8);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.85;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-30px, 50px) scale(0.9);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes zq-petal-drift-2 {
+  0% {
+    transform: translate(0, 0) scale(0.8);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.85;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-30px, 50px) scale(0.9);
+    opacity: 0;
+  }
+}
+@-o-keyframes zq-petal-drift-2 {
+  0% {
+    transform: translate(0, 0) scale(0.8);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.85;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-30px, 50px) scale(0.9);
+    opacity: 0;
+  }
+}
+@keyframes zq-petal-drift-2 {
+  0% {
+    transform: translate(0, 0) scale(0.8);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.85;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-30px, 50px) scale(0.9);
+    opacity: 0;
+  }
+}
+@-moz-keyframes zq-shimmer-pulse {
+  0%, 100% {
+    transform: scaleX(0.92) scaleY(0.9) translateX(0);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scaleX(1.1) scaleY(1.15) translateX(-4px);
+    opacity: 0.85;
+  }
+}
+@-webkit-keyframes zq-shimmer-pulse {
+  0%, 100% {
+    transform: scaleX(0.92) scaleY(0.9) translateX(0);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scaleX(1.1) scaleY(1.15) translateX(-4px);
+    opacity: 0.85;
+  }
+}
+@-o-keyframes zq-shimmer-pulse {
+  0%, 100% {
+    transform: scaleX(0.92) scaleY(0.9) translateX(0);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scaleX(1.1) scaleY(1.15) translateX(-4px);
+    opacity: 0.85;
+  }
+}
+@keyframes zq-shimmer-pulse {
+  0%, 100% {
+    transform: scaleX(0.92) scaleY(0.9) translateX(0);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scaleX(1.1) scaleY(1.15) translateX(-4px);
+    opacity: 0.85;
+  }
+}
+@-moz-keyframes zq-ripple-line-drift {
+  0%, 100% {
+    transform: scaleX(0.95) translateX(0);
+    opacity: 0.25;
+  }
+  50% {
+    transform: scaleX(1.08) translateX(6px);
+    opacity: 0.55;
+  }
+}
+@-webkit-keyframes zq-ripple-line-drift {
+  0%, 100% {
+    transform: scaleX(0.95) translateX(0);
+    opacity: 0.25;
+  }
+  50% {
+    transform: scaleX(1.08) translateX(6px);
+    opacity: 0.55;
+  }
+}
+@-o-keyframes zq-ripple-line-drift {
+  0%, 100% {
+    transform: scaleX(0.95) translateX(0);
+    opacity: 0.25;
+  }
+  50% {
+    transform: scaleX(1.08) translateX(6px);
+    opacity: 0.55;
+  }
+}
+@keyframes zq-ripple-line-drift {
+  0%, 100% {
+    transform: scaleX(0.95) translateX(0);
+    opacity: 0.25;
+  }
+  50% {
+    transform: scaleX(1.08) translateX(6px);
+    opacity: 0.55;
+  }
+}
+@-moz-keyframes zq-boat-sailing {
+  0% {
+    transform: translate(255px, 134px) rotate(-1.2deg);
+  }
+  15% {
+    transform: translate(230px, 131.5px) rotate(0.8deg);
+  }
+  32% {
+    transform: translate(195px, 135px) rotate(-0.6deg);
+  }
+  50% {
+    transform: translate(150px, 132px) rotate(1.2deg);
+  }
+  65% {
+    transform: translate(175px, 135.5px) rotate(-0.8deg);
+  }
+  82% {
+    transform: translate(220px, 132px) rotate(1deg);
+  }
+  100% {
+    transform: translate(255px, 134px) rotate(-1.2deg);
+  }
+}
+@-webkit-keyframes zq-boat-sailing {
+  0% {
+    transform: translate(255px, 134px) rotate(-1.2deg);
+  }
+  15% {
+    transform: translate(230px, 131.5px) rotate(0.8deg);
+  }
+  32% {
+    transform: translate(195px, 135px) rotate(-0.6deg);
+  }
+  50% {
+    transform: translate(150px, 132px) rotate(1.2deg);
+  }
+  65% {
+    transform: translate(175px, 135.5px) rotate(-0.8deg);
+  }
+  82% {
+    transform: translate(220px, 132px) rotate(1deg);
+  }
+  100% {
+    transform: translate(255px, 134px) rotate(-1.2deg);
+  }
+}
+@-o-keyframes zq-boat-sailing {
+  0% {
+    transform: translate(255px, 134px) rotate(-1.2deg);
+  }
+  15% {
+    transform: translate(230px, 131.5px) rotate(0.8deg);
+  }
+  32% {
+    transform: translate(195px, 135px) rotate(-0.6deg);
+  }
+  50% {
+    transform: translate(150px, 132px) rotate(1.2deg);
+  }
+  65% {
+    transform: translate(175px, 135.5px) rotate(-0.8deg);
+  }
+  82% {
+    transform: translate(220px, 132px) rotate(1deg);
+  }
+  100% {
+    transform: translate(255px, 134px) rotate(-1.2deg);
+  }
+}
+@keyframes zq-boat-sailing {
+  0% {
+    transform: translate(255px, 134px) rotate(-1.2deg);
+  }
+  15% {
+    transform: translate(230px, 131.5px) rotate(0.8deg);
+  }
+  32% {
+    transform: translate(195px, 135px) rotate(-0.6deg);
+  }
+  50% {
+    transform: translate(150px, 132px) rotate(1.2deg);
+  }
+  65% {
+    transform: translate(175px, 135.5px) rotate(-0.8deg);
+  }
+  82% {
+    transform: translate(220px, 132px) rotate(1deg);
+  }
+  100% {
+    transform: translate(255px, 134px) rotate(-1.2deg);
+  }
+}
+@-moz-keyframes zq-oar-rowing {
+  0%, 100% {
+    transform: translate(-18px, 0) rotate(0deg);
+  }
+  22% {
+    transform: translate(-18px, 0) rotate(-8deg);
+  }
+  45% {
+    transform: translate(-18px, 0) rotate(5deg);
+  }
+  60% {
+    transform: translate(-18px, 0) rotate(0deg);
+  }
+}
+@-webkit-keyframes zq-oar-rowing {
+  0%, 100% {
+    transform: translate(-18px, 0) rotate(0deg);
+  }
+  22% {
+    transform: translate(-18px, 0) rotate(-8deg);
+  }
+  45% {
+    transform: translate(-18px, 0) rotate(5deg);
+  }
+  60% {
+    transform: translate(-18px, 0) rotate(0deg);
+  }
+}
+@-o-keyframes zq-oar-rowing {
+  0%, 100% {
+    transform: translate(-18px, 0) rotate(0deg);
+  }
+  22% {
+    transform: translate(-18px, 0) rotate(-8deg);
+  }
+  45% {
+    transform: translate(-18px, 0) rotate(5deg);
+  }
+  60% {
+    transform: translate(-18px, 0) rotate(0deg);
+  }
+}
+@keyframes zq-oar-rowing {
+  0%, 100% {
+    transform: translate(-18px, 0) rotate(0deg);
+  }
+  22% {
+    transform: translate(-18px, 0) rotate(-8deg);
+  }
+  45% {
+    transform: translate(-18px, 0) rotate(5deg);
+  }
+  60% {
+    transform: translate(-18px, 0) rotate(0deg);
+  }
+}
+@-moz-keyframes zq-wake-pulse {
+  0%, 100% {
+    transform: scaleX(0.9) scaleY(0.9);
+    opacity: 0.3;
+  }
+  25% {
+    transform: scaleX(1.15) scaleY(1.1) translateX(3px);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scaleX(1) scaleY(0.95);
+    opacity: 0.45;
+  }
+  75% {
+    transform: scaleX(1.12) scaleY(1.05) translateX(-3px);
+    opacity: 0.65;
+  }
+}
+@-webkit-keyframes zq-wake-pulse {
+  0%, 100% {
+    transform: scaleX(0.9) scaleY(0.9);
+    opacity: 0.3;
+  }
+  25% {
+    transform: scaleX(1.15) scaleY(1.1) translateX(3px);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scaleX(1) scaleY(0.95);
+    opacity: 0.45;
+  }
+  75% {
+    transform: scaleX(1.12) scaleY(1.05) translateX(-3px);
+    opacity: 0.65;
+  }
+}
+@-o-keyframes zq-wake-pulse {
+  0%, 100% {
+    transform: scaleX(0.9) scaleY(0.9);
+    opacity: 0.3;
+  }
+  25% {
+    transform: scaleX(1.15) scaleY(1.1) translateX(3px);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scaleX(1) scaleY(0.95);
+    opacity: 0.45;
+  }
+  75% {
+    transform: scaleX(1.12) scaleY(1.05) translateX(-3px);
+    opacity: 0.65;
+  }
+}
+@keyframes zq-wake-pulse {
+  0%, 100% {
+    transform: scaleX(0.9) scaleY(0.9);
+    opacity: 0.3;
+  }
+  25% {
+    transform: scaleX(1.15) scaleY(1.1) translateX(3px);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scaleX(1) scaleY(0.95);
+    opacity: 0.45;
+  }
+  75% {
+    transform: scaleX(1.12) scaleY(1.05) translateX(-3px);
+    opacity: 0.65;
+  }
+}
+@-moz-keyframes zq-lantern-rock {
+  0%, 100% {
+    transform: translate(-48px, -4px) rotate(-3.5deg);
+  }
+  30% {
+    transform: translate(-48px, -4px) rotate(4.5deg);
+  }
+  60% {
+    transform: translate(-48px, -4px) rotate(-2deg);
+  }
+  85% {
+    transform: translate(-48px, -4px) rotate(3deg);
+  }
+}
+@-webkit-keyframes zq-lantern-rock {
+  0%, 100% {
+    transform: translate(-48px, -4px) rotate(-3.5deg);
+  }
+  30% {
+    transform: translate(-48px, -4px) rotate(4.5deg);
+  }
+  60% {
+    transform: translate(-48px, -4px) rotate(-2deg);
+  }
+  85% {
+    transform: translate(-48px, -4px) rotate(3deg);
+  }
+}
+@-o-keyframes zq-lantern-rock {
+  0%, 100% {
+    transform: translate(-48px, -4px) rotate(-3.5deg);
+  }
+  30% {
+    transform: translate(-48px, -4px) rotate(4.5deg);
+  }
+  60% {
+    transform: translate(-48px, -4px) rotate(-2deg);
+  }
+  85% {
+    transform: translate(-48px, -4px) rotate(3deg);
+  }
+}
+@keyframes zq-lantern-rock {
+  0%, 100% {
+    transform: translate(-48px, -4px) rotate(-3.5deg);
+  }
+  30% {
+    transform: translate(-48px, -4px) rotate(4.5deg);
+  }
+  60% {
+    transform: translate(-48px, -4px) rotate(-2deg);
+  }
+  85% {
+    transform: translate(-48px, -4px) rotate(3deg);
+  }
+}
+@-moz-keyframes zq-lantern-glow-breathe {
+  0%, 100% {
+    transform: scale(0.9);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes zq-lantern-glow-breathe {
+  0%, 100% {
+    transform: scale(0.9);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+@-o-keyframes zq-lantern-glow-breathe {
+  0%, 100% {
+    transform: scale(0.9);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+@keyframes zq-lantern-glow-breathe {
+  0%, 100% {
+    transform: scale(0.9);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+@-moz-keyframes zq-rabbit-breathe-back {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.8px);
+  }
+}
+@-webkit-keyframes zq-rabbit-breathe-back {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.8px);
+  }
+}
+@-o-keyframes zq-rabbit-breathe-back {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.8px);
+  }
+}
+@keyframes zq-rabbit-breathe-back {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.8px);
+  }
+}
+@-moz-keyframes zq-ear-wiggle-boy-back {
+  0%, 75%, 100% {
+    transform: rotate(0deg);
+  }
+  80% {
+    transform: rotate(-2.5deg);
+  }
+  85% {
+    transform: rotate(2.5deg);
+  }
+  90% {
+    transform: rotate(-1.5deg);
+  }
+}
+@-webkit-keyframes zq-ear-wiggle-boy-back {
+  0%, 75%, 100% {
+    transform: rotate(0deg);
+  }
+  80% {
+    transform: rotate(-2.5deg);
+  }
+  85% {
+    transform: rotate(2.5deg);
+  }
+  90% {
+    transform: rotate(-1.5deg);
+  }
+}
+@-o-keyframes zq-ear-wiggle-boy-back {
+  0%, 75%, 100% {
+    transform: rotate(0deg);
+  }
+  80% {
+    transform: rotate(-2.5deg);
+  }
+  85% {
+    transform: rotate(2.5deg);
+  }
+  90% {
+    transform: rotate(-1.5deg);
+  }
+}
+@keyframes zq-ear-wiggle-boy-back {
+  0%, 75%, 100% {
+    transform: rotate(0deg);
+  }
+  80% {
+    transform: rotate(-2.5deg);
+  }
+  85% {
+    transform: rotate(2.5deg);
+  }
+  90% {
+    transform: rotate(-1.5deg);
+  }
+}
+@-moz-keyframes zq-ear-wiggle-girl-back {
+  0%, 65%, 100% {
+    transform: rotate(0deg);
+  }
+  70% {
+    transform: rotate(3deg);
+  }
+  75% {
+    transform: rotate(-2.5deg);
+  }
+  80% {
+    transform: rotate(1.5deg);
+  }
+}
+@-webkit-keyframes zq-ear-wiggle-girl-back {
+  0%, 65%, 100% {
+    transform: rotate(0deg);
+  }
+  70% {
+    transform: rotate(3deg);
+  }
+  75% {
+    transform: rotate(-2.5deg);
+  }
+  80% {
+    transform: rotate(1.5deg);
+  }
+}
+@-o-keyframes zq-ear-wiggle-girl-back {
+  0%, 65%, 100% {
+    transform: rotate(0deg);
+  }
+  70% {
+    transform: rotate(3deg);
+  }
+  75% {
+    transform: rotate(-2.5deg);
+  }
+  80% {
+    transform: rotate(1.5deg);
+  }
+}
+@keyframes zq-ear-wiggle-girl-back {
+  0%, 65%, 100% {
+    transform: rotate(0deg);
+  }
+  70% {
+    transform: rotate(3deg);
+  }
+  75% {
+    transform: rotate(-2.5deg);
+  }
+  80% {
+    transform: rotate(1.5deg);
+  }
+}
+@-moz-keyframes zq-tail-wag-back {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
+}
+@-webkit-keyframes zq-tail-wag-back {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
+}
+@-o-keyframes zq-tail-wag-back {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
+}
+@keyframes zq-tail-wag-back {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
+}
+@-moz-keyframes zq-heart-float-back {
+  0%, 100% {
+    transform: translate(0, -22px) scale(0.88);
+    opacity: 0.7;
+    filter: drop-shadow(0 0 3px rgba(253,121,168,0.5));
+  }
+  50% {
+    transform: translate(0, -25px) scale(1.15);
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(253,121,168,0.95));
+  }
+}
+@-webkit-keyframes zq-heart-float-back {
+  0%, 100% {
+    transform: translate(0, -22px) scale(0.88);
+    opacity: 0.7;
+    filter: drop-shadow(0 0 3px rgba(253,121,168,0.5));
+  }
+  50% {
+    transform: translate(0, -25px) scale(1.15);
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(253,121,168,0.95));
+  }
+}
+@-o-keyframes zq-heart-float-back {
+  0%, 100% {
+    transform: translate(0, -22px) scale(0.88);
+    opacity: 0.7;
+    filter: drop-shadow(0 0 3px rgba(253,121,168,0.5));
+  }
+  50% {
+    transform: translate(0, -25px) scale(1.15);
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(253,121,168,0.95));
+  }
+}
+@keyframes zq-heart-float-back {
+  0%, 100% {
+    transform: translate(0, -22px) scale(0.88);
+    opacity: 0.7;
+    filter: drop-shadow(0 0 3px rgba(253,121,168,0.5));
+  }
+  50% {
+    transform: translate(0, -25px) scale(1.15);
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(253,121,168,0.95));
   }
 }

@@ -335,13 +335,13 @@ if (window.location.pathname.indexOf('moonriver') !== -1) {
     
     
     <div class="post-body" itemprop="articleBody">
-        <!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-nmpxcSwogmTgoBGl"></div><script> var nmpxcSwogmTgoBGl_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); nmpxcSwogmTgoBGl_options.container = document.getElementById("mmedia-nmpxcSwogmTgoBGl"); const dp_nmpxcSwogmTgoBGl = new DPlayer(nmpxcSwogmTgoBGl_options); </script> -->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-SDSfWViPAvfKkiOR"></div><script> var SDSfWViPAvfKkiOR_options = JSON.parse('{\"video\":{\"url\":\"2023/10/17/九州の行/a.mp4\"}}'); SDSfWViPAvfKkiOR_options.container = document.getElementById("mmedia-SDSfWViPAvfKkiOR"); const dp_SDSfWViPAvfKkiOR = new DPlayer(SDSfWViPAvfKkiOR_options); </script> -->
 
-<video id="mmedia-HYeZkFYYWgGVsdjg" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
+<video id="mmedia-BPzoQyquZCUjeawX" controls=true vide="video" src="/2023/10/17/九州の行/dolphin.mp4" ></video>
 
-<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-qJCqvCKLPAUyptSA" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-qJCqvCKLPAUyptSA").style.height=document.getElementById("mmedia-qJCqvCKLPAUyptSA").scrollWidth*0.76+"px";
+<!-- <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-xAxPjFsvTCodBUjp" src="https://player.bilibili.com/player.html?bvid=BV1Gy4y1K7Ao&page=1&high_quality=1&danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-xAxPjFsvTCodBUjp").style.height=document.getElementById("mmedia-xAxPjFsvTCodBUjp").scrollWidth*0.76+"px";
     window.onresize = function(){
-      document.getElementById("mmedia-qJCqvCKLPAUyptSA").style.height=document.getElementById("mmedia-qJCqvCKLPAUyptSA").scrollWidth*0.76+"px";
+      document.getElementById("mmedia-xAxPjFsvTCodBUjp").style.height=document.getElementById("mmedia-xAxPjFsvTCodBUjp").scrollWidth*0.76+"px";
     }; </script> -->
     </div>
 
@@ -1092,6 +1092,123 @@ if (!window.mathjaxFixLoaded) {
   });
 })();
 </script>
+
+<!-- 中秋满月玉兔竖排诗句循环显隐与点击切换 -->
+<script>
+(function() {
+  var zqPoems = [
+    '但愿人长久<br>千里共婵娟',
+    '此时相望不相闻<br>愿逐月华流照君',
+    '名月や<br>池をめぐりて<br>夜もすがら',
+    '吹灭读书灯<br>一身都是月',
+    '今夜虽相隔<br>心与月同圆',
+    '人间秋晚<br>云淡风柔<br>月满中天<br>思念同酬',
+    '爱永在，月常圆'
+  ];
+
+  var currentIndex = 0;
+  var isAnimating = false;
+  var timer = null;
+  var initialized = false;
+
+  function showNextPoem(fast) {
+    var poemEl = document.getElementById('zq-poem-content');
+    if (!poemEl) return;
+    if (isAnimating) return;
+    isAnimating = true;
+
+    if (timer) {
+      clearTimeout(timer);
+      timer = null;
+    }
+
+    if (fast) {
+      poemEl.style.transition = 'opacity 0.28s ease, transform 0.28s ease, filter 0.28s ease';
+    }
+
+    // 诗句淡出消失
+    poemEl.classList.remove('active');
+
+    var fadeOutDuration = fast ? 280 : 1000;
+    setTimeout(function() {
+      // 切换诗句
+      currentIndex = (currentIndex + 1) % zqPoems.length;
+      poemEl.innerHTML = zqPoems[currentIndex];
+
+      // 诗句显现
+      setTimeout(function() {
+        poemEl.classList.add('active');
+        setTimeout(function() {
+          poemEl.style.transition = '';
+          isAnimating = false;
+        }, fast ? 300 : 1000);
+
+        // 设定下一句诗的循环计时
+        timer = setTimeout(function() {
+          showNextPoem(false);
+        }, 4000);
+      }, 60);
+    }, fadeOutDuration);
+  }
+
+  function startCycle() {
+    var card = document.getElementById('zhongqiu-card');
+    var poemEl = document.getElementById('zq-poem-content');
+    if (!card || !poemEl) return false;
+
+    if (initialized && timer) return true;
+    initialized = true;
+
+    // 保证初始诗句激活显现
+    poemEl.classList.add('active');
+
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(function() {
+      showNextPoem(false);
+    }, 4000);
+
+    return true;
+  }
+
+  // 点击中秋卡片立即切换下一句诗并重置循环
+  document.addEventListener('click', function(e) {
+    var card = e.target.closest('#zhongqiu-card');
+    if (!card) return;
+    showNextPoem(true);
+  });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startCycle);
+  } else {
+    startCycle();
+  }
+  document.addEventListener('pjax:success', function() {
+    initialized = false;
+    startCycle();
+  });
+
+  // 监听解密动态渲染或 DOM 变动
+  if (window.MutationObserver) {
+    var observer = new MutationObserver(function() {
+      var card = document.getElementById('zhongqiu-card');
+      if (card && !initialized) {
+        startCycle();
+      }
+    });
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+  }
+
+  // 兜底定时轮询
+  var poll = setInterval(function() {
+    if (document.getElementById('zhongqiu-card')) {
+      if (startCycle()) {
+        clearInterval(poll);
+      }
+    }
+  }, 800);
+})();
+</script>
+
 
 
 
