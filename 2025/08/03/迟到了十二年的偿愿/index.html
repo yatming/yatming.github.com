@@ -1138,6 +1138,15 @@ if (!window.mathjaxFixLoaded) {
   var timer = null;
   var initialized = false;
 
+  function formatPoemHtml(poemStr) {
+    var lines = poemStr.split('<br>');
+    var html = '';
+    for (var i = 0; i < lines.length; i++) {
+      html += '<span class="zq-poem-col">' + lines[i] + '</span>';
+    }
+    return html;
+  }
+
   function showNextPoem(fast) {
     var poemEl = document.getElementById('zq-poem-content');
     if (!poemEl) return;
@@ -1160,7 +1169,7 @@ if (!window.mathjaxFixLoaded) {
     setTimeout(function() {
       // 切换诗句
       currentIndex = (currentIndex + 1) % zqPoems.length;
-      poemEl.innerHTML = zqPoems[currentIndex];
+      poemEl.innerHTML = formatPoemHtml(zqPoems[currentIndex]);
 
       // 诗句显现
       setTimeout(function() {
@@ -1186,7 +1195,10 @@ if (!window.mathjaxFixLoaded) {
     if (initialized && timer) return true;
     initialized = true;
 
-    // 保证初始诗句激活显现
+    // 保证初始诗句激活显现且格式为结构化 span
+    if (poemEl.innerHTML.indexOf('zq-poem-col') === -1) {
+      poemEl.innerHTML = formatPoemHtml(zqPoems[0]);
+    }
     poemEl.classList.add('active');
 
     if (timer) clearTimeout(timer);
